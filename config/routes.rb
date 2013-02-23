@@ -1,4 +1,22 @@
 Martinfurniture::Application.routes.draw do
+  get "pages/home"
+
+  get "pages/brand_information"
+
+  get "pages/company"
+
+  get "pages/sustainability"
+
+  get "pages/privacy"
+
+  get "pages/warranty"
+
+  get "pages/contact"
+
+  get "pages/Contact"
+
+  root :to => 'pages#home'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -46,9 +64,6 @@ Martinfurniture::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
