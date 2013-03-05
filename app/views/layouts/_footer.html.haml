@@ -1,6 +1,6 @@
 %footer
   %nav#resources
-    %h5 Resources
+    %h1 Resources
     %ul
       %li 
         = link_to "Media Guide"
@@ -15,8 +15,8 @@
       %li 
         = link_to "Catalog"
 
-  #getToKnowUs
-    %h5 Get to Know Us
+  %nav#getToKnowUs
+    %h1 Get to Know Us
     %ul
       %li 
         = link_to "Brand Information"
@@ -31,26 +31,29 @@
       %li 
         = link_to "Legal/Privacy Notice"
 
-  #letUsHelp
-    %h5 Let Us Help
+  %nav#letUsHelp
+    %h1 Let Us Help
     %ul
       %li 
         = link_to "Contact"
       %li 
         = link_to "Dealer Locator"
 
-  #stayConnected
-    %h5 Stay Connected
+  %nav#stayConnected
+    %h1 Stay Connected
     %ul
       %li 
-        = link_to "Pintrest"
+        = link_to "http://pinterest.com/martinfurniture/" do 
+          = image_tag "icons/pinterest.png", alt: "Pinterest"
       %li 
-        = link_to "Twitter"
+        = link_to "https://api.twitter.com/MartinFurniture" do 
+          = image_tag "icons/twitter.png", alt: "Twitter"
       %li 
-        = link_to "YouTube"
+        = link_to "https://www.youtube.com/user/martinfurniture1?feature=results_main" do 
+          = image_tag "icons/youtube.png", alt: "YouTube"
 
-  #salesRepsAndDealers
-    %h5 Sales Reps & Dealers
+  %nav#salesRepsAndDealers
+    %h1 Sales Reps & Dealers
     %ul
       %li 
         = link_to "Sales Rep Login"
@@ -58,8 +61,7 @@
         = link_to "Dealer Login"
       %li 
         = link_to "Webmail"
-  #rights
-    %p 
-      © 2013 Martin Home Furnishings
-    %br
-      All Rights Reserved
+  %nav#rights
+    %small 
+      © 2013 Martin Home Furnishings 
+      %br All Rights Reserved

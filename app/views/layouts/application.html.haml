@@ -6,10 +6,11 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body{:id => "#{@body_id}" }
-    = render :partial => "layouts/header"
-    #content.clear
-      #messages
-        - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_#{name}"
-      = yield
-    = render :partial => "layouts/footer"
+    #container
+      = render :partial => "layouts/header"
+      #content.clear
+        #messages
+          - flash.each do |name, msg|
+            = content_tag :div, msg, :id => "flash_#{name}"
+        = yield
+      = render :partial => "layouts/footer"

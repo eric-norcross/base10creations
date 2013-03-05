@@ -1,0 +1,191 @@
+$serif: "Palatino Linotype", Palatino, "Book Antiqua",​ serif; 
+$sans-serif: Verdana, Geneva, sans-serif;
+
+$grey: #B5B5B5;
+$grey2: #767676;
+$mint: #AFCBBD;
+$maroon: #822621;
+
+.hidden {
+  display: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.separator {
+  height: 1px;
+  background-color: $mint;
+}
+
+.vertical_separator {
+  width: 1px;
+  background-color: $mint;
+}
+
+html { 
+  /*
+  background: asset-url('background.jpg', image) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  */
+
+  font-family: $serif;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $sans-serif;
+}
+
+a:link,
+a:visited {
+
+}
+
+a:hover,
+a:active,
+a.active {
+  color: $grey;
+  text-decoration: underline;
+}
+
+strong {}
+b {}
+em {}
+i {}
+
+#container {
+  margin: auto;
+  width: 94rem
+}
+
+header {
+  margin-bottom: 2rem;
+  width: 94rem;
+  height: 14rem;
+  background: transparent url('../img/elements/mint40.png') repeat-x top;
+  border-bottom: 1px solid $mint;
+
+  #search {
+    height: 4rem;
+    background-color: $mint;
+  }
+
+  #logo {
+    margin-top: 2.9rem;
+    float: left;
+  }
+
+  nav {
+    border: none;
+    float: right;
+    margin: 6.2rem 0 0 0;
+    
+
+    ul {
+      
+      li {
+        color: $maroon;
+        float: left;
+        font-family: $serif;
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-left: 3rem;
+        padding: .5rem 0;
+        text-align: right;
+
+        a:link,
+        a:hover,
+        a:visited,
+        a:active {
+          color: $maroon;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+#content {
+  margin: auto;
+
+  header {
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      hyphens: auto;
+      margin-top: 1rem;
+    }
+  }
+}
+
+footer {
+  border-top: 1px solid $mint;
+  border-bottom: 2rem solid $mint;
+  background: transparent url('../img/elements/mint20.png') repeat-x bottom;
+  width: 94rem;
+  height: 17rem;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  padding-bottom: 1rem;
+ 
+  nav {
+    float: left;
+    margin: 2.4rem 0;
+    min-width: 17.1%;
+
+    h1 {
+      color: $grey2;
+      font-family: $serif;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    ul {
+      li {
+        padding: .3rem 0;
+        margin-bottom: .1rem;
+
+        a:link,
+        a:visited,
+        a:active {
+          color: $maroon;
+        }
+
+        a:hover {
+          color: $grey;
+        }
+
+        img {
+          margin-right: 1.3rem;
+        }
+      }
+
+      li:last-child img {
+        margin-right: 0rem;
+      }
+    }
+  }
+
+  nav#stayConnected {
+    li {
+      float: left;
+    }
+  }
+
+  nav:last-child {
+    min-width: inherit;
+  }
+
+  small {
+    color: $grey2;
+    font-size: .8rem;
+    line-height: 1.5rem;
+  }
+}

@@ -9,6 +9,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 
+gem 'friendly_id'
+
 #separate out later
 
 #gem "rmagick"

@@ -1,8 +1,7 @@
 %header
   #search
-    = render partial: "search_form"
-    = render partial: "search_form"
-
+    = render :partial => "/layouts/product", :layout => "/layouts/search"
+    = render :partial => "/layouts/retailer", :layout => "/layouts/search"
   #logo
     = link_to root_path do
       = image_tag "logo.png"
