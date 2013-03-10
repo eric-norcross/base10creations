@@ -1,2 +1,23 @@
-%hi
-  Hi everybody, I'm Dr. Nick!
+%div{:id=>"#{@page.name}"}
+  %article
+    #carousel
+      .item
+        = image_tag "pages/home/carousel1.jpg"
+        #info
+          %h4.maroon.serif Carlton
+          %p.grey2
+            Modern architectural flare...
+            %br Clean lines...
+            Complements any decor...
+          .right
+            = link_to "#" do
+              View collection
+              %span.maroon »
+  %aside
+    %ul
+      %li
+        = image_tag "pages/home/subsection1.jpg"
+      %li
+        = image_tag "pages/home/subsection2.jpg"
+      %li
+        = image_tag "pages/home/subsection3.jpg"

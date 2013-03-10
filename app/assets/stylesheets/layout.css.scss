@@ -24,6 +24,27 @@ $maroon: #822621;
   background-color: $mint;
 }
 
+.maroon {
+  color: $maroon !important;
+}
+
+.grey {
+  color: $grey !important;
+}
+
+.grey2 {
+  color: $grey2 !important;
+}
+
+.serif {
+  font-family: $serif !important;
+}
+
+.right {
+  float: right;
+}
+
+
 html { 
   /*
   background: asset-url('background.jpg', image) no-repeat center center fixed; 
@@ -67,7 +88,6 @@ header {
   margin-bottom: 2rem;
   width: 94rem;
   height: 14rem;
-  background: transparent url('../img/elements/mint40.png') repeat-x top;
   border-bottom: 1px solid $mint;
 
   #search {
@@ -128,12 +148,12 @@ header {
 footer {
   border-top: 1px solid $mint;
   border-bottom: 2rem solid $mint;
-  background: transparent url('../img/elements/mint20.png') repeat-x bottom;
   width: 94rem;
   height: 17rem;
   margin-top: 2rem;
   margin-right: 2rem;
   padding-bottom: 1rem;
+  clear: both;
  
   nav {
     float: left;

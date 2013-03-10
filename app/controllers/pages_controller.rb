@@ -3,18 +3,19 @@ class PagesController < ApplicationController
   # GET /pages.json
 
   def home
-    @page = Page.find(:all, :conditions => [ "name = ?", "home" ])
-    render "/templates/#{@page[0].template}"
+    @pages = Page.find(:all, :conditions => [ "name = ?", "home" ])
+    @page = @pages[0]
+    render "/templates/#{@page.template}"
   end 
 
-  def index
-    @pages = Page.all
+  # def index
+  #   @pages = Page.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @pages }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @pages }
+  #   end
+  # end
 
   # GET /pages/1
   # GET /pages/1.json
