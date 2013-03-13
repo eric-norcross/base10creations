@@ -3,8 +3,9 @@ class PagesController < ApplicationController
   # GET /pages.json
 
   def home
-    @pages = Page.find(:all, :conditions => [ "name = ?", "home" ])
-    @page = @pages[0]
+    #@pages = Page.find(:all, :conditions => [ "name = ?", "home" ])
+    #@page = @pages[0]
+    @page = Page.find_by_name("home");
     render "/templates/#{@page.template}"
   end 
 
