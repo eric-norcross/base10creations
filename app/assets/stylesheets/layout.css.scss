@@ -111,6 +111,14 @@ header {
       li:hover .subnav {
         display: inline-block;
       }
+
+      li#prodcuts .subnav     { margin-left: -21rem }
+      li#collections .subnav  { margin-left: -24.2rem }
+      li#styles .subnav       { margin-left: -5.3rem }
+      li#KIHome:hover { 
+        border-bottom: 5px solid $mint;
+        padding-bottom: 1.3rem !important;
+      }
       
       li {
         color: $maroon;
@@ -135,8 +143,7 @@ header {
           display: none;
           position: absolute;
           padding-top: 1rem;
-          margin-left: -21rem;
-          top: 12.3rem;
+          top: 12.4rem;
           z-index: 999;
 
           .column_group {       
@@ -189,37 +196,6 @@ header {
             }
           }
         }
-
-        .subnav#collection_sub_nav {
-          height: 2rem;
-          .column_group {
-            height: 2rem;
-            display: block;
-            .column {
-              float: none;
-              max-height: 2rem;
-
-              ul {
-                max-height: 2rem;
-                li {
-                  float: none;
-                }
-              }
-            }
-          }  
-        }
-
-        /*.subnav #collection_sub_nav {
-          .column_group {
-            .column {
-              ul {
-                li {
-
-                }
-              }
-            }
-          }  
-        }*/
       }
     }
   }

@@ -8,7 +8,7 @@
 
   %nav#main
     %ul
-      %li
+      %li#prodcuts
         = link_to "Products", "#", :class => ( 'active' if @active == "products" )
         .subnav
           .column_group
@@ -80,9 +80,9 @@
                 %li 
                   = link_to "Writing Tables", "#"
 
-      %li
+      %li#collections
         = link_to "Collections", "#", :class => ( 'active' if @active == "collections" )
-        .subnav#collection_sub_nav
+        .subnav
           .column_group
             .column
               %ul
@@ -104,9 +104,8 @@
                   = link_to "Concord", "#"
                 %li 
                   = link_to "Contemporary Office", "#"
-
-
-
+            .column
+              %ul
                 %li 
                   = link_to "Crescent", "#"
                 %li 
@@ -125,9 +124,8 @@
                   = link_to "Mission Pasadena", "#"
                 %li 
                   = link_to "Mount View", "#"
-
-
-
+            .column
+              %ul
                 %li 
                   = link_to "Portland Loft", "#"
                 %li 
@@ -144,7 +142,23 @@
                   = link_to "Weston", "#"
                 %li 
                   = link_to "WorX", "#"
-      %li
+      %li#styles
         = link_to "Styles", "#", :class => ( 'active' if @active == "styles" )
-      %li
+        .subnav
+          .column_group
+            .column
+              %ul
+                %li 
+                  = link_to "Americana", "#"
+                %li 
+                  = link_to "Architecrual", "#"
+                %li 
+                  = link_to "Contemporary", "#"
+                %li 
+                  = link_to "Mission", "#"
+                %li 
+                  = link_to "Modern", "#"
+                %li 
+                  = link_to "Transitional", "#"
+      %li#KIHome
         = link_to "Kathy Ireland™ Home", "#", :class => ( 'active' if @active == "KIHome" )
