@@ -1,15 +1,19 @@
- input {
-  border-color: #69877A;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 1.5rem;
-  -moz-border-radius: 1.5rem;
-  -webkit-border-radius: 1.5rem;
-  color: #69877A;
-  width: 18rem;
-  height: 1.6rem;
-  float: right;
-  font-size: .9rem;
-  margin: .9rem;
-  padding: .2rem 4rem .2rem .9rem;
+form {
+  div {
+    margin: 1rem;
+  }
+
+  .actions {
+    text-align: right;
+    width: 28.7rem;
+  }
+
+  label {
+    display: inline-block;
+    width: 6rem;
+  }
+
+  input[type=text] {
+    
+  }
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226145700) do
+ActiveRecord::Schema.define(:version => 20130314154736) do
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(:version => 20130226145700) do
     t.datetime "updated_at", :null => false
     t.string   "slug"
     t.string   "template"
+    t.string   "group"
+  end
+
+  create_table "templates", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

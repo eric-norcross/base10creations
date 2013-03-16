@@ -1,11 +1,14 @@
 = form_for @page do |f|
   - if @page.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
+      %h1= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
       %ul
         - @page.errors.full_messages.each do |msg|
           %li= msg
 
+  .field
+    = f.label :group
+    = f.text_field :group
   .field
     = f.label :name
     = f.text_field :name

@@ -2,6 +2,8 @@
 
 %table
   %tr
+    %th Group
+    %th Template
     %th Name
     %th Header
     %th
@@ -10,6 +12,8 @@
 
   - @pages.each do |page|
     %tr
+      %td= page.group
+      %td= page.template
       %td= page.name
       %td= page.header
       %td= link_to 'Show', page

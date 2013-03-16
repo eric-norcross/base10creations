@@ -9,14 +9,14 @@ class PagesController < ApplicationController
     render "/templates/#{@page.template}"
   end 
 
-  # def index
-  #   @pages = Page.all
+  def index
+    @pages = Page.all
 
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.json { render json: @pages }
-  #   end
-  # end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @pages }
+    end
+  end
 
   # GET /pages/1
   # GET /pages/1.json
@@ -27,7 +27,8 @@ class PagesController < ApplicationController
       redirect_to @page, status: :moved_permanently
     end
 
-    render "/templates/#{@page.template}"
+    # render "/templates/#{@page.template}"
+    render "/templates/group"
 
     # respond_to do |format|
     #   format.html # show.html.erb

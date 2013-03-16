@@ -1,6 +1,41 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$serif: "Palatino Linotype", Palatino, "Book Antiqua",​ serif; 
+$sans-serif: Verdana, Geneva, sans-serif;
+
+$grey:    #B5B5B5;
+$grey2:   #767676;
+$mint:    #AFCBBD;
+$maroon:  #822621;
+
+.page {
+  float: left;
+  width: 58%;
+  margin-left: 2rem;
+
+  header {
+    margin-bottom: 2.2rem;
+    h1 {
+      color: $maroon;
+      font-family: $serif;
+      font-size: 4rem;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+  }
+}
+
+article {
+  header {
+    border-width: 0;
+  }
+}
+
 #home {
   aside {
     margin-top: 2rem;
@@ -39,7 +74,7 @@
       left: 8rem; 
       top: 3.4rem; 
 
-      h4 {
+      h1 {
         font-size: 4.4rem;
         font-weight: normal;
         margin-top: .8rem;

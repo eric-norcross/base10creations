@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
   extend FriendlyId
-  attr_accessible :header, :name, :template
+  attr_accessible :group, :template, :name, :header
 
   friendly_id :name, use: [:slugged, :history]
 
