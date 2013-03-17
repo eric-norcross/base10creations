@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$serif: "Palatino Linotype", Palatino, "Book Antiqua",​ serif; 
-$sans-serif: Verdana, Geneva, sans-serif;
+$S: "Palatino Linotype", Palatino, "Book Antiqua",​ serif; 
+$SS: Verdana, Geneva, sans-serif;
 
-$grey:    #B5B5B5;
-$grey2:   #767676;
-$mint:    #AFCBBD;
-$maroon:  #822621;
+$G:    #B5B5B5;
+$G2:   #767676;
+$M:    #AFCBBD;
+$MR:  #822621;
 
 .page {
   float: left;
@@ -18,8 +18,8 @@ $maroon:  #822621;
   header {
     margin-bottom: 2.2rem;
     h1 {
-      color: $maroon;
-      font-family: $serif;
+      color: $MR;
+      font-family: $S;
       font-size: 4rem;
     }
   }
