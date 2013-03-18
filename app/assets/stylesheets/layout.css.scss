@@ -1,11 +1,3 @@
-$serif: "Palatino Linotype", Palatino, "Book Antiqua",​ serif; 
-$sans-serif: Verdana, Geneva, sans-serif;
-
-$grey:    #B5B5B5;
-$grey2:   #767676;
-$mint:    #AFCBBD;
-$maroon:  #822621;
-
 .hidden {
   display: none;
 }
@@ -64,7 +56,7 @@ body {
 
 a:link,
 a:visited {
-
+  color: inherit;
 }
 
 a:hover,
@@ -81,51 +73,51 @@ i {}
 
 #container {
   margin: auto;
-  width: 94rem
+  @include rem('width', 940px);
 }
 
 header.document {
   border-bottom: 1px solid $mint;
-  margin-bottom: 2rem;
-  width: 94rem;
-  height: 14rem;
+  @include rem('margin-bottom', 20px);
+  @include rem('width', 940px);
+  @include rem('height', 140px);
   
   #search {
     background-color: $mint;
-    height: 4rem;
+    @include rem('height', 40px);
 
     form {
       div {
-        margin: 0rem;
+        margin: 0;
       }
 
       input {
         border-color: #69877A;
         border-style: solid;
         border-width: 1px;
-        border-radius: 1.5rem;
-        -moz-border-radius: 1.5rem;
-        -webkit-border-radius: 1.5rem;
+        @include rem('border-radius', 15px);
+        @include rem('-moz-border-radius', 15px);
+        @include rem('-webkit-border-radius', 15px);
         color: #69877A;
-        width: 18rem;
-        height: 1.6rem;
+        @include rem('width', 180px);
+        @include rem('height', 16px);
         float: right;
-        font-size: .9rem;
-        margin: .9rem;
-        padding: .2rem 4rem .2rem .9rem;
+        @include rem('font-size', 9px);
+        @include rem('margin', 9px);
+        @include rem('padding', 2px 40px 2px 9px);
       }
     }
   }
 
   #logo {
     float: left;
-    margin-top: 2.9rem;
+    @include rem('margin-top', 29px);
   }
 
   nav#main {
     border: none;
     float: right;
-    margin: 6.2rem 0 0 0;
+    @include rem('margin', 62px 0 0 0);
     
 
     ul {
@@ -134,22 +126,22 @@ header.document {
         display: inline-block;
       }
 
-      li#prodcuts .subnav     { margin-left: -21rem }
-      li#collections .subnav  { margin-left: -24.2rem }
-      li#styles .subnav       { margin-left: -5.3rem }
+      li#prodcuts .subnav     { @include rem('margin-left', -210px) }
+      li#collections .subnav  { @include rem('margin-left', -242px) }
+      li#styles .subnav       { @include rem('margin-left', -53px) }
       li#KIHome:hover { 
         border-bottom: 5px solid $mint;
-        padding-bottom: 1.3rem !important;
+        padding-bottom: 13px !important;
       }
       
       li {
         color: $maroon;
         float: left;
         font-family: $serif;
-        font-size: 1.4rem;
+        @include rem('font-size', 14px);
         font-weight: bold;
-        margin-left: 3rem;
-        padding: .5rem 0;
+        @include rem('margin-left', 3px);
+        @include rem('padding', 5px 0);
         text-align: right;
 
         a:link,
@@ -164,8 +156,8 @@ header.document {
         .subnav {
           display: none;
           position: absolute;
-          padding-top: 1rem;
-          top: 12.4rem;
+          @include rem('padding-top', 10px);
+          @include rem('top', 124px);
           z-index: 999;
 
           .column_group {       
@@ -174,27 +166,27 @@ header.document {
             border-style: solid;
             border-width: 5px 1px 1px 1px;
             display: inline-block;
-            padding: 1.5rem;
-            padding-top: 2rem;
+            @include rem('padding', 15px);
+            @include rem('padding-top', 2px);
             
             .column {
-              text-align: left;
+              text-align: lefë;
               float: left;
-              margin-right: 3.5rem;
+              @include rem('margin-right', 35px);
 
               h1 {
                 color: $grey2;
-                font-size: 1.4rem;
-                margin-bottom: .8rem;
+                @include rem('font-size', 14px);
+                @include rem('margin-bottom', 8px);
               }
 
               ul {
-                margin-bottom: 2.3rem;
+                @include rem('margin-bottom', 23px);
 
                 li {
                   float: none;
                   font-family: $sans-serif;
-                  font-size: 1.1rem;
+                  @include rem('font-size', 11px);
                   font-weight: normal;
                   margin-left: 0;
                   text-align: left;
@@ -214,7 +206,7 @@ header.document {
             }
 
             .column:last-child {
-              margin-right: 2rem;
+              @include rem('margin-right', 20px);
             }
           }
         }
@@ -225,15 +217,15 @@ header.document {
 
 nav#side {
   float: left;
-  width: 15rem;
+  width: 15%;
 
   ul {
     li {
       color: $grey2;
       font-family: $serif;
-      font-size: 1.4rem;
+      @include rem('font-size', 14px);
       font-weight: bold;
-      margin-bottom: 1.5rem;
+      @include rem('margin-bottom', 15px);
 
       a:link,
       a:visited,
@@ -247,14 +239,14 @@ nav#side {
       }
 
       ul {
-        margin: 1.5rem 0 0 1rem;
+        @include rem('margin', 15px 0 0 10px);
 
         li {
           color: #000;
           font-family: $sans-serif;
-          font-size: 1.2rem;
+          @include rem('font-size', 12px);
           font-weight: normal;
-          margin-bottom: 1rem;
+          @include rem('margin-bottom', 10px);
 
           a:link,
           a:visited,
@@ -279,42 +271,42 @@ nav#side {
 
   header {
     p {
-      font-size: 1.2rem;
-      line-height: 1.6rem;
+      @include rem('font-size', 12px);
+      @include rem('line-height', 16px);
       -webkit-hyphens: auto;
       -moz-hyphens: auto;
       hyphens: auto;
-      margin-top: 1rem;
+      @include rem('margin-top', 10px);
     }
   }
 }
 
 footer.document {
   border-top: 1px solid $mint;
-  border-bottom: 2rem solid $mint;
-  width: 94rem;
-  height: 17rem;
-  margin-top: 2rem;
-  margin-right: 2rem;
-  padding-bottom: 1rem;
+  border-bottom: 20px solid $mint;
+  @include rem('width', 940px);
+  @include rem('height', 170px);
+  @include rem('margin-top', 20px);
+  @include rem('margin-right', 20px);
+  @include rem('padding-bottom', 10px);
   clear: both;
  
   nav {
     float: left;
-    margin: 2.4rem 0;
+    @include rem('margin', 24px 0);
     min-width: 16.7%;
 
     h1 {
       color: $grey2;
       font-family: $serif;
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
+      @include rem('font-size', 12px);
+      @include rem('margin-bottom', 12px);
     }
 
     ul {
       li {
-        padding: .3rem 0;
-        margin-bottom: .1rem;
+        @include rem('padding', 3px 0);
+        @include rem('margin-bottom', 1px);
 
         a:link,
         a:visited,
@@ -327,12 +319,12 @@ footer.document {
         }
 
         img {
-          margin-right: 1.3rem;
+          @include rem('margin-right', 13px);
         }
       }
 
       li:last-child img {
-        margin-right: 0rem;
+        margin-right: 0;
       }
     }
   }
@@ -349,7 +341,7 @@ footer.document {
 
   small {
     color: $grey2;
-    font-size: .9rem;
-    line-height: 1.5rem;
+    @include rem('font-size', 9px);
+    @include rem('line-height', 15px);
   }
 }

@@ -2,31 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$S: "Palatino Linotype", Palatino, "Book Antiqua",​ serif; 
-$SS: Verdana, Geneva, sans-serif;
-
-$G:    #B5B5B5;
-$G2:   #767676;
-$M:    #AFCBBD;
-$MR:  #822621;
-
 .page {
   float: left;
-  width: 58%;
-  margin-left: 2rem;
+  width: 85%;
+  @include rem('margin-left', 20px);
+  @include rem('margin-right', -20px);
 
   header {
-    margin-bottom: 2.2rem;
+    @include rem('margin-bottom', 22px);
     h1 {
-      color: $MR;
-      font-family: $S;
-      font-size: 4rem;
+      color: $maroon;
+      font-family: $serif;
+      @include rem('font-size', 40px);
     }
   }
 
   p {
-    font-size: 1.1rem;
-    line-height: 1.3rem;
+    @include rem('font-size', 11px);
+    @include rem('line-height', 13px);
   }
 }
 
@@ -36,61 +29,92 @@ article {
   }
 }
 
+.page#text {
+  width: 58%;
+}
+
 #home {
   aside {
-    margin-top: 2rem;
+    @include rem('margin-top', 20px);
 
     ul {
       display: inline-block;
 
       li {
         float: left;
-        margin-right: 2rem;
+        @include rem('margin-right', 20px);
       }
 
       li:last-child {
-        margin-right: 0rem;
+        margin-right: 0;
       }
     }
   }
 }
 
-#carousel {
+#components {
+  ul {
+    li {
+      float: left;
+      @include rem('margin-bottom', 30px);
+      @include rem('margin-right', 15px);
 
-  .item {
-    position: relative;
+      div.collection_image {
+        img {}
 
-    img {
+        border-color: $grey;
+        border-style: solid;
+        border-width: 0 0 1px 0;
+        @include rem('padding', 10px 5px);
+        @include rem('margin-bottom', 10px);
+      }
+
+      div.collection_info {
+        @include rem('font-size', 12px);
+
+        h1,
+        h2,
+        h3 {
+          font-weight: normal;
+          @include rem('margin-bottom', 8px);
+        }
+
+        h2 {
+          font-weight: bold;
+        }
+
+        h3 {
+          color: $grey2;
+          display: inline-block;
+        }
+
+        ul {
+          display: inline-block;
+
+          li {
+            color: $grey2;
+            margin-bottom: 0;
+            margin-right: 0;
+          }
+
+          /*Using :before because inline-block adds 
+          trailing space to li's. Can't put them on 
+          the same line becuase I'm using HAML. 
+          There may be a way to do this, I just 
+          haven't looked.*/
+          li:before {
+            content: ","
+          }
+
+          li:first-child:before {
+            content: none;
+          }
+        }
+      }
     }
 
-    #info {
-      background-color: rgba(255,255,255, .95);
-      border-radius: 1rem;
-      -webkit-box-shadow: -4px 4px 4px 0px rgba(0, 0, 0, .75);
-      box-shadow: -4px 4px 4px 0px rgba(0, 0, 0, .75); 
-      font-size: 1.6rem;
-      padding: 1rem 1rem 2rem 1rem;
-      position: absolute; 
-      left: 8rem; 
-      top: 3.4rem; 
-
-      h1 {
-        font-size: 4.4rem;
-        font-weight: normal;
-        margin-top: .8rem;
-        margin-bottom: .5rem;
-        text-align: center;
-      }
-
-      p {
-        line-height: 3rem;
-        margin-bottom: 1.3rem;
-      }
-
-      a:link,
-      a:visited {
-        color: #000;
-      }
+    li:nth-child(3n) {
+      margin-right: 0;
     }
   }
 }

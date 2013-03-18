@@ -1,0 +1,38 @@
+#carousel {
+  .item {
+    position: relative;
+
+    img {
+    }
+
+    #info {
+      background-color: rgba(255,255,255, .95);
+      border-radius: 1rem;
+      -webkit-box-shadow: -4px 4px 4px 0px rgba(0, 0, 0, .75);
+      box-shadow: -4px 4px 4px 0px rgba(0, 0, 0, .75); 
+      font-size: 1.6rem;
+      padding: 1rem 1rem 2rem 1rem;
+      position: absolute; 
+      left: 8rem; 
+      top: 3.4rem; 
+
+      h1 {
+        font-size: 4.4rem;
+        font-weight: normal;
+        margin-top: .8rem;
+        margin-bottom: .5rem;
+        text-align: center;
+      }
+
+      p {
+        line-height: 3rem;
+        margin-bottom: 1.3rem;
+      }
+
+      a:link,
+      a:visited {
+        color: #000;
+      }
+    }
+  }
+}
