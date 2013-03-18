@@ -1,4 +1,4 @@
 = form_tag("/search", method: "get") do
   .field
-    = text_field_tag "query", "keyword or item #"
+    = text_field_tag "#{id}", "keyword or item #"
     -# = submit_tag "Submit"

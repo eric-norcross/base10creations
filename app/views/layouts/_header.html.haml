@@ -1,7 +1,7 @@
 %header.document
   #search
-    = render :partial => "/layouts/product", :layout => "/layouts/search"
-    = render :partial => "/layouts/retailer", :layout => "/layouts/search"
+    = render "/layouts/search", id: "product_search"
+    = render "/layouts/search", id: "retailer_search"
   #logo
     = link_to root_path do
       = image_tag "logo.png"
