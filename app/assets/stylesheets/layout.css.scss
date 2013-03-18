@@ -140,7 +140,7 @@ header.document {
         font-family: $serif;
         font-size: 14px;
         font-weight: bold;
-        margin-left: 3px;
+        @include rem('margin-left', 30px);
         padding: 5px 0;
         text-align: right;
 
@@ -167,10 +167,10 @@ header.document {
             border-width: 5px 1px 1px 1px;
             display: inline-block;
             @include rem('padding', 15px);
-            @include rem('padding-top', 2px);
+            @include rem('padding-top', 20px);
             
             .column {
-              text-align: lefë;
+              text-align: left;
               float: left;
               @include rem('margin-right', 35px);
 
