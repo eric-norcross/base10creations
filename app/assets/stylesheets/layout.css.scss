@@ -135,13 +135,13 @@ header.document {
       }
       
       li {
-        color: $maroon;
+        color: #822621;
         float: left;
         font-family: $serif;
-        @include rem('font-size', 14px);
+        font-size: 14px
         font-weight: bold;
-        @include rem('margin-left', 3px);
-        @include rem('padding', 5px 0);
+        margin-left: 3px;
+        padding: 5px 0;
         text-align: right;
 
         a:link,
