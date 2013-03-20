@@ -1,20 +1,23 @@
 .page{:id=>"#{@page.template}"}
   %article
-    #carousel
-      .item
-        = image_tag "pages/home/carousel1.jpg"
-        #info
-          %h1.maroon.serif Carlton
-          %p.grey2
-            Modern architectural flare...
-            %br 
-            Clean lines...
-            %br
-            Complements any decor...
-          .right
-            = link_to "#" do
-              View collection
-              %span.maroon »
+    #myCarousel.carousel.slide
+      .center
+        %ol.carousel-indicators
+          %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+          %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+          %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+      / Carousel items
+      .carousel-inner
+        .active.item
+          = image_tag "pages/home/carousel1.jpg"
+        .item
+          = image_tag "pages/home/carousel1.jpg"
+        .item
+          = image_tag "pages/home/carousel1.jpg"
+      / Carousel nav
+      / %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
+      / %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
+    
     %aside
       %ul
         %li

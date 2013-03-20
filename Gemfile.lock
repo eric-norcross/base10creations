@@ -195,7 +195,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   friendly_id
   haml-rails (~> 0.3.4)
-  jquery-rails
+  jquery-rails (~> 2.2.1)
   meta_request
   paperclip (~> 3.0)
   pg

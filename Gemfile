@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-gem 'jquery-rails'
+gem "jquery-rails", "~> 2.2.1"
 gem "haml-rails", "~> 0.3.4"
 gem "pg"
 gem "bcrypt-ruby", :require => "bcrypt"
@@ -24,7 +24,7 @@ gem 'friendly_id'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 

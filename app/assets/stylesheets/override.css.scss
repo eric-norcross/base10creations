@@ -1,0 +1,17 @@
+.carousel-indicators {
+  bottom: 10px; //bottom: -22px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: auto;
+
+  li {
+    background-color: $mint;
+    display: inline-block;
+    float: none;
+  }
+
+  li.active {
+    background-color: $maroon;
+  }
+}
