@@ -1,11 +1,13 @@
 .page{:id=>"#{@page.template}"}
   %article
-    #myCarousel.carousel.slide
+    #mainCarousel.carousel.slide
       .center
         %ol.carousel-indicators
-          %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
-          %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
-          %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+          %li.active{"data-slide-to" => "0", "data-target" => "#mainCarousel"}
+          %li{"data-slide-to" => "1", "data-target" => "#mainCarousel"}
+          %li{"data-slide-to" => "2", "data-target" => "#mainCarousel"}
+          %li{"data-slide-to" => "3", "data-target" => "#mainCarousel"}
+          %li{"data-slide-to" => "4", "data-target" => "#mainCarousel"}
       / Carousel items
       .carousel-inner
         .active.item
@@ -14,9 +16,14 @@
           = image_tag "pages/home/carousel1.jpg"
         .item
           = image_tag "pages/home/carousel1.jpg"
+        .item
+          = image_tag "pages/home/carousel1.jpg"
+        .item
+          = image_tag "pages/home/carousel1.jpg"
+
       / Carousel nav
-      / %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
-      / %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
+      / %a.carousel-control.left{"data-slide" => "prev", :href => "#mainCarousel"} ‹
+      / %a.carousel-control.right{"data-slide" => "next", :href => "#mainCarousel"} ›
     
     %aside
       %ul
