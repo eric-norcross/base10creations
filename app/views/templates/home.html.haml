@@ -1,4 +1,4 @@
-%div{:id=>"#{@page.name}"}
+.page{:id=>"#{@page.template}"}
   %article
     #carousel
       .item
@@ -15,14 +15,14 @@
             = link_to "#" do
               View collection
               %span.maroon »
-  %aside
-    %ul
-      %li
-        = link_to "#" do
-          = image_tag "pages/home/subsection1.jpg"
-      %li
-        = link_to "#" do
-          = image_tag "pages/home/subsection2.jpg"
-      %li
-        = link_to "#" do
-          = image_tag "pages/home/subsection3.jpg"
+    %aside
+      %ul
+        %li
+          = link_to "#" do
+            = image_tag "pages/home/subsection1.jpg"
+        %li
+          = link_to "#" do
+            = image_tag "pages/home/subsection2.jpg"
+        %li
+          = link_to "#" do
+            = image_tag "pages/home/subsection3.jpg"

@@ -1,19 +1,162 @@
 %nav#side
-  %ul
-    %li
-      = link_to "Brand Information", "#"
-    %li
-      = link_to "Company", "#"
-      %ul
-        %li 
-          = link_to "History", "#"
-        %li
-          = link_to "Mission", "#"
-        %li
-          = link_to "Our CEO", "#"
-    %li
-      = link_to "Sustainability Efforts", "#"
-    %li
-      = link_to "News Releases", "#"
-    %li
-      = link_to "Legal/Privacy Policy", "#"
+  -if page.group == "company"
+    %ul
+      %li
+        = link_to "Brand Information", "#"
+      %li
+        = link_to "Company", "#"
+        %ul
+          %li 
+            = link_to "History", "#"
+          %li
+            = link_to "Mission", "#"
+          %li
+            = link_to "Our CEO", "#"
+      %li
+        = link_to "Sustainability Efforts", "#"
+      %li
+        = link_to "News Releases", "#"
+      %li
+        = link_to "Legal/Privacy Policy", "#"
+
+  -if page.group == "Bedroom"
+    %ul
+      %li
+        = link_to "Accessories", "#"
+        %ul
+          %li 
+            = link_to "Charge & Connect", "#"
+
+    %ul
+      %li
+        = link_to "Bedroom", "#"
+        %ul
+          %li 
+            = link_to "Beds", "#"
+          %li 
+            = link_to "Chests", "#"
+          %li 
+            = link_to "Dressers", "#"
+          %li 
+            = link_to "Mirrors", "#"
+          %li 
+            = link_to "Nightstands", "#"
+
+    %ul
+      %li
+        = link_to "Entertainment", "#"
+        %ul
+          %li 
+            = link_to "Audio Component Piers", "#"
+          %li 
+            = link_to "Easy Wire Access System", "#"
+          %li 
+            = link_to "Occasional Tables", "#"
+          %li 
+            = link_to "TV Consoles", "#"
+
+    %ul
+      %li
+        = link_to "Occasional", "#"
+        %ul
+          %li 
+            = link_to "Coffee Tables", "#"
+          %li 
+            = link_to "End Tables", "#"
+          %li 
+            = link_to "Sofa Tables", "#"
+
+    %ul
+      %li
+        = link_to "Office", "#"
+        %ul
+          %li 
+            = link_to "Bookcases", "#"
+          %li 
+            = link_to "Computer Armoires", "#"
+          %li 
+            = link_to "Computer Carts", "#"
+          %li 
+            = link_to "Conference Tables", "#"
+          %li 
+            = link_to "Computer Credenzas", "#"
+          %li 
+            = link_to "Desks", "#"
+          %li 
+            = link_to "Executive Desks", "#"
+          %li 
+            = link_to "Filing Cabinets", "#"
+          %li 
+            = link_to "Hutches", "#"
+          %li 
+            = link_to "L-Shaped Desks", "#"
+          %li 
+            = link_to "Peninsula Walls", "#"
+          %li 
+            = link_to "Writing Tables", "#"
+
+  -if page.group == "Office"
+    %ul
+      %li 
+        = link_to "Beaumont", "#"
+      %li 
+        = link_to "Bedford", "#"
+      %li 
+        = link_to "Bradley", "#"
+      %li 
+        = link_to "Brookside", "#"
+      %li 
+        = link_to "California Bungalow", "#"
+      %li 
+        = link_to "Carlton", "#"
+      %li 
+        = link_to "City Heights", "#"
+      %li 
+        = link_to "Concord", "#"
+      %li 
+        = link_to "Contemporary Office", "#"
+      %li 
+        = link_to "Crescent", "#"
+      %li 
+        = link_to "Ellipse", "#"
+      %li 
+        = link_to "Empire", "#"
+      %li 
+        = link_to "Fulton", "#"
+      %li 
+        = link_to "Grove", "#"
+      %li 
+        = link_to "Hudson Street", "#"
+      %li 
+        = link_to "Huntington", "#"
+      %li 
+        = link_to "Mission Pasadena", "#"
+      %li 
+        = link_to "Mount View", "#"
+      %li 
+        = link_to "Portland Loft", "#"
+      %li 
+        = link_to "Spring Hill", "#"
+      %li 
+        = link_to "Southampton", "#"
+      %li 
+        = link_to "Studio West", "#"
+      %li 
+        = link_to "Tribeca Loft", "#"
+        %ul
+          %li 
+            = link_to "Black", "#"
+            %ul
+              %li
+                = link_to "Entertainment", "#"
+              %li
+                = link_to "Office", "#"
+          %li
+            = link_to "White", "#"
+
+      %li 
+        = link_to "Waterfall", "#"
+      %li 
+        = link_to "Weston", "#"
+      %li 
+        = link_to "WorX", "#"

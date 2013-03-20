@@ -2,35 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.page {
-  float: left;
-  width: 85%;
-  @include rem('margin-left', 20px);
-  @include rem('margin-right', -20px);
-
-  header {
-    @include rem('margin-bottom', 22px);
-    h1 {
-      color: $maroon;
-      font-family: $serif;
-      @include rem('font-size', 40px);
-    }
-  }
-
-  p {
-    @include rem('font-size', 11px);
-    @include rem('line-height', 13px);
-  }
-}
-
 article {
   header {
     border-width: 0;
   }
 }
 
+.page {
+  float: left;
+}
+
 .page#text {
   width: 58%;
+}
+
+.page#collections {
+  width: 85%;
+  @include rem('margin-right', -20px);
+}
+
+.page#product {
+  width: 100%;
 }
 
 #home {
@@ -52,7 +44,85 @@ article {
   }
 }
 
-#components {
+#text {
+  header {
+    @include rem('margin-bottom', 22px);
+    h1 {
+      color: $maroon;
+      font-family: $serif;
+      @include rem('font-size', 40px);
+    }
+  }
+
+  p {
+    @include rem('font-size', 11px);
+    @include rem('line-height', 13px);
+  }
+}
+
+#product {
+  #gallery {
+    display: inline-block;
+    float: left;
+    width: 50%;
+
+    #main_image {
+
+    }
+
+    .carousel {
+      ul {
+        li {
+          float: left;
+        }
+      }
+    }
+  }
+
+  #product_details {
+    display: inline-block;
+    float: left;
+    width: 50%;
+
+    hgroup {
+      h1,
+      h2,
+      h3 {
+        color: inherit;
+        font-family: $sans-serif;
+        font-weight: inherit;
+      }
+
+      h1 {
+        @include rem('font-size', 11px);
+      }
+
+      h2 {
+        @include rem('font-size', 20px);
+        font-family: $serif;
+        font-weight: bold;
+      }
+
+      h3 {
+        color: $grey2;
+        @include rem('font-size', 14px);
+      }
+    }
+  }
+
+  footer {
+    clear: both;
+    overflow: hidden;
+    @include rem('height', 200px);
+    ul {
+      li {
+        float: left;
+      }
+    }
+  }
+}
+
+#collections {
   ul {
     li {
       float: left;
