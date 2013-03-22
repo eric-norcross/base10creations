@@ -4,14 +4,39 @@
     #gallery
       #main_image
         = image_tag "products/tribeca_loft/rollingfile.jpg"
+        %br
+        .image_controls
+          = link_to "#" do 
+            //= image_tag "icons/expand.png"
+
+            !!! XML
+            / Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)
+            !!! 1.1
+            %svg#Content{"enable-background" => "new 0 0 15 15", :height => "15px", :version => "1.1", :viewbox => "0 0 15 15", :width => "15px", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+              %symbol#New_Symbol_233{:viewbox => "-8 -8 16 16"}
+                %polygon{:points => "-3.172,-1.758 -6.208,-4.793 -8,-3 -8,-8 -3,-8 -4.792,-6.207 -1.757,-3.173  "}
+                %polygon{:points => "3,8 4.792,6.207 1.757,3.172 3.172,1.757 6.208,4.793 8,3 8,8  "}
+                %polygon{:points => "-3.172,1.758 -1.758,3.172 -4.792,6.207 -3,8 -8,8 -8,3 -6.208,4.793"}
+                %polygon{:points => "3.172,-1.757 1.757,-3.173 4.792,-6.207 3,-8 8,-8 8,-3 6.207,-4.793"}
+              %use#XMLID_1_{:height => "16", :overflow => "visible", :transform => "matrix(0.9375 0 0 -0.9375 7.5 7.5)", :width => "16", :x => "-8", "xlink:href" => "#New_Symbol_233", :y => "-8"}
+
+                
+            View Larger Image
+        .image_controls.text_align_right
+          = link_to "Roll Over Image To Zoom", "#"
       .carousel
-        %ul
-          %li
-            = image_tag "products/tribeca_loft/thumbs/full.jpg"
-          %li
-            = image_tag "products/tribeca_loft/thumbs/set.jpg"
-          %li
-            = image_tag "products/tribeca_loft/thumbs/handle.jpg"
+        .arrow
+          = link_to "❬", "#"
+        #thumbnails
+          %ul
+            %li
+              = image_tag "products/tribeca_loft/thumbs/full.jpg"
+            %li
+              = image_tag "products/tribeca_loft/thumbs/set.jpg"
+            %li
+              = image_tag "products/tribeca_loft/thumbs/handle.jpg"
+        .arrow
+          = link_to "❭", "#"
     #product_details
       %header
         %hgroup
@@ -22,132 +47,149 @@
           %h3
             Rolling File
         #icons
-          = link_to "http://pinterest.com/martinfurniture/" do 
-            = image_tag "icons/pinterest.png", alt: "Pinterest"
-          = link_to "https://api.twitter.com/MartinFurniture" do 
-            = image_tag "icons/twitter.png", alt: "Twitter"
-      %tabs
-        %ul
+          = link_to "#" do 
+            = image_tag "icons/share.png", alt: "Share"
+          = link_to "#" do 
+            = image_tag "icons/print.png", alt: "Print"
+      #tabs
+        %ul#productTabs.nav.nav-tabs{"data-tabs" => "tabs"}
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#features"} Features
           %li
-            = link_to "Features", "#"
+            %a{"data-toggle" => "tab", :href => "#dimensions"} Dimensions
           %li
-            = link_to "Dimensions", "#"
+            %a{"data-toggle" => "tab", :href => "#style"} Style
           %li
-            = link_to "Style", "#"
-          %li
-            = link_to "Videos", "#"
+            %a{"data-toggle" => "tab", :href => "#videos"} Videos
+
+        .tab-content
+          #features.tab-pane.active
+            %h1 Features
+          #dimensions.tab-pane
+            %h1 Dimensions
+          #style.tab-pane
+            %h1 Style
+          #videos.tab-pane
+            %h1 Videos
+
+        
     %footer
-      %p
+      %h1
         You may also be interested in one of these...
       .carousel
-        %ul
-          %li
-            = image_tag "products/tribeca_loft/related/related1.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related2.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related3.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related4.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related5.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related5.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related5.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related5.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related5.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related5.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
-          %li
-            = image_tag "products/tribeca_loft/related/related5.jpg"
-            .product_info
-              %hgroup
-                %h1
-                  Tribeca Loft Black
-                %h2
-                  Writing Table
-                %h3
-                  sku #TL384
+        .arrow
+          = link_to "❬", "#"
+        #thumbnails
+          %ul
+            %li
+              = image_tag "products/tribeca_loft/related/related1.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related2.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related3.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related4.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related5.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related5.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related5.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related5.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related5.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related5.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+            %li
+              = image_tag "products/tribeca_loft/related/related5.jpg"
+              .product_info
+                %hgroup
+                  %h1
+                    Tribeca Loft Black
+                  %h2
+                    Writing Table
+                  %h3
+                    sku #TL384
+        .arrow
+          = link_to "❭", "#"

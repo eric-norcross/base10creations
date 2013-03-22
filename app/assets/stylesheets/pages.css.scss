@@ -62,12 +62,32 @@ article {
 
 #product {
   #gallery {
-    display: inline-block;
     float: left;
-    width: 50%;
+    margin-bottom: 20px;
 
     #main_image {
+      margin-bottom: 20px;
 
+      .image_controls {
+        display: inline-block;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 8px;
+        width: 49.6%;
+
+        img,
+        svg {
+          margin: 0 3px -3px 1px;
+        }
+
+        a:hover {
+          text-decoration: none;
+
+          svg {
+            fill: $grey;
+          }
+        }
+      }
     }
 
     .carousel {
@@ -80,9 +100,9 @@ article {
   }
 
   #product_details {
-    display: inline-block;
     float: left;
-    width: 50%;
+    width: 48%;
+    margin-left: 20px;
 
     hgroup {
       h1,
@@ -91,6 +111,7 @@ article {
         color: inherit;
         font-family: $sans-serif;
         font-weight: inherit;
+        margin-top: 7px;
       }
 
       h1 {
@@ -106,18 +127,85 @@ article {
       h3 {
         color: $grey2;
         @include rem('font-size', 14px);
+        margin-top: 12px;
+      }
+    }
+
+    #icons {
+      float: right;
+      margin-top: -27px;
+
+      img {
+        margin-left: 15px;
+      }
+    }
+
+    #tabs {
+      margin-top: 20px;
+
+      ul.nav-tabs {
+        border-color: $mint;
+        //border-bottom-width: 0px;*/
+      
+        li {
+          //font-weight: bold;
+          text-transform: uppercase;
+
+          a {
+            background: #f7faf9; // Old browsers
+            // IE9 SVG, needs conditional override of 'filter' to 'none'
+            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3ZmFmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhZmNiYmQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+            background: -moz-linear-gradient(top,  #f7faf9 0%, #afcbbd 100%); // FF3.6+
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7faf9), color-stop(100%,#afcbbd)); // Chrome,Safari4+
+            background: -webkit-linear-gradient(top,  #f7faf9 0%,#afcbbd 100%); // Chrome10+,Safari5.1+
+            background: -o-linear-gradient(top,  #f7faf9 0%,#afcbbd 100%); // Opera 11.10+
+            background: -ms-linear-gradient(top,  #f7faf9 0%,#afcbbd 100%); // IE10+
+            background: linear-gradient(to bottom,  #f7faf9 0%,#afcbbd 100%); // W3C
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7faf9', endColorstr='#afcbbd',GradientType=0 ); // IE6-8
+            
+            border-color: $mint;
+            border-radius: 0;
+            border-top-width: 2px;
+            margin-right: 0;
+            padding-top: 2px;
+            padding-bottom: 2px;
+          }
+
+          a:hover {
+            background: #fff;
+            color: black;
+          }
+        }
+
+        li.active a {
+          color: #000;
+          background: #fff;
+          border-color: $mint $mint transparent;
+        }
+
+        li:first-child a {
+          border-left-width: 2px;
+        }
+
+        li:last-child a {
+          border-right-width: 2px;
+        }
       }
     }
   }
 
   footer {
+    border-color: $mint;
+    border-style: solid;
+    border-width: 1px 0 0 0;
     clear: both;
-    overflow: hidden;
-    @include rem('height', 200px);
-    ul {
-      li {
-        float: left;
-      }
+
+    h1 {
+      color: $grey2;
+      font-family: $serif;
+      @include rem('font-size', 14px);
+      font-weight: normal;
+      margin: 10px 0 20px 0;
     }
   }
 }
@@ -156,6 +244,7 @@ article {
         h3 {
           color: $grey2;
           display: inline-block;
+          font-size: 10px;
         }
 
         ul {
@@ -163,6 +252,7 @@ article {
 
           li {
             color: $grey2;
+            font-size: 10px;
             margin-bottom: 0;
             margin-right: 0;
           }

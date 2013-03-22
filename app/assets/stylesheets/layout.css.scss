@@ -32,10 +32,26 @@
   font-family: $serif !important;
 }
 
+.sans_serif {
+  font-family: $sans-serif !important;
+}
+
+.left {
+  float: left;
+}
+
 .right {
   float: right;
 }
 
+
+.text_align_left {
+  text-align: left;
+}
+
+.text_align_right {
+  text-align: right;
+}
 
 html { 
   /*
@@ -73,18 +89,18 @@ i {}
 
 #container {
   margin: auto;
-  @include rem('width', 940px);
+  width: 940px;
 }
 
 header.document {
   border-bottom: 1px solid $mint;
-  @include rem('margin-bottom', 20px);
-  @include rem('width', 940px);
-  @include rem('height', 140px);
+  height: 140px;
+  margin-bottom: 20px;
+  width: 940px;
   
   #search {
     background-color: $mint;
-    @include rem('height', 40px);
+    height: 40px;
 
     form {
       div {
@@ -189,6 +205,7 @@ header.document {
                   @include rem('font-size', 11px);
                   font-weight: normal;
                   margin-left: 0;
+                  margin-bottom: 0;
                   text-align: left;
                   
                   a:link,
@@ -245,7 +262,7 @@ nav#side {
         li {
           color: #000;
           font-family: $sans-serif;
-          @include rem('font-size', 12px);
+          @include rem('font-size', 10px);
           font-weight: normal;
           @include rem('margin-bottom', 10px);
 
@@ -280,6 +297,10 @@ nav#side {
       hyphens: auto;
       @include rem('margin-top', 10px);
     }
+  }
+
+  nav#breadcrumbs {
+   margin-bottom: 10px;
   }
 }
 
