@@ -8,11 +8,6 @@
     = csrf_meta_tags
     /[if lt IE 9]
       %script{ src: "http://html5shim.googlecode.com/svn/trunk/html5.js", type: "text/javascript" }
-
-    /[if gte IE 9]
-      = stylesheet_link_tag "IE9", media: "all"
-      
-  //%body{:id => "#{@body_id}" }
   %body
     #container
       = render :partial => "layouts/header"
