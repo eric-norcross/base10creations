@@ -1,0 +1,43 @@
+/*======================================*/
+/* MINIMUM REQUIRED STYLES */
+/*======================================*/
+
+/* 
+In addition to the below, the previous 
+and next buttons must have a ".previous" 
+and ".next" class respectivly.
+*/
+
+.itemsContainer {
+  /* 
+  Must have a width. 
+  Width overridden per id. e.g.: 
+  #products .items { width: 450px; } 
+  See "scroller_customize.css"
+  */
+  width: 300px; /* default width */
+  overflow: hidden;
+  position: relative;
+}
+
+.itemsContainer ul {
+  position: relative;
+}
+
+.itemsContainer ul li {
+  float: left;
+}
+
+.itemsContainer ul li img {
+  /*
+  For some reason IE8 is requiring this.
+  If it's not here, and you're using a 
+  Stand alone Gallery, the images will 
+  dissipear when you click on them. 
+
+  Just set the border-width to 0px if
+  you don't want a border on your images.
+  and one is showing up.
+  */
+  border-color: #000;
+}

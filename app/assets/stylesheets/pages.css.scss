@@ -62,45 +62,20 @@ article {
 }
 
 #product {
-  #gallery {
-    float: left;
-    margin-bottom: 20px;
 
-    #main_image {
-      margin-bottom: 20px;
-
-      .image_controls {
-        display: inline-block;
-        font-weight: bold;
-        text-transform: uppercase;
-        margin-top: 8px;
-        width: 49.5%;
-
-        img,
-        svg {
-          margin: 0 3px -3px 1px;
-        }
-
-        a:hover {
-          text-decoration: none;
-
-          svg {
-            fill: $grey;
-          }
-        }
-      }
-    }
-
-    .carousel {
-      ul {
-        li {
-          float: left;
-        }
-      }
+  #productViews {
+    .itemsContainer {
+      width: 386px;
     }
   }
 
-  #product_details {
+  #relatedProducts {
+    .itemsContainer {
+      width: 868px;
+    }
+  }
+
+  #productDetails {
     float: left;
     width: 48%;
     margin-left: 20px;
@@ -148,7 +123,7 @@ article {
     border-width: 1px 0 0 0;
     clear: both;
 
-    h1 {
+    h1#rubric {
       color: $grey2;
       font-family: $serif;
       @include rem('font-size', 14px);

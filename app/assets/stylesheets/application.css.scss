@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap
+ *= require baseline
+ *= require base10creations/gallery_required
  *= require_self
 
 */
