@@ -57,7 +57,7 @@ class SkinsController < ApplicationController
 
     respond_to do |format|
       if @skin.save
-        format.html { redirect_to @skin, notice: 'Skin was successfully created.' }
+        format.html { redirect_to skin_path, notice: 'Skin was successfully created.' }
         format.json { render json: @skin, status: :created, location: @skin }
       else
         format.html { render action: "new" }
