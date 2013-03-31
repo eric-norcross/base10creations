@@ -145,7 +145,7 @@ header.document {
       li#prodcuts .subnav     { margin-left: -210px; }
       li#collections .subnav  { margin-left: -242px; }
       li#styles .subnav       { margin-left: -53px; }
-      li#KIHome:hover { 
+      li#KI_Home:hover { 
         border-bottom: 5px solid $mint;
         padding-bottom: 13px !important;
       }
@@ -352,7 +352,7 @@ footer.document {
     }
   }
 
-  nav#stayConnected {
+  nav#stay_connected {
     li {
       float: left;
     }

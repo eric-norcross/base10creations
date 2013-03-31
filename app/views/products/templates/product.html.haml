@@ -1,11 +1,11 @@
 = render "/products/templates/breadcrumbs" 
 .page{:id=>"#{@product.skin.name}"}
   %article
-    .gallery#productViews
-      .galleryImage
+    .gallery#product_views
+      .gallery_image
         = image_tag "products/tribeca_loft/rollingfile.jpg"
         %br
-        .imageControls
+        .image_controls
           = link_to "#" do 
             = render :partial => '/layouts/svg/enlarge'
             View Larger Image
@@ -15,7 +15,7 @@
         .control.previous
           = link_to "#" do
             = render :partial => '/layouts/svg/arrow_left'
-        .itemsContainer
+        .items_container
           %ul
             %li
               = link_to "#" do
@@ -36,7 +36,7 @@
         .control.next
           = link_to "#" do
             = render :partial => '/layouts/svg/arrow_right'
-    #productDetails
+    #product_details
       %header
         %hgroup
           %h1 
@@ -51,7 +51,7 @@
           = link_to "#" do 
             = image_tag "icons/print.png", alt: "Print"
       #tabs
-        %ul#productTabs.nav.nav-tabs{"data-tabs" => "tabs"}
+        %ul#product_tabs.nav.nav-tabs{"data-tabs" => "tabs"}
           %li.active
             %a{"data-toggle" => "tab", :href => "#features"} Features
           %li
@@ -133,12 +133,12 @@
     %footer
       %h1#rubric
         You may also be interested in one of these...
-      .gallery#relatedProducts
+      .gallery#related_products
         .scroller
           .control.previous
             = link_to "#" do
               = render :partial => '/layouts/svg/arrow_left'
-          .itemsContainer
+          .items_container
             %ul
               %li
                 = image_tag "products/tribeca_loft/related/related1.jpg"
