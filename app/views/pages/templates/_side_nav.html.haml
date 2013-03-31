@@ -1,5 +1,5 @@
 %nav#side
-  -if page.group == "company"
+  -if page.name == "mission" #-if page.group == "company"
     %ul
       %li
         = link_to "Brand Information", "#"
@@ -19,7 +19,7 @@
       %li
         = link_to "Legal/Privacy Policy", "#"
 
-  -if page.group == "Bedroom"
+  -if page.name == "collection"
     %ul
       %li
         = link_to "Accessories", "#"
@@ -95,7 +95,7 @@
           %li 
             = link_to "Writing Tables", "#"
 
-  -if page.group == "Office"
+  -if page.name == "office"
     %ul
       %li 
         = link_to "Beaumont", "#"

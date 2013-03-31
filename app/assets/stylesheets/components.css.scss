@@ -243,7 +243,7 @@
     #style {
       p {
         @include rem('font-size', 12px);
-        @include rem('line-height', 15px);
+        line-height: 15px;
       }
 
       div {
@@ -258,7 +258,7 @@
         p {
           color: $grey2;
           font-size: inherit;
-          @include rem('line-height', 14px);
+          line-height: 14px;
 
           span {
             font-weight: bold;

@@ -57,7 +57,7 @@ article {
 
   p {
     @include rem('font-size', 11px);
-    @include rem('line-height', 13px);
+    line-height: 13px;
   }
 }
 

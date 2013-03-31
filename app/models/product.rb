@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: pages
+# Table name: products
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  header     :string(255)
+#  name       :text
+#  sku        :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  skin_id    :string(255)
+#  skin_id    :integer
 #
 
-class Page < ActiveRecord::Base
-  attr_accessible :group, :name, :header, :skin_id
-
+class Product < ActiveRecord::Base
+  attr_accessible :name, :sku, :skin_id
   belongs_to :skin
   validates_presence_of :skin
 end

@@ -1,0 +1,15 @@
+#admin
+  %table
+    %thead
+      %tr
+        %th Name:
+        %th Template:
+    %tbody
+      %tr
+        %td= @skin.name
+        %td= @skin.template
+
+  .links
+    = link_to 'Edit', edit_skin_path(@skin)
+    \|
+    = link_to 'Back', skins_path

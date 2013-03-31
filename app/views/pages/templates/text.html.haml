@@ -1,5 +1,5 @@
-= render "templates/side_nav", :page => @page
-.page{:id=>"#{@page.template}"}
+= render "/pages/templates/side_nav", :page => @page
+.page{:id=>"#{@page.skin.name}"}
   %article
     %header
       %h1

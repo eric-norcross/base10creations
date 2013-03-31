@@ -1,5 +1,5 @@
-= render "/templates/breadcrumbs" 
-.page{:id=>"#{@page.template}"}
+= render "/products/templates/breadcrumbs" 
+.page{:id=>"#{@product.skin.name}"}
   %article
     .gallery#productViews
       .galleryImage
@@ -39,8 +39,8 @@
     #productDetails
       %header
         %hgroup
-          %h1
-            sku #TL202
+          %h1 
+            sku ##{@product.sku}
           %h2
             Tribeca Loft Black
           %h3

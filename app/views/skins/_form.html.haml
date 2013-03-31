@@ -1,0 +1,16 @@
+= form_for @skin do |f|
+  - if @skin.errors.any?
+    #error_explanation
+      %h1= "#{pluralize(@skin.errors.count, "error")} prohibited this skin from being saved:"
+      %ul
+        - @skin.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :template
+    = f.text_field :template
+  .actions
+    = f.submit 'Save'

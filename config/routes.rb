@@ -1,13 +1,17 @@
 Martinfurniture::Application.routes.draw do
   resources :pages
+  resources :products
+  resources :skins
+
+  #get "products/show"
 
   #root :to => redirect('/pages/home'), :action => :index
 
   root to: 'pages#home'
 
-  match '*path' => redirect('/') unless Rails.env.development?
+  # match '*path' => redirect('/') unless Rails.env.development?
 
-  match '/pages/:name', :to => redirect {"/%{name}"}
+  # match '/pages/:name', :to => redirect {"/%{name}"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

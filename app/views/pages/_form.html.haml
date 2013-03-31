@@ -7,14 +7,11 @@
           %li= msg
 
   .field
-    = f.label :group
-    = f.text_field :group
-  .field
     = f.label :name
     = f.text_field :name
   .field
-    = f.label :template
-    = f.text_field :template
+    = f.label :skin_id
+    = f.select :skin_id, Skin.all.collect{|t| [t.name, t.id]}
   .field
     = f.label :header
     = f.text_field :header

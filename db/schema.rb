@@ -11,30 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314154736) do
-
-  create_table "friendly_id_slugs", :force => true do |t|
-    t.string   "slug",                         :null => false
-    t.integer  "sluggable_id",                 :null => false
-    t.string   "sluggable_type", :limit => 40
-    t.datetime "created_at"
-  end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
-  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
+ActiveRecord::Schema.define(:version => 20130330230837) do
 
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "header"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "slug"
-    t.string   "template"
-    t.string   "group"
+    t.string   "skin_id"
   end
 
-  create_table "templates", :force => true do |t|
+  create_table "products", :force => true do |t|
+    t.text     "name"
+    t.text     "sku"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "skin_id"
+  end
+
+  create_table "skins", :force => true do |t|
+    t.text     "name"
+    t.text     "template"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

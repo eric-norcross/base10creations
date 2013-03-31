@@ -8,8 +8,9 @@ gem "pg"
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
+gem 'annotate', ">=2.5.0"
 
-gem 'friendly_id'
+# gem 'friendly_id'
 
 #separate out later
 

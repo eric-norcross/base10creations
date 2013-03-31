@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     #@pages = Page.find(:all, :conditions => [ "name = ?", "home" ])
     #@page = @pages[0]
     @page = Page.find_by_name("home");
-    render "/templates/#{@page.template}"
+    render "#{@page.skin.template}"
   end 
 
   def index
@@ -23,12 +23,9 @@ class PagesController < ApplicationController
   def show
     @page = Page.find(params[:id])
 
-    if request.path != page_path(@page)
-      redirect_to @page, status: :moved_permanently
-    end
-
-    # render "/templates/#{@page.template}"
-    render "/templates/group"
+    render "#{@page.skin.template}"
+    
+    # render "/templates/group"
 
     # respond_to do |format|
     #   format.html # show.html.erb
@@ -59,7 +56,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to pages_url, notice: 'Page was successfully created.' }
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render action: "new" }
@@ -75,7 +72,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to pages_url, notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
