@@ -1,0 +1,17 @@
+#admin
+  %table
+    %thead
+      %tr
+        %th Category:
+        %th Name:
+        %th Title:
+    %tbody
+      %tr
+        %td= @section.category.name
+        %td= @section.name
+        %td= @section.title
+
+  .links
+    = link_to 'Edit', edit_section_path(@section)
+    \|
+    = link_to 'Back', sections_path

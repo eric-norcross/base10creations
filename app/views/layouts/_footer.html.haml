@@ -1,66 +1,45 @@
+-@categories = Category.all
+
 %footer.document
-  %nav#resources
-    %h1 Resources
-    %ul
-      %li 
-        = link_to "Media Guide"
-      %li 
-        = link_to "Quality Craftsmanship"
-      %li 
-        = link_to "Videos"
-      %li 
-        = link_to "Furniture Care"
-      %li 
-        = link_to "Warranty Information"
-      %li 
-        = link_to "Catalog"
+  -@categories.each do |category|
+    %nav{:id=>"#{category.name}"}
+      %h1
+        =category.title
+      %ul
+        -category.sections.each do |section|
+          %li
+            = link_to section.title, section
+            
+  / %nav#let_us_help
+  /   %h1 Let Us Help
+  /   %ul
+  /     %li 
+  /       = link_to "Contact"
+  /     %li 
+  /       = link_to "Dealer Locator"
 
-  %nav#get_to_know_us
-    %h1 Get to Know Us
-    %ul
-      %li 
-        = link_to "Brand Information"
-      %li 
-        = link_to "Company"
-      %li 
-        = link_to "Sustainability Efforts"
-      %li 
-        = link_to "News Releases"
-      / %li 
-      /   = link_to "Employment"
-      %li 
-        = link_to "Legal/Privacy Notice"
+  / %nav#stay_connected
+  /   %h1 Stay Connected
+  /   %ul
+  /     %li 
+  /       = link_to "http://pinterest.com/martinfurniture/" do 
+  /         = image_tag "icons/pinterest.png", alt: "Pinterest"
+  /     %li 
+  /       = link_to "https://api.twitter.com/MartinFurniture" do 
+  /         = image_tag "icons/twitter.png", alt: "Twitter"
+  /     %li 
+  /       = link_to "https://www.youtube.com/user/martinfurniture1?feature=results_main" do 
+  /         = image_tag "icons/youtube.png", alt: "YouTube"
 
-  %nav#let_us_help
-    %h1 Let Us Help
-    %ul
-      %li 
-        = link_to "Contact"
-      %li 
-        = link_to "Dealer Locator"
-
-  %nav#stay_connected
-    %h1 Stay Connected
-    %ul
-      %li 
-        = link_to "http://pinterest.com/martinfurniture/" do 
-          = image_tag "icons/pinterest.png", alt: "Pinterest"
-      %li 
-        = link_to "https://api.twitter.com/MartinFurniture" do 
-          = image_tag "icons/twitter.png", alt: "Twitter"
-      %li 
-        = link_to "https://www.youtube.com/user/martinfurniture1?feature=results_main" do 
-          = image_tag "icons/youtube.png", alt: "YouTube"
-
-  %nav#sales_reps_and_dealers
-    %h1 Sales Reps & Dealers
-    %ul
-      %li 
-        = link_to "Sales Rep Login"
-      %li 
-        = link_to "Dealer Login"
-      %li 
-        = link_to "Webmail"
+  / %nav#sales_reps_and_dealers
+  /   %h1 Sales Reps & Dealers
+  /   %ul
+  /     %li 
+  /       = link_to "Sales Rep Login"
+  /     %li 
+  /       = link_to "Dealer Login"
+  /     %li 
+  /       = link_to "Webmail"
   %nav#rights
     %small 
       © 2013 Martin Home Furnishings 

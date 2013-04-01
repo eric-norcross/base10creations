@@ -1,7 +1,10 @@
 Martinfurniture::Application.routes.draw do
+  resources :categories
+  resources :sections
+  resources :skins
+
   resources :pages
   resources :products
-  resources :skins
 
   #get "products/show"
 

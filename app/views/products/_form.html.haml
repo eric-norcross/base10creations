@@ -8,13 +8,14 @@
           %li= msg
 
   .field
+    = f.label :skin_id, "Template"
+    = f.select :skin_id, Skin.all.collect{|t| [t.name, t.id]}
+  .field
     = f.label :name
     = f.text_field :name
   .field
     = f.label :sku
     = f.text_field :sku
-
-  = f.select :skin_id, Skin.all.collect{|t| [t.name, t.id]}
   
   .actions
     = f.submit 'Save'

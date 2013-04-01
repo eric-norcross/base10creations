@@ -1,0 +1,26 @@
+#admin
+  %h1 Available Section
+
+  - if @sections
+    %table
+      %thead
+        %tr
+          %th Category
+          %th Id
+          %th Name
+          %th Title
+          %th
+          %th
+      %tbody
+      - @sections.each do |section|
+        %tr
+          %td= section.category.name
+          %td= section.id
+          %td= section.name
+          %td= section.title
+          %td= link_to 'Show', section
+          %td= link_to 'Edit', edit_section_path(section)
+          %td= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add New Section', new_section_path

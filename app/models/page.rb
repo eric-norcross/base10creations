@@ -11,8 +11,13 @@
 #
 
 class Page < ActiveRecord::Base
-  attr_accessible :group, :name, :header, :skin_id
+  attr_accessible :skin_id, :section_id, :name, :title, :content
 
   belongs_to :skin
+  belongs_to :section
+
+  has_one :category, :through => :section
+  
   validates_presence_of :skin
+  validates_presence_of :section
 end

@@ -10,7 +10,8 @@
 #
 
 class Skin < ActiveRecord::Base
-  attr_accessible :product, :page, :name, :template
+  attr_accessible :product, :section, :page, :name, :template
   has_many :products
+  has_many :sections
   has_many :pages
 end
