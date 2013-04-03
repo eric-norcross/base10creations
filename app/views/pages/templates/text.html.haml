@@ -4,6 +4,5 @@
     %header
       %h1
         = @page.title
-    #page_content
-      %p
-        = @page.content
+    #page_body
+      = raw @page.content

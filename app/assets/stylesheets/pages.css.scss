@@ -10,6 +10,13 @@ article {
 
 .page {
   float: left;
+
+  #page_body {
+    p {
+      margin-bottom: 11px;
+    }
+  }
+
 }
 
 .page#text {
@@ -101,7 +108,7 @@ article {
       }
 
       h3 {
-        color: $grey2;
+        color: $grey;
         @include rem('font-size', 14px);
         margin-top: 12px;
       }
@@ -124,7 +131,7 @@ article {
     clear: both;
 
     h1#rubric {
-      color: $grey2;
+      color: $grey;
       font-family: $serif;
       @include rem('font-size', 14px);
       font-weight: normal;
@@ -165,7 +172,7 @@ article {
         }
 
         h3 {
-          color: $grey2;
+          color: $grey;
           display: inline-block;
           font-size: 10px;
         }
@@ -174,7 +181,7 @@ article {
           display: inline-block;
 
           li {
-            color: $grey2;
+            color: $grey;
             font-size: 10px;
             margin-bottom: 0;
             margin-right: 0;

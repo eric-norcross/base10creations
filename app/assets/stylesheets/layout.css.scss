@@ -24,10 +24,6 @@
   color: $grey !important;
 }
 
-.grey2 {
-  color: $grey2 !important;
-}
-
 .serif {
   font-family: $serif !important;
 }
@@ -72,7 +68,7 @@ body {
 
 a:link,
 a:visited {
-  color: inherit;
+  color: $maroon;
 }
 
 a:hover,
@@ -108,13 +104,13 @@ header.document {
       }
 
       input {
-        border-color: #69877A;
+        border-color: $grey;
         border-style: solid;
         border-width: 1px;
         border-radius: 15px;
         -moz-border-radius: 15px;
         -webkit-border-radius: 15px;
-        color: #69877A;
+        color: $grey;
         width: 180px;
         height: 16px;
         float: right;
@@ -191,7 +187,7 @@ header.document {
               margin-right: 35px;
 
               h1 {
-                color: $grey2;
+                color: $grey;
                 @include rem('font-size', 14px);
                 margin-bottom: 8px;
               }
@@ -211,11 +207,11 @@ header.document {
                   a:link,
                   a:active,
                   a:visited {
-                    color: $grey2;
+                    color: $maroon;
                   }
 
                   a:hover {
-                    color: $maroon;
+                    color: $grey;
                     text-decoration: underline;
                   }
                 }
@@ -239,7 +235,7 @@ nav#side {
 
   ul {
     li {
-      color: $grey2;
+      color: $grey;
       font-family: $serif;
       @include rem('font-size', 14px);
       font-weight: bold;
@@ -249,7 +245,7 @@ nav#side {
       a:visited,
       a:active,
       a:hover {
-        color: $grey;
+        color: $maroon;
       }
 
       a:hover {
@@ -320,7 +316,7 @@ footer.document {
     min-width: 16.7%;
 
     h1 {
-      color: $grey2;
+      color: $grey;
       font-family: $serif;
       @include rem('font-size', 12px);
       margin-bottom: 12px;
@@ -363,7 +359,7 @@ footer.document {
   }
 
   small {
-    color: $grey2;
+    color: $grey;
     @include rem('font-size', 9px);
     line-height: 15px;
   }

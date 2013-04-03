@@ -96,7 +96,7 @@
             }
 
             h3 {
-              color: $grey2;
+              color: $grey;
             }
           }
         }
@@ -193,7 +193,7 @@
         width: 30%;
 
         h1 {
-          color: $grey2;
+          color: $grey;
           @include rem('font-size', 12px);
           font-weight: normal;
           margin-bottom: 21px;
@@ -229,7 +229,7 @@
         margin-bottom: 20px;
 
         span {
-          color: $grey2;
+          color: $grey;
           font-weight: bold;
           padding-right: 10px;
         }
@@ -256,7 +256,7 @@
         }
 
         p {
-          color: $grey2;
+          color: $grey;
           font-size: inherit;
           line-height: 14px;
 
