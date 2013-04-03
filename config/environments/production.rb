@@ -47,7 +47,7 @@ Martinfurniture::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += ["ie/IE9.css.scss", "ie/IE7.css.scss", "ie/IE8.css.scss", "ie/IE6.css.scss"]
+  config.assets.precompile += ["IE9.css", "IE7.css", "IE8.css", "IE6.css"]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
