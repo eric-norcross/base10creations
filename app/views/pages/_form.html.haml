@@ -1,6 +1,6 @@
 = form_for @page do |f|
   - if @page.errors.any?
-    #error_explanation
+    #error-explanation
       %h1= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
       %ul
         - @page.errors.full_messages.each do |msg|

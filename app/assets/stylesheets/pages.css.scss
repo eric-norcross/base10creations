@@ -11,7 +11,7 @@ article {
 .page {
   float: left;
 
-  #page_body {
+  #page-body {
     p {
       margin-bottom: 11px;
     }
@@ -70,19 +70,19 @@ article {
 
 #product {
 
-  #product_views {
-    .items_container {
+  #product-views {
+    .items-container {
       width: 386px;
     }
   }
 
-  #related_products {
-    .items_container {
+  #related-products {
+    .items-container {
       width: 868px;
     }
   }
 
-  #product_details {
+  #product-details {
     float: left;
     width: 48%;
     margin-left: 20px;
@@ -147,7 +147,7 @@ article {
       margin-bottom: 30px;
       margin-right: 15px;
 
-      div.collection_image {
+      div.collection-image {
         img {}
 
         border-color: $grey;
@@ -157,7 +157,7 @@ article {
         margin-bottom: 10px;
       }
 
-      div.collection_info {
+      div.collection-info {
         @include rem('font-size', 12px);
 
         h1,

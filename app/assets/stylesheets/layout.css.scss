@@ -11,7 +11,7 @@
   height: 1px;
 }
 
-.vertical_separator {
+.vertical-separator {
   background-color: $mint;
   width: 1px;
 }
@@ -28,7 +28,7 @@
   font-family: $serif !important;
 }
 
-.sans_serif {
+.sans-serif {
   font-family: $sans-serif !important;
 }
 
@@ -41,11 +41,11 @@
 }
 
 
-.text_align_left {
+.text-align-left {
   text-align: left;
 }
 
-.text_align_right {
+.text-align-right {
   text-align: right;
 }
 
@@ -141,7 +141,7 @@ header.document {
       li#prodcuts .subnav     { margin-left: -210px; }
       li#collections .subnav  { margin-left: -242px; }
       li#styles .subnav       { margin-left: -53px; }
-      li#KI_Home:hover { 
+      li#KI-Home:hover { 
         border-bottom: 5px solid $mint;
         padding-bottom: 13px !important;
       }
@@ -172,7 +172,7 @@ header.document {
           top: 124px;
           z-index: 999;
 
-          .column_group {       
+          .column-group {       
             background-color: #fff;     
             border-color: $mint;
             border-style: solid;
@@ -348,7 +348,7 @@ footer.document {
     }
   }
 
-  nav#stay_connected {
+  nav#stay-connected {
     li {
       float: left;
     }
