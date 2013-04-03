@@ -56,6 +56,8 @@ module Martinfurniture
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.assets.precompile += ["ie/IE9.css.scss", "ie/IE7.css.scss", "ie/IE8.css.scss", "ie/IE6.css.scss"]
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
