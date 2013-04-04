@@ -8,7 +8,23 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require common
+ *= require bootstrap
+ *= require baseline
+ *= require base10creations/gallery_required
+ *= require ie/IE9
+ *= require ie/IE8
+ *= require ie/IE7
+ *= require ie/IE6
  *= require_self
- *= require_tree .
+
 */
+
+@import 'baseline.css.scss';
+@import 'rem.css.scss';
+@import 'common.css.scss';
+@import 'admin.css.scss';
+@import 'layout.css.scss';
+@import 'pages.css.scss';
+@import 'components.css.scss';
+@import 'forms.css.scss';
+@import 'override.css.scss';
