@@ -11,6 +11,8 @@
 #
 
 class Product < ActiveRecord::Base
+  default_scope order('id ASC')
+  
   attr_accessible :name, :sku, :skin_id
   belongs_to :skin
   validates_presence_of :skin

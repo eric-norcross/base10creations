@@ -1,4 +1,6 @@
 class Section < ActiveRecord::Base
+  default_scope order('id ASC')
+  
   attr_accessible :category_id, :skin_id, :page, :name, :title, :content
 
   has_many :pages
