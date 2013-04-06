@@ -7,21 +7,21 @@
 }
 
 .separator {
-  background-color: $mint;
+  background-color: $frameColor;
   height: 1px;
 }
 
 .vertical-separator {
-  background-color: $mint;
+  background-color: $frameColor;
   width: 1px;
 }
 
 .maroon {
-  color: $maroon !important;
+  color: $linkColor !important;
 }
 
 .grey {
-  color: $grey !important;
+  color: $headerColor !important;
 }
 
 .serif {
@@ -68,13 +68,13 @@ body {
 
 a:link,
 a:visited {
-  color: $maroon;
+  color: $linkColor;
 }
 
 a:hover,
 a:active,
 a.active {
-  color: $grey;
+  color: $rolloverColor;
   text-decoration: underline;
 }
 
@@ -89,13 +89,13 @@ i {}
 }
 
 header.document {
-  border-bottom: 1px solid $mint;
+  border-bottom: 1px solid $frameColor;
   height: 140px;
   margin-bottom: 20px;
   width: 940px;
   
   #search {
-    background-color: $mint;
+    background-color: $frameColor;
     height: 40px;
 
     form {
@@ -104,13 +104,13 @@ header.document {
       }
 
       input {
-        border-color: $grey;
+        border-color: $headerColor;
         border-style: solid;
         border-width: 1px;
         border-radius: 15px;
         -moz-border-radius: 15px;
         -webkit-border-radius: 15px;
-        color: $grey;
+        color: $headerColor;
         width: 180px;
         height: 16px;
         float: right;
@@ -142,7 +142,7 @@ header.document {
       li#collections .subnav  { margin-left: -242px; }
       li#styles .subnav       { margin-left: -53px; }
       li#KI-Home:hover { 
-        border-bottom: 5px solid $mint;
+        border-bottom: 5px solid $frameColor;
         padding-bottom: 13px !important;
       }
       
@@ -160,7 +160,7 @@ header.document {
         a:hover,
         a:visited,
         a:active {
-          color: $maroon;
+          color: $linkColor;
           text-decoration: none;
         }
 
@@ -174,7 +174,7 @@ header.document {
 
           .column-group {       
             background-color: #fff;     
-            border-color: $mint;
+            border-color: $frameColor;
             border-style: solid;
             border-width: 5px 1px 1px 1px;
             display: inline-block;
@@ -187,7 +187,7 @@ header.document {
               margin-right: 35px;
 
               h1 {
-                color: $grey;
+                color: $headerColor;
                 @include rem('font-size', 14px);
                 margin-bottom: 8px;
               }
@@ -207,11 +207,11 @@ header.document {
                   a:link,
                   a:active,
                   a:visited {
-                    color: $maroon;
+                    color: $linkColor;
                   }
 
                   a:hover {
-                    color: $grey;
+                    color: $rolloverColor;
                     text-decoration: underline;
                   }
                 }
@@ -235,7 +235,7 @@ nav#side {
 
   ul {
     li {
-      color: $grey;
+      color: $headerColor;
       font-family: $serif;
       @include rem('font-size', 14px);
       font-weight: bold;
@@ -245,7 +245,7 @@ nav#side {
       a:visited,
       a:active,
       a:hover {
-        color: $maroon;
+        color: $linkColor;
       }
 
       a:hover {
@@ -301,8 +301,8 @@ nav#side {
 }
 
 footer.document {
-  border-top: 1px solid $mint;
-  border-bottom: 20px solid $mint;
+  border-top: 1px solid $frameColor;
+  border-bottom: 20px solid $frameColor;
   width: 940px;
   height: 170px;
   margin-top: 20px;
@@ -316,7 +316,7 @@ footer.document {
     min-width: 16.7%;
 
     h1 {
-      color: $grey;
+      color: $headerColor;
       font-family: $serif;
       @include rem('font-size', 12px);
       margin-bottom: 12px;
@@ -330,19 +330,21 @@ footer.document {
         a:link,
         a:visited,
         a:active {
-          color: $maroon;
+          color: $linkColor;
         }
 
         a:hover {
-          color: $grey;
+          color: $rolloverColor;
         }
 
-        img {
+        img,
+        svg {
           margin-right: 13px;
         }
       }
 
-      li:last-child img {
+      li:last-child img,
+      li:last-child svg {
         margin-right: 0;
       }
     }
@@ -351,6 +353,11 @@ footer.document {
   nav#stay-connected {
     li {
       float: left;
+
+      svg {
+        width: 27px;
+        height: 27px;
+      }
     }
   }
 
@@ -359,7 +366,7 @@ footer.document {
   }
 
   small {
-    color: $grey;
+    color: $headerColor;
     @include rem('font-size', 9px);
     line-height: 15px;
   }

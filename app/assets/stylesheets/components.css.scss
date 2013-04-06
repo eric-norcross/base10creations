@@ -21,7 +21,7 @@
         text-decoration: none;
 
         svg {
-          fill: $grey;
+          fill: $headerColor;
         }
       }
     }
@@ -41,8 +41,8 @@
 
       svg {
         path {
-          fill: $grey;
-          stroke: $grey;
+          fill: $headerColor;
+          stroke: $headerColor;
         }
       }
     }
@@ -70,7 +70,7 @@
         margin-right: 25px;
 
         .product-info {
-          border-color: $grey;
+          border-color: $headerColor;
           border-style: solid;
           border-width: 2px 0 0 0;
           margin-top: 8px;
@@ -96,7 +96,7 @@
             }
 
             h3 {
-              color: $grey;
+              color: $headerColor;
             }
           }
         }
@@ -110,7 +110,7 @@
   margin-top: 20px;
 
   ul.nav-tabs {
-    border-color: $mint;
+    border-color: $frameColor;
     //border-bottom-width: 0px;*/
   
     li {
@@ -130,7 +130,7 @@
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d8d4cb',GradientType=0 ); /* IE6-8 */
 
         
-        border-color: $mint;
+        border-color: $frameColor;
         border-radius: 0;
         border-top-width: 2px;
 
@@ -153,7 +153,7 @@
     li.active a {
       color: #000;
       background: #fff;
-      border-color: $mint $mint transparent;
+      border-color: $frameColor $frameColor transparent;
     }
 
     li:first-child a {
@@ -173,7 +173,7 @@
     a:link,
     a:hover,
     a:active {
-      color: $maroon;
+      color: $linkColor;
       text-decoration: underline;
     }
 
@@ -194,7 +194,7 @@
         width: 30%;
 
         h1 {
-          color: $grey;
+          color: $headerColor;
           @include rem('font-size', 12px);
           font-weight: normal;
           margin-bottom: 21px;
@@ -215,7 +215,7 @@
 
         div:first-child {
           border-width: 0 0 2px 0;
-          border-color: $grey;
+          border-color: $headerColor;
           border-style: solid;
 
           margin-bottom: 33px;
@@ -230,7 +230,7 @@
         margin-bottom: 20px;
 
         span {
-          color: $grey;
+          color: $headerColor;
           font-weight: bold;
           padding-right: 10px;
         }
@@ -257,7 +257,7 @@
         }
 
         p {
-          color: $grey;
+          color: $headerColor;
           font-size: inherit;
           line-height: 14px;
 

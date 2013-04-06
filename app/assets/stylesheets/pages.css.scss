@@ -56,7 +56,7 @@ article {
     margin-bottom: 22px;
 
     h1 {
-      color: $maroon;
+      color: $linkColor;
       font-family: $serif;
       @include rem('font-size', 40px);
     }
@@ -108,7 +108,7 @@ article {
       }
 
       h3 {
-        color: $grey;
+        color: $headerColor;
         @include rem('font-size', 14px);
         margin-top: 12px;
       }
@@ -125,13 +125,13 @@ article {
   }
 
   footer {
-    border-color: $mint;
+    border-color: $frameColor;
     border-style: solid;
     border-width: 1px 0 0 0;
     clear: both;
 
     h1#rubric {
-      color: $grey;
+      color: $headerColor;
       font-family: $serif;
       @include rem('font-size', 14px);
       font-weight: normal;
@@ -150,7 +150,7 @@ article {
       div.collection-image {
         img {}
 
-        border-color: $grey;
+        border-color: $headerColor;
         border-style: solid;
         border-width: 0 0 1px 0;
         padding: 10px 5px;
@@ -172,7 +172,7 @@ article {
         }
 
         h3 {
-          color: $grey;
+          color: $headerColor;
           display: inline-block;
           font-size: 10px;
         }
@@ -181,7 +181,7 @@ article {
           display: inline-block;
 
           li {
-            color: $grey;
+            color: $headerColor;
             font-size: 10px;
             margin-bottom: 0;
             margin-right: 0;

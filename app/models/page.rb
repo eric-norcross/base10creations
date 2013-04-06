@@ -11,6 +11,8 @@
 #
 
 class Page < ActiveRecord::Base
+  default_scope order('id ASC')
+  
   attr_accessible :skin_id, :section_id, :name, :title, :content
 
   belongs_to :skin
@@ -20,4 +22,12 @@ class Page < ActiveRecord::Base
   
   validates_presence_of :skin
   validates_presence_of :section
+
+  before_save   :create_name
+
+  private
+  
+  def create_name
+    self.name = title.parameterize
+  end
 end

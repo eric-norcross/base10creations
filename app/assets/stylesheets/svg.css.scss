@@ -1,0 +1,11 @@
+#pinterest path,
+#twitter path,
+#youtube path {
+  fill: $linkColor;
+}
+
+li a:hover #pinterest path,
+li a:hover #twitter path,
+li a:hover #youtube path {
+  fill: $rolloverColor;
+}

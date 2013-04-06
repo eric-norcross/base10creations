@@ -10,6 +10,8 @@
 #
 
 class Skin < ActiveRecord::Base
+  default_scope order('id ASC')
+  
   attr_accessible :product, :section, :page, :name, :template
   has_many :products
   has_many :sections

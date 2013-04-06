@@ -2,13 +2,25 @@
 
 %footer.document
   -@categories.each do |category|
-    %nav{:id=>"#{category.name}"}
-      %h1
-        =category.title
-      %ul
-        -category.sections.each do |section|
-          %li
-            = link_to section.title, section
+    -if category.kind == Category::CATEGORY_TYPES[1][1]
+      %nav{:id=>"#{category.name}"}
+        %h1
+          =category.title
+        %ul
+          -if category.name == "stay-connected"
+            %li
+              = link_to "http://pinterest.com/martinfurniture/" do
+                = render :partial => '/layouts/svg/pinterest'
+            %li
+              = link_to "https://api.twitter.com/MartinFurniture" do
+                = render :partial => '/layouts/svg/twitter'
+            %li
+              = link_to "https://www.youtube.com/user/martinfurniture1?feature=results_main" do 
+                = render :partial => '/layouts/svg/youtube'
+          -else 
+            -category.sections.each do |section|
+              %li
+                = link_to section.title, section
             
   / %nav#let_us_help
   /   %h1 Let Us Help

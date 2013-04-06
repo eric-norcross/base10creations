@@ -6,12 +6,12 @@
   top: auto;
 
   li {
-    background-color: $mint;
+    background-color: $frameColor;
     display: inline-block;
     float: none;
   }
 
   li.active {
-    background-color: $maroon;
+    background-color: $linkColor;
   }
 }

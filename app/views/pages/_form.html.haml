@@ -12,9 +12,9 @@
   .field
     = f.label :skin_id, "Template"
     = f.select :skin_id, Skin.all.collect{|t| [t.name, t.id]}
-  .field
-    = f.label :name
-    = f.text_field :name
+  / .field
+  /   = f.label :name
+  /   = f.text_field :name
   .field
     = f.label :title
     = f.text_field :title
