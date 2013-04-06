@@ -237,7 +237,7 @@ nav#side {
     li {
       color: $headerColor;
       font-family: $serif;
-      @include rem('font-size', 14px);
+      @include rem('font-size', 12px);
       font-weight: bold;
       margin-bottom: 15px;
 
