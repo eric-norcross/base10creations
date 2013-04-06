@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20130406153753) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "kind"
+    t.integer  "kind"
   end
 
   create_table "pages", :force => true do |t|
