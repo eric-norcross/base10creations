@@ -5,19 +5,19 @@
     %table
       %thead
         %tr
-          %th Category
           %th Id
-          %th Name
           %th Title
+          %th Name
+          %th Category
           %th
           %th
       %tbody
       - @sections.each do |section|
         %tr
-          %td= section.category.name
           %td= section.id
-          %td= section.name
           %td= section.title
+          %td= section.name
+          %td= section.category.name
           %td= link_to 'Show', section
           %td= link_to 'Edit', edit_section_path(section)
           %td= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }

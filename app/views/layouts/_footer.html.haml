@@ -2,7 +2,7 @@
 
 %footer.document
   -@categories.each do |category|
-    -if category.kind == Category::CATEGORY_TYPES[1][1]
+    -if category.kind == Category::CATEGORY_KINDS[1][1]
       %nav{:id=>"#{category.name}"}
         %h1
           =category.title

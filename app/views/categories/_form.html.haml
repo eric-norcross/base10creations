@@ -14,6 +14,6 @@
     = f.text_field :title
   .field
     = f.label :kind
-    = f.select(:kind, Category::CATEGORY_TYPES)
+    = f.select(:kind, Category::CATEGORY_KINDS)
   .actions
     = f.submit 'Save'

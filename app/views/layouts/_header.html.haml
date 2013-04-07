@@ -1,3 +1,5 @@
+/-@categories = Category.products
+
 %header.document
   #search
     = render "/layouts/search", id: "product_search"
@@ -12,73 +14,7 @@
         = link_to "Products", "#", :class => ( 'active' if @active == "products" )
         .subnav
           .column-group
-            .column
-              %h1 Accessories
-              %ul
-                %li 
-                  = link_to "Charge & Connect", "#"
-
-              %h1 Bedroom
-              %ul
-                %li 
-                  = link_to "Beds", "#"
-                %li 
-                  = link_to "Chests", "#"
-                %li 
-                  = link_to "Dressers", "#"
-                %li 
-                  = link_to "Mirrors", "#"
-                %li 
-                  = link_to "Nightstands", "#"
-
-            .column
-              %h1 Entertainment
-              %ul
-                %li 
-                  = link_to "Audio Component Piers", "#"
-                %li 
-                  = link_to "Easy Wire Access System", "#"
-                %li 
-                  = link_to "Occasional Tables", "#"
-                %li 
-                  = link_to "TV Consoles", "#"
-
-              %h1 Occasional
-              %ul
-                %li 
-                  = link_to "Coffee Tables", "#"
-                %li 
-                  = link_to "End Tables", "#"
-                %li 
-                  = link_to "Sofa Tables", "#"
-
-            .column
-              %h1 Office
-              %ul
-                %li 
-                  = link_to "Bookcases", "#"
-                %li 
-                  = link_to "Computer Armoires", "#"
-                %li 
-                  = link_to "Computer Carts", "#"
-                %li 
-                  = link_to "Conference Tables", "#"
-                %li 
-                  = link_to "Computer Credenzas", "#"
-                %li 
-                  = link_to "Desks", "#"
-                %li 
-                  = link_to "Executive Desks", "#"
-                %li 
-                  = link_to "Filing Cabinets", "#"
-                %li 
-                  = link_to "Hutches", "#"
-                %li 
-                  = link_to "L-Shaped Desks", "#"
-                %li 
-                  = link_to "Peninsula Walls", "#"
-                %li 
-                  = link_to "Writing Tables", "#"
+            - create_columns
 
       %li#collections
         = link_to "Collections", "#", :class => ( 'active' if @active == "collections" )
@@ -160,5 +96,5 @@
                   = link_to "Modern", "#"
                 %li 
                   = link_to "Transitional", "#"
-      %li#KI-Home
+      %li#brands
         = link_to "Kathy Ireland™ Home", "#", :class => ( 'active' if @active == "KIHome" )

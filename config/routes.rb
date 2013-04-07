@@ -1,4 +1,5 @@
 Martinfurniture::Application.routes.draw do
+  resources :components
   resources :categories
   resources :sections
   resources :skins
