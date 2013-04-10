@@ -1,6 +1,6 @@
 form {
   div {
-    margin: 10px;
+    //margin: 10px;
   }
 
   .actions {
@@ -10,11 +10,45 @@ form {
 
   label {
     float: left;
-    width: 60px;
+    font-weight: bold;
     margin-top: 2px;
+    width: 60px;
   }
 
   input[type=text] {
     
+  }
+
+  .field,
+  .search-field {
+    margin: 10px;
+  }
+
+  .field {
+    clear: both;
+
+    h1 {
+      color: #000 !important;
+    }
+  }
+
+  .column {
+    float: left;
+
+    .column-group {
+      margin: 10px 10px 25px 10px;
+
+      .checkbox {
+        margin: 8px;
+
+        label {
+          float: right;
+          font-weight: normal;
+          margin-top: 5px;
+          white-space: nowrap;
+          width: 110px;
+        }
+      }
+    }
   }
 }

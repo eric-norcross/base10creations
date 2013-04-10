@@ -47,9 +47,9 @@
             Rolling File
         #icons
           = link_to "#" do 
-            = image_tag "icons/share.png", alt: "Share"
+            = render :partial => '/layouts/svg/share'
           = link_to "#" do 
-            = image_tag "icons/print.png", alt: "Print"
+            = render :partial => '/layouts/svg/print'
       #tabs
         %ul#product_tabs.nav.nav-tabs{"data-tabs" => "tabs"}
           %li.active
@@ -73,7 +73,7 @@
                   = link_to "Superior drawer construction", "#"
                 %li 
                   = link_to "#" do 
-                    = image_tag "pages/placeholders/KI_logo.png", alt: "Kathy Ireland Home"
+                    = image_tag "pages/placeholders/KI_logo.png", alt: "kathy ireland Home"
             .finishes
               %div
                 %h1

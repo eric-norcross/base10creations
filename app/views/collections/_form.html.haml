@@ -1,0 +1,28 @@
+= form_for @collection do |f|
+  - if @collection.errors.any?
+    #error_explanation
+      %h1= "#{pluralize(@collection.errors.count, "error")} prohibited this collection from being saved:"
+      %ul
+        - @collection.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    %h1 Categories:
+    - Category.products.each_slice(3) do |column|
+      .column
+        - column.each do |category|
+          .column-group
+            %h2 
+              = category.title
+            - category.components.each do |component|
+              .checkbox
+                = check_box_tag "component#{component.id}", component.id, @collection.components.include?(component), :name => 'collection[component_ids][]'
+                = label_tag "component#{component.id}", component.title
+  .field
+    = f.label :style_id, "Style"
+    = f.collection_select(:style_id, Style.all, :id, :title, :prompt => "Select a Style")
+  .field
+    = f.label :title
+    = f.text_field :title
+  .actions
+    = f.submit 'Save'

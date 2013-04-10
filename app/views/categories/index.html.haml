@@ -6,16 +6,16 @@
       %thead
         %tr
           %th Id
-          %th Name
           %th Title
+          %th Name
           %th Kind
           %th
       %tbody
       - @categories.each do |category|
         %tr
           %td= category.id
-          %td= category.name
           %td= category.title
+          %td= category.name
           %td= Category::CATEGORY_KINDS[category.kind][0]
           %td= link_to 'Show', category
           %td= link_to 'Edit', edit_category_path(category)

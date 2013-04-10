@@ -1,0 +1,23 @@
+= form_for @collection do |f|
+  - if @collection.errors.any?
+    #error_explanation
+      %h1= "#{pluralize(@collection.errors.count, "error")} prohibited this collection from being saved:"
+      %ul
+        - @collection.errors.full_messages.each do |msg|
+          %li= msg
+          
+  - @collection.collection_components.each do |collection_component|
+    .component.checkbox
+      = f.fields_for :collection_components, collection_component do |component_fields|
+        = component_fields.hidden_field :component_id
+        = component_fields.check_box :included
+        %label
+          = collection_component.component.title
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :components
+    = f.text_field :components
+  .actions
+    = f.submit 'Save'

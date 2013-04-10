@@ -118,8 +118,15 @@ article {
       float: right;
       margin-top: -27px;
 
-      img {
-        margin-left: 15px;
+      img,
+      svg {
+        margin-left: 10px;
+        height: 35px;
+        width: 35px;
+      }
+
+      a:hover {
+        text-decoration: none !important;
       }
     }
   }
