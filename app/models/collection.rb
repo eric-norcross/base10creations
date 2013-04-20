@@ -1,17 +1,18 @@
 class Collection < ActiveRecord::Base
   default_scope order('collections.id ASC')
 
-  attr_accessible               :style_id, 
-                                :name, 
+  attr_accessible               :name, 
                                 :title,
-                                :component_ids
+                                :component_ids,
+                                :style_ids
 
-  #has_one                       :style
   has_many                      :collection_components, :include => :component
   has_many                      :components,            :through => :collection_components
   accepts_nested_attributes_for :collection_components, :allow_destroy => true
 
-  belongs_to                    :style
+  has_many                      :collection_styles,     :include => :style
+  has_many                      :styles,                :through => :collection_styles
+  #accepts_nested_attributes_for :collection_styles,     :allow_destroy => true
   
   #validates_presence_of         :style
   validates_presence_of         :title

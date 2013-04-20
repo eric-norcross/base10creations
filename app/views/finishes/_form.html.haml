@@ -1,0 +1,16 @@
+= form_for @finish do |f|
+  - if @finish.errors.any?
+    #error_explanation
+      %h1= "#{pluralize(@finish.errors.count, "error")} prohibited this finish from being saved:"
+      %ul
+        - @finish.errors.full_messages.each do |msg|
+          %li= msg
+
+  / .field
+  /   = f.label :name
+  /   = f.text_field :name
+  .field
+    = f.label :title
+    = f.text_field :title
+  .actions
+    = f.submit 'Save'

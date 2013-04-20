@@ -11,6 +11,7 @@
  *= require bootstrap
  *= require baseline
  *= require base10creations/gallery_required
+ *= require base10creations/lightbox
  *= require ie
  *= require_self
 
@@ -22,6 +23,7 @@
 @import 'admin.css.scss';
 @import 'layout.css.scss';
 @import 'pages.css.scss';
+@import 'products.css.scss';
 @import 'components.css.scss';
 @import 'forms.css.scss';
 @import 'override.css.scss';

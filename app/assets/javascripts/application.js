@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require base10creations/Gallery
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require ckeditor/init
 //= require_tree .

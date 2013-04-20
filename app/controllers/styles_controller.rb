@@ -1,5 +1,5 @@
 class StylesController < ApplicationController
-    def index
+  def index
     @styles = Style.all
 
     respond_to do |format|

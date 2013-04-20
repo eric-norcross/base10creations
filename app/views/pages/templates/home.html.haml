@@ -1,29 +1,28 @@
 .page{:id=>"#{@page.skin.name}"}
   %article
     #main-carousel.carousel.slide
-      .center
-        %ol.carousel-indicators
-          %li.active{"data-slide-to" => "0", "data-target" => "#mainCarousel"}
-          %li{"data-slide-to" => "1", "data-target" => "#mainCarousel"}
-          %li{"data-slide-to" => "2", "data-target" => "#mainCarousel"}
-          %li{"data-slide-to" => "3", "data-target" => "#mainCarousel"}
-          %li{"data-slide-to" => "4", "data-target" => "#mainCarousel"}
+      %ol.carousel-indicators
+        %li.active{"data-slide-to" => "0", "data-target" => "#main-carousel"}
+        %li{"data-slide-to" => "1", "data-target" => "#main-carousel"}
+        %li{"data-slide-to" => "2", "data-target" => "#main-carousel"}
+        %li{"data-slide-to" => "3", "data-target" => "#main-carousel"}
+        %li{"data-slide-to" => "4", "data-target" => "#main-carousel"}
       / Carousel items
       .carousel-inner
         .active.item
           = image_tag "pages/home/carousel1.jpg"
         .item
-          = image_tag "pages/home/carousel1.jpg"
+          = image_tag "pages/home/carousel2.jpg"
         .item
-          = image_tag "pages/home/carousel1.jpg"
+          = image_tag "pages/home/carousel3.jpg"
         .item
-          = image_tag "pages/home/carousel1.jpg"
+          = image_tag "pages/home/carousel4.jpg"
         .item
-          = image_tag "pages/home/carousel1.jpg"
+          = image_tag "pages/home/carousel5.jpg"
 
       / Carousel nav
-      / %a.carousel-control.left{"data-slide" => "prev", :href => "#mainCarousel"} ‹
-      / %a.carousel-control.right{"data-slide" => "next", :href => "#mainCarousel"} ›
+      / %a.carousel-control.left{"data-slide" => "prev", :href => "#main-carousel"} ‹
+      / %a.carousel-control.right{"data-slide" => "next", :href => "#main-carousel"} ›
     
     %aside
       %ul

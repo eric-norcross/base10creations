@@ -8,7 +8,7 @@
           %th Id
           %th Title
           %th Name
-          %th Style
+          / %th Style
           /%th Category
           %th
       %tbody
@@ -17,9 +17,9 @@
           %td= collection.id
           %td= collection.title
           %td= collection.name
-          %td
-            - if collection.style
-              = collection.style.title
+          / %td
+          /   - if collection.style
+          /     = collection.style.title
           / %td
           /   / - collection.components.each do |component| 
           /   /   = component.category.title

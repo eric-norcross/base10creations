@@ -2,8 +2,8 @@
 
 %header.document
   #search
-    = render "/layouts/search", id: "product_search"
-    = render "/layouts/search", id: "retailer_search"
+    = render "/layouts/product", id: "product_search"
+    = render "/layouts/retailer", id: "retailer_search"
   #logo
     = link_to root_path do
       = image_tag "logo.png"
@@ -29,81 +29,21 @@
         = link_to "Collections", "#", :class => ( 'active' if @active == "collections" )
         .subnav
           .column-group
-            .column
-              %ul
-                %li 
-                  = link_to "Beaumont", "#"
-                %li 
-                  = link_to "Bedford", "#"
-                %li 
-                  = link_to "Bradley", "#"
-                %li 
-                  = link_to "Brookside", "#"
-                %li 
-                  = link_to "California Bungalow", "#"
-                %li 
-                  = link_to "Carlton", "#"
-                %li 
-                  = link_to "City Heights", "#"
-                %li 
-                  = link_to "Concord", "#"
-                %li 
-                  = link_to "Contemporary Office", "#"
-            .column
-              %ul
-                %li 
-                  = link_to "Crescent", "#"
-                %li 
-                  = link_to "Ellipse", "#"
-                %li 
-                  = link_to "Empire", "#"
-                %li 
-                  = link_to "Fulton", "#"
-                %li 
-                  = link_to "Grove", "#"
-                %li 
-                  = link_to "Hudson Street", "#"
-                %li 
-                  = link_to "Huntington", "#"
-                %li 
-                  = link_to "Mission Pasadena", "#"
-                %li 
-                  = link_to "Mount View", "#"
-            .column
-              %ul
-                %li 
-                  = link_to "Portland Loft", "#"
-                %li 
-                  = link_to "Spring Hill", "#"
-                %li 
-                  = link_to "Southampton", "#"
-                %li 
-                  = link_to "Studio West", "#"
-                %li 
-                  = link_to "Tribeca Loft", "#"
-                %li 
-                  = link_to "Waterfall", "#"
-                %li 
-                  = link_to "Weston", "#"
-                %li 
-                  = link_to "WorX", "#"
+            - Collection.all.each_slice(10) do |column|
+              .column
+                %ul
+                  - column.each do |collection|
+                    %li
+                      = link_to collection.title, collection
       %li#styles
         = link_to "Styles", "#", :class => ( 'active' if @active == "styles" )
         .subnav
           .column-group
-            .column
-              %ul
-                %li 
-                  = link_to "Americana", "#"
-                %li 
-                  = link_to "Architecrual", "#"
-                %li 
-                  = link_to "Contemporary", "#"
-                %li 
-                  = link_to "Mission", "#"
-                %li 
-                  = link_to "Modern", "#"
-                %li 
-                  = link_to "Transitional", "#"
+            - Style.all.each_slice(10) do |column|
+              .column
+                %ul
+                  - column.each do |style|
+                    %li
+                      = link_to style.title, style
       %li#brands
         = link_to "kathy ireland™ Home", "#", :class => ( 'active' if @active == "KIHome" )

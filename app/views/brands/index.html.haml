@@ -1,0 +1,25 @@
+#admin
+  %h1 Available Brand
+
+  - if @brands
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Title
+          %th Category
+          %th Name
+          %th
+      %tbody
+      - @brands.each do |brand|
+        %tr
+          %td= brand.id
+          %td= brand.title
+          %td= brand.name
+          /%td= brand.category.title
+          %td= link_to 'Show', brand
+          %td= link_to 'Edit', edit_brand_path(brand)
+          %td= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add a new Brand', new_brand_path

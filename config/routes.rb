@@ -1,6 +1,8 @@
 Martinfurniture::Application.routes.draw do
   resources :collection_components
+  resources :collection_styles
   resources :component_styles
+  resources :brand_styles
   resources :collections
   resources :collections
   resources :components
@@ -8,6 +10,8 @@ Martinfurniture::Application.routes.draw do
   resources :sections
   resources :skins
   resources :styles
+  resources :finishes
+  resources :brands
 
   resources :pages
   resources :products

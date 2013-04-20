@@ -1,0 +1,5 @@
+= form_tag("/products/2", method: "get") do
+  .search-field
+    = text_field_tag "#{id}", "Keyword or item #"
+    /= submit_tag "Submit"
+

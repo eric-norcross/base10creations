@@ -8,10 +8,12 @@ class Component < ActiveRecord::Base
                           :style_ids
 
   has_many                :collection_components, :dependent => :destroy
-  has_many                :collections,   :through => :collection_components
+  has_many                :collections,           :through => :collection_components
 
   has_many                :component_styles
-  has_many                :styles,        :through => :component_styles
+  has_many                :styles,                :through => :component_styles
+
+  has_many                :brands,                :through => :styles
   
   belongs_to              :category
   

@@ -15,7 +15,7 @@
       img,
       svg {
         margin: 0 3px -3px 1px;
-      }
+      }      
 
       a:hover {
         text-decoration: none;
@@ -82,9 +82,11 @@
             h2,
             h3 {
               font-family: $sans-serif;
-              @include rem('font-size', 8px);
+              font-size: 8px;
               font-weight: normal;
+              line-height: 12px;
               margin: 5px 0 5px 0;
+              white-space: normal !important;
             }
 
             h1 {
@@ -186,6 +188,7 @@
         li {
           @include rem('font-size', 12px);
           margin-bottom: 13px;
+          width: 230px;
         }
       }
 
@@ -204,6 +207,7 @@
           li {
             display:inline-block;
             margin-right: 17px;
+            width: inherit;
 
             img {
               border-color: #000;

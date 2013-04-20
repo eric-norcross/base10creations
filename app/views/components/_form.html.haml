@@ -9,9 +9,17 @@
   .field
     = f.label :category_id, "Category"
     = f.collection_select(:category_id, Category.products, :id, :title, :prompt => "Select a Category")
-  / .field
-  /   = f.label :name
-  /   = f.text_field :name
+  
+  .field
+    .column
+      .column-group
+        - @brands = Brand.all
+        .column
+          .column-group
+            - @brands.each do |brand|
+              .checkbox
+                = check_box_tag "brand#{brand.id}", brand.id, @component.brands.include?(brand), :name => 'component[brand_ids][]'
+                = label_tag "brand#{brand.id}", brand.title
   .field
     = f.label :title
     = f.text_field :title
