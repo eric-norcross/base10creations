@@ -76,7 +76,10 @@ article {
       margin-right: 15px;
 
       div.collection-image {
-        img {}
+        img {
+          max-width: 270px;
+          max-height: 175px;
+        }
 
         border-color: $headerColor;
         border-style: solid;

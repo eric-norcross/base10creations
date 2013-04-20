@@ -8,14 +8,15 @@ class CollectionsController < ApplicationController
     end
   end
 
-  # def show
-  #   @collection = Collection.find(params[:id])
+  def show
+    @collections = Collection.find(params[:id])
 
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     # format.json { render json: @collection }
-  #   end
-  # end
+    render "/collections/templates/collection"
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   # format.json { render json: @collection }
+    # end
+  end
 
   def new
     @collection = Collection.new
