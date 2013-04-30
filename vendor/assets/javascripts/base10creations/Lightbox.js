@@ -9,15 +9,20 @@ $(document).ready(function(){
 
 function startOverlay(overlayLink) {
 //add the elements to the dom
-  $("body")
-    .append('<div class="overlay"></div><div class="container"></div>')
-    //.css({"overflow-y":"hidden"});
-  $(".overlay").css({"width":$("body").width(), "height":$("body").height()});
-//animate the semitransparant layer
-  $(".overlay").animate({"opacity":"0.8"}, 400, "linear");
+  $("body").append('<div class="overlay"></div><div class="container"></div>');
 
-//add the lightbox image to the DOM
-  $(".container").html('<img src="'+overlayLink+'" alt="" />');
+  var overlayWidth = $(window).width();
+  var overlayHeight = $(window).height();
+
+  if ($(document).width() > $(window).width()) {
+    overlayWidth = $(document).width();
+  }
+
+  if ($(document).height() > $(window).height()) {
+    overlayHeight = $(document).height();
+  }
+
+  $(".overlay").css({"width":overlayWidth, "height":overlayHeight});
 
 //position it correctly after downloading
   $(".container img").load(function() {
