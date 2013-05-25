@@ -1,3 +1,4 @@
+# NOT CURRENTLY USED
 class ComponentStyle < ActiveRecord::Base
   attr_accessible :component_id, 
                   :style_id

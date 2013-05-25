@@ -1,5 +1,3 @@
-/-@categories = Category.products
-
 %header.document
   #search
     = render "/layouts/product", id: "product_search"
@@ -15,7 +13,7 @@
         .subnav
           .column-group
             //- create_columns
-            - Category.products.each_slice(3) do |column|
+            - Category.all.each_slice(3) do |column|
               .column
                 - column.each do |category|
                   %h1 

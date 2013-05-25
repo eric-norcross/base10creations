@@ -6,15 +6,17 @@ gem "jquery-rails", "~> 2.2.1"
 gem "haml-rails", "~> 0.3.4"
 gem "pg"
 gem "bcrypt-ruby", :require => "bcrypt"
-gem "paperclip", "~> 3.0"
+# gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem 'annotate', ">=2.5.0"
 gem "ckeditor"
+gem "rmagick"
+gem "carrierwave"
+gem "fog"
+gem 'jquery-fileupload-rails'
 # gem 'friendly_id'
 
 #separate out later
-
-#gem "rmagick"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

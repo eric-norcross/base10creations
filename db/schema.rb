@@ -11,13 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418214039) do
+ActiveRecord::Schema.define(:version => 20130519222902) do
 
-  create_table "brand_styles", :force => true do |t|
-    t.integer  "brand_id"
-    t.integer  "style_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "assets", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "product_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "brands", :force => true do |t|
@@ -32,21 +35,20 @@ ActiveRecord::Schema.define(:version => 20130418214039) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "kind"
   end
 
   create_table "collection_components", :force => true do |t|
-    t.integer  "collection_id"
-    t.integer  "component_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "collection_id"
+    t.integer  "component_id"
   end
 
   create_table "collection_styles", :force => true do |t|
-    t.integer  "collection_id"
-    t.integer  "style_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "collection_id"
+    t.integer  "style_id"
   end
 
   create_table "collections", :force => true do |t|
@@ -56,19 +58,24 @@ ActiveRecord::Schema.define(:version => 20130418214039) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "component_styles", :force => true do |t|
-    t.integer  "style_id"
-    t.integer  "component_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
   create_table "components", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "category_id"
+  end
+
+  create_table "dimensions", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.float    "width"
+    t.float    "height"
+    t.float    "depth"
+    t.integer  "product_id"
+    t.string   "name"
+    t.string   "title"
+    t.string   "image"
   end
 
   create_table "finishes", :force => true do |t|
@@ -76,39 +83,74 @@ ActiveRecord::Schema.define(:version => 20130418214039) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "product_id"
+  end
+
+  create_table "galleries", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "gallery_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "media", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "skin_id"
     t.text     "content"
-    t.integer  "section_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "subsection_id"
+    t.integer  "skin_id"
   end
 
   create_table "products", :force => true do |t|
     t.text     "name"
-    t.text     "sku"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "title"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "collection_id"
     t.integer  "skin_id"
+    t.string   "image"
+    t.text     "style"
+    t.string   "video"
+    t.text     "features"
   end
 
   create_table "sections", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.text     "content"
-    t.integer  "skin_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "skins", :force => true do |t|
     t.text     "name"
+    t.text     "title"
     t.text     "template"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "skus", :force => true do |t|
+    t.string   "identifier"
+    t.integer  "product_id"
+    t.integer  "finish_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -119,6 +161,16 @@ ActiveRecord::Schema.define(:version => 20130418214039) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "brand_id"
+  end
+
+  create_table "subsections", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "section_id"
+    t.integer  "skin_id"
   end
 
 end

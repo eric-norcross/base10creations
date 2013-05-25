@@ -1,11 +1,16 @@
 class Finish < ActiveRecord::Base
   default_scope order('finishes.id ASC')
-  attr_accessible         :collection_id,
-                          :name, 
+  attr_accessible         :name, 
                           :title,
-                          :image
 
-  belongs_to              :collection
+                          ##belongs_to##
+                          :sku_id
+
+                          ##has_many##
+                          
+
+
+  belongs_to              :skus
 
   validates_presence_of   :title
 

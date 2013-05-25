@@ -1,20 +1,18 @@
 class Section < ActiveRecord::Base
   default_scope order('id ASC')
   
-  attr_accessible       :category_id, 
-                        :skin_id, 
-                        :page, 
-                        :name, 
-                        :title, 
-                        :content
+  attr_accessible     :name, 
+                      :title,
 
-  has_many              :pages
+                      ##belongs_to##
 
-  belongs_to            :category
-  belongs_to            :skin
-  
-  validates_presence_of :category
-  validates_presence_of :skin
+                      ##has_many##
+                      :subsection
+
+
+
+  has_many              :subsections
+
   validates_presence_of :title
 
   before_save           :create_name

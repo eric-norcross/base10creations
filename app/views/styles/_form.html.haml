@@ -10,13 +10,14 @@
     .column
       .column-group
         - @collections = Collection.all
-        - @collections.each_slice(@collections.length/3) do |column|
-          .column
-            .column-group
-              - column.each do |collection|
-                .checkbox
-                  = check_box_tag "collection#{collection.id}", collection.id, @style.collections.include?(collection), :name => 'style[collection_ids][]'
-                  = label_tag "collection#{collection.id}", collection.title
+        - if @collections.length > 0
+          - @collections.each_slice(@collections.length/3) do |column|
+            .column
+              .column-group
+                - column.each do |collection|
+                  .checkbox
+                    = check_box_tag "collection#{collection.id}", collection.id, @style.collections.include?(collection), :name => 'style[collection_ids][]'
+                    = label_tag "collection#{collection.id}", collection.title
 
   .field
     = f.label :title

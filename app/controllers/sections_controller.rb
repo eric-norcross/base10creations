@@ -10,9 +10,12 @@ class SectionsController < ApplicationController
 
   # GET /section/1
   def show
-    @page = Section.find(params[:id])
+    @section = Section.find(params[:id])
 
-    render "#{@page.skin.template}"
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @section }
+    end
   end
 
   # GET /section/new

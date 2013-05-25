@@ -12,11 +12,15 @@ form {
     float: left;
     font-weight: bold;
     margin-top: 2px;
-    width: 60px;
+    width: 70px;
   }
 
   input[type=text] {
     
+  }
+
+  .fieldset {
+    margin-top: 10px;
   }
 
   .field,
@@ -50,5 +54,9 @@ form {
         }
       }
     }
+  }
+
+  .nested {
+    margin-left: 20px;
   }
 }

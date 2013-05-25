@@ -12,8 +12,30 @@
 class Skin < ActiveRecord::Base
   default_scope order('id ASC')
   
-  attr_accessible :product, :section, :page, :name, :template
-  has_many :products
-  has_many :sections
-  has_many :pages
+  attr_accessible       :name, 
+                        :title,
+                        :template,
+
+                        ##belongs_to##
+
+                        ##has_many##
+                        :product, 
+                        :subsection, 
+                        :page
+
+
+  has_many              :products
+  has_many              :susections
+  has_many              :pages
+
+  validates_presence_of :title
+  validates_presence_of :template
+
+  before_save           :create_name
+
+  private
+  
+  def create_name
+    self.name = title.parameterize
+  end
 end

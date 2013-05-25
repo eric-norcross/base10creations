@@ -1,15 +1,19 @@
 class Style < ActiveRecord::Base
   default_scope order('styles.id ASC')
 
-  attr_accessible               :brand_id,
-                                :name, 
+  attr_accessible               :name, 
                                 :title,
-                                :component,
-                                :collection_ids
-                                #,:brand_ids
+                                # :component,
 
-  has_many                      :component_styles,  :dependent => :destroy
-  has_many                      :components,        :through => :component_styles
+                                ##belongs_to##
+                                :brand_id,
+
+                                ##has_many##
+                                :collection_ids
+                                # :brand_ids
+
+  # has_many                      :component_styles,  :dependent => :destroy
+  # has_many                      :components,        :through => :component_styles
 
   # has_many                      :brand_styles,      :dependent => :destroy
   # has_many                      :brands,            :through => :brand_styles
@@ -20,7 +24,7 @@ class Style < ActiveRecord::Base
 
   belongs_to                    :brand
   
-  #validates_presence_of        :component
+  #validates_presence_of        :collection
   validates_presence_of         :title
 
   before_save                   :create_name

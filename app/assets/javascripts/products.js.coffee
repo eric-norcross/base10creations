@@ -1,3 +1,17 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(document).on "click", "a.remove-fields", (event) ->
+  $(this).parent().find("input[type=hidden]").val "1"
+  $(this).parent().parent().hide()
+
+  event.preventDefault()
+
+$(document).ready ->
+  $(".add-fields").click (event) ->
+    container   = $("#" + $(this).attr("data-container"));
+    association = $(this).attr("data-association")
+    content     = $(this).attr("data-content");
+    newId       = new Date().getTime()
+    regexp      = new RegExp("new_" + association, "g")
+
+    container.append(content.replace(regexp, newId))
+
+    event.preventDefault()

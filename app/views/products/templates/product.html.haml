@@ -3,7 +3,9 @@
   %article
     .gallery#product-views
       .gallery-image
-        = image_tag "products/tribeca_loft/rollingfile.jpg"
+        /- if !@product.images.empty?
+        /= image_tag @product.images[0]
+        = image_tag @product.image_url(:gallery)
         %br
         .image-controls
           = link_to "#" do 
@@ -16,22 +18,7 @@
           = link_to "#" do
             = render :partial => '/layouts/svg/arrow_left'
         .items-container
-          %ul
-            %li
-              = link_to "#" do
-                = image_tag "products/tribeca_loft/thumbs/set.jpg", :"data-medium" => asset_path("products/tribeca_loft/rollingfile.jpg"), :"data-large" => asset_path("products/tribeca_loft/thumbs/set.jpg")
-            %li
-              = link_to "#" do
-                = image_tag "products/tribeca_loft/thumbs/2.jpg", :"data-medium" => asset_path("products/tribeca_loft/gallery/2.jpg"), :"data-large" => asset_path("products/tribeca_loft/thumbs/full.jpg")
-            %li
-              = link_to "#" do
-                = image_tag "products/tribeca_loft/thumbs/3.jpg", :"data-medium" => asset_path("products/tribeca_loft/gallery/3.jpg"), :"data-large" => asset_path("products/tribeca_loft/thumbs/full.jpg")
-            %li
-              = link_to "#" do
-                = image_tag "products/tribeca_loft/thumbs/4.jpg", :"data-medium" => asset_path("products/tribeca_loft/gallery/4.jpg"), :"data-large" => asset_path("products/tribeca_loft/thumbs/full.jpg")
-            %li
-              = link_to "#" do
-                = image_tag "products/tribeca_loft/thumbs/5.jpg", :"data-medium" => asset_path("products/tribeca_loft/gallery/5.jpg"), :"data-large" => asset_path("products/tribeca_loft/thumbs/full.jpg")
+          
 
         .control.next
           = link_to "#" do
@@ -40,7 +27,7 @@
       %header
         %hgroup
           %h1 
-            sku ##{@product.sku}
+            /sku ##{@product.sku}
           %h2
             = @product.title
           %h3

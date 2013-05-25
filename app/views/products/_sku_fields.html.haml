@@ -1,0 +1,12 @@
+.removeable
+  .field
+    = f.label :identifier, "Sku"
+    = f.text_field :identifier
+    = f.check_box :_destroy
+
+  .field
+    = f.label :finish_id, "Finish"
+    = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
+
+  .field
+    = link_to_remove_fields f

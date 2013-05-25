@@ -3,13 +3,9 @@ class Brand < ActiveRecord::Base
 
   attr_accessible               :name, 
                                 :title,
-                                :style_ids
+                                :style
 
-  has_many                      :brand_styles,  :include => :style
-  has_many                      :styles,        :through => :brand_styles
-  accepts_nested_attributes_for :brand_styles,  :allow_destroy => true
-
-  # has_many                      :components     :thourgh => :style;
+  has_many                      :styles
 
   validates_presence_of         :title
 

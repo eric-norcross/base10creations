@@ -1,19 +1,24 @@
 class Component < ActiveRecord::Base
   default_scope order('components.id ASC')
 
-  attr_accessible         :category_id, 
-                          :name, 
+  attr_accessible         :name, 
                           :title,
-                          :collection_ids,
-                          :style_ids
+
+                          ##belongs_to##
+                          :category_id,
+
+                          ##has_many##
+                          :collection_ids
+                          # :style_ids
+
 
   has_many                :collection_components, :dependent => :destroy
   has_many                :collections,           :through => :collection_components
 
-  has_many                :component_styles
-  has_many                :styles,                :through => :component_styles
+  # has_many                :component_styles
+  # has_many                :styles,                :through => :component_styles
 
-  has_many                :brands,                :through => :styles
+  # has_many                :brands,                :through => :styles
   
   belongs_to              :category
   

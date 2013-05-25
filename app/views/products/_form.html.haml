@@ -1,4 +1,4 @@
-= form_for @product do |f|
+= form_for @product, :html => { :multipart => true } do |f|
 
   - if @product.errors.any?
     #error-explanation
@@ -7,15 +7,49 @@
         - @product.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :skin_id, "Template"
-    = f.select :skin_id, Skin.all.collect{|t| [t.name, t.id]}
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :sku
-    = f.text_field :sku
+  %fieldset{id: "product-categorization"}
+    %legend
+      Product Categorization
+    .field
+      = f.label :skin_id, "Template"
+      = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}
+    .field
+      = f.label :collection_id, "Collection"
+      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}
+    .field
+      = f.label :title
+      = f.text_field :title
+    / .field
+    /   = f.label :image
+    /   = f.file_field :image, :multiple => true
   
+  %fieldset{id: "product-details"}
+    %legend
+      Product Details
+    .field
+      = f.label :features
+      = f.text_area :features
+
+    #dimensions.nested
+      = f.fields_for :dimensions do |dimension|
+        = render 'dimension_fields', :f => dimension
+    = link_to_add_fields "Add Dimension", f, :dimensions, "dimensions" 
+
+    .field
+      = f.label :style
+      = f.text_area :style
+    .field
+      = f.label :video
+      = f.text_field :video
+
+  %fieldset{id: "skus-and-finishes"}
+    %legend
+      Skus & Finishes
+
+    #skus.nested
+      = f.fields_for :skus do |sku_builder|
+        = render 'sku_fields', :f => sku_builder
+    = link_to_add_fields "Add Skus", f, :skus, "skus"
+
   .actions
     = f.submit 'Save'

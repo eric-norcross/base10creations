@@ -8,7 +8,7 @@
 
   .field
     %h1 Categories:
-    - Category.products.each_slice(3) do |column|
+    - Category.all.each_slice(3) do |column|
       .column
         - column.each do |category|
           .column-group

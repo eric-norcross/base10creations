@@ -1,5 +1,5 @@
 #admin
-  %h1 Available Section
+  %h1 Available Sections
 
   - if @sections
     %table
@@ -8,8 +8,6 @@
           %th Id
           %th Title
           %th Name
-          %th Category
-          %th
           %th
       %tbody
       - @sections.each do |section|
@@ -17,7 +15,6 @@
           %td= section.id
           %td= section.title
           %td= section.name
-          %td= section.category.name
           %td= link_to 'Show', section
           %td= link_to 'Edit', edit_section_path(section)
           %td= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }

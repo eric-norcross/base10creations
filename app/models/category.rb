@@ -1,21 +1,26 @@
 class Category < ActiveRecord::Base
   default_scope order('id ASC')
 
-  CATEGORY_KINDS = [["Product", 0],["Page", 1]]
+  # CATEGORY_KINDS = [["Product", 0],["Page", 1]]
 
-  scope :products, where(:kind => 0)
-  scope :pages, where(:kind => 1)
+  # scope :products, where(:kind => 0)
+  # scope :pages, where(:kind => 1)
   
-  attr_accessible   :name, 
-                    :title, 
-                    :kind,
-                    :section, 
-                    :component
+  attr_accessible       :name, 
+                        :title, 
 
-  has_many          :sections
-  has_many          :components
+                        ##belongs_to##
 
-  before_save       :create_name
+                        ##has_many##
+                        :component
+
+
+
+  has_many              :components
+
+  validates_presence_of :title
+
+  before_save           :create_name
 
   private
   

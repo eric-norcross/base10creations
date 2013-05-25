@@ -13,17 +13,27 @@
 class Page < ActiveRecord::Base
   default_scope order('id ASC')
   
-  attr_accessible :skin_id, :section_id, :name, :title, :content
+  attr_accessible       :name, 
+                        :title, 
+                        :content,
 
-  belongs_to :skin
-  belongs_to :section
+                        ##belongs_to##
+                        :skin_id, 
+                        :subsection_id
 
-  has_one :category, :through => :section
+                        ##has_many##
+
+                        
+
+  belongs_to            :skin
+  belongs_to            :subsection
+
+  #has_one :section,    :through => :subsection
   
   validates_presence_of :skin
-  validates_presence_of :section
+  #validates_presence_of :subssection #Pages can be stand alone
 
-  before_save   :create_name
+  before_save           :create_name
 
   private
   

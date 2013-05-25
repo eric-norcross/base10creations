@@ -3,6 +3,10 @@ class Collection < ActiveRecord::Base
 
   attr_accessible               :name, 
                                 :title,
+
+                                ##belongs_to##
+
+                                ##has_many##
                                 :component_ids,
                                 :style_ids
 
@@ -12,11 +16,11 @@ class Collection < ActiveRecord::Base
 
   has_many                      :collection_styles,     :include => :style
   has_many                      :styles,                :through => :collection_styles
-  #accepts_nested_attributes_for :collection_styles,     :allow_destroy => true
+  accepts_nested_attributes_for :collection_styles,     :allow_destroy => true
   
-  #validates_presence_of         :style
   validates_presence_of         :title
   validates_presence_of         :component_ids
+  # validates_presence_of         :style_ids
 
   before_save                   :create_name
 

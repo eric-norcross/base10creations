@@ -19,7 +19,16 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
-    #@skins = Skin.all
+
+    # @product.build_dimension # For has one
+
+    # 3.times do
+    #   dimensions = @product.dimensions.build
+    #   dimensions.build_media
+    # end
+
+    3.times { @product.dimensions.build }
+    3.times { @product.skus.build }
 
     respond_to do |format|
       format.html # new.html.erb
