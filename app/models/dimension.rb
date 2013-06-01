@@ -5,12 +5,12 @@ class Dimension < ActiveRecord::Base
                                 :width, 
                                 :height,
                                 :depth,
-                                :image,
 
                                 ##belongs_to##
                                 :product_id
 
-                                ##has_many##                 
+                                ##has_many##
+                                              
 
   belongs_to                    :product
 

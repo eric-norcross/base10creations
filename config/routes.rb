@@ -13,6 +13,8 @@ Martinfurniture::Application.routes.draw do
   resources :skins
   resources :styles
   resources :subsections
+
+  resources :dimensions
   
   #root :to => redirect('/pages/home'), :action => :index
 

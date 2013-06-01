@@ -5,7 +5,7 @@
       .gallery-image
         /- if !@product.images.empty?
         /= image_tag @product.images[0]
-        = image_tag @product.image_url(:gallery)
+        / = image_tag @product.image_url(:gallery)
         %br
         .image-controls
           = link_to "#" do 
@@ -78,19 +78,18 @@
                     = link_to "Entertainment", "#"
 
           #dimensions.tab-pane
-            %h1
-              %span Overall Dimensions 
-              17w x 22.25h x 20d
+            - @product.dimensions.each do |dimension|
+              %h1
+                %span 
+                  = dimension.title
+                  = dimension.width
+                  w x
+                  = dimension.height
+                  h x
+                  = dimension.depth
+                  d
 
-            %h1
-              %span Utility Drawer 
-              00w x 00h x 00d
-
-            %h1
-              %span File Drawer
-              00w x 00h x 00d
-
-            = image_tag "pages/placeholders/dimensions.png", alt: "Dimensions"
+              = image_tag "pages/placeholders/dimensions.png", alt: "Dimensions"
 
           #style.tab-pane
             %p.serif

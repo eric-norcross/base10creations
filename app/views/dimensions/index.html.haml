@@ -1,0 +1,31 @@
+#admin
+  %h1 Available Dimension
+
+  - if @dimensions
+    %table
+      %thead
+        %tr
+          %th Name:
+          %th Title:
+          %th Width:
+          %th Height:
+          %th Depth:
+          /%th Image:
+          %th
+          %th
+          %th
+      %tbody
+      - @dimensions.each do |dimension|
+        %tr
+          %td= dimension.name
+          %td= dimension.title
+          %td= dimension.width
+          %td= dimension.height
+          %td= dimension.depth
+          /%td= image_tag dimension.image.asset_url(:thumb).to_s
+          %td= link_to 'Show', dimension
+          %td= link_to 'Edit', edit_dimension_path(dimension)
+          %td= link_to 'Destroy', dimension, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add a new Dimension', new_dimension_path
