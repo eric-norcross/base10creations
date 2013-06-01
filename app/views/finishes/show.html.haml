@@ -7,7 +7,7 @@
     %tbody
       %tr
         %td= @finish.name
-        %td= image_tag @finish.image.asset_url(:thumb).to_S
+        %td= image_tag @finish.image.asset_url(:thumb).to_s
 
   .links
     = link_to 'Edit', edit_finish_path(@finish)

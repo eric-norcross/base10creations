@@ -34,7 +34,7 @@
       = f.fields_for :dimensions do |dimension|
         = render 'dimensions/dimension_fields', :f => dimension
     .addable
-      = link_to_add_fields "Add Dimension", f, :dimensions, "dimensions" 
+      = link_to_add_fields "Add Dimension", f, :dimensions, "dimensions", :image 
 
     .field
       = f.label :style

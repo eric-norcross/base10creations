@@ -88,8 +88,10 @@
                   h x
                   = dimension.depth
                   d
-
-              = image_tag "pages/placeholders/dimensions.png", alt: "Dimensions"
+              - if dimension.image.length > 0
+                - dimension.image.each do |asset|
+                  = image_tag asset.asset_url(:thumb).to_s, alt: "Dimensions"
+              
 
           #style.tab-pane
             %p.serif

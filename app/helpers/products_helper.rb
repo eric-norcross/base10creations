@@ -22,7 +22,7 @@ module ProductsHelper
 
     if child_association
       #3.times{ new_object.send(child_association).build } #Builds 3 Answers
-      #new_object.send(child_association).build #Builds 1 Answer
+      new_object.send(child_association).build #Builds 1 Answer
     end
   
     id = new_object.object_id
