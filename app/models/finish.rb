@@ -1,20 +1,24 @@
 class Finish < ActiveRecord::Base
   default_scope order('finishes.id ASC')
-  attr_accessible         :name, 
-                          :title,
+  attr_accessible               :name, 
+                                :title,
 
-                          ##belongs_to##
-                          :sku_id
+                                ##belongs_to##
+                                :sku_id,
 
-                          ##has_many##
-                          
+                                ##has_many##
+                                :image_attributes
 
 
-  belongs_to              :skus
+  belongs_to                    :skus
 
-  validates_presence_of   :title
+  has_one                       :image, as: :imageable, :dependent => :destroy
+  accepts_nested_attributes_for :image, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }
 
-  before_save             :create_name
+  validates_presence_of         :image
+  validates_presence_of         :title
+
+  before_save                   :create_name
 
   private
   

@@ -1,4 +1,8 @@
 Martinfurniture::Application.routes.draw do
+  resources :finishes do
+    resources :images
+  end
+
   resources :brands
   resources :categories
   resources :collections
@@ -6,12 +10,12 @@ Martinfurniture::Application.routes.draw do
   resources :collection_styles
   resources :components
   # resources :component_styles #NOT CURRENTLY USED
-  resources :finishes
   resources :pages
   resources :products
   resources :sections
   resources :skins
   resources :styles
+  resources :images
   resources :subsections
 
   resources :dimensions

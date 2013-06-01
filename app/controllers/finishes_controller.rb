@@ -8,17 +8,23 @@ def index
     end
   end
 
-  # def show
-  #   @finish = Finish.find(params[:id])
+  def show
+    @finish = Finish.find(params[:id])
 
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     # format.json { render json: @finish }
-  #   end
-  # end
+    respond_to do |format|
+      format.html # show.html.erb
+      # format.json { render json: @finish }
+    end
+  end
 
   def new
     @finish = Finish.new
+    
+    # has_many
+    # 3.times { @finish.images.build }
+
+    # has_one
+    @finish.build_image
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,6 +45,10 @@ def index
         # format.json { render json: @finish, status: :created, location: @finish }
       else
         format.html { render action: "new" }
+
+        if @finish.image.blank?
+          @finish.build_image
+        end
         # format.json { render json: @finish.errors, status: :unprocessable_entity }
       end
     end

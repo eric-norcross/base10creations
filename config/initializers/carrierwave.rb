@@ -3,7 +3,7 @@ if Rails.env == "production"
   S3_CONFIG = { 
     :aws_access_key_id      => ENV['S3_KEY'], 
     :aws_secret_access_key  => ENV['S3_SECRET'], 
-    :bucket                 => "live.martinfurniture.com"
+    :bucket                 => "live-martinfurniture"
   }
 else
   S3_CONFIG = YAML.load_file(Rails.root.join('config', 'amazon_s3.yml'))[Rails.env]

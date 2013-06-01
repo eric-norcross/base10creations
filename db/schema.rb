@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519222902) do
+ActiveRecord::Schema.define(:version => 20130601011957) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(:version => 20130519222902) do
     t.integer  "product_id"
     t.string   "name"
     t.string   "title"
-    t.string   "image"
   end
 
   create_table "finishes", :force => true do |t|
@@ -92,22 +91,14 @@ ActiveRecord::Schema.define(:version => 20130519222902) do
   end
 
   create_table "images", :force => true do |t|
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.integer  "gallery_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "asset"
   end
 
-  create_table "media", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+  add_index "images", ["imageable_id", "imageable_type"], :name => "index_images_on_imageable_id_and_imageable_type"
 
   create_table "pages", :force => true do |t|
     t.string   "name"
@@ -171,6 +162,12 @@ ActiveRecord::Schema.define(:version => 20130519222902) do
     t.datetime "updated_at", :null => false
     t.integer  "section_id"
     t.integer  "skin_id"
+  end
+
+  create_table "widgets", :force => true do |t|
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

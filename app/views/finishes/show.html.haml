@@ -1,0 +1,15 @@
+#admin
+  %table
+    %thead
+      %tr
+        %th Name:
+        %th Image:
+    %tbody
+      %tr
+        %td= @finish.name
+        %td= image_tag @finish.image.asset_url(:thumb)
+
+  .links
+    = link_to 'Edit', edit_finish_path(@finish)
+    \|
+    = link_to 'Back', finishes_path
