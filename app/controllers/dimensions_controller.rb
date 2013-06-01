@@ -23,7 +23,7 @@ class DimensionsController < ApplicationController
   def new
     @dimension = Dimension.new
 
-    #@dimension.build_image
+    @dimension.build_image
 
     respond_to do |format|
       format.html # new.html.erb

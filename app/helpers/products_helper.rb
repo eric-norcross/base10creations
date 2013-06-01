@@ -1,10 +1,6 @@
 module ProductsHelper
   def link_to_remove_fields(f) 
-    f.hidden_field(:_destroy) + link_to("Remove", "#", class: "remove-fields")
-  end
-
-  def link_to_remove_fields(f) 
-    f.hidden_field(:_destroy) + link_to("Remove", "#", class: "remove-fields")
+    f.hidden_field(:_destroy, class: "destroy") + link_to("Remove", "#", class: "remove-fields")
   end
 
   def link_to_add_fields(name, f, association, container, child_association = nil)

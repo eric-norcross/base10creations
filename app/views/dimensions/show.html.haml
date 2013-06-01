@@ -7,7 +7,7 @@
         %th Width:
         %th Height:
         %th Depth:
-        /%th Image:
+        %th Image:
     %tbody
       %tr
         %td= @dimension.name
@@ -15,7 +15,7 @@
         %td= @dimension.width
         %td= @dimension.height
         %td= @dimension.depth
-        /%td= image_tag @dimension.image.asset_url(:thumb).to_s
+        %td= image_tag @dimension.image.asset_url(:thumb).to_s
 
   .links
     = link_to 'Edit', edit_dimension_path(@dimension)

@@ -20,9 +20,9 @@
       = f.label :depth
       = f.text_field :depth
 
-    / #dimension-image.images
-    /   = f.fields_for :image do |image_builder|
-    /     = render 'images/image_fields', f: image_builder
+    #dimension-image.images
+      = f.fields_for :image do |image_builder|
+        = render 'images/image_fields', f: image_builder
 
   .actions
     = f.submit 'Save'

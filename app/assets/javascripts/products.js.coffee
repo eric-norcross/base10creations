@@ -1,5 +1,7 @@
 $(document).on "click", "a.remove-fields", (event) ->
-  $(this).parent().find("input[type=hidden]").val "1"
+  field = $(this).parent().find("input[type=hidden]")
+  console.log field
+  field.val "1"
   $(this).parent().parent().hide()
 
   event.preventDefault()
