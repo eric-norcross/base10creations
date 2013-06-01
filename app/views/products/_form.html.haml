@@ -33,7 +33,8 @@
     #dimensions.nested
       = f.fields_for :dimensions do |dimension|
         = render 'dimensions/dimension_fields', :f => dimension
-    = link_to_add_fields "Add Dimension", f, :dimensions, "dimensions" 
+    .addable
+      = link_to_add_fields "Add Dimension", f, :dimensions, "dimensions" 
 
     .field
       = f.label :style

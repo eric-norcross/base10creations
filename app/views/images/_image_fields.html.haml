@@ -1,11 +1,12 @@
-.field
-  = f.label :asset, "Image"
-  = f.file_field :asset
-  = f.hidden_field :asset_cache
+.image-field-group
+  .field.nested
+    = f.label :asset, "Image"
+    = f.file_field :asset
+    = f.hidden_field :asset_cache
 
-- if f.object.asset_url
-  .image-box
-    = image_tag f.object.asset_url(:thumb).to_s
-    
-.remove-fields
-  = link_to_remove_fields f
+  - if f.object.asset_url
+    .image-box
+      = image_tag f.object.asset_url(:thumb).to_s
+
+  .remove-fields
+    = link_to_remove_fields f

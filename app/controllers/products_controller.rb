@@ -22,12 +22,12 @@ class ProductsController < ApplicationController
 
     # @product.build_dimension # For has one
 
-    # 3.times do
-    #   dimensions = @product.dimensions.build
-    #   dimensions.build_media
-    # end
+    3.times do
+      dimensions = @product.dimensions.build
+      dimensions.image.build
+    end
 
-    3.times { @product.dimensions.build }
+    # 3.times { @product.dimensions.build }
     3.times { @product.skus.build }
 
     respond_to do |format|

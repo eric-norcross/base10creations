@@ -25,23 +25,12 @@
       = f.fields_for :image do |image_builder|
         = render 'images/image_fields', f: image_builder
     - if @dimension.image.blank?
-      = link_to_add_fields "Add Image", f, :image, "dimension-image"
-
-  :javascript
-    $('#dimension-image').bind('contentChanged', function() {
-      if ($("#dimension-image").find("input[type=file]").length > 0) {
-        $("#dimensions").find(".add-fields").hide()
-        console.log("yep");
-      } 
-
-      if ($("#dimensions").find(".add-fields").is(":visible")) {
-        console.log("nope");
-        
-      } else {
-        console.log("mer");
-        $("#dimensions").find(".add-fields").show()
-      }
-    });
+      .addable
+        = link_to_add_fields "Add Image", f, :image, "dimension-image"
+    - else 
+      %div
+        = link_to_add_fields "Add Image", f, :image, "dimension-image"
+      
 
   .actions
     = f.submit 'Save'

@@ -35,18 +35,21 @@ form {
       color: #000 !important;
     }
   }
-
-  .remove-fields {
-    a.remove {
-      display: none;
-    }
+  
+  .remove-fields,
+  .add-fields {
+    display: none;
   }
 
   .removeable {
     .remove-fields {
-      a.remove {
-        display: inline;
-      }
+      display: inline;
+    }
+  }
+
+  .addable {
+    .add-fields {
+      display: inline;
     }
   }
 
