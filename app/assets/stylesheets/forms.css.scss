@@ -36,6 +36,20 @@ form {
     }
   }
 
+  .remove-fields {
+    a.remove {
+      display: none;
+    }
+  }
+
+  .removeable {
+    .remove-fields {
+      a.remove {
+        display: inline;
+      }
+    }
+  }
+
   .column {
     float: left;
 
