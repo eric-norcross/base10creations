@@ -14,6 +14,7 @@ gem "rmagick"
 gem "carrierwave"
 gem "fog"
 gem 'jquery-fileupload-rails'
+
 # gem 'friendly_id'
 
 #separate out later
@@ -39,6 +40,7 @@ group :production, :staging do
 end
 
 group :development do
+  gem 'awesome_print', :require => 'ap'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'

@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  $("a.print").click(function(event) {
+    window.print();
+  });
   
   $(".gallery").each(function(index) {
     var gallery = new Gallery($(this));

@@ -19,9 +19,10 @@
     .field
       = f.label :title
       = f.text_field :title
-    / .field
-    /   = f.label :image
-    /   = f.file_field :image, :multiple => true
+
+    #product-image.images.singular-image
+      = f.fields_for :image do |image_builder|
+        = render 'images/image_fields', f: image_builder
   
   %fieldset{id: "product-details"}
     %legend
@@ -47,9 +48,9 @@
     %legend
       Skus & Finishes
 
-    / #skus.nested
-    /   = f.fields_for :skus do |sku_builder|
-    /     = render 'sku_fields', :f => sku_builder
+    #skus.nested
+      = f.fields_for :skus do |sku_builder|
+        = render 'skus/sku_fields', :f => sku_builder
     / = link_to_add_fields "Add Skus", f, :skus, "skus"
 
   .actions

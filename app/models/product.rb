@@ -19,14 +19,16 @@ class Product < ActiveRecord::Base
                                 :style,
                                 :video,
 
-                                ##belongs_to##
+                                ## belongs_to ##
                                 :collection_id,
                                 :skin_id,
 
-                                ##has_many##
+                                ## has_many ##
+
+                                ## nested attributes ##
                                 :skus_attributes,
-                                :dimensions_attributes
-                                #:images_attributes
+                                :dimensions_attributes,
+                                :image_attributes
                         
 
   belongs_to                    :collection
@@ -36,10 +38,11 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:width].blank? }, :allow_destroy => true
 
   has_many                      :skus, :dependent => :destroy
-  accepts_nested_attributes_for :skus, :reject_if => lambda { |a| a[:identifier].blank? }, :allow_destroy => true
-
-  # mount_uploader                :image, ImageUploader
+  accepts_nested_attributes_for :skus, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
   
+  has_many                      :image, as: :imageable, :dependent => :destroy
+  accepts_nested_attributes_for :image, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
+
   validates_presence_of         :title
   validates_presence_of         :collection
   validates_presence_of         :skin

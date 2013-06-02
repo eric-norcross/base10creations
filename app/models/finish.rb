@@ -8,7 +8,7 @@ class Finish < ActiveRecord::Base
                                 ## has_many ##
                                 :sku,
 
-                                ## polymorphic associations ##
+                                ## nested attributes ##
                                 :image_attributes
 
 

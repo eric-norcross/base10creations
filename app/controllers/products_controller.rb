@@ -20,15 +20,17 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
 
-    # @product.build_dimension # For has one
+    @product.image.build
 
-    3.times do
+    1.times do
       dimensions = @product.dimensions.build
       dimensions.image.build
     end
 
-    # 3.times { @product.dimensions.build }
-    3.times { @product.skus.build }
+    1.times do
+      skus = @product.skus.build
+      1.times { skus.images.build }
+    end
 
     respond_to do |format|
       format.html # new.html.erb

@@ -11,7 +11,7 @@ class Dimension < ActiveRecord::Base
 
                                 ##has_many##
 
-                                ## polymorphic associations ##
+                                ## nested attributes ##
                                 :image_attributes
                                               
 

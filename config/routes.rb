@@ -3,6 +3,10 @@ Martinfurniture::Application.routes.draw do
     resources :images
   end
 
+  resources :products do
+    resources :skus
+  end
+
 
 
   resources :brands

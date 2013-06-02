@@ -13,7 +13,7 @@ class Sku < ActiveRecord::Base
                                 ## has_many ##
                                 # :finish_ids,
 
-                                ## polymorphic ##
+                                ## nested attributes ##
                                 :images_attributes
 
   belongs_to                    :product

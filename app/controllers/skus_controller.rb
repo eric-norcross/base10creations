@@ -15,12 +15,14 @@ class SkusController < ApplicationController
   # GET /skus/1.json
   def show
     @sku = Sku.find(params[:id])
-    #@product = Product.find(params[:product_id]) if params[:product_id]?
+    @product = Product.find(params[:product_id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @sku }
-    end
+    render "#{@product.skin.template}"
+
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.json { render json: @sku }
+    # end
   end
 
   # GET /skus/new
