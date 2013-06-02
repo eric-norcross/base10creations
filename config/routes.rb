@@ -3,6 +3,8 @@ Martinfurniture::Application.routes.draw do
     resources :images
   end
 
+
+
   resources :brands
   resources :categories
   resources :collections
@@ -14,6 +16,7 @@ Martinfurniture::Application.routes.draw do
   resources :products
   resources :sections
   resources :skins
+  resources :skus
   resources :styles
   resources :images
   resources :subsections

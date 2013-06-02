@@ -1,0 +1,15 @@
+.removeable
+  .field
+    = f.label :identifier, "Sku"
+    = f.text_field :identifier
+
+  / .field
+  /   = f.label :finish_id, "Finish"
+  /   = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
+
+  #sku-image.images
+    = f.fields_for :image do |image_builder|
+      = render 'images/image_fields', f: image_builder
+
+  .field
+    = link_to_remove_fields f

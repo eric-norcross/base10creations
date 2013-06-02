@@ -13,15 +13,17 @@ class SkusController < ApplicationController
 
   # GET /skus/1
   # GET /skus/1.json
-  def show
-    @sku = Sku.find(params[:id])
-    @product = Product.find(params[:product_id])
+  # def show
+  #   @sku = Sku.find(params[:id])
+  #   @product = Product.find(params[:product_id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @sku }
-    end
-  end
+  #   3.times { @skus.images.build }
+
+  #   respond_to do |format|
+  #     format.html # show.html.erb
+  #     format.json { render json: @sku }
+  #   end
+  # end
 
   # GET /skus/new
   # GET /skus/new.json
@@ -62,7 +64,7 @@ class SkusController < ApplicationController
 
     respond_to do |format|
       if @sku.update_attributes(params[:sku])
-        format.html { redirect_to @sku, notice: 'Sku was successfully updated.' }
+        format.html { redirect_to skus_url, notice: 'Sku was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

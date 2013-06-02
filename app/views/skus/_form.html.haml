@@ -1,0 +1,30 @@
+= form_for @sku, :html => { :multipart => true } do |f|
+  - if @sku.errors.any?
+    #error_explanation
+      %h1= "#{pluralize(@sku.errors.count, "error")} prohibited this sku from being saved:"
+      %ul
+        - @sku.errors.full_messages.each do |msg|
+          %li= msg
+
+  %fieldset{id: "skus"}
+    .field
+      = f.label :identifier
+      = f.text_field :identifier
+
+    .field
+      = f.label :finish_id, "Finish"
+      = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
+
+    / #sku-image.images.removeable
+    /   = f.fields_for :image do |image_builder|
+    /     = render 'images/image_fields', f: image_builder
+    / - if @sku.image.blank?
+    /   .addable
+    /     = link_to_add_fields "Add Image", f, :image, "sku-image"
+    / - else 
+    /   %div
+    /     = link_to_add_fields "Add Image", f, :image, "sku-image"
+      
+
+  .actions
+    = f.submit 'Save'
