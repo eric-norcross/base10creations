@@ -5,18 +5,18 @@
     %table
       %thead
         %tr
-          %th Identifier:
-          %th Finish:
-          / %th Images:
+          %th Title:
+          %th Finish: 
+          %th Images:
           %th
           %th
           %th
       %tbody
       - @skus.each do |sku|
         %tr
-          %td= sku.identifier
+          %td= sku.title
           %td= sku.finish.title
-          / %td= image_tag sku.image.asset_url(:thumb).to_s
+          %td= sku.images.length
           %td= link_to 'Show', sku
           %td= link_to 'Edit', edit_sku_path(sku)
           %td= link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }

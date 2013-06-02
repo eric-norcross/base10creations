@@ -1,11 +1,11 @@
 .removeable
   .field
-    = f.label :identifier, "Sku"
-    = f.text_field :identifier
+    = f.label :title, "Sku"
+    = f.text_field :title
 
-  / .field
-  /   = f.label :finish_id, "Finish"
-  /   = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
+  .field
+    = f.label :finish_id, "Finish"
+    = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
 
   #sku-image.images
     = f.fields_for :image do |image_builder|

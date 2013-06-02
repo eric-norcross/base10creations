@@ -13,22 +13,22 @@ class SkusController < ApplicationController
 
   # GET /skus/1
   # GET /skus/1.json
-  # def show
-  #   @sku = Sku.find(params[:id])
-  #   @product = Product.find(params[:product_id])
+  def show
+    @sku = Sku.find(params[:id])
+    #@product = Product.find(params[:product_id]) if params[:product_id]?
 
-  #   3.times { @skus.images.build }
-
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     format.json { render json: @sku }
-  #   end
-  # end
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @sku }
+    end
+  end
 
   # GET /skus/new
   # GET /skus/new.json
   def new
     @sku = Sku.new
+
+    3.times { @sku.images.build }
 
     respond_to do |format|
       format.html # new.html.erb
