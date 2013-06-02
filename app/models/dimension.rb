@@ -10,6 +10,8 @@ class Dimension < ActiveRecord::Base
                                 :product_id,
 
                                 ##has_many##
+
+                                ## polymorphic associations ##
                                 :image_attributes
                                               
 

@@ -11,9 +11,15 @@
       = f.label :title
       = f.text_field :title
 
-    #finish-image.images
+    #finish-image.images.removeable.singular-image
       = f.fields_for :image do |image_builder|
         = render 'images/image_fields', f: image_builder
+    - if @finish.image.blank?
+      .addable
+        = link_to_add_fields "Add Image", f, :image, "finish-image"
+    - else 
+      %div
+        = link_to_add_fields "Add Image", f, :image, "finish-image"
 
   .actions
     = f.submit 'Save'

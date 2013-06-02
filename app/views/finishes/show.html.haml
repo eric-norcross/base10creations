@@ -3,11 +3,14 @@
     %thead
       %tr
         %th Name:
-        %th Image:
+        - if defined? @finish.image
+          %th Image:
     %tbody
       %tr
         %td= @finish.name
-        %td= image_tag @finish.image.asset_url(:thumb).to_s
+        - if defined? @finish.image
+          - @finish.image.each do |img|
+            %td= image_tag img.asset_url(:thumb).to_s
 
   .links
     = link_to 'Edit', edit_finish_path(@finish)

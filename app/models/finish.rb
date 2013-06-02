@@ -1,19 +1,18 @@
 class Finish < ActiveRecord::Base
   default_scope order('finishes.id ASC')
-  attr_accessible               :name, 
+  attr_accessible               :name,
                                 :title,
 
-                                ##belongs_to##
-                                :sku_id,
+                                ## belongs_to ##
 
-                                ##has_many##
+                                ## has_many ##
+
+                                ## polymorphic associations ##
                                 :image_attributes
 
 
-  belongs_to                    :skus
-
-  has_one                       :image, as: :imageable, :dependent => :destroy
-  accepts_nested_attributes_for :image, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }
+  has_many                      :image, as: :imageable, :dependent => :destroy
+  accepts_nested_attributes_for :image, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
   validates_presence_of         :image
   validates_presence_of         :title

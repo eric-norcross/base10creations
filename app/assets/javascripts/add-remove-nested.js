@@ -4,7 +4,7 @@ $(document).on("click", "a.remove", function(event) {
   field.val("1");
   group.hide();
 
-  group.parent().trigger('contentChanged', ["remove"]);
+  group.parent().trigger('contentChanged', ["remove", group.parent()]);
 
   return event.preventDefault();
 });
@@ -22,28 +22,33 @@ $(document).ready(function() {
     container.append(content);
 
     console.log("triggering event from add");
-    container.trigger('contentChanged', ["add"]);
+    container.trigger('contentChanged', ["add", container]);
 
     return event.preventDefault();
   });
 
-  $('#dimension-image').bind('contentChanged', function(event, toggler) {
-    console.log("catching event; event.toggler: " + toggler);
+  $('.singular-image').bind('contentChanged', function(event, toggler, container) {
+    // console.log("bind - catching event; event.toggler: " + toggler);
 
-    var groups = $(".image-field-group");
+    if ($(this)[0] == $(container)[0]) {
+      console.log("yep")
+      var groups = $(".image-field-group");
 
-    if (toggler == "add") {
-      if (groups.length > 0) {
-        groups.each(function(index) {
-          $(groups[index]).hide();
-        })
+      if (toggler == "add") {
+        if (groups.length > 0) {
+          groups.each(function(index) {
+            $(groups[index]).hide();
+          })
 
-        $(groups[0]).show();
-        $(groups[0]).find("input[type=hidden]").val(false);
-        $("#dimensions").find(".add-fields").hide();
+          $(groups[0]).show();
+          $(groups[0]).find("input[type=hidden]").val(false);
+          $(this).parent().find(".add-fields").hide();
+        }
+      } else if (toggler == "remove") {
+        $(this).parent().find(".add-fields").show();
       }
-    } else if (toggler == "remove") {
-      $("#dimensions").find(".add-fields").show();
+    } else {
+      console.log("Elements did not match");
     }
   });
 });

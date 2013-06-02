@@ -3,3 +3,7 @@
     = f.label :identifier, "Finish"
     = f.text_field :identifier
     = f.check_box :_destroy
+
+  #finish-image.images.singular-image
+    = f.fields_for :image do |image_builder|
+      = render 'images/image_fields', f: image_builder
