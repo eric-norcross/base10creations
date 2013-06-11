@@ -10,6 +10,9 @@
       %script{ src: "http://html5shim.googlecode.com/svn/trunk/html5.js", type: "text/javascript" }
     /[if gte IE 9]
       %link{ href: "ie/IE9.css" }
+    /[if lt IE 8]
+      = stylesheet_link_tag "font-awesome-ie7.min.css", media: "all"
+
   %body
     #container
       = render :partial => "layouts/header"

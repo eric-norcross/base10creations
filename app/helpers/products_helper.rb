@@ -1,6 +1,14 @@
 module ProductsHelper
+  def randomNum()
+    SecureRandom.random_number(100000)
+  end
+
   def link_to_remove_fields(f) 
-    f.hidden_field(:_destroy, class: "destroy") + link_to("Remove", "#", class: "remove")
+    f.hidden_field(:_destroy, class: "destroy") + 
+    link_to("#", class: "remove") do 
+      content_tag(:i, "", class: "icon-remove-circle icon-large", title: "Remove")
+      # + content_tag(:span, " - Remove")
+    end
   end
 
   def link_to_add_fields(name, f, association, container, child_association = nil)
@@ -28,7 +36,7 @@ module ProductsHelper
     id = new_object.object_id
 
     fields = f.fields_for(association, new_object, child_index: id) do |builder|
-      render(association.to_s.pluralize + "/" + association.to_s.singularize + "_fields", f: builder)
+      render(association.to_s.pluralize + "/" + association.to_s.singularize + "_fields", f: builder, unique_id: id)
     end
     
     # link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
@@ -38,5 +46,8 @@ module ProductsHelper
     # end
 
     link_to name, "#", class: "add-fields", data: { id: id, container: "#{container}", association: "#{association}", content: "#{fields}" }
+    # link_to("#", class: "add-fields", data: { id: id, container: "#{container}", association: "#{association}", content: "#{fields}" }) do
+    #   content_tag(:i, "", class: "icon-plus-sign icon-large", title: "Add")
+    # end
   end
 end

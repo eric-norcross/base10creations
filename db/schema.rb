@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602180124) do
+ActiveRecord::Schema.define(:version => 20130611154740) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20130602180124) do
     t.text     "style"
     t.string   "video"
     t.text     "features"
+    t.integer  "component_id"
   end
 
   create_table "sections", :force => true do |t|

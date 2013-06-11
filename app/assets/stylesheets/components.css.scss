@@ -179,11 +179,11 @@
       text-decoration: underline;
     }
 
-    #features {
-      div {
-        float: left;
-      }
+    #features > div {
+      float: left;
+    }
 
+    #features {
       ul {
         li {
           @include rem('font-size', 12px);
@@ -224,6 +224,11 @@
 
           margin-bottom: 33px;
         }
+
+        img {
+          width: 40px;
+          height: 40px;
+        }
       }
     }
 
@@ -245,15 +250,17 @@
       }
     }
 
+    #style > div {
+      margin-top: 20px;
+    }
+
     #style {
       p {
         @include rem('font-size', 12px);
         line-height: 15px;
       }
 
-      div {
-        margin-top: 20px;
-
+      div { 
         img {
           float: left;
           margin-bottom: 100px;

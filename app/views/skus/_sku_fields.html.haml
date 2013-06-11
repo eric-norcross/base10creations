@@ -1,28 +1,19 @@
-/ .removeable
-/   .field
-/     = f.label :title, "Sku"
-/     = f.text_field :title
-
-
-/   #sku-image.images
-/     = f.fields_for :image do |image_builder|
-/       = render 'images/image_fields', f: image_builder
-
-/   .field
-/     = link_to_remove_fields f
-
 .removeable
   %h2
-    Skus - 
+    Sku 
     = link_to_remove_fields f
-  .field
-    = f.label :title
-    = f.text_field :title
 
   .field
     = f.label :finish_id, "Finish"
     = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
-  
-  #sku-image.images
-    = f.fields_for :images do |image_builder|
+
+  .field
+    = f.label :title
+    = f.text_field :title
+
+  - unique_id = randomNum
+  %div{id: "sku-image-#{unique_id}", class: "images"}
+    = f.fields_for :images, include_id: false do |image_builder|
       = render 'images/image_fields', f: image_builder
+  .addable
+    = link_to_add_fields "Add Images", f, :images, "sku-image-#{unique_id}"

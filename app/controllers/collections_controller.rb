@@ -9,7 +9,7 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collections = Collection.find(params[:id])
+    @collection = Collection.find(params[:id])
 
     render "/collections/templates/collection"
     # respond_to do |format|

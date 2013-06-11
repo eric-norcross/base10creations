@@ -4,26 +4,29 @@
     .gallery#product-views
       .gallery-image
         - if !@product.image.empty?
-          = image_tag @product.image[0].asset_url(:gallery)
+          / = image_tag @product.image[0].asset_url(:gallery)
+          = image_tag @sku.images[1].asset_url(:gallery)
         %br
         .image-controls
-          = link_to "#" do 
-            = render :partial => '/layouts/svg/enlarge'
-            View Larger Image
+          #enlarge
+            = link_to "#" do 
+              = render :partial => '/layouts/svg/enlarge'
+              View Larger Image
         .image-controls.text-align-right
-          = link_to "Roll Over Image To Zoom", "#"
+          #zoom
+            = link_to "Roll Over Image To Zoom", "#"
       .scroller
         .control.previous
           = link_to "#" do
             = render :partial => '/layouts/svg/arrow_left'
         .items-container
           %ul
-          - @sku.images.each do |image|
-            %li
-              .image-container
-                %span.helper
-                = link_to "#" do
-                  = image_tag image.asset_url(:thumb), :"data-medium" => image.asset_url(:gallery), :"data-large" => image.asset_url(:large)
+            - @sku.images.each do |image|
+              %li
+                .image-container
+                  %span.helper
+                  = link_to "#" do
+                    = image_tag image.asset_url(:thumb), :"data-medium" => image.asset_url(:gallery), :"data-large" => image.asset_url(:large)
 
         .control.next
           = link_to "#" do
@@ -32,7 +35,7 @@
       %header
         %hgroup
           %h1 
-            sku #{@sku.title}
+            sku ##{@sku.title}
           %h2
             #{@product.collection.title} #{@sku.finish.title}
           %h3
@@ -56,7 +59,7 @@
         .tab-content
           #features.tab-pane.active
             %div
-              = @product.features
+              = raw @product.features
               / %ul
               /   %li Casters included (not attached)
               /   %li Utility drawer
@@ -74,8 +77,9 @@
                 %ul
                   - @product.skus.each do |sku|
                     %li
-                      = link_to @product_path(sku) do
-                        = image_tag sku.finish.image[0].asset_url(:thumb), alt: sku.finish.title
+                      - if sku.finish.image[0]
+                        = link_to product_sku_path(@product, sku) do
+                          = image_tag sku.finish.image[0].asset_url(:thumb), alt: sku.finish.title
                   
               %div
                 %h1
@@ -99,10 +103,9 @@
                 - dimension.image.each do |asset|
                   = image_tag asset.asset_url(:thumb).to_s, alt: "Dimensions"
               
-
           #style.tab-pane
             %p.serif
-              = @product.style       
+              = raw @product.style       
           
           #videos.tab-pane
             %h1 Features of #{@product.collection.title} #{@sku.finish.title} 

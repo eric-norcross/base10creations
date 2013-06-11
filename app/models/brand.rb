@@ -3,7 +3,7 @@ class Brand < ActiveRecord::Base
 
   attr_accessible               :name, 
                                 :title,
-                                :style
+                                :style_ids
 
   has_many                      :styles
 

@@ -67,4 +67,6 @@ Martinfurniture::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.assets.precompile += ["ie/IE9.css", "ie/IE8.css", "ie/IE7.css", "ie/IE6.css"]
+  config.assets.precompile += %w( font-awesome-ie7.min.css )
+
 end

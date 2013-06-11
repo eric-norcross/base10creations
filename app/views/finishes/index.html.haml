@@ -7,16 +7,12 @@
         %tr
           %th Id
           %th Title
-          %th Category
-          %th Name
           %th
       %tbody
       - @finishes.each do |finish|
         %tr
           %td= finish.id
           %td= finish.title
-          %td= finish.name
-          /%td= finish.category.title
           %td= link_to 'Show', finish
           %td= link_to 'Edit', edit_finish_path(finish)
           %td= link_to 'Destroy', finish, method: :delete, data: { confirm: 'Are you sure?' }

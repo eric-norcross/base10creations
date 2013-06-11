@@ -5,5 +5,5 @@
     = f.check_box :_destroy
 
   #finish-image.images.singular-image
-    = f.fields_for :image do |image_builder|
+    = f.fields_for :image, include_id: false do |image_builder|
       = render 'images/image_fields', f: image_builder

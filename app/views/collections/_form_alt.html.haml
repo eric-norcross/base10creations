@@ -1,10 +1,12 @@
 = form_for @collection do |f|
   - if @collection.errors.any?
     #error_explanation
-      %h1= "#{pluralize(@collection.errors.count, "error")} prohibited this collection from being saved:"
+      %h1 
+        = "#{pluralize(@collection.errors.count, "error")} prohibited this collection from being saved:"
       %ul
         - @collection.errors.full_messages.each do |msg|
-          %li= msg
+          %li 
+            = msg
           
   - @collection.collection_components.each do |collection_component|
     .component.checkbox

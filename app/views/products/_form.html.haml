@@ -7,15 +7,18 @@
         - @product.errors.full_messages.each do |msg|
           %li= msg
 
-  %fieldset{id: "product-categorization"}
+  %fieldset{id: "product-fileds"}
     %legend
-      Product Categorization
+      Product Family Info
     .field
       = f.label :skin_id, "Template"
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}
     .field
       = f.label :collection_id, "Collection"
       = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}
+    / .field
+    /   = f.label :component_id, "Component"
+    /   = f.select :component_id, Collection.find(22).components.collect{|t| [t.title, t.id]}
     .field
       = f.label :title
       = f.text_field :title
@@ -23,35 +26,51 @@
     #product-image.images.singular-image
       = f.fields_for :image do |image_builder|
         = render 'images/image_fields', f: image_builder
-  
-  %fieldset{id: "product-details"}
+
+  %fieldset{id: "features-fields"}
     %legend
-      Product Details
+      Features
+
     .field
-      = f.label :features
-      = f.text_area :features
+      / = f.label :features
+      = f.cktext_area :features
+
+  %fieldset{id: "dimensions-fields"}
+    %legend
+      Dimensions
 
     #dimensions.nested
-      = f.fields_for :dimensions do |dimension|
+      = f.fields_for :dimensions, include_id: false do |dimension|
         = render 'dimensions/dimension_fields', :f => dimension
     .addable
-      = link_to_add_fields "Add Dimension", f, :dimensions, "dimensions", :image 
+      = link_to_add_fields "Add Dimension", f, :dimensions, "dimensions", :image
+
+  %fieldset{id: "style-fields"}
+    %legend
+      Style
 
     .field
-      = f.label :style
-      = f.text_area :style
+      / = f.label :style
+      = f.cktext_area :style      
+  
+  %fieldset{id: "video-fields"}
+    %legend
+      Videos
+
     .field
-      = f.label :video
+      = f.label :video, "YouTube URL"
       = f.text_field :video
 
-  %fieldset{id: "skus-and-finishes"}
+
+  %fieldset{id: "skus-fields"}
     %legend
-      Skus & Finishes
+      Skus
 
     #skus.nested
-      = f.fields_for :skus do |sku_builder|
+      = f.fields_for :skus, include_id: false do |sku_builder|
         = render 'skus/sku_fields', :f => sku_builder
-    / = link_to_add_fields "Add Skus", f, :skus, "skus"
+    .addable
+      = link_to_add_fields "Add Skus", f, :skus, "skus", :images
 
   .actions
     = f.submit 'Save'

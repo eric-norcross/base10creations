@@ -11,16 +11,52 @@ form {
   label {
     float: left;
     font-weight: bold;
-    margin-top: 2px;
-    width: 70px;
+    margin-right: 8px;
+    margin-top: 5px;
+    text-align: right;
+    width: 75px;
   }
 
   input[type=text] {
     
   }
 
-  .fieldset {
-    margin-top: 10px;
+  fieldset {
+    border-color: #D8D4CB;
+    border-style: solid;
+    border-width: 2px;
+    margin: 50px;
+    padding: 10px 5px 5px 5px;
+
+    legend {
+      border-color: #D8D4CB;
+      border-style: solid;
+      border-width: 2px 2px 0 2px;
+      font-size: 10px;
+      font-weight: bold;
+      margin-left: -7px;
+      margin-top: -23px;
+      padding: 7px 11px;
+      text-transform: uppercase;
+    }
+  }
+
+  .image-field-group * {
+    /*float: left;
+    clear: none;*/
+    display: inline-block;
+
+    i {
+      margin-top: 13px;
+    }
+  }
+
+  .inline {
+    .field {
+      display: inline-block;
+      float: left;
+      clear: none;
+    }
   }
 
   .field,
@@ -47,9 +83,51 @@ form {
     }
   }
 
+  #dimensions {
+    .dimension-values {
+      .field {
+        display: inline-block;
+        float: left;
+        clear: none;
+        margin-right: 3px;
+
+        input[type=text] {
+          margin-right: 2px;
+          text-align: center;
+          width: 25px;
+        }
+      }
+    }
+  }
+
+  #skus {
+
+  }
+
+  .images {
+    clear: both;
+  }
+
   .addable {
+    background-color: #fff;
+    border-color: #D8D4CB;
+    border-style: solid;
+    border-width: 1px;
+    clear: both;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+
     .add-fields {
       display: inline;
+    }
+  }
+
+  .addable:hover {
+    background-color: $linkColor;
+
+    a {
+      color: #fff !important;
     }
   }
 
@@ -66,6 +144,7 @@ form {
           float: right;
           font-weight: normal;
           margin-top: 5px;
+          text-align: left;
           white-space: nowrap;
           width: 110px;
         }
@@ -74,6 +153,18 @@ form {
   }
 
   .nested {
-    margin-left: 20px;
+    margin: 0 20px;
+  }
+
+  .nested > div {
+    padding: 10px;
+  }
+
+  .nested > div:nth-child(even) {
+    background: #f3f2ef
+  }
+
+  .nested > div:nth-child(odd) {
+    background: #e2e7ec
   }
 }

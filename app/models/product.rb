@@ -22,6 +22,7 @@ class Product < ActiveRecord::Base
                                 ## belongs_to ##
                                 :collection_id,
                                 :skin_id,
+                                #:component_id,
 
                                 ## has_many ##
 
@@ -33,6 +34,7 @@ class Product < ActiveRecord::Base
 
   belongs_to                    :collection
   belongs_to                    :skin
+  #belongs_to                    :component
 
   has_many                      :dimensions, :dependent => :destroy
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:width].blank? }, :allow_destroy => true

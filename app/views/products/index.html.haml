@@ -7,7 +7,7 @@
         %tr
           %th Id
           %th Name
-          /%th Sku
+          %th Skus
           %th Template
           %th
           %th
@@ -18,6 +18,9 @@
         %tr
           %td= product.id
           %td= product.name
+          %td
+            - product.skus.each do |sku|
+              = link_to sku.title, sku
           /%td= product.sku
           %td= product.skin.name
           %td= link_to 'Show', product

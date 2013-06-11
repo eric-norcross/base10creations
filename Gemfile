@@ -14,6 +14,7 @@ gem "rmagick"
 gem "carrierwave"
 gem "fog"
 gem 'jquery-fileupload-rails'
+gem "font-awesome-rails"
 
 # gem 'friendly_id'
 
