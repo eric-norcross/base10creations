@@ -5,24 +5,36 @@
       %ul
         - @component.errors.full_messages.each do |msg|
           %li= msg
+  %fieldset
+    %legend
+      Component
+    .field
+      = f.label :category_id, "Category"
+      = f.collection_select(:category_id, Category.all, :id, :title, :prompt => "Select a Category")
+    
+    //This will probably be removed
+    / .field.hidden
+    /   .column
+    /     .column-group
+    /       - @brands = Brand.all
+    /       .column
+    /         .column-group
+    /           - @brands.each do |brand|
+    /             .checkbox
+    /              = check_box_tag "brand#{brand.id}", brand.id, @component.brands.include?(brand), :name => 'component[brand_ids][]'
+    /              = label_tag "brand#{brand.id}", brand.title
+    .field
+      = f.label :title
+      = f.text_field :title
 
-  .field
-    = f.label :category_id, "Category"
-    = f.collection_select(:category_id, Category.all, :id, :title, :prompt => "Select a Category")
-  
-  //This will probably be removed
-  / .field.hidden
-  /   .column
-  /     .column-group
-  /       - @brands = Brand.all
-  /       .column
-  /         .column-group
-  /           - @brands.each do |brand|
-  /             .checkbox
-  /              = check_box_tag "brand#{brand.id}", brand.id, @component.brands.include?(brand), :name => 'component[brand_ids][]'
-  /              = label_tag "brand#{brand.id}", brand.title
-  .field
-    = f.label :title
-    = f.text_field :title
+  %fieldset
+    %legend
+      Sub-Components
+    #component-subcomponent.subcomponents.removeable
+      = f.fields_for :subcomponents do |subcomponent_builder|
+        = render 'subcomponents/subcomponent_fields', f: subcomponent_builder
+    .addable
+      = link_to_add_fields "Add Subcomponent", f, :subcomponents, "component-subcomponent"
+
   .actions
     = f.submit 'Save'

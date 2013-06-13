@@ -41,7 +41,8 @@ form {
     }
   }
 
-  .image-field-group * {
+  .image-field-group *,
+  .subcomponent-field-group *, {
     /*float: left;
     clear: none;*/
     display: inline-block;
@@ -80,6 +81,10 @@ form {
   .removeable {
     .remove-fields {
       display: inline;
+
+      a:hover {
+        text-decoration: none;
+      }
     }
   }
 

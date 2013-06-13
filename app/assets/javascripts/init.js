@@ -1,6 +1,15 @@
-
-
 $(document).ready(function(){
+  $('#product-collection select').change(function() {
+    console.log("test");
+
+    var collection_id = $("option:selected", this).val();
+    $.post("/components/retrieve_components/" + collection_id, function(data){
+        $("#product-components").html(data);
+        console.log(data);
+    });
+  });
+
+
   $("a.print").click(function(event) {
     window.print();
   });
@@ -26,7 +35,6 @@ $(document).ready(function(){
     }
   });
   
-
   $('#retailer_search').focus(function(){
     if ($(this).val() == "Find a dealer near you"){
       $(this).val("");

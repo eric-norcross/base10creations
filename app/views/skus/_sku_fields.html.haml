@@ -8,7 +8,7 @@
     = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
 
   .field
-    = f.label :title
+    = f.label :title, "Sku Number"
     = f.text_field :title
 
   - unique_id = randomNum

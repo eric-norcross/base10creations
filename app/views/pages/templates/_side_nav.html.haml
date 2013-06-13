@@ -1,7 +1,12 @@
--@sections = Section.all
+- @sections = Section.all
 
 %nav#side
   %ul
-    -@sections.each do |section|
-      -if section.category == category
-        = render :partial => "/sections/section", :locals => {:section => section}
+    - @sections.each do |section|
+      / = render "/subsections/subsection", locals: {subection: section}
+      %li
+        = link_to section.title, section
+        %ul
+          - section.subsections.each do |subsection|
+            %li
+              = link_to subsection.title, subsection

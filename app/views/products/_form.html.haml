@@ -12,13 +12,12 @@
       Product Family Info
     .field
       = f.label :skin_id, "Template"
-      = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}
-    .field
+      = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Template" }
+    .field#product-collection
       = f.label :collection_id, "Collection"
-      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}
-    / .field
-    /   = f.label :component_id, "Component"
-    /   = f.select :component_id, Collection.find(22).components.collect{|t| [t.title, t.id]}
+      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }
+    .field#product-components
+      = render '/components/select'
     .field
       = f.label :title
       = f.text_field :title

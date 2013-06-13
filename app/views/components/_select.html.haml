@@ -1,0 +1,5 @@
+= label_tag :component
+- unless @components.blank?
+  = collection_select(:product, :component_id, @components, :id, :title, prompt: "Select a Component" )
+- else
+  = select_tag "component_id","component_id", { prompt: "Please select a Collection first", disabled: true }

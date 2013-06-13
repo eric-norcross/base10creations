@@ -1,4 +1,35 @@
 class ComponentsController < ApplicationController
+  # def get_components
+  #   # @components = Component.find(params[:id])
+  #   @components = Component.where( :collection_id => params[:id]).order(:name) unless params[:id].blank?
+  #   render "select", :locals => { :components => @components }
+  # end
+
+  def retrieve_components
+    # if params[:id].present?
+    #   @components = Collection.find(params[:id]).components
+    # else
+    #   @components = []
+    # end
+
+    # respond_to do |format|
+    #   format.json
+    # end
+
+
+    @collections = Collection.find(params[:id])
+    # # @components = Component.where( :collection_id => params[:id]).order(:name) unless params[:id].blank?
+    @components = @collections.components
+    # render "/components/_select", :locals => { :components => @components }
+
+    render "components/_select", layout: false
+
+    # respond_to do |format|
+    #   format.js
+    # end
+  end
+
+
   def index
     @components = Component.all
 

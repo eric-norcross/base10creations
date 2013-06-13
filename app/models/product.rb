@@ -20,9 +20,9 @@ class Product < ActiveRecord::Base
                                 :video,
 
                                 ## belongs_to ##
+                                :component_id,
                                 :collection_id,
                                 :skin_id,
-                                #:component_id,
 
                                 ## has_many ##
 
@@ -32,9 +32,9 @@ class Product < ActiveRecord::Base
                                 :image_attributes
                         
 
+  belongs_to                    :component
   belongs_to                    :collection
   belongs_to                    :skin
-  #belongs_to                    :component
 
   has_many                      :dimensions, :dependent => :destroy
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:width].blank? }, :allow_destroy => true
@@ -55,5 +55,6 @@ class Product < ActiveRecord::Base
   
   def create_name
     self.name = title.parameterize
+    # self.name = component.title.parameterize
   end
 end

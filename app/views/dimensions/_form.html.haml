@@ -1,39 +1,17 @@
 = form_for @dimension, :html => { :multipart => true } do |f|
   - if @dimension.errors.any?
     #error_explanation
-      %h1= "#{pluralize(@dimension.errors.count, "error")} prohibited this dimension from being saved:"
+      %h1 
+        = "#{pluralize(@dimension.errors.count, "error")} prohibited this dimension from being saved:"
       %ul
         - @dimension.errors.full_messages.each do |msg|
-          %li= msg
+          %li 
+            = msg
 
   %fieldset{id: "dimensions"}
-    = render "dimension_fields", f: f
-    /   = f.label :title
-    /   = f.text_field :title
-
-    / .inline
-    /   .field
-    /     /= f.label :width
-    /     = f.text_field :width, value: "W"
-    /     x
-    /   .field
-    /     /= f.label :height
-    /     = f.text_field :height, value: "H"
-    /     x 
-    /   .field
-    /     /= f.label :depth
-    /     = f.text_field :depth, value: "D"
-    
-    /   #dimension-image.images.singular-image
-    /     = f.fields_for :image do |image_builder|
-    /       = render 'images/image_fields', f: image_builder
-    /   - if @dimension.image.blank?
-    /     .addable
-    /       = link_to_add_fields "Add Image", f, :image, "dimension-image"
-    /   - else 
-    /     %div
-    /       = link_to_add_fields "Add Image", f, :image, "dimension-image"
-      
+    %legend
+      Dimensions
+    = render "dimension_fields", f: f      
 
   .actions
     = f.submit 'Save'

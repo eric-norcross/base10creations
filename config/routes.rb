@@ -7,8 +7,6 @@ Martinfurniture::Application.routes.draw do
     resources :skus
   end
 
-
-
   resources :brands
   resources :categories
   resources :collections
@@ -30,6 +28,8 @@ Martinfurniture::Application.routes.draw do
   #root :to => redirect('/pages/home'), :action => :index
 
   root to: 'pages#home'
+
+  post '/components/retrieve_components/:id' => 'components#retrieve_components'
 
   # match '*path' => redirect('/') unless Rails.env.development?
 

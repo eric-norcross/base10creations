@@ -61,5 +61,26 @@ $('.singular-image').on('contentChanged', function(event, toggler, container) {
   }
 });
 
+
+
+
+
 $(document).ready(function() {
+  // console.log($('#product-collection select'));
+
+  // $('#product-collection select').on('change', function() {
+  //   console.log("test")
+  //   // make a POST call and replace the content
+  //   var collection_id = $("option:selected", this).val() || 0;
+
+  //   //if (collection_id == "") { collection_id = "0" };
+
+  //   //$.post('/components/get_components', {id: that.val()}, null, "script");
+  //   $.post('/components/get_components/' + collection_id, function(data){
+  //     //$("#cities").html(data);
+  //     console.log(data);
+  //   })
+  //   return false;
+  // });
 });
+

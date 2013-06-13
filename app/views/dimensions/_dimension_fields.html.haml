@@ -1,3 +1,9 @@
+- f.object.width  ||= "W"
+- f.object.height ||= "H"
+- f.object.depth  ||= "D"
+
+- unique_id = randomNum
+
 .removeable
   %h2
     Dimension Info
@@ -10,24 +16,26 @@
   .dimension-values
     .field
       = f.label :width, "Dimensions"
-      = f.text_field :width, value: "W"
+      = f.text_field :width
       x
     .field
       /= f.label :height
-      = f.text_field :height, value: "H"
+      = f.text_field :height
       x 
     .field
       /= f.label :depth
-      = f.text_field :depth, value: "D"
+      = f.text_field :depth
   
-  - unique_id = randomNum
   %div{id: "dimension-image-#{unique_id}", class: "images singular-image"}
     = f.fields_for :image, include_id: false do |image_builder|
       = render 'images/image_fields', f: image_builder
+      wut
       - if f.object.image.blank?
+        foo
         .addable
           = link_to_add_fields "Add Image", f, :image, "dimension-image-#{unique_id}"
       - else 
+        bar
         %div
           = link_to_add_fields "Add Image", f, :image, "dimension-image-#{unique_id}"
     

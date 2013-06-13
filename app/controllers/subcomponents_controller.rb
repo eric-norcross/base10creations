@@ -1,0 +1,2 @@
+class SubcomponentsController < ApplicationController
+end
