@@ -51,7 +51,7 @@ class SkusController < ApplicationController
 
     respond_to do |format|
       if @sku.save
-        format.html { redirect_to @sku, notice: 'Sku was successfully created.' }
+        format.html { redirect_to skus_url, notice: 'Sku was successfully created.' }
         format.json { render json: @sku, status: :created, location: @sku }
       else
         format.html { render action: "new" }

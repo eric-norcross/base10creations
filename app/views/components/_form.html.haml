@@ -30,7 +30,7 @@
   %fieldset
     %legend
       Sub-Components
-    #component-subcomponent.subcomponents.removeable
+    #component-subcomponent.subcomponents.removable
       = f.fields_for :subcomponents do |subcomponent_builder|
         = render 'subcomponents/subcomponent_fields', f: subcomponent_builder
     .addable
