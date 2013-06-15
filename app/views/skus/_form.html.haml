@@ -9,20 +9,8 @@
   %fieldset{id: "skus"}
     %legend
       Skus
-      
-    .field
-      = f.label :title
-      = f.text_field :title
 
-    .field
-      = f.label :finish_id, "Finish"
-      = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
-
-    #sku-image.images.removable
-      = f.fields_for :images do |image_builder|
-        = render 'images/image_fields', f: image_builder
-    .addable
-      = link_to_add_fields "Add Image", f, :images, "sku-image"
+    = render "sku_fields", f: f    
       
 
   .actions

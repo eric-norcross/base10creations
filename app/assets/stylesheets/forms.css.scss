@@ -73,18 +73,18 @@ form {
     }
   }
   
+  /*
   .remove-fields,
   .add-fields {
     display: none;
   }
+  */
 
-  .removable {
-    .remove-fields {
-      display: inline;
+  .remove-fields {
+    display: inline;
 
-      a:hover {
-        text-decoration: none;
-      }
+    a:hover {
+      text-decoration: none;
     }
   }
 
@@ -161,15 +161,15 @@ form {
     margin: 0 20px;
   }
 
-  .nested > div {
+  .nested > .addable-group > div {
     padding: 10px;
   }
 
-  .nested > div:nth-child(even) {
+  .nested > .addable-group > div.active:nth-of-type(even) {
     background: #f3f2ef
   }
 
-  .nested > div:nth-child(odd) {
+  .nested > .addable-group > div.active:nth-of-type(odd) {
     background: #e2e7ec
   }
 }

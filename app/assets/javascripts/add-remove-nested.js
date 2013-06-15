@@ -1,8 +1,9 @@
 $(document).on("click", "a.remove", function(event) {
-  var group = $(this).parent().parent();
+  var group = $(this).parent().parent().parent();
+  var container = $(this).parent().parent();
   var field = group.find("input[type=hidden]");
   field.val("1");
-  group.hide();
+  container.hide();
 
   console.log("triggering event from remove");
   group.parent().trigger('contentChanged', ["remove", group.parent()]);
@@ -11,12 +12,19 @@ $(document).on("click", "a.remove", function(event) {
 });
 
 $(document).on("click", ".add-fields", function(event) {
-  var container = $("#" + $(this).attr("data-container"));
+  var group = $("#" + $(this).attr("data-container"))
+  var container = group.find(" > .addable-group");
   var id = $(this).attr("data-id");
   var association = $(this).attr("data-association");
   var content = $(this).attr("data-content");
   var newId = new Date().getTime();
-  // var regexp = new RegExp("new_" + association, "g");
+
+  console.log("group: " + group.attr("class"))
+  console.log("container: " + container.attr("class"))
+  console.log("id: " + id)
+  console.log("association: " + association)
+  console.log("content: " + content);
+  //console.log("newId: " + newId)
 
   var regexp = new RegExp(id, "g");
 
@@ -27,42 +35,56 @@ $(document).on("click", ".add-fields", function(event) {
   console.log("newId: " + newId)
   content = content.replace(regexp, newId)
 
-  console.log("appending image field");
+  console.log("appending image field to " + container);
   container.append(content);
 
+  console.log(group)
+
   console.log("triggering event from add");
-  container.trigger('contentChanged', ["add", container]);
+  group.trigger('contentChanged', ["add", group]);
 
   return event.preventDefault();
 });
 
-$('.singular-image').on('contentChanged', function(event, toggler, container) {
+$(document).on('contentChanged', '.singular-addable', function(event, toggler, container){
   console.log("bind - catching event; event.toggler: " + toggler);
 
   if ($(this)[0] == $(container)[0]) {
-    console.log("yep")
-    var groups = $(".image-field-group");
+    var groups = $(this).find(".image-field-group");
+    console.log("Groups: " + groups)
 
     if (toggler == "add") {
+      //console.log("Showing add button")
+
+
       if (groups.length > 0) {
+        console.log("Groups length: " + groups.length)
         groups.each(function(index) {
+          console.log("Hiding group: " + groups[index])
           $(groups[index]).hide();
         })
 
+        console.log("Showing group[0]")
+
         $(groups[0]).show();
         $(groups[0]).find("input[type=hidden]").val(false);
-        $(this).parent().find(".add-fields").hide();
+
+        console.log("$(this).parent(): " + $(this).parent())
+
+        $(this).parent().find(".addable").hide();
       }
     } else if (toggler == "remove") {
-      $(this).parent().find(".add-fields").show();
+      // console.log("Removing elements")
+      //groups.parent().empty();
+      // console.log("Hiding add button")
+      $(this).parent().find(".addable").show();
     }
   } else {
     console.log("Elements did not match");
+    console.log("$(this)[0]: " + $(this)[0]);
+    console.log("$(container)[0]: " + $(container)[0]);
   }
 });
-
-
-
 
 
 $(document).ready(function() {

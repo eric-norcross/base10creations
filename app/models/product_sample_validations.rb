@@ -40,16 +40,18 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :dimensions, reject_if: lambda { |a| a[:width].blank? }, allow_destroy: true
 
   has_many                      :skus, dependent: :destroy
-  accepts_nested_attributes_for :skus, reject_if: lambda { |a| a[:title].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :skus, reject_if: :validate_skus , allow_destroy: true
   
   has_many                      :image, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :image, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
+  validates_presence_of         :skus
   validates_presence_of         :title
   validates_presence_of         :collection
   validates_presence_of         :skin
 
   before_save                   :create_name
+
 
   private
   
@@ -57,4 +59,12 @@ class Product < ActiveRecord::Base
     self.name = title.parameterize
     # self.name = component.title.parameterize
   end
+
+  def validate_skus(attributes)
+    attributes[:lskdjf].blank?
+    # if self.tasks.size < 1 || self.tasks.all?{|task| task.marked_for_destruction? }
+    #   errors.add_to_base("A list must have at least one task.")
+    # end
+  end
+  
 end

@@ -1,7 +1,12 @@
-.removable
-  %h2
-    Sku 
-    = link_to_remove_fields f
+- @unique_id = randomNum
+
+.active
+  - if local_assigns.has_key? :options
+    - if options[:header]
+      %h2
+        Sku Info
+        - if options[:removable]
+          = link_to_remove_fields f
 
   .field
     = f.label :finish_id, "Finish"
@@ -11,9 +16,9 @@
     = f.label :title, "Sku Number"
     = f.text_field :title
 
-  - unique_id = randomNum
-  %div{id: "sku-image-#{unique_id}", class: "images"}
-    = f.fields_for :images, include_id: false do |image_builder|
-      = render 'images/image_fields', f: image_builder
-  .addable
-    = link_to_add_fields "Add Images", f, :images, "sku-image-#{unique_id}"
+  %div{id: "sku-image-#{@unique_id}"}
+    .addable-group.images
+      = f.fields_for :images do |image_builder|
+        = render 'images/image_fields', f: image_builder
+    .addable
+      = link_to_add_fields({ name: "Add Images", f: f, association: :images, container: "sku-image-#{@unique_id}" })

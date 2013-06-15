@@ -1,5 +1,7 @@
-= form_for @product, :html => { :multipart => true } do |f|
+- @dimension_options = { header: true, removable: true }
+- @sku_options = { header: true, removable: true }
 
+= form_for @product, :html => { :multipart => true } do |f|
   - if @product.errors.any?
     #error-explanation
       %h1= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
@@ -26,39 +28,38 @@
       = f.fields_for :image do |image_builder|
         = render 'images/image_fields', f: image_builder
 
-  %fieldset{id: "features-fields"}
-    %legend
-      Features
+  / %fieldset{id: "features-fields"}
+  /   %legend
+  /     Features
 
-    .field
-      / = f.label :features
-      = f.cktext_area :features
+  /   .field
+  /     = f.cktext_area :features
 
   %fieldset{id: "dimensions-fields"}
     %legend
       Dimensions
 
     #dimensions.nested
-      = f.fields_for :dimensions, include_id: false do |dimension|
-        = render 'dimensions/dimension_fields', :f => dimension
-    .addable
-      = link_to_add_fields "Add Dimension", f, :dimensions, "dimensions", :image
+      .addable-group
+        = f.fields_for :dimensions, false do |dimension|
+          = render 'dimensions/dimension_fields', f: dimension, options: @dimension_options
+      .addable
+        = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :image, options: @dimension_options })
 
-  %fieldset{id: "style-fields"}
-    %legend
-      Style
+  / %fieldset{id: "style-fields"}
+  /   %legend
+  /     Style
 
-    .field
-      / = f.label :style
-      = f.cktext_area :style      
+  /   .field
+  /     = f.cktext_area :style      
   
-  %fieldset{id: "video-fields"}
-    %legend
-      Videos
+  / %fieldset{id: "video-fields"}
+  /   %legend
+  /     Videos
 
-    .field
-      = f.label :video, "YouTube URL"
-      = f.text_field :video
+  /   .field
+  /     = f.label :video, "YouTube URL"
+  /     = f.text_field :video
 
 
   %fieldset{id: "skus-fields"}
@@ -66,10 +67,11 @@
       Skus
 
     #skus.nested
-      = f.fields_for :skus, include_id: false do |sku_builder|
-        = render 'skus/sku_fields', :f => sku_builder
-    .addable
-      = link_to_add_fields "Add Skus", f, :skus, "skus", :images
+      .addable-group
+        = f.fields_for :skus do |sku_builder|
+          = render 'skus/sku_fields', f: sku_builder, options: @sku_options
+      .addable
+        = link_to_add_fields({ name: "Add Skus", f: f, container: "skus", association: :skus, child_association: :images, options: @sku_options })
 
   .actions
     = f.submit 'Save'

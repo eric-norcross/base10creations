@@ -1,5 +1,5 @@
 = form_tag("/products/2", method: "get") do
   .search-field
-    = text_field_tag "#{id}", "Find a dealer near you"
+    = text_field_tag "#{id}", "Find a dealer near you", {class: "clear-input", "data-message" => "Find a dealer near you"}
     /= submit_tag "Submit"
 

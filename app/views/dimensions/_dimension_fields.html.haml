@@ -2,12 +2,15 @@
 - f.object.height ||= "H"
 - f.object.depth  ||= "D"
 
-- unique_id = randomNum
+- @unique_id = randomNum
 
-.removable
-  %h2
-    Dimension Info
-    = link_to_remove_fields f
+.active
+  - if local_assigns.has_key? :options
+    - if options[:header]
+      %h2
+        Dimension Info
+        - if options[:removable]
+          = link_to_remove_fields f
 
   .field
     = f.label :title
@@ -16,26 +19,22 @@
   .dimension-values
     .field
       = f.label :width, "Dimensions"
-      = f.text_field :width
+      = f.text_field :width, {class: "clear-input", "data-message" => "W"}
       x
     .field
       /= f.label :height
-      = f.text_field :height
+      = f.text_field :height, {class: "clear-input", "data-message" => "H"}
       x 
     .field
       /= f.label :depth
-      = f.text_field :depth
+      = f.text_field :depth, {class: "clear-input", "data-message" => "D"}
   
-  %div{id: "dimension-image-#{unique_id}", class: "images singular-image"}
-    = f.fields_for :image, include_id: false do |image_builder|
-      = render 'images/image_fields', f: image_builder
-      wut
-      - if f.object.image.blank?
-        foo
-        .addable
-          = link_to_add_fields "Add Image", f, :image, "dimension-image-#{unique_id}"
-      - else 
-        bar
-        %div
-          = link_to_add_fields "Add Image", f, :image, "dimension-image-#{unique_id}"
+  %div{id: "dimension-image-#{@unique_id}", class: "singular-addable"}
+    .addable-group.images
+      = f.fields_for :image do |image_builder|
+        = render 'images/image_fields', f: image_builder
+
+    - if f.object.image.blank?
+      .addable
+        = link_to_add_fields({ name: "Add Image", f: f, association: :image, container: "dimension-image-#{@unique_id}" })
     

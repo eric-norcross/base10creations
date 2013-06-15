@@ -11,7 +11,6 @@ class Sku < ActiveRecord::Base
                                 :finish_id,
 
                                 ## has_many ##
-                                # :finish_ids,
 
                                 ## nested attributes ##
                                 :images_attributes
@@ -19,7 +18,7 @@ class Sku < ActiveRecord::Base
   belongs_to                    :product
   belongs_to                    :finish
 
-  has_many                      :images, as: :imageable, :dependent => :destroy
+  has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
   # validates_presence_of         :images
