@@ -1,25 +1,18 @@
 = form_for @finish, :html => { :multipart => true } do |f|
   - if @finish.errors.any?
     #error_explanation
-      %h1= "#{pluralize(@finish.errors.count, "error")} prohibited this finish from being saved:"
+      %h1
+        = "#{pluralize(@finish.errors.count, "error")} prohibited this finish from being saved:"
       %ul
         - @finish.errors.full_messages.each do |msg|
-          %li= msg
+          %li
+            = msg
 
   %fieldset{id: "finishes"}
-    .field
-      = f.label :title
-      = f.text_field :title
+    %legend
+      Finish
 
-    #finish-image.images.removable.singular-image
-      = f.fields_for :image, include_id: false do |image_builder|
-        = render 'images/image_fields', f: image_builder
-    - if @finish.image.blank?
-      .addable
-        = link_to_add_fields "Add Image", f, :image, "finish-image"
-    - else 
-      %div
-        = link_to_add_fields "Add Image", f, :image, "finish-image"
+    = render "finish_fields", f: f  
 
   .actions
     = f.submit 'Save'

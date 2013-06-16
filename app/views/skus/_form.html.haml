@@ -1,17 +1,18 @@
 = form_for @sku, :html => { :multipart => true } do |f|
   - if @sku.errors.any?
     #error_explanation
-      %h1= "#{pluralize(@sku.errors.count, "error")} prohibited this sku from being saved:"
+      %h1
+        = "#{pluralize(@sku.errors.count, "error")} prohibited this sku from being saved:"
       %ul
         - @sku.errors.full_messages.each do |msg|
-          %li= msg
+          %li
+            = msg
 
   %fieldset{id: "skus"}
     %legend
       Skus
 
     = render "sku_fields", f: f    
-      
 
   .actions
     = f.submit 'Save'

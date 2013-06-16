@@ -1,11 +1,10 @@
 $(document).ready(function(){
   $('#product-collection select').change(function() {
-    console.log("test");
-
     var collection_id = $("option:selected", this).val();
     $.post("/components/retrieve_components/" + collection_id, function(data){
-        $("#product-components").html(data);
-        console.log(data);
+      $("#product-component").empty();
+      $("#product-component").html(data);
+      console.log(data);
     });
   });
 

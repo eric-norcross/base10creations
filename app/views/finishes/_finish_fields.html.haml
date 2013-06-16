@@ -1,9 +1,23 @@
-#finishes
-  .field
-    = f.label :identifier, "Finish"
-    = f.text_field :identifier
-    = f.check_box :_destroy
+- @unique_id = randomNum
 
-  #finish-image.images.singular-image
-    = f.fields_for :image, include_id: false do |image_builder|
-      = render 'images/image_fields', f: image_builder
+.active
+  - if local_assigns.has_key? :options
+    - if options[:header]
+      %h2
+        Dimension Info
+        - if options[:removable]
+          = link_to_remove_fields f
+
+  .field
+    = f.label :title
+    = f.text_field :title
+
+  %div{id: "finish-image-#{@unique_id}", class: "singular-addable"}
+    .addable-group.images
+      = f.fields_for :image do |image_builder|
+        = render 'images/image_fields', f: image_builder
+
+    - if f.object.image.blank?
+      .addable
+        = link_to_add_fields({ name: "Add Image", f: f, association: :image, container: "finish-image-#{@unique_id}" })
+    

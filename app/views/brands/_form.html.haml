@@ -6,15 +6,19 @@
         - @brand.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    .column
-      .column-group
-        - Style.all.each do |style|
-          .checkbox
-            = check_box_tag "style#{style.id}", style.id, @brand.styles.include?(style), :name => 'brand[style_ids][]'
-            = label_tag "style#{style.id}", style.title
-  .field
-    = f.label :title
-    = f.text_field :title
-  .actions
-    = f.submit 'Save'
+  %fieldset
+    %legend
+      Brand
+
+    .field
+      .column
+        .column-group
+          - Style.all.each do |style|
+            .checkbox
+              = check_box_tag "style#{style.id}", style.id, @brand.styles.include?(style), :name => 'brand[style_ids][]'
+              = label_tag "style#{style.id}", style.title
+    .field
+      = f.label :title
+      = f.text_field :title
+    .actions
+      = f.submit 'Save'

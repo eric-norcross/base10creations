@@ -6,11 +6,12 @@
         - @category.errors.full_messages.each do |msg|
           %li= msg
 
-  / .field
-  /   = f.label :name
-  /   = f.text_field :name
-  .field
-    = f.label :title
-    = f.text_field :title
-  .actions
-    = f.submit 'Save'
+  %fieldset
+    %legend
+      Category
+      
+    .field
+      = f.label :title
+      = f.text_field :title
+    .actions
+      = f.submit 'Save'

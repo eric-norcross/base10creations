@@ -4,22 +4,35 @@
 = form_for @product, :html => { :multipart => true } do |f|
   - if @product.errors.any?
     #error-explanation
-      %h1= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
+      %h1
+        = "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
       %ul
         - @product.errors.full_messages.each do |msg|
-          %li= msg
+          %li
+            = msg
 
   %fieldset{id: "product-fileds"}
     %legend
       Product Family Info
+
     .field
       = f.label :skin_id, "Template"
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Template" }
+
     .field#product-collection
       = f.label :collection_id, "Collection"
       = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }
-    .field#product-components
-      = render '/components/select'
+
+    .field#product-component
+      = render '/components/select', f: f
+
+      / = f.label :component_id, "Component"
+      / - if f.object.collection_id
+      /   = f.select :component_id, Collection.find(f.object.collection_id).all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }
+      / - else 
+      /   = select_tag "product_component_id","product_component_id", { prompt: "Please select a Collection first", disabled: true }
+
+
     .field
       = f.label :title
       = f.text_field :title
@@ -28,12 +41,12 @@
       = f.fields_for :image do |image_builder|
         = render 'images/image_fields', f: image_builder
 
-  / %fieldset{id: "features-fields"}
-  /   %legend
-  /     Features
+  %fieldset{id: "features-fields"}
+    %legend
+      Features
 
-  /   .field
-  /     = f.cktext_area :features
+    .field
+      = f.cktext_area :features
 
   %fieldset{id: "dimensions-fields"}
     %legend
@@ -46,20 +59,20 @@
       .addable
         = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :image, options: @dimension_options })
 
-  / %fieldset{id: "style-fields"}
-  /   %legend
-  /     Style
+  %fieldset{id: "style-fields"}
+    %legend
+      Style
 
-  /   .field
-  /     = f.cktext_area :style      
+    .field
+      = f.cktext_area :style      
   
-  / %fieldset{id: "video-fields"}
-  /   %legend
-  /     Videos
+  %fieldset{id: "video-fields"}
+    %legend
+      Videos
 
-  /   .field
-  /     = f.label :video, "YouTube URL"
-  /     = f.text_field :video
+    .field
+      = f.label :video, "YouTube URL"
+      = f.text_field :video
 
 
   %fieldset{id: "skus-fields"}
