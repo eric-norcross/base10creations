@@ -1,3 +1,22 @@
+$(document).on("change", "#product-collection select", function(event) {
+  var collection_id = $("option:selected", this).val();
+  $.post("/components/retrieve_components/" + collection_id, function(data){
+    $("#product-component").empty();
+    $("#product-component").html(data);
+    //console.log(data);
+  });
+});
+
+$(document).on("change", "#product-component select", function(event) {
+  console.log("HITTING HERE")
+  var component_id = $("option:selected", this).val();
+  $.post("/subcomponents/retrieve_subcomponents/" + component_id, function(data){
+    $("#product-subcomponent").empty();
+    $("#product-subcomponent").html(data);
+    console.log(data);
+  });
+});
+
 $(document).on("click", "a.remove", function(event) {
   var group = $(this).parent().parent().parent();
   var container = $(this).parent().parent();

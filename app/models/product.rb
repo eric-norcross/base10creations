@@ -21,6 +21,7 @@ class Product < ActiveRecord::Base
 
                                 ## belongs_to ##
                                 :component_id,
+                                :subcomponent_id,
                                 :collection_id,
                                 :skin_id,
 
@@ -33,6 +34,7 @@ class Product < ActiveRecord::Base
                         
 
   belongs_to                    :component
+  belongs_to                    :subcomponent
   belongs_to                    :collection
   belongs_to                    :skin
 

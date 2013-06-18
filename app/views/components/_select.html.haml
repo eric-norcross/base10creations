@@ -1,12 +1,13 @@
-/ = f.object.collection.collection_components
-/ = f.object.component_id
-/ = f.object.collection_id
-
 = label_tag :product_component_id, "Component"
-- if f.object.component_id
-  - @components = Collection.find(f.object.collection_id).components
+
+- if defined?(f) && f.object.component_id
   / - @components = f.object.collection.collection_components
+  - @components = Collection.find(f.object.collection_id).components
   = f.select :component_id, @components.collect{|t| [t.title, t.id]}, { prompt: "Select a Component" }
-  / = collection_select(:product, :component_id, @components, :id, :title, prompt: "Select a Component" )
+
 - else
-  = select_tag "product[component_id]","product_component_id", { prompt: "Please select a Collection first", disabled: true }
+  - if defined?(@components)
+    = collection_select(:product, :component_id, @components, :id, :title, prompt: "Select a Component" )
+  
+  - else 
+    = select_tag "product[component_id]","product_component_id", { prompt: "Please select a Collection first", disabled: true }

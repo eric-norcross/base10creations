@@ -26,12 +26,8 @@
     .field#product-component
       = render '/components/select', f: f
 
-      / = f.label :component_id, "Component"
-      / - if f.object.collection_id
-      /   = f.select :component_id, Collection.find(f.object.collection_id).all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }
-      / - else 
-      /   = select_tag "product_component_id","product_component_id", { prompt: "Please select a Collection first", disabled: true }
-
+    .field#product-subcomponent
+      //= render '/subcomponents/select', f: f
 
     .field
       = f.label :title

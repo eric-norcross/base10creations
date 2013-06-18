@@ -30,6 +30,7 @@ Martinfurniture::Application.routes.draw do
   root to: 'pages#home'
 
   post '/components/retrieve_components/:id' => 'components#retrieve_components'
+  post '/subcomponents/retrieve_subcomponents/:id' => 'subcomponents#retrieve_subcomponents'
 
   # match '*path' => redirect('/') unless Rails.env.development?
 
