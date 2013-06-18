@@ -8,18 +8,16 @@
           %th Id
           %th Title
           %th Category
-          %th Name
           %th
       %tbody
-      - @components.each do |component|
-        %tr
-          %td= component.id
-          %td= component.title
-          %td= component.name
-          %td= component.category.title
-          %td= link_to 'Show', component
-          %td= link_to 'Edit', edit_component_path(component)
-          %td= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' }
+        - @components.each do |component|
+          %tr
+            %td= component.id
+            %td= component.title
+            %td= component.category.title
+            %td= link_to 'Show', component
+            %td= link_to 'Edit', edit_component_path(component)
+            %td= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
     = link_to 'Add New Component', new_component_path

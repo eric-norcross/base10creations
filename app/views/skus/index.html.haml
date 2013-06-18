@@ -12,14 +12,18 @@
           %th
           %th
       %tbody
-      - @skus.each do |sku|
-        %tr
-          %td= sku.title
-          %td= sku.finish.title
-          %td= sku.images.length
-          %td= link_to 'Show', sku
-          %td= link_to 'Edit', edit_sku_path(sku)
-          %td= link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }
+        - @skus.each do |sku|
+          %tr
+            %td= sku.title
+            %td
+              - if !sku.finish.image.blank?
+                = image_tag sku.finish.image[0].asset_url(:hint).to_s, {title: "#{sku.finish.title}"}
+              - else
+                = sku.finish.title
+            %td= sku.images.length
+            %td= link_to 'Show', sku
+            %td= link_to 'Edit', edit_sku_path(sku)
+            %td= link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
     = link_to 'Add a new Sku', new_sku_path

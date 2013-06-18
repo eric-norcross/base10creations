@@ -11,7 +11,7 @@
 #
 
 class Product < ActiveRecord::Base
-  default_scope order('id ASC')
+  default_scope order('products.id ASC')
   
   attr_accessible               :name, 
                                 :title,

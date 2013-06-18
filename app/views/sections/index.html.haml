@@ -7,17 +7,15 @@
         %tr
           %th Id
           %th Title
-          %th Name
           %th
       %tbody
-      - @sections.each do |section|
-        %tr
-          %td= section.id
-          %td= section.title
-          %td= section.name
-          %td= link_to 'Show', section
-          %td= link_to 'Edit', edit_section_path(section)
-          %td= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }
+        - @sections.each do |section|
+          %tr
+            %td= section.id
+            %td= section.title
+            %td= link_to 'Show', section
+            %td= link_to 'Edit', edit_section_path(section)
+            %td= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
     = link_to 'Add New Section', new_section_path

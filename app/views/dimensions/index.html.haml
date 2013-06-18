@@ -5,27 +5,29 @@
     %table
       %thead
         %tr
-          %th Name:
           %th Title:
           %th Width:
           %th Height:
           %th Depth:
-          /%th Image:
+          %th Image:
           %th
           %th
           %th
       %tbody
-      - @dimensions.each do |dimension|
-        %tr
-          %td= dimension.name
-          %td= dimension.title
-          %td= dimension.width
-          %td= dimension.height
-          %td= dimension.depth
-          /%td= image_tag dimension.image.asset_url(:thumb).to_s
-          %td= link_to 'Show', dimension
-          %td= link_to 'Edit', edit_dimension_path(dimension)
-          %td= link_to 'Destroy', dimension, method: :delete, data: { confirm: 'Are you sure?' }
+        - @dimensions.each do |dimension|
+          %tr
+            %td= dimension.title
+            %td= dimension.width
+            %td= dimension.height
+            %td= dimension.depth
+            %td
+              - if !dimension.image.blank?
+                = image_tag dimension.image[0].asset_url(:hint).to_s
+              - else
+                n/a
+            %td= link_to 'Show', dimension
+            %td= link_to 'Edit', edit_dimension_path(dimension)
+            %td= link_to 'Destroy', dimension, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
     = link_to 'Add a new Dimension', new_dimension_path

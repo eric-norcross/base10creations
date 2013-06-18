@@ -11,6 +11,14 @@
       Style
 
     .field
+      = f.label :title
+      = f.text_field :title
+
+  %fieldset
+    %legend
+      Collections
+      
+    .field
       .column
         .column-group
           - @collections = Collection.all
@@ -23,9 +31,7 @@
                       = check_box_tag "collection#{collection.id}", collection.id, @style.collections.include?(collection), :name => 'style[collection_ids][]'
                       = label_tag "collection#{collection.id}", collection.title
 
-    .field
-      = f.label :title
-      = f.text_field :title
+    
       
     .actions
       = f.submit 'Save'

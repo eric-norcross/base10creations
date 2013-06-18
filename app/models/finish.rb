@@ -1,5 +1,5 @@
 class Finish < ActiveRecord::Base
-  default_scope order('finishes.id ASC')
+  default_scope order('finishes.title ASC')
   attr_accessible               :name,
                                 :title,
 

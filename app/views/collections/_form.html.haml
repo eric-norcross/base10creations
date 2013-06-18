@@ -9,6 +9,14 @@
   %fieldset
     %legend
       Collection
+
+    .field
+      = f.label :title
+      = f.text_field :title
+
+  %fieldset
+    %legend
+      Components
       
     .field
       %h1 Categories:
@@ -22,19 +30,6 @@
                 .checkbox
                   = check_box_tag "component#{component.id}", component.id, @collection.components.include?(component), :name => 'collection[component_ids][]'
                   = label_tag "component#{component.id}", component.title
-    / .field
-    /   .column
-    /     .column-group
-    /       - @collections = Collection.all
-    /       - @collections.each_slice(@collections.length/3) do |column|
-    /         .column
-    /           .column-group
-    /             - column.each do |collection|
-    /               .checkbox
-    /                 = check_box_tag "collection#{collection.id}", collection.id, @style.collections.include?(collection), :name => 'style[collection_ids][]'
-    /                 = label_tag "collection#{collection.id}", collection.title
-    .field
-      = f.label :title
-      = f.text_field :title
-    .actions
-      = f.submit 'Save'
+    
+  .actions
+    = f.submit 'Save'

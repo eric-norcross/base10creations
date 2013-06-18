@@ -11,7 +11,7 @@
 #
 
 class Page < ActiveRecord::Base
-  default_scope order('id ASC')
+  default_scope order('pages.title ASC')
   
   attr_accessible       :name, 
                         :title, 

@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  default_scope order('id ASC')
+  default_scope order('categories.title ASC')
 
   # CATEGORY_KINDS = [["Product", 0],["Page", 1]]
 

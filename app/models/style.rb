@@ -1,5 +1,5 @@
 class Style < ActiveRecord::Base
-  default_scope order('styles.id ASC')
+  default_scope order('styles.title ASC')
 
   attr_accessible               :name, 
                                 :title,

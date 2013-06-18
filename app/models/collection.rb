@@ -1,5 +1,5 @@
 class Collection < ActiveRecord::Base
-  default_scope order('collections.id ASC')
+  default_scope order('collections.title ASC')
 
   attr_accessible               :name, 
                                 :title,

@@ -1,5 +1,5 @@
 class Subcomponent < ActiveRecord::Base
-  default_scope order('id ASC')
+  default_scope order('subcomponents.title ASC')
   
   attr_accessible       :name, 
                         :title,

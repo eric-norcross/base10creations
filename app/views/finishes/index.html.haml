@@ -7,15 +7,23 @@
         %tr
           %th Id
           %th Title
+          %th Image
+          %th
+          %th
           %th
       %tbody
-      - @finishes.each do |finish|
-        %tr
-          %td= finish.id
-          %td= finish.title
-          %td= link_to 'Show', finish
-          %td= link_to 'Edit', edit_finish_path(finish)
-          %td= link_to 'Destroy', finish, method: :delete, data: { confirm: 'Are you sure?' }
+        - @finishes.each do |finish|
+          %tr
+            %td= finish.id
+            %td= finish.title
+            %td
+              - if !finish.image.blank?
+                = image_tag finish.image[0].asset_url(:hint).to_s
+              - else
+                n/a
+            %td= link_to 'Show', finish
+            %td= link_to 'Edit', edit_finish_path(finish)
+            %td= link_to 'Destroy', finish, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
     = link_to 'Add a new Finish', new_finish_path

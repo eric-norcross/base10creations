@@ -39,14 +39,9 @@
       .addable-group.subcomponents
         = f.fields_for :subcomponents do |subcomponent_builder|
           = render 'subcomponents/subcomponent_fields', f: subcomponent_builder
-      .addable
+      .addable.button
         = link_to_add_fields({ name: "Add Subcomponents", f: f, association: :subcomponents, container: "component-subcomponent" })
 
-    / #component-subcomponent.subcomponents.removable
-    /   = f.fields_for :subcomponents do |subcomponent_builder|
-    /     = render 'subcomponents/subcomponent_fields', f: subcomponent_builder
-    / .addable
-    /   = link_to_add_fields "Add Subcomponent", f, :subcomponents, "component-subcomponent"
 
   .actions
     = f.submit 'Save'

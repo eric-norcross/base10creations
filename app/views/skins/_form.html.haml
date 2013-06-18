@@ -8,13 +8,17 @@
           %li
             = msg
 
-  .field
-    = f.label :title
-    = f.text_field :title
+  %fieldset
+    %legend
+      Skin
+      
+    .field
+      = f.label :title
+      = f.text_field :title
 
-  .field
-    = f.label :template
-    = f.text_field :template
+    .field
+      = f.label :template
+      = f.text_field :template
     
   .actions
     = f.submit 'Save'

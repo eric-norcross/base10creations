@@ -10,7 +10,7 @@
 #
 
 class Skin < ActiveRecord::Base
-  default_scope order('id ASC')
+  default_scope order('skins.title ASC')
   
   attr_accessible       :name, 
                         :title,

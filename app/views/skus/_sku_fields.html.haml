@@ -20,5 +20,5 @@
     .addable-group.images
       = f.fields_for :images do |image_builder|
         = render 'images/image_fields', f: image_builder
-    .addable
+    .addable.button
       = link_to_add_fields({ name: "Add Images", f: f, association: :images, container: "sku-image-#{@unique_id}" })

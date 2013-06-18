@@ -7,7 +7,8 @@
           %th Image:
     %tbody
       %tr
-        %td= @finish.name
+        %td
+          = @finish.name
         - if defined? @finish.image
           - @finish.image.each do |img|
             %td= image_tag img.asset_url(:thumb).to_s

@@ -17,7 +17,6 @@
       = f.fields_for :image do |image_builder|
         = render 'images/image_fields', f: image_builder
 
-    - if f.object.image.blank?
-      .addable
-        = link_to_add_fields({ name: "Add Image", f: f, association: :image, container: "finish-image-#{@unique_id}" })
+    .addable.button{class: ("hidden" unless f.object.image.blank?)}
+      = link_to_add_fields({ name: "Add Image", f: f, association: :image, container: "finish-image-#{@unique_id}" })
     

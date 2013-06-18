@@ -1,5 +1,5 @@
 class Subsection < ActiveRecord::Base
-  default_scope order('id ASC')
+  default_scope order('subsections.title ASC')
   
   attr_accessible       :page, 
                         :name, 

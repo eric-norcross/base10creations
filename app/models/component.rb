@@ -1,5 +1,5 @@
 class Component < ActiveRecord::Base
-  default_scope order('components.id ASC')
+  default_scope order('components.title ASC')
 
   attr_accessible               :name, 
                                 :title,

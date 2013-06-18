@@ -27,15 +27,23 @@
       = render '/components/select', f: f
 
     .field#product-subcomponent
-      //= render '/subcomponents/select', f: f
 
     .field
       = f.label :title
       = f.text_field :title
 
-    #product-image.images.singular-image
-      = f.fields_for :image do |image_builder|
-        = render 'images/image_fields', f: image_builder
+    #product-image.singular-addable
+      .addable-group.images
+        = f.fields_for :image do |image_builder|
+          = render 'images/image_fields', f: image_builder
+
+      - if f.object.image.blank?
+        .addable.button
+          = link_to_add_fields({ name: "Add Image", f: f, association: :image, container: "product-image" })
+    
+    / .images.singular-image
+    /   = f.fields_for :image do |image_builder|
+    /     = render 'images/image_fields', f: image_builder
 
   %fieldset{id: "features-fields"}
     %legend
@@ -52,7 +60,7 @@
       .addable-group
         = f.fields_for :dimensions, false do |dimension|
           = render 'dimensions/dimension_fields', f: dimension, options: @dimension_options
-      .addable
+      .addable.button
         = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :image, options: @dimension_options })
 
   %fieldset{id: "style-fields"}
@@ -79,7 +87,7 @@
       .addable-group
         = f.fields_for :skus do |sku_builder|
           = render 'skus/sku_fields', f: sku_builder, options: @sku_options
-      .addable
+      .addable.button
         = link_to_add_fields({ name: "Add Skus", f: f, container: "skus", association: :skus, child_association: :images, options: @sku_options })
 
   .actions

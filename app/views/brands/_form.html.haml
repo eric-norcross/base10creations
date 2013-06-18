@@ -11,14 +11,20 @@
       Brand
 
     .field
+      = f.label :title
+      = f.text_field :title
+
+  %fieldset
+    %legend
+      Styles
+
+    .field
       .column
         .column-group
           - Style.all.each do |style|
             .checkbox
               = check_box_tag "style#{style.id}", style.id, @brand.styles.include?(style), :name => 'brand[style_ids][]'
               = label_tag "style#{style.id}", style.title
-    .field
-      = f.label :title
-      = f.text_field :title
-    .actions
-      = f.submit 'Save'
+    
+  .actions
+    = f.submit 'Save'
