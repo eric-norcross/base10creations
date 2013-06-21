@@ -6,14 +6,14 @@ gem "jquery-rails", "~> 2.2.1"
 gem "haml-rails", "~> 0.3.4"
 gem "pg"
 gem "bcrypt-ruby", :require => "bcrypt"
-# gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem 'annotate', ">=2.5.0"
 gem "ckeditor"
-gem "rmagick"
+# gem "rmagick"
 gem "carrierwave"
+gem "mini_magick"
 gem "fog"
-gem 'jquery-fileupload-rails'
+# gem 'jquery-fileupload-rails'
 gem "font-awesome-rails"
 
 # gem 'friendly_id'
