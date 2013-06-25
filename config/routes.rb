@@ -1,5 +1,5 @@
 Martinfurniture::Application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Ckeditor::Engine => "/ckeditor"
 
   resources :finishes do
     resources :images
