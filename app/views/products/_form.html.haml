@@ -63,12 +63,12 @@
       .addable.button
         = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :image, options: @dimension_options })
 
-  %fieldset{id: "style-fields"}
-    %legend
-      Style
+  /%fieldset{id: "style-fields"}
+  /  %legend
+  /    Style
 
-    .field
-      = f.cktext_area :style      
+  /  .field
+  /    = f.cktext_area :style      
   
   %fieldset{id: "video-fields"}
     %legend

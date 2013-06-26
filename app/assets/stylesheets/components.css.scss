@@ -251,13 +251,17 @@
     }
 
     #style > div {
-      margin-top: 20px;
+      margin-top: 12px;
     }
 
     #style {
       p {
-        @include rem('font-size', 12px);
+        font-size: 12px;
         line-height: 15px;
+      }
+
+      > p:first-child {
+        font-family: $serif;
       }
 
       div { 
@@ -268,7 +272,7 @@
         }
 
         p {
-          color: $headerColor;
+          color: #767676;
           font-size: inherit;
           line-height: 14px;
 

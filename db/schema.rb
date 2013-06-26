@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620171315) do
+ActiveRecord::Schema.define(:version => 20130626181205) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -70,8 +70,9 @@ ActiveRecord::Schema.define(:version => 20130620171315) do
   create_table "collections", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
   end
 
   create_table "components", :force => true do |t|
@@ -167,9 +168,10 @@ ActiveRecord::Schema.define(:version => 20130620171315) do
   create_table "styles", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "brand_id"
+    t.text     "description"
   end
 
   create_table "subcomponents", :force => true do |t|
@@ -188,12 +190,6 @@ ActiveRecord::Schema.define(:version => 20130620171315) do
     t.datetime "updated_at", :null => false
     t.integer  "section_id"
     t.integer  "skin_id"
-  end
-
-  create_table "widgets", :force => true do |t|
-    t.text     "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end

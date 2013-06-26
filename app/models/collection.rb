@@ -3,7 +3,7 @@ class Collection < ActiveRecord::Base
 
   attr_accessible               :name, 
                                 :title,
-
+                                :description,
                                 ##belongs_to##
 
                                 ##has_many##

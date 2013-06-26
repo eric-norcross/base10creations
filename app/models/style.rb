@@ -3,7 +3,7 @@ class Style < ActiveRecord::Base
 
   attr_accessible               :name, 
                                 :title,
-                                # :component,
+                                :description,
 
                                 ##belongs_to##
                                 :brand_id,

@@ -104,9 +104,11 @@
                   = image_tag asset.asset_url(:thumb).to_s, alt: "Dimensions"
               
           #style.tab-pane
-            %p.serif
-              = raw @product.style       
-          
+            = raw @product.collection.description 
+            - @product.collection.styles.each do |style| 
+              %div   
+                = raw style.description 
+
           #videos.tab-pane
             %h1 Features of #{@product.collection.title} #{@sku.finish.title} 
             / #{@product.collection.category.title}
