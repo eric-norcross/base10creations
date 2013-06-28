@@ -38,6 +38,11 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
 
+    3.times do
+      figures = @page.figures.build
+      figures.image.build
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @page }

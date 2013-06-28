@@ -1,0 +1,18 @@
+= form_for @figure, :html => { :multipart => true } do |f|
+  - if @figure.errors.any?
+    #error_explanation
+      %h1 
+        = "#{pluralize(@figure.errors.count, "error")} prohibited this figure from being saved:"
+      %ul
+        - @figure.errors.full_messages.each do |msg|
+          %li 
+            = msg
+
+  %fieldset{id: "figures"}
+    %legend
+      Dimensions
+      
+    = render "figure_fields", f: f      
+
+  .actions
+    = f.submit 'Save'

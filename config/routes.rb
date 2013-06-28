@@ -15,7 +15,6 @@ Martinfurniture::Application.routes.draw do
   resources :collection_components
   resources :collection_styles
   resources :components
-  # resources :component_styles #NOT CURRENTLY USED
   resources :pages
   resources :products
   resources :sections

@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
   attr_accessible               :asset,
-                                :asset_cache
+                                :asset_cache,
+                                :link
 
   belongs_to                    :imageable, polymorphic: true
 

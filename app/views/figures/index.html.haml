@@ -1,0 +1,27 @@
+#admin
+  %h1 Available Figure
+
+  - if @figures
+    %table
+      %thead
+        %tr
+          %th Caption:
+          %th Image:
+          %th
+          %th
+          %th
+      %tbody
+        - @figures.each do |figure|
+          %tr
+            %td= figure.caption
+            %td
+              - if !figure.image.blank?
+                = image_tag figure.image[0].asset_url(:hint).to_s
+              - else
+                n/a
+            %td= link_to 'Show', figure
+            %td= link_to 'Edit', edit_figure_path(figure)
+            %td= link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add a new Figure', new_figure_path

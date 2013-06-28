@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626181205) do
+ActiveRecord::Schema.define(:version => 20130628164956) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -94,14 +94,16 @@ ActiveRecord::Schema.define(:version => 20130626181205) do
     t.string   "title"
   end
 
+  create_table "figures", :force => true do |t|
+    t.string   "caption"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "page_id"
+  end
+
   create_table "finishes", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "galleries", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20130626181205) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "asset"
+    t.text     "link"
   end
 
   add_index "images", ["imageable_id", "imageable_type"], :name => "index_images_on_imageable_id_and_imageable_type"
@@ -120,9 +123,8 @@ ActiveRecord::Schema.define(:version => 20130626181205) do
     t.string   "name"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "subsection_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "skin_id"
   end
 

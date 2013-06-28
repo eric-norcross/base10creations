@@ -13,27 +13,33 @@
 class Page < ActiveRecord::Base
   default_scope order('pages.title ASC')
   
-  attr_accessible       :name, 
-                        :title, 
-                        :content,
+  attr_accessible               :name, 
+                                :title, 
+                                :content,
 
-                        ##belongs_to##
-                        :skin_id, 
-                        :subsection_id
+                                ##belongs_to##
+                                :skin_id, 
 
-                        ##has_many##
+                                ## has_one ##
+
+                                ## has_many ##
+
+                                ## nested attributes ##
+                                :images_attributes,
+                                :figures_attributes
 
                         
+  belongs_to                    :skin
 
-  belongs_to            :skin
-  belongs_to            :subsection
+  has_many                      :images, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
-  #has_one :section,    :through => :subsection
-  
-  validates_presence_of :skin
-  #validates_presence_of :subssection #Pages can be stand alone
+  has_many                      :figures, dependent: :destroy
+  accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:caption].blank? && a[:image].blank?}, allow_destroy: true
 
-  before_save           :create_name
+  validates_presence_of         :skin
+
+  before_save                   :create_name
 
   private
   
