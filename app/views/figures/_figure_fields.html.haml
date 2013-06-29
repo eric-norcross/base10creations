@@ -12,6 +12,10 @@
     = f.label :caption
     = f.text_field :caption
 
+  .field
+    = f.label :link
+    = f.text_field :link
+
   %div{id: "figure-image-#{@unique_id}", class: "singular-addable"}
     .addable-group.images
       = f.fields_for :image do |image_builder|

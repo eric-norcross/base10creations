@@ -10,11 +10,13 @@ Martinfurniture::Application.routes.draw do
   end
 
   resources :brands
+  resources :carousels
   resources :categories
   resources :collections
   resources :collection_components
   resources :collection_styles
   resources :components
+  resources :figures
   resources :pages
   resources :products
   resources :sections

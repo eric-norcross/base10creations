@@ -1,4 +1,5 @@
 - @unique_id = randomNum
+- @carousel_options = { header: false, removable: false }
 - @figure_options = { header: true, removable: true }
 
 = form_for @page do |f|
@@ -27,17 +28,16 @@
       //= f.label :content
       = f.cktext_area :content
 
-  %fieldset{id: "image-fields"}
+  %fieldset{id: "carousels-fields"}
     %legend
-      Images
+      Carousel
 
-    .active
-      %div{id: "page-image-#{@unique_id}"}
-        .addable-group.images
-          = f.fields_for :images do |image_builder|
-            = render 'images/image_fields', f: image_builder
-        .addable.button
-          = link_to_add_fields({ name: "Add Images", f: f, association: :images, container: "page-image-#{@unique_id}" })
+    #carousels
+      .addable-group
+        = f.fields_for :carousels, false do |carousel|
+          = render 'carousels/carousel_fields', f: carousel, options: @carousel_options
+      / .addable.button
+      /   = link_to_add_fields({ name: "Add Carousel", f: f, association: :carousels, container: "carousels", child_association: :figures, options: @carousel_options })
 
 
   %fieldset{id: "figures-fields"}

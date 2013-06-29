@@ -38,6 +38,8 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
 
+    1.times { @page.carousels.build }
+
     3.times do
       figures = @page.figures.build
       figures.image.build
