@@ -4,9 +4,9 @@
     = f.file_field :asset
     = f.hidden_field :asset_cache
 
-  - if f.object.asset_url
+  - if f.object && f.object.asset && f.object.asset.filename
     .image-box
-      = image_tag f.object.asset_url(:hint).to_s
+      = cl_image_tag(f.object.asset.filename.to_s, :transformation => 'hint', alt: f.object.asset.filename.to_s)
 
   .remove-fields
     = link_to_remove_fields f

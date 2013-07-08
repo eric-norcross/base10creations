@@ -30,7 +30,7 @@ class Product < ActiveRecord::Base
                                 ## nested attributes ##
                                 :skus_attributes,
                                 :dimensions_attributes,
-                                :figure_attributes
+                                :images_attributes
                         
 
   belongs_to                    :component
@@ -44,8 +44,8 @@ class Product < ActiveRecord::Base
   has_many                      :skus, dependent: :destroy
   accepts_nested_attributes_for :skus, reject_if: lambda { |a| a[:title].blank? }, allow_destroy: true
   
-  has_many                      :figure, as: :figureable, dependent: :destroy
-  accepts_nested_attributes_for :figure, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
+  has_many                      :images, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
   validates_presence_of         :title
   validates_presence_of         :collection

@@ -17,10 +17,13 @@
             %td= sku.title
             %td
               - if !sku.finish.image.blank?
-                = image_tag sku.finish.image[0].asset_url(:hint).to_s, {title: "#{sku.finish.title}"}
+                = cl_image_tag(sku.finish.image[0].asset.filename.to_s, transformation: 'hint', alt: sku.finish.image[0].asset.filename.to_s, title: sku.finish.title)
               - else
                 = sku.finish.title
-            %td= sku.images.length
+            %td
+              - sku.images.each do |image|
+                = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: image.asset.filename.to_s)
+            / %td= sku.images.length
             %td= link_to 'Show', sku
             %td= link_to 'Edit', edit_sku_path(sku)
             %td= link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }

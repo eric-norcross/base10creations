@@ -15,8 +15,9 @@
         %td= @dimension.height
         %td= @dimension.depth
         - if defined? @dimension.image
-          - @dimension.image.each do |asset|
-            %td= image_tag asset.asset_url(:thumb).to_s
+          %td
+            - @dimension.image.each do |image|
+              = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @dimension.title)
 
   .links
     = link_to 'Edit', edit_dimension_path(@dimension)

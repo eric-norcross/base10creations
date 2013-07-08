@@ -11,7 +11,8 @@
           = @finish.name
         - if defined? @finish.image
           - @finish.image.each do |img|
-            %td= image_tag img.asset_url(:thumb).to_s
+            %td
+              = cl_image_tag(img.asset.filename.to_s, transformation: "thumb", alt: img.asset.filename.to_s)
 
   .links
     = link_to 'Edit', edit_finish_path(@finish)

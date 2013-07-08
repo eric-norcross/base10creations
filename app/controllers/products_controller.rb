@@ -20,7 +20,9 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
 
-    @product.image.build
+    1.times do
+      @product.images.build
+    end
 
     1.times do
       dimensions = @product.dimensions.build

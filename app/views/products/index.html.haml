@@ -7,9 +7,10 @@
         %tr
           %th Id
           %th Title
-          %th Skus
+          %th Collection
           %th Template
-          %th
+          %th Skus
+          / %th
           %th
           %th
 
@@ -18,12 +19,14 @@
           %tr
             %td= product.id
             %td= product.title
-            %td
-              - product.skus.each do |sku|
-                = link_to sku.title, sku
-            /%td= product.sku
+            %td= product.collection.title
             %td= product.skin.name
-            %td= link_to 'Show', product
+            %td
+              - product.skus.each_with_index do |sku, index|
+                = link_to sku.title, product_sku_path(product, sku)
+                - if index > 0 && index < (product.skus.length - 2)
+                  ,
+            / %td= link_to 'Show', product
             %td= link_to 'Edit', edit_product_path(product)
             %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
   
