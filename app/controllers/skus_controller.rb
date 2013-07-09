@@ -15,8 +15,8 @@ class SkusController < ApplicationController
   # GET /skus/1.json
   def show
     @sku = Sku.find(params[:id])
-    # @product = Product.find(params[:product_id])
     @product = Product.find(@sku.product.id)
+    @related = Product.where(collection_id: 1)
 
     render "#{@product.skin.template}"
 

@@ -1,4 +1,5 @@
 = render "/products/templates/breadcrumbs", product: @product, sku: @sku
+
 .page{:id=>"#{@product.skin.name}"}
   %article
     .gallery#product-views
@@ -120,116 +121,29 @@
               = render :partial => '/layouts/svg/arrow_left'
           .items-container
             %ul
-              %li
-                = image_tag "products/tribeca_loft/related/related1.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related2.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related3.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related4.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related5.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related5.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related5.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related5.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related5.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related5.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
-              %li
-                = image_tag "products/tribeca_loft/related/related5.jpg"
-                .product-info
-                  %hgroup
-                    %h1
-                      Tribeca Loft Black
-                    %h2
-                      Writing Table
-                    %h3
-                      sku #TL384
+              - @related.each_with_index do |product, index|
+                - unless product.id == @product.id
+                  %li
+                    - if !product.images.blank?
+                      = cl_image_tag(product.images[0].asset.filename.to_s, transformation: "related", alt: product.images[0].asset.filename.to_s, title: product.title)
+                    - else 
+                      = cl_image_tag(product.skus[0].images[0].asset.filename.to_s, transformation: "related", alt: product.skus[0].images[0].asset.filename.to_s, title: product.skus[0].title)
+                    .product-info
+                      %hgroup
+                        %h1 
+                          #{product.collection.title} #{product.skus[0].finish.title}
+                        %h2
+                          = product.title
+                        %h3
+                          sku ##{product.skus[0].title}
+
+                        / %h1
+                        /   Tribeca Loft Black
+                        / %h2
+                        /   Writing Table
+                        / %h3
+                        /   sku #TL384
+
           .control.next
             = link_to "#" do
               = render :partial => '/layouts/svg/arrow_right'
