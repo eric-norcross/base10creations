@@ -9,6 +9,12 @@ Martinfurniture::Application.routes.draw do
     resources :skus
   end
 
+  resources :compilations do
+    resources :products do
+      resources :skus
+    end
+  end
+
   resources :brands
   resources :carousels
   resources :categories
@@ -16,6 +22,7 @@ Martinfurniture::Application.routes.draw do
   resources :collection_components
   resources :collection_styles
   resources :components
+  resources :compilations
   resources :figures
   resources :pages
   resources :products
@@ -34,6 +41,7 @@ Martinfurniture::Application.routes.draw do
 
   post '/components/retrieve_components/:id' => 'components#retrieve_components'
   post '/subcomponents/retrieve_subcomponents/:id' => 'subcomponents#retrieve_subcomponents'
+  post '/products/retrieve_products/:id' => 'products#retrieve_products'
 
   # match '*path' => redirect('/') unless Rails.env.development?
 

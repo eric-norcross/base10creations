@@ -1,0 +1,13 @@
+- if defined?(f) && f.object.products
+  - f.object.products.each do |product|
+    .checkbox
+      = check_box_tag "product#{product.id}", product.id, f.object.products.include?(product), :name => 'compilation[product_ids][]'
+      = label_tag "product#{product.id}", product.title
+- else 
+  - if defined?(@products)
+    - @products.each do |product|
+      .checkbox
+        = check_box_tag "product#{product.id}", product.id, false, :name => 'compilation[product_ids][]'
+        = label_tag "product#{product.id}", product.title
+  - else 
+    Please select a "Collection" above.

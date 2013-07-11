@@ -1,0 +1,72 @@
+/ - @dimension_options = { header: true, removable: true }
+/ - @sku_options = { header: true, removable: true }
+
+= form_for @compilation, :html => { :multipart => true } do |f|
+  - if @compilation.errors.any?
+    #error-explanation
+      %h1
+        = "#{pluralize(@compilation.errors.count, "error")} prohibited this compilation from being saved:"
+      %ul
+        - @compilation.errors.full_messages.each do |msg|
+          %li
+            = msg
+
+  %fieldset{id: "compilation-fields"}
+    %legend
+      Compilation Info
+
+    .field
+      = f.label :skin_id, "Template"
+      = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Template" }
+
+    .field#compilation-collection
+      = f.label :collection_id, "Collection"
+      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }
+
+    .field#compilation-component
+      = render '/components/select', f: f
+
+    .field#compilation-subcomponent
+      - if defined?(f) && f.object.component_id
+        = render '/subcomponents/select', f: f
+
+    .field
+      = f.label :title
+      = f.text_field :title
+
+    #compilation-image.singular-addable
+      .addable-group.images
+        = f.fields_for :images do |image_builder|
+          = render 'images/image_fields', f: image_builder
+
+      - if f.object.images.blank?
+        .addable.button
+          = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "compilation-image" })
+
+  %fieldset
+    %legend
+      Products
+
+    .field
+      .column
+        .column-group#compilation-collection-products
+          / - if (@compilation.collection_id)
+          / - @collection_products = Product.where("collection_id = '#{1}'")
+          / - if !@collection_products.blank?
+          /   - @collection_products.each do |product|
+          /     .checkbox
+          /       = check_box_tag "product#{product.id}", product.id, @compilation.products.include?(product), :name => 'compilation[product_ids][]'
+          /       = label_tag "product#{product.id}", product.title
+          / - else 
+          /   Please select a "Collection" above.
+
+  / %fieldset{id: "features-fields"}
+  /   %legend
+  /     Features
+
+  /   .field
+  /     = f.cktext_area :features
+
+
+  .actions
+    = f.submit 'Save'

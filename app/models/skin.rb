@@ -12,26 +12,27 @@
 class Skin < ActiveRecord::Base
   default_scope order('skins.title ASC')
   
-  attr_accessible       :name, 
-                        :title,
-                        :template,
+  attr_accessible               :name, 
+                                :title,
+                                :template,
 
-                        ##belongs_to##
+                                ##belongs_to##
 
-                        ##has_many##
-                        :product, 
-                        :subsection, 
-                        :page
+                                ##has_many##
+                                :product_ids, 
+                                :subsection_ids, 
+                                :page_ids
 
 
-  has_many              :products
-  has_many              :susections
-  has_many              :pages
+  has_many                      :products
+  has_many                      :susections
+  has_many                      :pages
+  has_many                      :complilations
 
-  validates_presence_of :title
-  validates_presence_of :template
+  validates_presence_of         :title
+  validates_presence_of         :template
 
-  before_save           :create_name
+  before_save                   :create_name
 
   private
   

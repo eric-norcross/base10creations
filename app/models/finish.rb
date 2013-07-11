@@ -6,7 +6,7 @@ class Finish < ActiveRecord::Base
                                 ## belongs_to ##
 
                                 ## has_many ##
-                                :sku,
+                                :sku_ids,
 
                                 ## nested attributes ##
                                 :image_attributes

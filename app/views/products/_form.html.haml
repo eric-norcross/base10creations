@@ -11,7 +11,7 @@
           %li
             = msg
 
-  %fieldset{id: "product-fileds"}
+  %fieldset{id: "product-fields"}
     %legend
       Product Family Info
 
@@ -27,7 +27,9 @@
       = render '/components/select', f: f
 
     .field#product-subcomponent
-
+      - if defined?(f) && f.object.component_id
+        = render '/subcomponents/select', f: f
+        
     .field
       = f.label :title
       = f.text_field :title

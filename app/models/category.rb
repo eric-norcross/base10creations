@@ -12,7 +12,7 @@ class Category < ActiveRecord::Base
                         ##belongs_to##
 
                         ##has_many##
-                        :component
+                        :component_ids
 
 
 

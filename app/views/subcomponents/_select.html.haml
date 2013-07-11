@@ -1,5 +1,4 @@
 - if defined?(f) && f.object.subcomponent_id
-  / - @subcomponents = f.object.component.component_subcomponents
   - @subcomponents = Component.find(f.object.component_id).subcomponents
   
   = f.label :subcomponent_id

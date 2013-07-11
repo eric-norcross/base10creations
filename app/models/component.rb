@@ -24,6 +24,7 @@ class Component < ActiveRecord::Base
 
 
   has_many                      :products
+  has_many                      :complilations
 
   # has_many                    :component_styles
   # has_many                    :styles,                :through => :component_styles

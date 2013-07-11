@@ -24,6 +24,7 @@ class Product < ActiveRecord::Base
                                 :subcomponent_id,
                                 :collection_id,
                                 :skin_id,
+                                :compilation_id,
 
                                 ## has_many ##
 

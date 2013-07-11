@@ -1,0 +1,33 @@
+#admin
+  %h1 Listing Compilations
+
+  - if @compilations
+    %table
+      %thead
+        %tr
+          %th Title
+          %th Collection
+          %th Template
+          %th Compilations
+          / %th
+          %th
+          %th
+
+      %tbody
+        - @compilations.each do |compilation|
+          %tr
+            %td= compilation.title
+            %td= compilation.collection.title
+            %td= compilation.skin.name
+            %td
+              - compilation.products.each_with_index do |product, index|
+                - product.skus.each do |sku|
+                  = link_to product.title, compilation_product_sku_path(compilation, product, sku)
+                    - if index > 0 && index < (compilation.products.length - 2)
+                  ,
+            / %td= link_to 'Show', compilation
+            %td= link_to 'Edit', edit_compilation_path(compilation)
+            %td= link_to 'Destroy', compilation, method: :delete, data: { confirm: 'Are you sure?' }
+  
+  .links
+    = link_to 'New Compilation', new_compilation_path

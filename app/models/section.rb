@@ -7,7 +7,7 @@ class Section < ActiveRecord::Base
                         ##belongs_to##
 
                         ##has_many##
-                        :subsection
+                        :subsection_ids
 
 
 

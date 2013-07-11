@@ -8,11 +8,39 @@ $(document).on("change", "#product-collection select", function(event) {
 });
 
 $(document).on("change", "#product-component select", function(event) {
-  console.log("HITTING HERE")
+  console.log("this: " + this)
+  console.log("$(this): " + $(this));
   var component_id = $("option:selected", this).val();
   $.post("/subcomponents/retrieve_subcomponents/" + component_id, function(data){
     $("#product-subcomponent").empty();
     $("#product-subcomponent").html(data);
+    console.log(data);
+  });
+});
+
+$(document).on("change", "#compilation-collection select", function(event) {
+  var collection_id = $("option:selected", this).val();
+
+  $.post("/components/retrieve_components/" + collection_id, function(data){
+    $("#compilation-component").empty();
+    $("#compilation-component").html(data);
+    console.log(data);
+  });
+
+  $.post("/products/retrieve_products/" + collection_id, function(data){
+    $("#compilation-collection-products").empty();
+    $("#compilation-collection-products").html(data);
+    console.log(data);
+  });
+});
+
+$(document).on("change", "#compilation-component select", function(event) {
+  console.log("this: " + this)
+  console.log("$(this): " + $(this));
+  var component_id = $("option:selected", this).val();
+  $.post("/subcomponents/retrieve_subcomponents/" + component_id, function(data){
+    $("#compilation-subcomponent").empty();
+    $("#compilation-subcomponent").html(data);
     console.log(data);
   });
 });
