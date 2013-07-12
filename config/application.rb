@@ -55,6 +55,8 @@ module Martinfurniture
 
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 
+    config.sass.debug_info = true
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
