@@ -60,6 +60,7 @@
         color: $headerColor;
         @include rem('font-size', 14px);
         margin-top: 12px;
+        max-width: 375px;
       }
     }
 
