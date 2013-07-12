@@ -22,7 +22,7 @@ class ComponentsController < ApplicationController
     @components = @collections.components
     # render "/components/_select", :locals => { :components => @components }
 
-    render "components/_select", layout: false
+    render "components/_select", locals: { type: params[:type] }, layout: false
 
     # respond_to do |format|
     #   format.js

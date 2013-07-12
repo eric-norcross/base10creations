@@ -21,14 +21,14 @@
 
     .field#compilation-collection
       = f.label :collection_id, "Collection"
-      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }
+      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }, :"data-type" => :compilation
 
     .field#compilation-component
-      = render '/components/select', f: f
+      = render '/components/select', f: f, type: :compilation
 
     .field#compilation-subcomponent
       - if defined?(f) && f.object.component_id
-        = render '/subcomponents/select', f: f
+        = render '/subcomponents/select', f: f, type: :compilation
 
     .field
       = f.label :title
@@ -50,6 +50,8 @@
     .field
       .column
         .column-group#compilation-collection-products
+          - if defined?(f) && !f.object.products.blank?
+            = render '/products/select', f: f, type: :compilation
           / - if (@compilation.collection_id)
           / - @collection_products = Product.where("collection_id = '#{1}'")
           / - if !@collection_products.blank?

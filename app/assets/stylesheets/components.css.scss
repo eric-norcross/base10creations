@@ -5,7 +5,7 @@
   .gallery-image {
     margin-bottom: 20px;
 
-    .image-controls {
+    .image-controls { 
       display: inline-block;
       font-weight: bold;
       text-transform: uppercase;
@@ -186,9 +186,10 @@
     #features {
       ul {
         li {
-          @include rem('font-size', 12px);
+          font-size: 12px;
           margin-bottom: 13px;
           width: 230px;
+          line-height: 1.4;
         }
       }
 

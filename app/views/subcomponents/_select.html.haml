@@ -7,9 +7,9 @@
 - else
   - if defined?(@subcomponents)
     - if @subcomponents.length > 0
-      = label_tag :product_subcomponent_id, "Sub-Component"
-      = collection_select(:product, :subcomponent_id, @subcomponents, :id, :title, prompt: "Select a Sub-Component" )
+      = label_tag "#{type.to_s}_subcomponent_id", "Sub-Component"
+      = collection_select(type, :subcomponent_id, @subcomponents, :id, :title, prompt: "Select a Sub-Component" )
   
   - else 
-    = label_tag :product_subcomponent_id, "Sub-Component"
-    = select_tag "product[subcomponent_id]","product_subcomponent_id", { prompt: "Please select a Component first", disabled: true }
+    = label_tag "#{type.to_s}_subcomponent_id", "Sub-Component"
+    = select_tag "#{type.to_s}[subcomponent_id]","#{type.to_s}_subcomponent_id", { prompt: "Please select a Component first", disabled: true }

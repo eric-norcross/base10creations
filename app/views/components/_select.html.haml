@@ -1,13 +1,21 @@
-= label_tag :product_component_id, "Component"
+= label_tag "#{type.to_s}_component_id", "Component"
+
+/ - f.object.attributes.each do |name, value|
+/   = "#{name}: #{value}"
+/   %br
+
+/ - if defined?(type)
+/   = type
+/ - else
+/   laskdjfldksjf
 
 - if defined?(f) && f.object.component_id
-  / - @components = f.object.collection.collection_components
   - @components = Collection.find(f.object.collection_id).components
-  = f.select :component_id, @components.collect{|t| [t.title, t.id]}, { prompt: "Select a Component" }
+  = f.select :component_id, @components.collect{|t| [t.title, t.id]}, { prompt: "Select a Component" }, :"data-type" => type
 
 - else
   - if defined?(@components)
-    = collection_select(:product, :component_id, @components, :id, :title, prompt: "Select a Component" )
+    = collection_select(type, :component_id, @components, :id, :title, {prompt: "Select a Component" }, :"data-type" => type)
   
   - else 
-    = select_tag "product[component_id]","product_component_id", { prompt: "Please select a Collection first", disabled: true }
+    = select_tag "#{type.to_s}[component_id]","#{type.to_s}_component_id", { prompt: "Please select a Collection first", disabled: true, :"data-type" => type }
