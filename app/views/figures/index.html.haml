@@ -16,7 +16,7 @@
             %td= figure.caption
             %td
               - if !figure.image.blank?
-                = cl_image_tag(figure.image[0].asset.filename.to_s, transformation: "hint", alt: figure.image[0].asset.filename.to_s, title: figure.caption)
+                = cl_image_tag(figure.image.first.asset.filename.to_s, transformation: "hint", alt: figure.image.first.asset.filename.to_s, title: figure.caption)
               - else
                 n/a
             %td= link_to 'Show', figure

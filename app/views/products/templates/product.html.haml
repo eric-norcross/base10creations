@@ -6,10 +6,10 @@
     .gallery#product-views
       .gallery-image
         - if !@product.images.blank?
-          = cl_image_tag(@product.images[0].asset.filename.to_s, transformation: "gallery", alt: @product.images[0].asset.filename.to_s, title: @product.title)
+          = cl_image_tag(@product.images.first.asset.filename.to_s, transformation: "gallery", alt: @product.images.first.asset.filename.to_s, title: @product.title)
         - else 
           - if @sku
-            = cl_image_tag(@sku.images[0].asset.filename.to_s, transformation: "gallery", alt: @sku.images[0].asset.filename.to_s, title: @sku.title)
+            = cl_image_tag(@sku.images.first.asset.filename.to_s, transformation: "gallery", alt: @sku.images.first.asset.filename.to_s, title: @sku.title)
           - else 
             N/A
         %br
@@ -66,23 +66,32 @@
           #features.tab-pane.active
             %div
               = raw @product.features
+              %ul
+                - @product.brands.each do |brand|
+                  - if !brand.images.blank?
+                    %li= cl_image_tag(brand.images.first.asset.filename.to_s, alt: brand.title)
+                
             .finishes
-              %div
-                %h1
-                  Also available in
-                %ul
-                  - @product.skus.each do |sku|
-                    %li
-                      - if sku.finish.image[0]
-                        = link_to product_sku_path(@product, sku) do
-                          = cl_image_tag(sku.finish.image[0].asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
-                  
-              %div
-                %h1
-                  #{@product.collection.title} #{@sku.finish.title} is also available in
-                %ul
-                  %li
-                    = link_to "Entertainment", "#"
+              - if @product.skus.length > 1
+                %div
+                  %h1
+                    Also available in
+                  %ul
+                    - @product.skus.each do |sku|
+                      - if sku != @sku
+                        %li
+                          - if sku.finish.image.first
+                            = link_to product_sku_path(@product, sku) do
+                              = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
+
+              - if @product.categories.length > 1
+                %div
+                  %h1
+                    #{@product.collection.title} is also available in
+                  %ul
+                    - @product.categories.each do |category|
+                      %li
+                        = link_to category.title, category_path(category.id)
 
           #dimensions.tab-pane
             - @product.dimensions.each do |dimension|
@@ -126,17 +135,17 @@
                 - unless product.id == @product.id
                   %li
                     - if !product.images.blank?
-                      = cl_image_tag(product.images[0].asset.filename.to_s, transformation: "related", alt: product.images[0].asset.filename.to_s, title: product.title)
+                      = cl_image_tag(product.images.first.asset.filename.to_s, transformation: "related", alt: product.images.first.asset.filename.to_s, title: product.title)
                     - else 
-                      = cl_image_tag(product.skus[0].images[0].asset.filename.to_s, transformation: "related", alt: product.skus[0].images[0].asset.filename.to_s, title: product.skus[0].title)
+                      = cl_image_tag(product.skus.first.images.first.asset.filename.to_s, transformation: "related", alt: product.skus.first.images.first.asset.filename.to_s, title: product.skus.first.title)
                     .product-info
                       %hgroup
                         %h1 
-                          #{product.collection.title} #{product.skus[0].finish.title}
+                          #{product.collection.title} #{product.skus.first.finish.title}
                         %h2
                           = product.title
                         %h3
-                          sku ##{product.skus[0].title}
+                          sku ##{product.skus.first.title}
           .control.next
             = link_to "#" do
               = render :partial => '/layouts/svg/arrow_right'

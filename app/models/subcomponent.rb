@@ -11,7 +11,7 @@ class Subcomponent < ActiveRecord::Base
 
   belongs_to            :component
   
-  validates_presence_of :component
+  # validates_presence_of :component
   validates_presence_of :title
 
   before_save           :create_name

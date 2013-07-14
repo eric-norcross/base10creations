@@ -5,9 +5,9 @@
     .gallery#product-views
       .gallery-image
         - if !@product.images.blank?
-          = cl_image_tag(@product.images[0].asset.filename.to_s, transformation: "gallery", alt: @product.images[0].asset.filename.to_s, title: @product.title)
+          = cl_image_tag(@product.images.first.asset.filename.to_s, transformation: "gallery", alt: @product.images.first.asset.filename.to_s, title: @product.title)
         - else 
-          = cl_image_tag(@sku.images[0].asset.filename.to_s, transformation: "gallery", alt: @sku.images[0].asset.filename.to_s, title: @sku.title)
+          = cl_image_tag(@sku.images.first.asset.filename.to_s, transformation: "gallery", alt: @sku.images.first.asset.filename.to_s, title: @sku.title)
         %br
         .image-controls
           #enlarge
@@ -71,9 +71,9 @@
                 %ul
                   - @product.skus.each do |sku|
                     %li
-                      - if sku.finish.image[0]
+                      - if sku.finish.image.first
                         = link_to product_sku_path(@product, sku) do
-                          = cl_image_tag(sku.finish.image[0].asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
+                          = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
                   
               %div
                 %h1
@@ -125,17 +125,17 @@
                 - unless product.id == @product.id
                   %li
                     - if !product.images.blank?
-                      = cl_image_tag(product.images[0].asset.filename.to_s, transformation: "related", alt: product.images[0].asset.filename.to_s, title: product.title)
+                      = cl_image_tag(product.images.first.asset.filename.to_s, transformation: "related", alt: product.images.first.asset.filename.to_s, title: product.title)
                     - else 
-                      = cl_image_tag(product.skus[0].images[0].asset.filename.to_s, transformation: "related", alt: product.skus[0].images[0].asset.filename.to_s, title: product.skus[0].title)
+                      = cl_image_tag(product.skus.first.images.first.asset.filename.to_s, transformation: "related", alt: product.skus.first.images.first.asset.filename.to_s, title: product.skus.first.title)
                     .product-info
                       %hgroup
                         %h1 
-                          #{product.collection.title} #{product.skus[0].finish.title}
+                          #{product.collection.title} #{product.skus.first.finish.title}
                         %h2
                           = product.title
                         %h3
-                          sku ##{product.skus[0].title}
+                          sku ##{product.skus.first.title}
 
                         / %h1
                         /   Tribeca Loft Black

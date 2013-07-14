@@ -9,9 +9,13 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collection = Collection.find(params[:id])
+    #@collection = Collection.find(params[:id])
 
-    render "/collections/templates/collection"
+    @products = Product.where(:collection_id => params[:id]).order(:name)
+
+    render "pages/templates/list"
+
+    # render "/collections/templates/collection"
     # respond_to do |format|
     #   format.html # show.html.erb
     #   # format.json { render json: @collection }

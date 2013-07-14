@@ -39,14 +39,12 @@ class ComponentsController < ApplicationController
     end
   end
 
-  # def show
-  #   @component = Component.find(params[:id])
+  def show
+    # @component = Component.find(params[:id])
+    @products = Product.where(:component_id => params[:id]).order(:name)
 
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     # format.json { render json: @component }
-  #   end
-  # end
+    render "pages/templates/list"
+  end
 
   def new
     @component = Component.new

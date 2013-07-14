@@ -14,6 +14,15 @@
       = f.label :title
       = f.text_field :title
 
+    #brand-image.singular-addable
+      .addable-group.images
+        = f.fields_for :images do |image_builder|
+          = render 'images/image_fields', f: image_builder
+
+      - if f.object.images.blank?
+        .addable.button
+          = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "brand-image" })
+
   %fieldset
     %legend
       Styles

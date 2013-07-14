@@ -10,7 +10,7 @@
       .carousel-inner
         - @page.carousels[0].figures.each_with_index do |figure, index|
           .item{class: ("active" if index == 0)}
-            = cl_image_tag(figure.image[0].asset.filename.to_s, alt: figure.image[0].asset.filename.to_s)
+            = cl_image_tag(figure.image.first.asset.filename.to_s, alt: figure.image.first.asset.filename.to_s)
 
       / Carousel Nav
       / %a.carousel-control.left{"data-slide" => "prev", :href => "#main-carousel"} ‹
@@ -21,4 +21,4 @@
         - @page.figures.each do |figure|
           %li
             = link_to figure.link do
-              = image_tag figure.image[0].asset_url.to_s
+              = image_tag figure.image.first.asset_url.to_s

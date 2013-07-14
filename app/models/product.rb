@@ -16,7 +16,7 @@ class Product < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title,
                                 :features, 
-                                :style,
+                                # :style,
                                 :video,
 
                                 ## belongs_to ##
@@ -53,6 +53,23 @@ class Product < ActiveRecord::Base
   validates_presence_of         :skin
 
   before_save                   :create_name
+
+  def categories
+    @category_ids = collection.components.map{ |component| component.category_id } #collection_id is "Bradley"
+    @categories = Category.all(:conditions => { :id => @category_ids })
+    return @categories
+  end 
+
+  def brands
+    @brand_ids = collection.styles.map{|style| style.brand_id}
+    @brands = Brand.all(:conditions => { :id => @brand_ids })
+    return @brands
+  end
+
+  def self.skus_by_finish(finish_id)
+    @skus = Sku.where(:finish_id => finish_id);
+    return @skus
+  end
 
   private
   

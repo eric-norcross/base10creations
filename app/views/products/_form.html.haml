@@ -21,14 +21,14 @@
 
     .field#product-collection
       = f.label :collection_id, "Collection"
-      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }
+      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }, :"data-type" => :product
 
     .field#product-component
-      = render '/components/select', f: f
+      = render '/components/select', f: f, type: :product
 
     .field#product-subcomponent
       - if defined?(f) && f.object.component_id
-        = render '/subcomponents/select', f: f
+        = render '/subcomponents/select', f: f, type: :product
         
     .field
       = f.label :title

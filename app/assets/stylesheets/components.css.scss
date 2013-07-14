@@ -218,12 +218,16 @@
           }
         }
 
-        div:first-child {
+        div {
           border-width: 0 0 2px 0;
           border-color: $headerColor;
           border-style: solid;
 
           margin-bottom: 33px;
+        }
+
+        div:last-child {
+          border-width: 0;
         }
 
         img {

@@ -18,7 +18,7 @@
             %td= finish.title
             %td
               - if !finish.image.blank?
-                = cl_image_tag(finish.image[0].asset.filename.to_s, transformation: "hint", alt: finish.image[0].asset.filename.to_s, title: finish.title)
+                = cl_image_tag(finish.image.first.asset.filename.to_s, transformation: "hint", alt: finish.image.first.asset.filename.to_s, title: finish.title)
               - else
                 n/a
             %td= link_to 'Show', finish

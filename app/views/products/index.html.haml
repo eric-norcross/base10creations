@@ -6,9 +6,10 @@
       %thead
         %tr
           %th Id
-          %th Title
           %th Collection
+          %th Title
           %th Template
+          %th Style
           %th Skus
           / %th
           %th
@@ -18,9 +19,10 @@
         - @products.each do |product|
           %tr
             %td= product.id
-            %td= product.title
             %td= product.collection.title
+            %td= product.title
             %td= product.skin.name
+            %td= product.style
             %td
               - product.skus.each_with_index do |sku, index|
                 = link_to sku.title, product_sku_path(product, sku), { title: product.title }

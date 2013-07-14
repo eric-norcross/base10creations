@@ -22,7 +22,7 @@
             %td= dimension.depth
             %td
               - if !dimension.image.blank?
-                = cl_image_tag(dimension.image[0].asset.filename.to_s, transformation: "hint", alt: dimension.image[0].asset.filename.to_s, title: dimension.title)
+                = cl_image_tag(dimension.image.first.asset.filename.to_s, transformation: "hint", alt: dimension.image.first.asset.filename.to_s, title: dimension.title)
               - else
                 n/a
             %td= link_to 'Show', dimension

@@ -17,7 +17,7 @@
             %td= sku.title
             %td
               - if !sku.finish.image.blank?
-                = cl_image_tag(sku.finish.image[0].asset.filename.to_s, transformation: 'hint', alt: sku.finish.image[0].asset.filename.to_s, title: sku.finish.title)
+                = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'hint', alt: sku.finish.image.first.asset.filename.to_s, title: sku.finish.title)
               - else
                 = sku.finish.title
             %td
