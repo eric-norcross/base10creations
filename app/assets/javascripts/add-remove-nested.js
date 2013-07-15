@@ -1,5 +1,3 @@
-
-
 $(document).on("change", "[id$=-collection] select", function(event) {
   var type = $(this).attr("data-type");
   var collection_id = $("option:selected", this).val();
@@ -41,12 +39,13 @@ $(document).on("click", "a.remove", function(event) {
   return event.preventDefault();
 });
 
-$(document).on("click", ".add-fields", function(event) {
-  var group = $("#" + $(this).attr("data-container"))
+$(document).on("click", ".button", function(event) {
+  var a = $("a", $(this));
+  var group = $("#" + a.attr("data-container"))
   var container = group.find(" > .addable-group");
-  var id = $(this).attr("data-id");
-  var association = $(this).attr("data-association");
-  var content = $(this).attr("data-content");
+  var id = a.attr("data-id");
+  var association = a.attr("data-association");
+  var content = a.attr("data-content");
   var newId = new Date().getTime();
 
   console.log("group: " + group.attr("class"))
