@@ -1,56 +1,25 @@
--@sections = Section.all
-
 %footer.document
-  -@sections.each do |section|
-    %nav{:id=>"#{section.name}"}
-      %h1
-        = section.title
-      %ul
-        - if section.name == "stay-connected"
-          %li
-            = link_to "http://pinterest.com/martinfurniture/" do
-              = render :partial => '/layouts/svg/pinterest'
-          %li
-            = link_to "https://api.twitter.com/MartinFurniture" do
-              = render :partial => '/layouts/svg/twitter'
-          %li
-            = link_to "https://www.youtube.com/user/martinfurniture1?feature=results_main" do 
-              = render :partial => '/layouts/svg/youtube'
-        - else 
-          - section.subsections.each do |subsection|
+  - Section.all.each do |section|
+    - if section.parent_id.blank?
+      %nav{:id=>"#{section.name}"}
+        %h1
+          = section.title
+        %ul
+          - if section.name == "stay-connected"
             %li
-              = link_to subsection.title, subsection
-            
-  / %nav#let_us_help
-  /   %h1 Let Us Help
-  /   %ul
-  /     %li 
-  /       = link_to "Contact"
-  /     %li 
-  /       = link_to "Dealer Locator"
+              = link_to "http://pinterest.com/martinfurniture/" do
+                = render '/layouts/svg/pinterest'
+            %li
+              = link_to "https://api.twitter.com/MartinFurniture" do
+                = render '/layouts/svg/twitter'
+            %li
+              = link_to "https://www.youtube.com/user/martinfurniture1?feature=results_main" do 
+                = render '/layouts/svg/youtube'
+          - else 
+            - section.children.each do |subsection|
+              %li
+                = link_to subsection.title, subsection
 
-  / %nav#stay_connected
-  /   %h1 Stay Connected
-  /   %ul
-  /     %li 
-  /       = link_to "http://pinterest.com/martinfurniture/" do 
-  /         = image_tag "icons/pinterest.png", alt: "Pinterest"
-  /     %li 
-  /       = link_to "https://api.twitter.com/MartinFurniture" do 
-  /         = image_tag "icons/twitter.png", alt: "Twitter"
-  /     %li 
-  /       = link_to "https://www.youtube.com/user/martinfurniture1?feature=results_main" do 
-  /         = image_tag "icons/youtube.png", alt: "YouTube"
-
-  / %nav#sales_reps_and_dealers
-  /   %h1 Sales Reps & Dealers
-  /   %ul
-  /     %li 
-  /       = link_to "Sales Rep Login"
-  /     %li 
-  /       = link_to "Dealer Login"
-  /     %li 
-  /       = link_to "Webmail"
   %nav#rights
     %small 
       © 2013 Martin Home Furnishings 

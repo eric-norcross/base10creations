@@ -4,10 +4,12 @@
       %tr
         %th Name:
         %th Title:
+        %th Child Sections:
     %tbody
       %tr
         %td= @section.name
         %td= @section.title
+        / %td= @section.children.length
 
   .links
     = link_to 'Edit', edit_section_path(@section)

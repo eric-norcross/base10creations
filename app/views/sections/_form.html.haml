@@ -8,13 +8,38 @@
           %li
             = msg
 
+  / %fieldset
+  /   %legend
+  /     Parent Section
+
+  /   .field
+  /     .column
+  /       .column-group
+  /         - Section.all.each do |style|
+  /           .checkbox
+  /             = check_box_tag "style#{style.id}", style.id, @brand.styles.include?(style), :name => 'brand[style_ids][]'
+  /             = label_tag "style#{style.id}", style.title
+
   %fieldset
     %legend
-      Section
+      Sub Component
 
+    .field
+      = f.label :parent_id, "Parent Section"
+      = f.collection_select(:parent_id, Section.all, :id, :title, :prompt => "Select a Section")
+    
+    .field
+      = f.label :skin_id, "Template"
+      = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}
+    
     .field
       = f.label :title
       = f.text_field :title
-      
+    
+    .field
+      /= f.label :content
+      = f.cktext_area :content
+      / = f.cktext_area :content
+    
   .actions
     = f.submit 'Save'

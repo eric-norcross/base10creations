@@ -1,21 +1,37 @@
 class Section < ActiveRecord::Base
   default_scope order('sections.id ASC')
   
-  attr_accessible       :name, 
-                        :title,
+  attr_accessible               :name, 
+                                :title, 
+                                :content,
+                                :parent_id,
 
-                        ##belongs_to##
+                                ##belongs_to##
+                                :skin_id
 
-                        ##has_many##
-                        :subsection_ids
+                                ##has_many##
+  #                               :subsection_ids
 
 
 
-  has_many              :subsections
+  # has_many                      :subsections
 
-  validates_presence_of :title
+  belongs_to                    :skin
 
-  before_save           :create_name
+  validates_presence_of         :skin
+  validates_presence_of         :title
+
+  before_save                   :create_name
+
+  def parent
+    @parent = Section.find(parent_id)
+    return @parent
+  end
+
+  def children
+    @children = Section.all(:conditions => { :parent_id => id })
+    return @children
+  end
 
   private
   

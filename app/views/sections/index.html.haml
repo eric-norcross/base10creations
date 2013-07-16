@@ -7,12 +7,19 @@
         %tr
           %th Id
           %th Title
-          %th
+          %th Parent Section
+          %th Child Sections
       %tbody
         - @sections.each do |section|
           %tr
             %td= section.id
             %td= section.title
+            %th
+              - if section.parent_id
+                = section.parent.title
+              - else 
+                n/a
+            %td= section.children.length
             %td= link_to 'Show', section
             %td= link_to 'Edit', edit_section_path(section)
             %td= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }
