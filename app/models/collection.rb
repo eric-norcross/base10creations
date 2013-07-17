@@ -24,6 +24,11 @@ class Collection < ActiveRecord::Base
 
   before_save                   :create_name
 
+  def products
+    @products = Product.all(:collection_id => :id)
+    return @products
+  end
+
   private
   
   def create_name

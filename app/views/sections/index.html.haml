@@ -7,6 +7,7 @@
         %tr
           %th Id
           %th Title
+          %th Top Level Section
           %th Parent Section
           %th Child Sections
       %tbody
@@ -14,11 +15,8 @@
           %tr
             %td= section.id
             %td= section.title
-            %th
-              - if section.parent_id
-                = section.parent.title
-              - else 
-                n/a
+            %td= section.get_top_level.title
+            %td= section.parent.title
             %td= section.children.length
             %td= link_to 'Show', section
             %td= link_to 'Edit', edit_section_path(section)

@@ -72,7 +72,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
 
-    render "categories/index"
+    redirect_to categories_path
 
     # respond_to do |format|
     #   format.html { redirect_to categories_path(index) }

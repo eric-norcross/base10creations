@@ -16,6 +16,14 @@
       Product Family Info
 
     .field
+      = f.label :active
+      = f.check_box :active, {checked: checked(f.object.active)}
+
+    .field
+      = f.label :shown
+      = f.check_box :shown, {checked: checked(f.object.shown)}
+
+    .field
       = f.label :skin_id, "Template"
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Template" }
 

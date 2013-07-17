@@ -56,6 +56,10 @@ form {
     
   }
 
+  input[type=radio] {
+    /*float: left;*/
+  }
+
   fieldset {
     border-color: #D8D4CB;
     border-style: solid;
@@ -145,6 +149,16 @@ form {
 
   }
 
+  #section {
+    .level0 {
+      font-weight: bold;
+    }
+
+    option {
+      margin-top: 2px;
+    }
+  }
+
   .images {
     clear: both;
   }
@@ -193,10 +207,10 @@ form {
   }
 
   .nested > .addable-group > div.active:nth-of-type(even) {
-    background: #f3f2ef
+    background: $lightEven;
   }
 
   .nested > .addable-group > div.active:nth-of-type(odd) {
-    background: #e2e7ec
+    background: $lightOdd;
   }
 }

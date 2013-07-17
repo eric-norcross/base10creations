@@ -1,12 +1,13 @@
-- @sections = Section.all
-
 %nav#side
   %ul
-    - @sections.each do |section|
-      / = render "/subsections/subsection", locals: {subection: section}
-      %li
-        = link_to section.title, section
-        %ul
-          - section.subsections.each do |subsection|
-            %li
-              = link_to subsection.title, subsection
+    / - @sections = Section.find(params[:id]).children
+    / - @sections.each do |section|
+    /   - recursor(section)
+
+    / - recursor(Section.find(params[:id]).parent)
+
+    - @section = Section.find(params[:id])
+
+    - @children = @section.get_top_level(@section).children
+    - @children.each do |child|
+      - recursor(child)

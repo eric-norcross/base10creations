@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715175508) do
+ActiveRecord::Schema.define(:version => 20130716175849) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -161,6 +161,8 @@ ActiveRecord::Schema.define(:version => 20130715175508) do
     t.integer  "component_id"
     t.integer  "subcomponent_id"
     t.integer  "compilation_id"
+    t.boolean  "active"
+    t.boolean  "shown"
   end
 
   create_table "sections", :force => true do |t|

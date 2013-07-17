@@ -8,14 +8,11 @@ class StylesController < ApplicationController
     end
   end
 
-  # def show
-  #   @style = Style.find(params[:id])
-
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     # format.json { render json: @style }
-  #   end
-  # end
+  def show
+    @products = Style.products(params)
+    
+    render "pages/templates/list"
+  end
 
   def new
     @style = Style.new
@@ -24,28 +21,6 @@ class StylesController < ApplicationController
       format.html # new.html.erb
       # format.json { render json: @style }
     end
-  end
-
-  def show
-    # @component = Component.find(params[:id])
-    # @collection_styles = CollectionStyle.where(:style_id => params[:id])
-    @collection_styles = CollectionStyle.where(:style_id => params[:id])
-    @collection_styles = @collection_styles.map{|collection_style| collection_style.collection_id}
-
-    # Model.find(id_or_array_of_ids, options_hash)
-    # @products = Product.find_by_collection_id(@collection_styles)
-
-    # Client.all(:conditions => { :orders_count => [1,3,5] })
-    @products = Product.all(:conditions => { :collection_id => @collection_styles })
-    
-    # User.find_each do |user| NewsLetter.weekly_deliver(user) end
-
-
-    STDOUT << "collection_styles.length: #{@collection_styles.length}; "
-    STDOUT << "products.length: #{@products.length}; "
-
-
-    render "pages/templates/list"
   end
 
   def edit

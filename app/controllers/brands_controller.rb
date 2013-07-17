@@ -8,14 +8,11 @@ class BrandsController < ApplicationController
     end
   end
 
-  # def show
-  #   @brand = Brand.find(params[:id])
+  def show
+    @products = Brand.products(params)
 
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     # format.json { render json: @brand }
-  #   end
-  # end
+    render "pages/templates/list"
+  end
 
   def new
     @brand = Brand.new

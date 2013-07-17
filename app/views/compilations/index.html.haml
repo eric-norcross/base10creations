@@ -23,8 +23,6 @@
               - compilation.products.each_with_index do |product, index|
                 - product.skus.each do |sku|
                   = link_to sku.title, compilation_product_sku_path(compilation, product, sku), { title: product.title }
-                  - if index < (compilation.products.length - 1)
-                    ,
             / %td= link_to 'Show', compilation
             %td= link_to 'Edit', edit_compilation_path(compilation)
             %td= link_to 'Destroy', compilation, method: :delete, data: { confirm: 'Are you sure?' }

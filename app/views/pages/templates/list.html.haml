@@ -1,29 +1,30 @@
-= render "pages/templates/side_nav", :page => @page
+= render "pages/templates/side_nav"
 .page#list-view
   %article
     - if @products.length == 0
       No products are avaliable for your selection.
     %ul
       - @products.each do |product|
-        - product.skus.each do |sku|
-          %li
-            .list-view-image
-              = link_to product_sku_path(product, sku), { title: product.title } do
-                - if !sku.images.blank?
-                  = cl_image_tag(sku.images.first.asset.filename.to_s, transformation: "list", alt: sku.images.first.asset.filename.to_s, title: sku.title)
-                - else 
-                  N/A
-            .list-view-info
-              %h1.collection
-                = link_to product.collection.title, collection_path(product.collection.id)
-              %h2.component
-                = link_to product.component.title, component_path(product.component.id)
-              %h3.finish
-                sku#
-              %ul
-                %li
-                  = link_to sku.title, product_sku_path(product, sku)
-                / %li
-                /   = link_to "3701EK", product_sku_path(product, sku)
-                / %li
-                /   = link_to "301CK", product_sku_path(product, sku)
+        - if product.active && product.shown
+          - product.skus.each do |sku|
+            %li
+              .list-view-image
+                = link_to product_sku_path(product, sku), { title: product.title } do
+                  - if !sku.images.blank?
+                    = cl_image_tag(sku.images.first.asset.filename.to_s, transformation: "list", alt: sku.images.first.asset.filename.to_s, title: sku.title)
+                  - else 
+                    N/A
+              .list-view-info
+                %h1.collection
+                  = link_to product.collection.title, collection_path(product.collection.id)
+                %h2.component
+                  = link_to product.component.title, component_path(product.component.id)
+                %h3.finish
+                  sku#
+                %ul
+                  %li
+                    = link_to sku.title, product_sku_path(product, sku)
+                  / %li
+                  /   = link_to "3701EK", product_sku_path(product, sku)
+                  / %li
+                  /   = link_to "301CK", product_sku_path(product, sku)

@@ -16,6 +16,8 @@ class Product < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title,
                                 :features, 
+                                :active,
+                                :shown,
                                 # :style,
                                 :video,
 

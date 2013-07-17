@@ -8,25 +8,27 @@
           %li
             = msg
 
-  / %fieldset
+  / %fieldset#section_selection
   /   %legend
   /     Parent Section
 
-  /   .field
-  /     .column
-  /       .column-group
-  /         - Section.all.each do |style|
-  /           .checkbox
-  /             = check_box_tag "style#{style.id}", style.id, @brand.styles.include?(style), :name => 'brand[style_ids][]'
-  /             = label_tag "style#{style.id}", style.title
+  /   - @top_level_sections = Section.where(:parent_id => nil)
+  /   .column
+  /     - @top_level_sections.each do |section_selector|
+  /       %ul
+  /         = render "section_select", section_selector: section_selector, section: @section 
 
-  %fieldset
+
+  %fieldset{id: "section"}
     %legend
       Sub Component
 
     .field
       = f.label :parent_id, "Parent Section"
-      = f.collection_select(:parent_id, Section.all, :id, :title, :prompt => "Select a Section")
+      / = f.collection_select(:parent_id, Section.all, :id, :title, :prompt => "Select a Section")
+      %select{id: "section_parent_id", name: "section[parent_id]"}
+        - Section.where(:parent_id => nil).each do |section_selector|
+          = render "section_select", section_selector: section_selector, section: @section, level: -1
     
     .field
       = f.label :skin_id, "Template"

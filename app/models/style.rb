@@ -29,6 +29,14 @@ class Style < ActiveRecord::Base
 
   before_save                   :create_name
 
+  def self.products(params)
+    @collection_styles = CollectionStyle.where(:style_id => params[:id])
+    @collection_styles = @collection_styles.map{|collection_style| collection_style.collection_id}
+
+    @products = Product.all(:conditions => { :collection_id => @collection_styles })
+    return @products
+  end
+
   private
   
   def create_name

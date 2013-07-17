@@ -1,0 +1,25 @@
+/ %li
+/   - @checked = false
+/   - if section.parent_id == section_selector.id
+/     - @checked = true
+
+/   = radio_button_tag "section[parent_id]", section_selector.id, @checked
+/   = label_tag "section_parent_id_#{section_selector.id}", section_selector.title
+
+/   - if !section_selector.children.blank?
+/     %ul
+/       - section_selector.children.each do |child|
+/         = render "section_select", section_selector: child, section: section
+
+- level = level + 1
+- @selected = false
+- if section.parent_id == section_selector.id
+  - @selected = true
+
+%option{ value: section_selector.id, selected: @selected, class: "level#{level} level" }
+  - level.times do 
+    \&nbsp;&nbsp;&nbsp;
+  =section_selector.title
+- if !section_selector.children.blank?
+  - section_selector.children.each do |child|
+    = render "section_select", section_selector: child, section: section, level: level

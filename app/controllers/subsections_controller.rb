@@ -69,7 +69,7 @@ class SubsectionsController < ApplicationController
     @subsection = Subsection.find(params[:id])
     @subsection.destroy
 
-    render "subsections/index"
+    redirect_to subsections_path
 
     # respond_to do |format|
     #   format.html { redirect_to subsections_path(index) }

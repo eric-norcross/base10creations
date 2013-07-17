@@ -24,8 +24,22 @@ class Section < ActiveRecord::Base
   before_save                   :create_name
 
   def parent
-    @parent = Section.find(parent_id)
+    @pid = parent_id
+
+    if @pid.blank?
+      @pid = id
+    end
+
+    @parent = Section.find(@pid)
     return @parent
+  end
+
+  def get_top_level(section = self)
+    if section.parent_id
+      section = section.get_top_level(Section.find(section.parent_id))
+    end
+
+    return section
   end
 
   def children

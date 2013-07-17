@@ -27,7 +27,20 @@
         td {
           font-size: 11px;
           padding: 5px;
+          max-width: 200px;
         }
+
+        td *:after {
+          content: ",";
+        }
+
+        td *:last-child:after {
+          content: "";
+        } 
+      }
+
+      tr:hover {
+        background-color: $lightOdd;
       }
     }
   }
