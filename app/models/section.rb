@@ -36,7 +36,7 @@ class Section < ActiveRecord::Base
 
   def get_top_level(section = self)
     if section.parent_id && section.parent_id != 0
-      section = section.get_top_level(Section.find(section.parent_id))
+      section = get_top_level(Section.find(section.parent_id))
     end
 
     return section
@@ -46,6 +46,8 @@ class Section < ActiveRecord::Base
     @children = Section.all(:conditions => { :parent_id => id })
     return @children
   end
+
+
 
   private
   

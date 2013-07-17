@@ -8,6 +8,6 @@
 
     - @section = Section.find(params[:id])
 
-    - @children = @section.get_top_level(@section).children
+    - @children = @section.get_top_level.children
     - @children.each do |child|
       = render "section_side_nav", element: child
