@@ -1,0 +1,6 @@
+%li
+  = link_to element.title, element
+  - if !element.children.blank?
+    %ul
+      - element.children.each do |child|
+        = render "section_side_nav", element: child

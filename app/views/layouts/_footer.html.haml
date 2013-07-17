@@ -1,6 +1,6 @@
 %footer.document
   - Section.all.each do |section|
-    - if section.parent_id.blank?
+    - if section.parent_id.blank? || section.parent_id == 0
       %nav{:id=>"#{section.name}"}
         %h1
           = section.title

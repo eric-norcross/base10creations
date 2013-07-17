@@ -26,7 +26,7 @@ class Section < ActiveRecord::Base
   def parent
     @pid = parent_id
 
-    if @pid.blank?
+    if @pid.blank? || @pid == 0
       @pid = id
     end
 
@@ -35,7 +35,7 @@ class Section < ActiveRecord::Base
   end
 
   def get_top_level(section = self)
-    if section.parent_id
+    if section.parent_id && section.parent_id != 0
       section = section.get_top_level(Section.find(section.parent_id))
     end
 

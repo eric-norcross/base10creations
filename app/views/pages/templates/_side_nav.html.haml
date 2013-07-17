@@ -10,4 +10,4 @@
 
     - @children = @section.get_top_level(@section).children
     - @children.each do |child|
-      - recursor(child)
+      = render "section_side_nav", element: child
