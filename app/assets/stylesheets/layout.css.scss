@@ -49,6 +49,14 @@
   text-align: right;
 }
 
+* span.comma:after {
+  content: ",";
+}
+
+* span.comma:last-child:after {
+  content: "";
+}
+
 html { 
   /*
   background: asset-url('background.jpg', image) no-repeat center center fixed; 
@@ -213,6 +221,15 @@ header.document {
                   a:hover {
                     color: $rolloverColor;
                     text-decoration: underline;
+                  }
+
+                  ul {
+                    margin-left: 15px;
+                    margin-bottom: 0px;
+
+                    li:first-child {
+                      margin-top: 5px;
+                    }
                   }
                 }
               }

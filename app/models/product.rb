@@ -22,13 +22,13 @@ class Product < ActiveRecord::Base
                                 :video,
 
                                 ## belongs_to ##
-                                :component_id,
-                                :subcomponent_id,
+                                # :subcomponent_id,
                                 :collection_id,
                                 :skin_id,
                                 :compilation_id,
 
                                 ## has_many ##
+                                :component_ids,
 
                                 ## nested attributes ##
                                 :skus_attributes,
@@ -40,6 +40,9 @@ class Product < ActiveRecord::Base
   belongs_to                    :subcomponent
   belongs_to                    :collection
   belongs_to                    :skin
+
+  has_many                      :product_components,    :dependent  => :destroy
+  has_many                      :components,            :through    => :product_components
 
   has_many                      :dimensions, dependent: :destroy
   accepts_nested_attributes_for :dimensions, reject_if: lambda { |a| a[:width].blank? || a[:height].blank? || a[:depth].blank? }, allow_destroy: true
@@ -55,6 +58,12 @@ class Product < ActiveRecord::Base
   validates_presence_of         :skin
 
   before_save                   :create_name
+
+  # def components
+  #   @component_ids = components.map{ |component| component.component_id } #collection_id is "Bradley"
+  #   @components = Component.all(:conditions => { :id => @component_ids })
+  #   return @components
+  # end
 
   def categories
     @category_ids = collection.components.map{ |component| component.category_id } #collection_id is "Bradley"

@@ -1,4 +1,5 @@
-= render "pages/templates/side_nav"
+= render "pages/templates/side_nav", parent: @side_nav_element
+
 .page#list-view
   %article
     - if @products.length == 0
@@ -18,12 +19,14 @@
                 %h1.collection
                   = link_to product.collection.title, collection_path(product.collection.id)
                 %h2.component
-                  = link_to product.component.title, component_path(product.component.id)
+                  - product.components.each do |component|
+                    %span.comma= link_to component.title, component_path(component.id)
                 %h3.finish
                   sku#
                 %ul
                   %li
                     = link_to sku.title, product_sku_path(product, sku)
+                  // Still waiting to see if we are listing each product or each sku
                   / %li
                   /   = link_to "3701EK", product_sku_path(product, sku)
                   / %li

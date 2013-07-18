@@ -8,6 +8,12 @@
           %th Id
           %th Title
           %th Category
+          %th Top Level Section
+          %th Parent Section
+          %th Child Sections
+
+          %th
+          %th
           %th
       %tbody
         - @components.each do |component|
@@ -15,6 +21,10 @@
             %td= component.id
             %td= component.title
             %td= component.category.title
+            %td= component.get_top_level.title
+            %td= component.parent.title
+            %td= component.children.length
+            
             %td= link_to 'Show', component
             %td= link_to 'Edit', edit_component_path(component)
             %td= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' }

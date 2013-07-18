@@ -10,6 +10,10 @@
           %th Top Level Section
           %th Parent Section
           %th Child Sections
+
+          %th
+          %th
+          %th
       %tbody
         - @sections.each do |section|
           %tr
@@ -18,6 +22,7 @@
             %td= section.get_top_level.title
             %td= section.parent.title
             %td= section.children.length
+            
             %td= link_to 'Show', section
             %td= link_to 'Edit', edit_section_path(section)
             %td= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }

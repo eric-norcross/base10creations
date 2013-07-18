@@ -1,13 +1,10 @@
 %nav#side
   %ul
-    / - @sections = Section.find(params[:id]).children
-    / - @sections.each do |section|
-    /   - recursor(section)
+    / - @section = Section.find(params[:id])
 
-    / - recursor(Section.find(params[:id]).parent)
+    / - @children = @section.get_top_level.children
+    / - @children.each do |child|
+    /   = render "sections/section_side_nav", element: child
 
-    - @section = Section.find(params[:id])
-
-    - @children = @section.get_top_level.children
-    - @children.each do |child|
-      = render "section_side_nav", element: child
+    - parent.get_top_level.children.each do |child|
+      = render "sections/section_side_nav", element: child

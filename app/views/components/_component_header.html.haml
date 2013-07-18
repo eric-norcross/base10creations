@@ -1,6 +1,7 @@
 %li
+  / = link_to component.title, component
   = link_to element.title, element
   - if !element.children.blank?
     %ul
       - element.children.each do |child|
-        = render "sections/section_side_nav", element: child
+        = render "components/component_header", element: child

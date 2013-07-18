@@ -30,11 +30,11 @@
           max-width: 200px;
         }
 
-        td *:after {
+        td span:after {
           content: ",";
         }
 
-        td *:last-child:after {
+        td span:last-child:after {
           content: "";
         } 
       }

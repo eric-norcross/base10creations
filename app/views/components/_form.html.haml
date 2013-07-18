@@ -16,31 +16,30 @@
       = f.label :category_id, "Category"
       = f.collection_select(:category_id, Category.all, :id, :title, :prompt => "Select a Category")
     
-    //This will probably be removed
-    / .field.hidden
-    /   .column
-    /     .column-group
-    /       - @brands = Brand.all
-    /       .column
-    /         .column-group
-    /           - @brands.each do |brand|
-    /             .checkbox
-    /              = check_box_tag "brand#{brand.id}", brand.id, @component.brands.include?(brand), :name => 'component[brand_ids][]'
-    /              = label_tag "brand#{brand.id}", brand.title
+    .field
+      = f.label :parent_id, "Parent Component"
+      / = f.collection_select(:parent_id, Component.all, :id, :title, :prompt => "Select a Component")
+      %select{id: "component_parent_id", name: "component[parent_id]"}
+        %option
+          New Top Level Component
+        %optgroup{label: "Existing Components"}
+          - Component.where(:parent_id => nil).each do |component_selector|
+            = render "component_select", component_selector: component_selector, component: @component, level: -1
+
     .field
       = f.label :title
       = f.text_field :title
 
-  %fieldset
-    %legend
-      Sub-Components
+  / %fieldset
+  /   %legend
+  /     Sub-Components
 
-    #component-subcomponent
-      .addable-group.subcomponents
-        = f.fields_for :subcomponents do |subcomponent_builder|
-          = render 'subcomponents/subcomponent_fields', f: subcomponent_builder
-      .addable.button
-        = link_to_add_fields({ name: "Add Subcomponents", f: f, association: :subcomponents, container: "component-subcomponent" })
+  /   #component-subcomponent
+  /     .addable-group.subcomponents
+  /       = f.fields_for :subcomponents do |subcomponent_builder|
+  /         = render 'subcomponents/subcomponent_fields', f: subcomponent_builder
+  /     .addable.button
+  /       = link_to_add_fields({ name: "Add Subcomponents", f: f, association: :subcomponents, container: "component-subcomponent" })
 
 
   .actions

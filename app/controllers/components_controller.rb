@@ -41,7 +41,11 @@ class ComponentsController < ApplicationController
 
   def show
     # @component = Component.find(params[:id])
-    @products = Product.where(:component_id => params[:id]).order(:name)
+    @side_nav_element = Component.find(params[:id])
+    @product_components = ProductComponent.where(:component_id => params[:id])
+    @product_ids = @product_components.map{ |product_component| product_component.product_id } #collection_id is "Bradley"
+    # @products = Product.all(:conditions => { :id => @product_ids })
+    @products = Product.where(:id => @product_ids)
 
     render "pages/templates/list"
   end

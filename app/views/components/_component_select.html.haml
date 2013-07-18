@@ -1,0 +1,25 @@
+/ %li
+/   - @checked = false
+/   - if component.parent_id == component_selector.id
+/     - @checked = true
+
+/   = radio_button_tag "component[parent_id]", component_selector.id, @checked
+/   = label_tag "component_parent_id_#{component_selector.id}", component_selector.title
+
+/   - if !component_selector.children.blank?
+/     %ul
+/       - component_selector.children.each do |child|
+/         = render "component_select", component_selector: child, component: component
+
+- level = level + 1
+- @selected = false
+- if component.parent_id == component_selector.id
+  - @selected = true
+
+%option{ value: component_selector.id, selected: @selected, class: "level#{level} level" }
+  - level.times do 
+    \&nbsp;&nbsp;&nbsp;
+  = component_selector.title
+- if !component_selector.children.blank?
+  - component_selector.children.each do |child|
+    = render "components/component_select", component_selector: child, component: component, level: level

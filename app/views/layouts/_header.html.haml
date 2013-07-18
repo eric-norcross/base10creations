@@ -17,11 +17,13 @@
               .column
                 - column.each do |category|
                   %h1 
-                    =category.title
+                    = category.title
                   %ul
                     - category.components.each do |component|
-                      %li
-                        = link_to component.title, component
+                      / %li
+                      /   = link_to component.title, component
+                      - if component.parent_id.blank? || component.parent_id == 0 || component.get_top_level.category_id != category.id
+                        = render "components/component_header", element: component
 
       %li#collections
         = link_to "Collections", "#", :class => ( 'active' if @active == "collections" )

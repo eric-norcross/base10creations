@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716175849) do
+ActiveRecord::Schema.define(:version => 20130718000752) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130716175849) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "category_id"
+    t.integer  "parent_id"
   end
 
   create_table "dimensions", :force => true do |t|
@@ -148,6 +149,13 @@ ActiveRecord::Schema.define(:version => 20130716175849) do
     t.integer  "skin_id"
   end
 
+  create_table "product_components", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "product_id"
+    t.integer  "component_id"
+  end
+
   create_table "products", :force => true do |t|
     t.text     "name"
     t.text     "title"
@@ -158,7 +166,6 @@ ActiveRecord::Schema.define(:version => 20130716175849) do
     t.text     "style"
     t.string   "video"
     t.text     "features"
-    t.integer  "component_id"
     t.integer  "subcomponent_id"
     t.integer  "compilation_id"
     t.boolean  "active"

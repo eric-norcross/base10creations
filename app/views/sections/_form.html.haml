@@ -10,14 +10,14 @@
 
   %fieldset{id: "section"}
     %legend
-      Sub Component
+      Section
 
     .field
       = f.label :parent_id, "Parent Section"
       / = f.collection_select(:parent_id, Section.all, :id, :title, :prompt => "Select a Section")
       %select{id: "section_parent_id", name: "section[parent_id]"}
         %option
-          Top Level Section
+          New Top Level Section
         - Section.where(:parent_id => nil).each do |section_selector|
           = render "section_select", section_selector: section_selector, section: @section, level: -1
     
