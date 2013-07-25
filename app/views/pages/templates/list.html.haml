@@ -1,4 +1,4 @@
-= render "pages/templates/side_nav", parent: @side_nav_element
+= render "pages/templates/side_nav", elements: @side_nav_elements
 
 .page#list-view
   %article
@@ -6,28 +6,25 @@
       No products are avaliable for your selection.
     %ul
       - @products.each do |product|
-        - if product.active && product.shown
-          - product.skus.each do |sku|
-            %li
-              .list-view-image
-                = link_to product_sku_path(product, sku), { title: product.title } do
-                  - if !sku.images.blank?
-                    = cl_image_tag(sku.images.first.asset.filename.to_s, transformation: "list", alt: sku.images.first.asset.filename.to_s, title: sku.title)
-                  - else 
+        - if product.show
+          %li
+            .list-view-image
+              = link_to product.path, { title: product.title } do
+                - if !product.images.blank?
+                  = cl_image_tag(product.images.first.asset.filename.to_s, transformation: "list", alt: product.images.first.asset.filename.to_s, title: product.title)
+                - else 
+                  - if !product.skus.blank? && !product.skus.first.images.blank?
+                    = cl_image_tag(product.skus.first.images.first.asset.filename.to_s, transformation: "list", alt: product.skus.first.images.first.asset.filename.to_s, title: product.title)
+                  - else
                     N/A
-              .list-view-info
-                %h1.collection
-                  = link_to product.collection.title, collection_path(product.collection.id)
-                %h2.component
-                  - product.components.each do |component|
-                    %span.comma= link_to component.title, component_path(component.id)
-                %h3.finish
-                  sku#
-                %ul
+            .list-view-info
+              %h1.collection
+                = link_to product.collection.title, collection_path(product.collection.id)
+              %h2.title
+                = product.title
+              %h3.finish
+                sku#
+              %ul
+                - product.skus.each do |sku|
                   %li
-                    = link_to sku.title, product_sku_path(product, sku)
-                  // Still waiting to see if we are listing each product or each sku
-                  / %li
-                  /   = link_to "3701EK", product_sku_path(product, sku)
-                  / %li
-                  /   = link_to "301CK", product_sku_path(product, sku)
+                    = link_to sku.title, product.path(sku)

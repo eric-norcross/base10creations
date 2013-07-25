@@ -1,5 +1,22 @@
 class CollectionsController < ApplicationController
-    def index
+  # Ajax Routes
+  def finishes
+    @finishes = Collection.finishes(params[:id])
+    render "finishes/_select", locals: { type: params[:type] }, layout: false
+  end
+
+  def products
+    @products = Collection.products(params[:id])
+    render "products/_select", layout: false
+  end
+
+  def components
+    render "components/_select", locals: { product_id: params[:product_id], collection_id: params[:id] }, layout: false
+  end
+
+
+  # REST Routes
+  def index
     @collections = Collection.all
 
     respond_to do |format|
@@ -9,17 +26,11 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    #@collection = Collection.find(params[:id])
+    @side_nav_elements = Collection.all
 
-    @products = Product.where(:collection_id => params[:id]).order(:name)
+    @products = Collection.products_and_compilations(params[:id])
 
     render "pages/templates/list"
-
-    # render "/collections/templates/collection"
-    # respond_to do |format|
-    #   format.html # show.html.erb
-    #   # format.json { render json: @collection }
-    # end
   end
 
   def new

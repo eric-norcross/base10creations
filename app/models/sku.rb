@@ -5,9 +5,8 @@ class Sku < ActiveRecord::Base
                                 :title,
 
                                 ## belongs_to ##
+                                :compilation_id,
                                 :product_id,
-
-                                ## has_one ##
                                 :finish_id,
 
                                 ## has_many ##
@@ -15,6 +14,7 @@ class Sku < ActiveRecord::Base
                                 ## nested attributes ##
                                 :images_attributes
 
+  belongs_to                    :compilation
   belongs_to                    :product
   belongs_to                    :finish
 
@@ -25,6 +25,11 @@ class Sku < ActiveRecord::Base
   validates_presence_of         :title
 
   before_save                   :create_name
+
+  def self.product(product_id = :product_id)
+    @product = Product.find(product_id)
+    return @product
+  end
 
   private
   

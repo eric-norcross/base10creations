@@ -1,0 +1,18 @@
+- if defined?(f) && f.object.finish_id
+  - @finishes = Collection.finishes(f.object.collection_id)
+
+  = f.label :finish_id
+  = f.select :finish_id, @finishes.collect{|t| [t.title, t.id]}, { prompt: "Select a Finish" }
+
+- else
+  - if defined?(@finishes)
+    - if @finishes.length > 0
+      = label_tag "#{type.to_s}_finish_id", "Finish"
+      = collection_select(type, :finish_id, @finishes, :id, :title, prompt: "Select a Finish" )
+    - else 
+      = label_tag "#{type.to_s}_finish_id", "Finish"
+      There are no Finishes associated with this Collection. Please add a Finish befor proceeding.
+  
+  - else 
+    = label_tag "#{type.to_s}_finish_id", "Finish"
+    = select_tag "#{type.to_s}[finish_id]","#{type.to_s}_finish_id", { prompt: "Please select a Collection first", disabled: true }

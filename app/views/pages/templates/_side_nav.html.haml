@@ -1,10 +1,4 @@
 %nav#side
   %ul
-    / - @section = Section.find(params[:id])
-
-    / - @children = @section.get_top_level.children
-    / - @children.each do |child|
-    /   = render "sections/section_side_nav", element: child
-
-    - parent.get_top_level.children.each do |child|
+    - elements.each do |child|
       = render "sections/section_side_nav", element: child

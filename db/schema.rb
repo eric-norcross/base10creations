@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718000752) do
+ActiveRecord::Schema.define(:version => 20130723223900) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(:version => 20130718000752) do
     t.integer  "subcomponent_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.boolean  "active"
+    t.integer  "finish_id"
   end
 
   create_table "components", :force => true do |t|
@@ -149,11 +151,12 @@ ActiveRecord::Schema.define(:version => 20130718000752) do
     t.integer  "skin_id"
   end
 
-  create_table "product_components", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table "product_compilation_components", :force => true do |t|
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "product_id"
     t.integer  "component_id"
+    t.integer  "compilation_id"
   end
 
   create_table "products", :force => true do |t|
@@ -167,7 +170,6 @@ ActiveRecord::Schema.define(:version => 20130718000752) do
     t.string   "video"
     t.text     "features"
     t.integer  "subcomponent_id"
-    t.integer  "compilation_id"
     t.boolean  "active"
     t.boolean  "shown"
   end
@@ -192,11 +194,12 @@ ActiveRecord::Schema.define(:version => 20130718000752) do
 
   create_table "skus", :force => true do |t|
     t.integer  "product_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "finish_id"
     t.string   "name"
     t.string   "title"
+    t.integer  "compilation_id"
   end
 
   create_table "styles", :force => true do |t|

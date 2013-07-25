@@ -1,0 +1,32 @@
+- if defined?(f) && defined?(f.object.skus)
+  - @selected_sku_ids = f.object.skus.map{ |sku| sku.id }
+  - @skus = Finish.skus(f.object.skus[0].finish_id)
+
+- if @skus
+  %table
+    %thead
+      %tr
+        %th Selected:
+        %th Title:
+        %th Finish: 
+        %th Images:
+        %th
+        %th
+        %th
+    %tbody
+      - @skus.each do |sku|
+        %tr
+          %td= check_box_tag "sku#{sku.id}", sku.id, @selected_sku_ids.include?(sku.id), :name => 'compilation[sku_ids][]'
+          %td= sku.title
+          %td
+            - if !sku.finish.image.blank?
+              = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'hint', alt: sku.finish.image.first.asset.filename.to_s, title: sku.finish.title)
+            - else
+              = sku.finish.title
+          %td
+            - sku.images.each do |image|
+              = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: image.asset.filename.to_s)
+          / %td= sku.images.length
+          %td= link_to 'Show', sku
+          %td= link_to 'Edit', edit_sku_path(sku)
+          %td= link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }

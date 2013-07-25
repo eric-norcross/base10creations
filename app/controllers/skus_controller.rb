@@ -1,6 +1,5 @@
 class SkusController < ApplicationController
-#this isn't necessary
- # GET /skus
+  # GET /skus
   # GET /skus.json
   def index
     @skus = Sku.all
@@ -16,7 +15,7 @@ class SkusController < ApplicationController
   def show
     @sku = Sku.find(params[:id])
     @product = Product.find(@sku.product.id)
-    @related = Product.where(collection_id: 1)
+    @related = Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)
 
     render "#{@product.skin.template}"
 

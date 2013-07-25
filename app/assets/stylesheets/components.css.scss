@@ -184,10 +184,18 @@
     }
 
     #features {
+      h1 {
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+
       ul {
+        margin-bottom: 20px;
+
         li {
           font-size: 12px;
-          margin-bottom: 13px;
+          margin-bottom: 7px;
+          margin-left: 10px;
           width: 230px;
           line-height: 1.4;
         }
@@ -239,14 +247,25 @@
 
     #dimensions {
       h1 {
-        @include rem('font-size', 12px);
-        font-weight: normal;
-        margin-bottom: 20px;
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
 
-        span {
-          color: $headerColor;
-          font-weight: bold;
-          padding-right: 10px;
+      ul {
+        li {
+          font-size: 12px;
+          margin-bottom: 20px;
+          margin-left: 10px;
+
+          span.title {
+            color: $headerColor;
+            font-weight: bold;
+            padding-right: 10px;
+          }
+
+          span.specs {
+
+          }
         }
       }
 

@@ -1,0 +1,171 @@
+- if @compilation.skus
+  = render "/skus/breadcrumbs", product: @compilation
+
+.page{:id=>"#{@compilation.skin.name}"}
+  %article
+    .gallery#product-views
+      .gallery-image
+        - if !@compilation.images.blank?
+          = cl_image_tag(@compilation.images.first.asset.filename.to_s, transformation: "gallery", alt: @compilation.images.first.asset.filename.to_s, title: @compilation.title)
+        - else 
+          - if @compilation.skus
+            = cl_image_tag(@compilation.skus.first.images.first.asset.filename.to_s, transformation: "gallery", alt: @compilation.skus.first.images.first.asset.filename.to_s, title: @compilation.skus.first.title)
+          - else 
+            N/A
+        %br
+        .image-controls
+          #enlarge
+            = link_to "#" do 
+              = render :partial => '/layouts/svg/enlarge'
+              View Larger Image
+        .image-controls.text-align-right
+          #zoom
+            = link_to "Roll Over Image To Zoom", "#"
+      .scroller
+        .control.previous
+          = link_to "#" do
+            = render :partial => '/layouts/svg/arrow_left'
+        .items-container
+          %ul
+            - @compilation.skus.each do |sku|
+              - sku.images.each do |image|
+                %li
+                  .image-container
+                    %span.helper
+                    = link_to "#" do
+                      = cl_image_tag(image.asset.filename.to_s, transformation: "scroller", alt: image.asset.filename.to_s, :"data-medium" => cloudinary_url(image.asset.filename.to_s, transformation: "gallery"), :"data-large" => cloudinary_url(image.asset.filename.to_s, transformation: "large"))
+
+        .control.next
+          = link_to "#" do
+            = render :partial => '/layouts/svg/arrow_right'
+    #product-details
+      %header
+        %hgroup
+          %h1 
+            - if @compilation.skus.length > 1
+              skus
+            - else
+              sku
+
+            - @compilation.skus.each do |sku|
+              %span.comma ##{sku.title}
+          %h2
+            #{@compilation.collection.title} #{@compilation.finish.title}
+          %h3
+            = @compilation.title
+        #icons
+          = link_to "#" do 
+            = render :partial => '/layouts/svg/share'
+          = link_to "#", class: "print" do 
+            = render :partial => '/layouts/svg/print'
+      #tabs
+        %ul#product_tabs.nav.nav-tabs{"data-tabs" => "tabs"}
+          %li.active
+            %a.gradient{"data-toggle" => "tab", :href => "#features"} Features
+          %li
+            %a.gradient{"data-toggle" => "tab", :href => "#dimensions"} Dimensions
+          %li
+            %a.gradient{"data-toggle" => "tab", :href => "#style"} Style
+          %li
+            %a.gradient{"data-toggle" => "tab", :href => "#videos"} Videos
+
+        .tab-content
+          #features.tab-pane.active
+
+            - @compilation.products.each do |product|
+              %div
+                %h1
+                  = product.title
+                = raw product.features
+                %ul
+                  - product.brands.each do |brand|
+                    - if !brand.images.blank?
+                      %li
+                        = cl_image_tag(brand.images.first.asset.filename.to_s, alt: brand.title)
+                
+            / .finishes
+            /   - if @compilation.skus.length > 1
+            /     %div
+            /       %h1
+            /         Also available in
+            /       %ul
+            /         - @compilation.skus.each do |sku|
+            /           - if sku != @compilation.skus
+            /             %li
+            /               - if sku.finish.image.first
+            /                 = link_to product_sku_path(@compilation, sku) do
+            /                   = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
+
+            /   - @compilation.products.each do |product|
+            /     - if product.categories.length > 1
+            /       %div
+            /         %h1
+            /           #{@compilation.collection.title} is also available in
+            /         %ul
+            /           - product.categories.each do |category|
+            /             %li
+            /               = link_to category.title, category_path(category.id)
+
+          #dimensions.tab-pane
+            - @compilation.products.each do |product|
+              %h1
+                = product.title
+              %ul
+                - product.dimensions.each do |dimension|
+                  %li
+                    %span.title
+                      = dimension.title
+                    %span.specs
+                      = dimension.width
+                      w x
+                      = dimension.height
+                      h x
+                      = dimension.depth
+                      d
+                    - if dimension.image.length > 0
+                      - dimension.image.each do |asset|
+                        = cl_image_tag(asset.filename.to_s, transformation: 'thumb', alt: "Dimensions")
+              
+          #style.tab-pane
+            = raw @compilation.collection.description 
+            - @compilation.collection.styles.each do |style| 
+              %div   
+                = raw style.description 
+
+          #videos.tab-pane
+            %h1 Features of #{@compilation.collection.title} #{@compilation.finish.title} 
+            %p 
+              This can be some text about sharing the video or something
+
+            - @compilation.products.each do |product|
+              - if product.video && product.video != ""
+                %iframe{:width => "420", :height => "267", :src => product.video, :frameborder => "0", :allowfullscreen => ""}
+        
+    %footer
+      %h1#rubric
+        You may also be interested in one of these...
+      .gallery#related-products
+        .scroller
+          .control.previous
+            = link_to "#" do
+              = render :partial => '/layouts/svg/arrow_left'
+          .items-container
+            %ul
+              - @related.each_with_index do |product, index|
+                - if product.id != @compilation.id && product.show == true
+                  %li
+                    - if !product.images.blank?
+                      = cl_image_tag(product.images.first.asset.filename.to_s, transformation: "related", alt: product.images.first.asset.filename.to_s, title: product.title)
+                    - else 
+                      = cl_image_tag(product.skus.first.images.first.asset.filename.to_s, transformation: "related", alt: product.skus.first.images.first.asset.filename.to_s, title: product.skus.first.title)
+                    .product-info
+                      %hgroup
+                        %h1 
+                          #{product.collection.title} #{product.skus.first.finish.title}
+                        %h2
+                          = product.title
+                        %h3s
+                          sku ##{product.skus.first.title}
+          .control.next
+            = link_to "#" do
+              = render :partial => '/layouts/svg/arrow_right'

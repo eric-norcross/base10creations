@@ -3,6 +3,8 @@
   >
   = link_to product.collection.title, collection_path(product.collection.id)
   >  
-  = link_to sku.finish.title, finish_path(sku.finish.id)
+  = link_to product.skus.first.finish.title, finish_path(product.skus.first.finish.id)
   >  
-  = sku.title
+  = product.title
+  / - product.skus.each do |sku|
+  /   %span.comma= link_to sku.title, product_sku_path(product, sku)

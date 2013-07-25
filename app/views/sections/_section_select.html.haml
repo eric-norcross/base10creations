@@ -16,7 +16,7 @@
 - if section.parent_id == section_selector.id
   - @selected = true
 
-%option{ value: section_selector.id, selected: @selected, class: "level#{level} level" }
+%option{ value: section_selector.id, selected: @selected, class: "level#{level}" }
   - level.times do 
     \&nbsp;&nbsp;&nbsp;
   =section_selector.title

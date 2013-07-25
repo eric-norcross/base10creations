@@ -1,30 +1,92 @@
-$(document).on("change", "[id$=-collection] select", function(event) {
+$(document).on("change", "#compilation-collection select", function(event) {
   var type = $(this).attr("data-type");
   var collection_id = $("option:selected", this).val();
-  $.post("/components/retrieve_components/" + collection_id + "?type=" + type, function(data){
-    $("[id$=-component]").empty();
-    $("[id$=-component]").html(data);
-    //console.log(data);
+  console.log("collection_id: " + collection_id)
+  $.post("/collections/finishes/" + collection_id + "?type=" + type, function(data){
+    console.log($("#compilation-finish"))
+    $("#compilation-finish").empty();
+    $("#compilation-finish").html(data);
+    console.log(data);
   });
-
-  if ($("#compilation-collection").length > 0) {
-    $.post("/products/retrieve_products/" + collection_id, function(data){
-      $("#compilation-collection-products").empty();
-      $("#compilation-collection-products").html(data);
-      //console.log(data);
-    });
-  }
 });
 
-$(document).on("change", "[id$=-component] select", function(event) {
+$(document).on("change", "#compilation-finish select", function(event) {
   var type = $(this).attr("data-type");
-  console.log(type)
-  var component_id = $("option:selected", this).val();
-  $.post("/subcomponents/retrieve_subcomponents/" + component_id + "?type=" + type, function(data){
-    $("[id$=-subcomponent]").empty();
-    $("[id$=-subcomponent]").html(data);
+  var finish_id = $("option:selected", this).val();
+
+  $.post("/finishes/skus/" + finish_id + "?type=" + type, function(data){
+    console.log($("#compilation-skus"))
+    $("#compilation-skus").empty();
+    $("#compilation-skus").html(data);
+    console.log(data);
   });
 });
+
+$(document).on("change", "#product-collection select", function(event) {
+  var product_id = $(this).attr("data-product-id")
+  var collection_id = $("option:selected", this).val();
+  var append = "";
+  
+  if (product_id) {
+    append = "?product_id=" + product_id
+  }
+
+  $.post("/collections/components/" + collection_id + append, function(data){
+    console.log($("#product-components"))
+    $("#product-components").empty();
+    $("#product-components").html(data);
+    console.log(data);
+  });
+});
+
+$(document).on("change", "[id^='component']", function(event) {
+  console.log($(this).attr("data-parent"))
+  if ($(this).attr("data-parent") == 0) {
+    if ($(this).is(":checked")) {
+      $(this).parent().find("input:checkbox").prop("checked", true);
+    } else {
+      $(this).parent().find("input:checkbox").prop("checked", false);
+    }
+  } 
+ 
+  // var type = $(this).attr("data-type");
+  // var finish_id = $("option:selected", this).val();
+
+  // $.post("/finishes/skus/" + finish_id + "?type=" + type, function(data){
+  //   console.log($("#compilation-skus"))
+  //   $("#compilation-skus").empty();
+  //   $("#compilation-skus").html(data);
+  //   console.log(data);
+  // });
+});
+
+// $(document).on("change", "[id$=-collection] select", function(event) {
+//   var type = $(this).attr("data-type");
+//   var collection_id = $("option:selected", this).val();
+//   $.post("/components/components_by_collection/" + collection_id + "?type=" + type, function(data){
+//     $("[id$=-component]").empty();
+//     $("[id$=-component]").html(data);
+//     //console.log(data);
+//   });
+
+//   if ($("#compilation-collection").length > 0) {
+//     $.post("/products/products_by_collection/" + collection_id, function(data){
+//       $("#compilation-collection-products").empty();
+//       $("#compilation-collection-products").html(data);
+//       //console.log(data);
+//     });
+//   }
+// });
+
+// $(document).on("change", "[id$=-component] select", function(event) {
+//   var type = $(this).attr("data-type");
+//   console.log(type)
+//   var component_id = $("option:selected", this).val();
+//   $.post("/subcomponents/retrieve_subcomponents/" + component_id + "?type=" + type, function(data){
+//     $("[id$=-subcomponent]").empty();
+//     $("[id$=-subcomponent]").html(data);
+//   });
+// });
 
 $(document).on("click", "a.remove", function(event) {
   var group = $(this).parent().parent().parent();

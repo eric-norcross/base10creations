@@ -22,27 +22,37 @@ class Brand < ActiveRecord::Base
 
   before_save                   :create_name
 
-  def self.products(params)
-    @styles = Style.where(:brand_id => params[:id])
-    # @style_ids = @styles.map{ |style| style.id }
-    # @collection_styles = CollectionStyle.where(:style_id => @style_ids)
-    # @collection_ids = @collection_styles.map{ |collection_style| collection_style.collection_id }
+  def self.styles(brand_id = :id)
+    return Style.where(:brand_id => brand_id)
+  end
 
-    collection_ids = Array.new
+  def self.products(brand_id = :id)
+    return Product.where(:collection_id => collection_ids(brand_id))
+  end
 
-    @styles.each do |style|
-      style.collections.each do |collection|
-        collection_ids.push(collection.id) unless collection_ids.include?(collection.id)
-      end
-    end
-    
-    @products = Product.where(:collection_id => collection_ids)
-    return @products
+  def self.compilations(brand_id = :id)
+    return Compilation.where(:collection_id => collection_ids(brand_id))
+  end
+
+  def self.products_and_compilations(brand_id = :id)
+    return (products(brand_id) + compilations(brand_id)).sort_by(&:name)
   end
 
   private
   
-  def create_name
-    self.name = title.parameterize
-  end
+    def create_name
+      self.name = title.parameterize
+    end
+
+    def self.collection_ids(brand_id = :id)
+      collection_ids = Array.new
+
+      styles(brand_id).each do |style|
+        style.collections.each do |collection|
+          collection_ids.push(collection.id) unless collection_ids.include?(collection.id)
+        end
+      end
+
+      return collection_ids
+    end
 end

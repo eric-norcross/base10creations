@@ -24,16 +24,17 @@
       
     .field
       %h1 Categories:
+
       - Category.all.each_slice(3) do |column|
         .column
           - column.each do |category|
             .column-group
-              %h2 
+              %h2
                 = category.title
               - category.components.each do |component|
-                .checkbox
-                  = check_box_tag "component#{component.id}", component.id, @collection.components.include?(component), :name => 'collection[component_ids][]'
-                  = label_tag "component#{component.id}", component.title
+                %ul
+                  - if component.parent_id.blank? || component.parent_id == 0 || component.patriarch.category_id != category.id
+                    = render "components/component_checkboxes", parent_id: 0, component: component, f: f, collection: @collection
     
   .actions
     = f.submit 'Save'

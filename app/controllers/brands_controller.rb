@@ -9,7 +9,9 @@ class BrandsController < ApplicationController
   end
 
   def show
-    @products = Brand.products(params)
+    @side_nav_elements = Brand.all
+
+    @products = Brand.products_and_compilations(params[:id])
 
     render "pages/templates/list"
   end

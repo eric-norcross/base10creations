@@ -1,4 +1,11 @@
 class FinishesController < ApplicationController
+  # Ajax Routes
+  def skus
+    @skus = Finish.skus(params[:id])
+    render "skus/_list", locals: { type: params[:type] }, layout: false
+  end
+
+  # Rest Routes
   def index
     @finishes = Finish.all
 

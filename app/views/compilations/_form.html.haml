@@ -16,6 +16,10 @@
       Compilation Info
 
     .field
+      = f.label :active
+      = f.check_box :active, {checked: checked(f.object.active)}
+
+    .field
       = f.label :skin_id, "Template"
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Template" }
 
@@ -23,12 +27,12 @@
       = f.label :collection_id, "Collection"
       = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }, :"data-type" => :compilation
 
-    .field#compilation-component
-      = render '/components/select', f: f, type: :compilation
+    .field#compilation-finish
+      = render '/finishes/select', f: f, type: :compilation
 
-    .field#compilation-subcomponent
-      - if defined?(f) && f.object.component_id
-        = render '/subcomponents/select', f: f, type: :compilation
+    / .field#product-subcomponent
+    /   - if defined?(f) && f.object.component_id
+    /     = render '/subcomponents/select', f: f, type: :product
 
     .field
       = f.label :title
@@ -45,29 +49,13 @@
 
   %fieldset
     %legend
-      Products
+      Skus
 
-    .field
-      .column
-        .column-group#compilation-collection-products
-          - if defined?(f) && !f.object.products.blank?
-            = render '/products/select', f: f, type: :compilation
-          / - if (@compilation.collection_id)
-          / - @collection_products = Product.where("collection_id = '#{1}'")
-          / - if !@collection_products.blank?
-          /   - @collection_products.each do |product|
-          /     .checkbox
-          /       = check_box_tag "product#{product.id}", product.id, @compilation.products.include?(product), :name => 'compilation[product_ids][]'
-          /       = label_tag "product#{product.id}", product.title
-          / - else 
-          /   Please select a "Collection" above.
+    .field#compilation-skus
+      = render '/skus/list', f: f, type: :compilation
 
-  / %fieldset{id: "features-fields"}
-  /   %legend
-  /     Features
-
-  /   .field
-  /     = f.cktext_area :features
+      / GET products WHERE collection_id = selected-collection-id
+      /   GET skus WHERE sku.finish.id = selected-finish-id
 
 
   .actions

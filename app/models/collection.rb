@@ -24,14 +24,55 @@ class Collection < ActiveRecord::Base
 
   before_save                   :create_name
 
-  def products
-    @products = Product.all(:collection_id => :id)
-    return @products
+
+  def self.components(collection_id = :id)
+    return Collection.find(collection_id).components
   end
+
+  def self.finishes(collection_id = :id)
+    return Finish.all(:conditions => { :id => finish_ids(collection_id) })
+  end
+
+  def self.products(collection_id = :id)
+    return Product.where(:collection_id => collection_id)
+  end
+
+  def self.compilations(collection_id = :id)
+    return Compilation.where(:collection_id => collection_id)
+  end
+
+  def self.products_and_compilations(collection_id = :id)
+    return (products(collection_id) + compilations(collection_id)).sort_by(&:name)
+  end
+
+  def self.components_and_children(collection_id = :id)
+    @return = Array.new
+
+    @arr = components(collection_id)
+    @arr.each do |component|
+      if !component.children.blank?
+        @return.push(component.children)
+      else
+        @return.push(component)
+      end
+    end
+  end
+
 
   private
   
-  def create_name
-    self.name = title.parameterize
-  end
+    def create_name
+      self.name = title.parameterize
+    end
+
+    def self.finish_ids(collection_id = :id)
+      finish_ids = Array.new
+      products(collection_id).each do |product|
+        product.skus.each do |sku|
+          finish_ids.push(sku.finish_id) unless finish_ids.include?(sku.finish_id)
+        end
+      end
+
+      return finish_ids
+    end
 end

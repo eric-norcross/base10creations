@@ -1,0 +1,10 @@
+%li
+  .checkbox
+    = check_box_tag "component#{component.id}", component.id, collection.components.include?(component), :name => 'collection[component_ids][]', disabled: @disabled, :"data-parent" => parent_id
+    = label_tag "component#{component.id}", component.title
+    - if !component.children.blank?
+      %ul
+        - component.children.each do |child|
+          = render "components/component_checkboxes", parent_id: component.id, component: child, f: f, collection: collection
+
+

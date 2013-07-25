@@ -11,6 +11,8 @@
 #
 
 class Product < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   default_scope order('products.id ASC')
   
   attr_accessible               :name, 
@@ -25,7 +27,6 @@ class Product < ActiveRecord::Base
                                 # :subcomponent_id,
                                 :collection_id,
                                 :skin_id,
-                                :compilation_id,
 
                                 ## has_many ##
                                 :component_ids,
@@ -41,8 +42,8 @@ class Product < ActiveRecord::Base
   belongs_to                    :collection
   belongs_to                    :skin
 
-  has_many                      :product_components,    :dependent  => :destroy
-  has_many                      :components,            :through    => :product_components
+  has_many                      :product_compilation_components,    :dependent  => :destroy
+  has_many                      :components,                        :through    => :product_compilation_components
 
   has_many                      :dimensions, dependent: :destroy
   accepts_nested_attributes_for :dimensions, reject_if: lambda { |a| a[:width].blank? || a[:height].blank? || a[:depth].blank? }, allow_destroy: true
@@ -64,6 +65,18 @@ class Product < ActiveRecord::Base
   #   @components = Component.all(:conditions => { :id => @component_ids })
   #   return @components
   # end
+
+  def show
+    if self.active && self.shown
+      return true
+    end
+
+    return false
+  end
+
+  def path(sku = skus.first)
+    return product_sku_path(id, sku.id)
+  end
 
   def categories
     @category_ids = collection.components.map{ |component| component.category_id } #collection_id is "Bradley"

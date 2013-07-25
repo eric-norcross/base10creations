@@ -1,28 +1,4 @@
 class ProductsController < ApplicationController
-  def retrieve_products
-    # if params[:id].present?
-    #   @components = Collection.find(params[:id]).components
-    # else
-    #   @components = []
-    # end
-
-    # respond_to do |format|
-    #   format.json
-    # end
-
-
-    @products = Product.where(:collection_id => params[:id])
-    # # @components = Component.where( :collection_id => params[:id]).order(:name) unless params[:id].blank?
-    # @components = @collections.components
-    # render "/components/_select", :locals => { :components => @components }
-
-    render "products/_select", layout: false
-
-    # respond_to do |format|
-    #   format.js
-    # end
-  end
-
   def index
     @products = Product.all
 

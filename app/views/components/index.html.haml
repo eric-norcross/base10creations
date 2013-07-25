@@ -8,7 +8,7 @@
           %th Id
           %th Title
           %th Category
-          %th Top Level Section
+          %th Main Section
           %th Parent Section
           %th Child Sections
 
@@ -21,7 +21,7 @@
             %td= component.id
             %td= component.title
             %td= component.category.title
-            %td= component.get_top_level.title
+            %td= component.patriarch.title
             %td= component.parent.title
             %td= component.children.length
             

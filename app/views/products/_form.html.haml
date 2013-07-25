@@ -29,12 +29,11 @@
 
     .field#product-collection
       = f.label :collection_id, "Collection"
-      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }, :"data-type" => :product
+      = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }, :"data-product-id" => f.object.id
 
-    .field
-      = f.label :component_ids, "Components"
-      = f.select :component_ids, Component.get_ordered.collect {|t| [t.title, t.id]}, {}, :multiple => true
-        
+    .field#product-components
+      = render "components/select", collection_id: f.object.collection_id, product_id: f.object.id
+
     .field
       = f.label :title
       = f.text_field :title
@@ -47,10 +46,6 @@
       - if f.object.images.blank?
         .addable.button
           = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "product-image" })
-    
-    / .images.singular-image
-    /   = f.fields_for :image do |image_builder|
-    /     = render 'images/image_fields', f: image_builder
 
   %fieldset{id: "features-fields"}
     %legend
@@ -68,14 +63,7 @@
         = f.fields_for :dimensions, false do |dimension|
           = render 'dimensions/dimension_fields', f: dimension, options: @dimension_options
       .addable.button
-        = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :image, options: @dimension_options })
-
-  /%fieldset{id: "style-fields"}
-  /  %legend
-  /    Style
-
-  /  .field
-  /    = f.cktext_area :style      
+        = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :image, options: @dimension_options })    
   
   %fieldset{id: "video-fields"}
     %legend

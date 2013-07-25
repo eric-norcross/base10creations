@@ -9,8 +9,9 @@ class StylesController < ApplicationController
   end
 
   def show
-    @products = Style.products(params)
-    
+    @side_nav_elements = Style.all
+    @products = Style.products_and_compilations(params[:id])
+
     render "pages/templates/list"
   end
 

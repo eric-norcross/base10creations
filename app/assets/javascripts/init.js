@@ -1,24 +1,4 @@
 $(document).ready(function(){
-  // $('#product-collection select').change(function() {
-  //   var collection_id = $("option:selected", this).val();
-  //   $.post("/components/retrieve_components/" + collection_id, function(data){
-  //     $("#product-component").empty();
-  //     $("#product-component").html(data);
-  //     //console.log(data);
-  //   });
-  // });
-
-  // $('#product-component select').change(function() {
-  //   console.log("HITTING HERE")
-  //   var component_id = $("option:selected", this).val();
-  //   $.post("/subcomponents/retrieve_subcomponents/" + component_id, function(data){
-  //     $("#product-subcomponent").empty();
-  //     $("#product-subcomponent").html(data);
-  //     console.log(data);
-  //   });
-  // });
-
-
   $("a.print").click(function(event) {
     window.print();
   });

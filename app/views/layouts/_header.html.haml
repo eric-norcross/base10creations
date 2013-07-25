@@ -22,7 +22,7 @@
                     - category.components.each do |component|
                       / %li
                       /   = link_to component.title, component
-                      - if component.parent_id.blank? || component.parent_id == 0 || component.get_top_level.category_id != category.id
+                      - if component.parent_id.blank? || component.parent_id == 0 || component.patriarch.category_id != category.id
                         = render "components/component_header", element: component
 
       %li#collections

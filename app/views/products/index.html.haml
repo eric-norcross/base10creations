@@ -28,10 +28,10 @@
             %td= product.skin.name
             %td
               - product.collection.styles.each_with_index do |style, index| 
-                %span= style.title
+                %span.comma= style.title
             %td
               - product.skus.each_with_index do |sku, index|
-                = link_to sku.title, product_sku_path(product, sku), { title: product.title }
+                %span.comma= link_to sku.title, product_sku_path(product, sku), { title: product.title }
 
             / %td= link_to 'Show', product
             %td= link_to 'Edit', edit_product_path(product)

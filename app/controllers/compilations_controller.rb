@@ -2,6 +2,8 @@ class CompilationsController < ApplicationController
   def index
     @compilations = Compilation.all
 
+    STDOUT << "TEST"
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @compilations }
@@ -11,6 +13,7 @@ class CompilationsController < ApplicationController
   # GET /compilations/1
   def show
     @compilation = Compilation.find(params[:id])
+    @related = Product.where(collection_id: @compilation.collection_id) + Compilation.where(collection_id: @compilation.collection_id)
 
     render "#{@compilation.skin.template}"
   end

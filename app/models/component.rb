@@ -20,8 +20,8 @@ class Component < ActiveRecord::Base
   has_many                      :collection_components, :dependent  => :destroy
   has_many                      :collections,           :through    => :collection_components
 
-  has_many                      :product_components,    :dependent  => :destroy
-  has_many                      :products,              :through    => :product_components
+  has_many                      :product_compilation_components,    :dependent  => :destroy
+  has_many                      :products,              :through    => :product_compilation_components
 
   # has_many                      :subcomponents, :dependent => :destroy
   # accepts_nested_attributes_for :subcomponents, reject_if: proc { |attrs| attrs['title'].blank? }, allow_destroy: true
@@ -36,45 +36,54 @@ class Component < ActiveRecord::Base
   validates_presence_of         :category
   validates_presence_of         :title
 
+  validate                      :cannot_assign_to_self
+
   before_save                   :create_name
 
-
-  def parent
-    @pid = parent_id
-
-    if @pid.blank? || @pid == 0
-      @pid = id
-    end
-
-    @parent = Component.find(@pid)
-    return @parent
+  def cannot_assign_to_self
+    errors.add :base, "You cannot add a Component as a parent of it's self." if self.parent_id == self.id
   end
 
-  def get_top_level(component = self)
-    if component.parent_id && component.parent_id != 0
-      component = get_top_level(Component.find(component.parent_id))
+  def patriarch
+    if parent_id == 0
+      return self
+    else 
+      return parent.patriarch
     end
-
-    return component
+  end
+  
+  def parent
+    if parent_id == 0
+      return self
+    else 
+      return Component.find(parent_id)
+    end
   end
 
   def children
-    @children = Component.all(:conditions => { :parent_id => id })
-    return @children
+    return Component.where(:parent_id => id)
   end
 
-  def self.get_ordered
-    ordered = Array.new
-    @top_level_components = Component.where(:parent_id => nil)
-
-    @top_level_components.each do |component|
-      ordered.push(component)
-
-      populate_array(component, ordered)
+  def siblings
+    if parent_id == 0
+      return Component.where(:parent_id => parent_id)
+    else
+      return parent.children
     end
-
-    return ordered
   end
+
+  # def self.get_ordered
+  #   ordered = Array.new
+  #   @top_level_components = Component.where(:parent_id => nil)
+
+  #   @top_level_components.each do |component|
+  #     ordered.push(component)
+
+  #     populate_array(component, ordered)
+  #   end
+
+  #   return ordered
+  # end
 
   private
   
@@ -82,11 +91,11 @@ class Component < ActiveRecord::Base
     self.name = title.parameterize
   end
 
-  def self.populate_array(element, array)
-    element.children.each do |child|
-      array.push(child)
+  # def self.populate_array(element, array)
+  #   element.children.each do |child|
+  #     array.push(child)
 
-      populate_array(child, array)
-    end
-  end
+  #     populate_array(child, array)
+  #   end
+  # end
 end

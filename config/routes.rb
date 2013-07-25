@@ -21,7 +21,7 @@ Martinfurniture::Application.routes.draw do
   resources :collections
   resources :collection_components
   resources :collection_styles
-  resources :product_components
+  resources :product_compilation_components
   resources :components
   resources :compilations
   resources :figures
@@ -40,9 +40,11 @@ Martinfurniture::Application.routes.draw do
 
   root to: 'pages#home'
 
-  post '/components/retrieve_components/:id' => 'components#retrieve_components'
-  post '/subcomponents/retrieve_subcomponents/:id' => 'subcomponents#retrieve_subcomponents'
-  post '/products/retrieve_products/:id' => 'products#retrieve_products'
+  # Ajax Routes
+  post '/collections/components/:id'  => 'collections#components'
+  post '/collections/products/:id'    => 'collections#products'
+  post '/collections/finishes/:id'    => 'collections#finishes'
+  post '/finishes/skus/:id'           => 'finishes#skus'
 
   # match '*path' => redirect('/') unless Rails.env.development?
 
