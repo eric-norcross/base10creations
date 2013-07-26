@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '3.2.11'
-
+gem 'unicorn'
 gem "jquery-rails"
 gem "haml-rails"
 gem "pg"
@@ -32,10 +32,6 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-end
-
-group :production, :staging do
-  gem "thin"
 end
 
 group :development do
