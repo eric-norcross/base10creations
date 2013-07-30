@@ -26,6 +26,7 @@
 .rspec
 .idea
 .rvmrc
+.env
 /.bundle
 /vendor/bundle
 /coverage/

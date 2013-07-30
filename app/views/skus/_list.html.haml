@@ -1,4 +1,4 @@
-- if defined?(f) && defined?(f.object.skus)
+- if defined?(f) && f.object.skus.length > 0
   - @selected_sku_ids = f.object.skus.map{ |sku| sku.id }
   - @skus = Finish.skus(f.object.skus[0].finish_id)
 
@@ -15,8 +15,12 @@
         %th
     %tbody
       - @skus.each do |sku|
+        - if defined?(@selected_sku_ids)
+          - @selected_skus = @selected_sku_ids.include?(sku.id)
+        - else 
+          - @selected_skus = @skus.include?(sku.id)
         %tr
-          %td= check_box_tag "sku#{sku.id}", sku.id, @selected_sku_ids.include?(sku.id), :name => 'compilation[sku_ids][]'
+          %td= check_box_tag "sku#{sku.id}", sku.id, @selected_skus, :name => 'compilation[sku_ids][]'
           %td= sku.title
           %td
             - if !sku.finish.image.blank?

@@ -7,24 +7,7 @@
     %ul
       - @products.each do |product|
         - if product.show
-          %li
-            .list-view-image
-              = link_to product.path, { title: product.title } do
-                - if !product.images.blank?
-                  = cl_image_tag(product.images.first.asset.filename.to_s, transformation: "list", alt: product.images.first.asset.filename.to_s, title: product.title)
-                - else 
-                  - if !product.skus.blank? && !product.skus.first.images.blank?
-                    = cl_image_tag(product.skus.first.images.first.asset.filename.to_s, transformation: "list", alt: product.skus.first.images.first.asset.filename.to_s, title: product.title)
-                  - else
-                    N/A
-            .list-view-info
-              %h1.collection
-                = link_to product.collection.title, collection_path(product.collection.id)
-              %h2.title
-                = product.title
-              %h3.finish
-                sku#
-              %ul
-                - product.skus.each do |sku|
-                  %li
-                    = link_to sku.title, product.path(sku)
+          - if product.is_a?(Compilation)
+            = render "compilations/templates/list", product: product
+          - else
+            = render "products/templates/list", product: product
