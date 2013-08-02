@@ -15,7 +15,7 @@ class SkusController < ApplicationController
   def show
     @sku = Sku.find(params[:id])
     @product = Product.find(@sku.product.id)
-    @related = Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)
+    @related = (Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)) - [@product]
 
     render "#{@product.skin.template}"
 

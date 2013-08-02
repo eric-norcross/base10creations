@@ -20,11 +20,9 @@ class Product < ActiveRecord::Base
                                 :features, 
                                 :active,
                                 :shown,
-                                # :style,
                                 :video,
 
                                 ## belongs_to ##
-                                # :subcomponent_id,
                                 :collection_id,
                                 :skin_id,
 
@@ -37,8 +35,6 @@ class Product < ActiveRecord::Base
                                 :images_attributes
                         
 
-  belongs_to                    :component
-  belongs_to                    :subcomponent
   belongs_to                    :collection
   belongs_to                    :skin
 
@@ -54,6 +50,7 @@ class Product < ActiveRecord::Base
   has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
+  validates_presence_of         :skus
   validates_presence_of         :title
   validates_presence_of         :collection
   validates_presence_of         :skin

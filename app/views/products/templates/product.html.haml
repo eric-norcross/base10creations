@@ -120,19 +120,19 @@
               This can be some text about sharing the video or something
 
             %iframe{:width => "440", :height => "267", :src => @product.video, :frameborder => "0", :allowfullscreen => ""}
-        
-    %footer
-      %h1#rubric
-        You may also be interested in one of these...
-      .gallery#related-products
-        .scroller
-          .control.previous
-            = link_to "#" do
-              = render :partial => '/layouts/svg/arrow_left'
-          .items-container
-            %ul
-              - @related.each_with_index do |product, index|
-                - unless product.id == @product.id
+    
+    - unless @related.blank?
+      %footer
+        %h1#rubric
+          You may also be interested in one of these...
+        .gallery#related-products
+          .scroller
+            .control.previous
+              = link_to "#" do
+                = render :partial => '/layouts/svg/arrow_left'
+            .items-container
+              %ul
+                - @related.each_with_index do |product, index|
                   %li
                     - if !product.images.blank?
                       = cl_image_tag(product.images.first.asset.filename.to_s, transformation: "related", alt: product.images.first.asset.filename.to_s, title: product.title)
@@ -146,6 +146,6 @@
                           = product.title
                         %h3
                           sku ##{product.skus.first.title}
-          .control.next
-            = link_to "#" do
-              = render :partial => '/layouts/svg/arrow_right'
+            .control.next
+              = link_to "#" do
+                = render :partial => '/layouts/svg/arrow_right'
