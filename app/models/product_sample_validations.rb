@@ -10,7 +10,7 @@
 #  skin_id    :integer
 #
 
-class Product < ActiveRecord::Base
+class ProductSampleValidations < ActiveRecord::Base
   default_scope order('id ASC')
   
   attr_accessible               :name, 

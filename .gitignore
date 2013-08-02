@@ -38,8 +38,7 @@
 rerun.txt
 pickle-email-*.html
 config/database.yml
-config/amazon_s3.yml
-config/aws.yml
 config/cloudinary.yml
+config/newrelic.yml
 capybara-*.html
 
