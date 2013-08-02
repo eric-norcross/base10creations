@@ -1,5 +1,5 @@
 class Brand < ActiveRecord::Base
-  default_scope order('brands.title ASC')
+  default_scope order('brands.name ASC')
 
   attr_accessible               :name, 
                                 :title,

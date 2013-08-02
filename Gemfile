@@ -13,6 +13,7 @@ gem "carrierwave"
 gem "mini_magick"
 gem "cloudinary"
 gem "font-awesome-rails"
+gem 'newrelic_rpm'
 
 # gem 'friendly_id'
 

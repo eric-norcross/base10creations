@@ -56,7 +56,7 @@ class FinishesController < ApplicationController
 
     respond_to do |format|
       if @finish.save
-        format.html { redirect_to @finish, notice: 'Finish was successfully created.' }
+        format.html { redirect_to finishes_path, notice: 'Finish was successfully created.' }
         format.json { render json: finishes_url, status: :created, location: @finish }
       else
         format.html { render action: "new" }

@@ -26,14 +26,13 @@
   %fieldset
     %legend
       Styles
-
+      
     .field
       .column
         .column-group
           - Style.all.each do |style|
-            .checkbox
-              = check_box_tag "style#{style.id}", style.id, @brand.styles.include?(style), :name => 'brand[style_ids][]'
-              = label_tag "style#{style.id}", style.title
+            %ul
+              = render "styles/style_checkboxes", style: style, f: f, brand: @brand
     
   .actions
     = f.submit 'Save'

@@ -1,19 +1,24 @@
 - level = level + 1
 
 - @selected = false
-- if selected_components 
-  - selected_components.each do |selected_component|
-    - if selected_component.id == component.id
-      - @selected = true
-
 - @disabled = false
-- if !component.children.blank?
-  - @disabled = true
+
+- if defined?(components) && components != nil
+  - components.each do |listed_component|
+    - if listed_component.id == component.id
+      - @selected = true
+      / - @disabled = true
+- else 
+  - components = []
+
+- unless component.children.blank?
+  - unless defined?(override) #Allows parent elements to be selected. This is necessary so that users can add new Sub-Components to a parent element. 
+    - @disabled = true
 
 %option{ value: component.id, selected: @selected, class: "level#{level}", disabled: @disabled }
   - level.times do 
     \&nbsp;&nbsp;&nbsp;
   = component.title
-- if !component.children.blank?
+- unless component.children.blank?
   - component.children.each do |child|
-    = render "components/component_select", component: child, level: level, selected_components: selected_components
+    = render "components/component_select", component: child, level: level, components: components

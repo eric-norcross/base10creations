@@ -8,7 +8,7 @@
 
   %select{id: "component_ids", name: "product[component_ids][]", :multiple => true}
     - @components.each do |component|
-      = render "components/component_select", component: component, level: -1, selected_components: @selected_components
+      = render "components/component_select", component: component, level: -1, components: @selected_components
 
 - else 
   = select_tag "prodcut[component_id][]", "", { prompt: "Please select a Collection first", disabled: true }

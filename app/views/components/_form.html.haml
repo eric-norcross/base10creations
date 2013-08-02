@@ -22,8 +22,9 @@
         %option
           Main Component / No Parent
         %optgroup{label: "Existing Components"}
-          - Component.where(:parent_id => 0).each do |component_selector|
-            = render "component_select", component_selector: component_selector, component: @component, level: -1
+          - Component.where(:parent_id => 0).each do |component|
+            - unless component.id == f.object.id
+              = render "component_select", component: component, level: -1, override: true
 
     .field
       = f.label :title
