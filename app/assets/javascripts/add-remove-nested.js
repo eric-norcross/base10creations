@@ -39,6 +39,12 @@ $(document).on("change", "#product-collection select", function(event) {
   });
 });
 
+
+// $(document).on("replaceFileInput", ".cloudinary-fileupload", function(event) {
+
+// });
+//$('.cloudinary-fileupload').fileupload('option', 'replaceFileInput', false);
+
 $(document).on("change", "[id^='component']", function(event) {
   console.log($(this).attr("data-parent"))
   if ($(this).attr("data-parent") == 0) {
@@ -115,24 +121,20 @@ $(document).on("click", ".button", function(event) {
   console.log("id: " + id)
   console.log("association: " + association)
   console.log("content: " + content);
-  //console.log("newId: " + newId)
 
   var regexp = new RegExp(id, "g");
-
-  // var time = new Date().getTime()
-  // regexp = new RegExp($(this).data('id'), 'g')
-  // $(this).before($(this).data('fields').replace(regexp, time))
-
   console.log("newId: " + newId)
-  content = content.replace(regexp, newId)
+  content = jQuery($.parseHTML(content.replace(regexp, newId)));
 
   console.log("appending image field to " + container);
   container.append(content);
 
-  console.log(group)
-
   console.log("triggering event from add");
   group.trigger('contentChanged', ["add", group]);
+
+  var cloudinaryInput = content.find("input");
+  //Initializes Cloudinary Input 
+  cloudinaryInput.cloudinary_fileupload({replaceFileInput: false});
 
   return event.preventDefault();
 });
@@ -146,7 +148,6 @@ $(document).on('contentChanged', '.singular-addable', function(event, toggler, c
 
     if (toggler == "add") {
       //console.log("Showing add button")
-
 
       if (groups.length > 0) {
         console.log("Groups length: " + groups.length)

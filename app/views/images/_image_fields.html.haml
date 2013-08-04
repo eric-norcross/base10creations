@@ -1,8 +1,7 @@
 .image-field-group
   .field
     = f.label :asset, "Image"
-    = f.file_field :asset
-    = f.hidden_field :asset_cache
+    = f.cl_image_upload :asset
 
   - if f.object && f.object.asset && f.object.asset.filename
     .image-box

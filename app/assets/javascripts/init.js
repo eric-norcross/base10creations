@@ -23,4 +23,6 @@ $(document).ready(function(){
       $(this).val($(this).attr("data-message"));
     }
   });
+
+  $('.cloudinary-fileupload').fileupload('option', 'replaceFileInput', false);
 });
