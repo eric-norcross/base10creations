@@ -1,4 +1,5 @@
-= render "/pages/templates/side_nav", page: @page
+= render "layouts/partials/side_nav", elements: @side_nav_elements
+
 .page{id: "#{@page.skin.name}"}
   %article
     %header

@@ -10,6 +10,7 @@ class SectionsController < ApplicationController
 
   # GET /section/1
   def show
+    @side_nav_elements = Section.all
     @page = Section.find(params[:id])
 
     render "#{@page.skin.template}"

@@ -13,7 +13,7 @@ class BrandsController < ApplicationController
 
     @products = Brand.products_and_compilations(params[:id])
 
-    render "pages/templates/list"
+    render "layouts/templates/list"
   end
 
   def new

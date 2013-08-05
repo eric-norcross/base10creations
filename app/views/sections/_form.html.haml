@@ -17,9 +17,13 @@
       / = f.collection_select(:parent_id, Section.all, :id, :title, :prompt => "Select a Section")
       %select{id: "section_parent_id", name: "section[parent_id]"}
         %option
-          Main Section
-        - Section.where(:parent_id => nil).each do |section_selector|
-          = render "section_select", section_selector: section_selector, section: @section, level: -1
+          Main Section / No Parent
+        / - Section.where(:parent_id => nil).each do |section_selector|
+        /   = render "section_select", section_selector: section_selector, section: @section, level: -1
+        %optgroup{label: "Existing Sections"}
+          - Section.where(:parent_id => 0).each do |section|
+            - unless section.id == f.object.id
+              = render "section_select", section: section, level: -1, override: true
     
     .field
       = f.label :skin_id, "Template"

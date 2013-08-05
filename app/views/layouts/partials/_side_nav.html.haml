@@ -1,0 +1,4 @@
+%nav#side
+  %ul
+    - elements.each do |child|
+      = render "layouts/partials/side_nav_elements", element: child

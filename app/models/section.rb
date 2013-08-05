@@ -20,33 +20,41 @@ class Section < ActiveRecord::Base
 
   validates_presence_of         :skin
   validates_presence_of         :title
+  validate                      :cannot_assign_to_self
 
   before_save                   :create_name
 
-  def parent
-    @pid = parent_id
-
-    if @pid.blank? || @pid == 0
-      @pid = id
-    end
-
-    @parent = Section.find(@pid)
-    return @parent
+  def cannot_assign_to_self
+    errors.add :base, "You cannot add a Section as a parent of it's self." if self.parent_id == self.id
   end
 
-  def get_top_level(section = self)
-    if section.parent_id && section.parent_id != 0
-      section = get_top_level(Section.find(section.parent_id))
+  def patriarch
+    if parent_id == 0
+      return self
+    else 
+      return parent.patriarch
     end
-
-    return section
+  end
+  
+  def parent
+    if parent_id == 0
+      return self
+    else 
+      return Section.find(parent_id)
+    end
   end
 
   def children
-    @children = Section.all(:conditions => { :parent_id => id })
-    return @children
+    return Section.where(:parent_id => id)
   end
 
+  def siblings
+    if parent_id == 0
+      return Section.where(:parent_id => parent_id)
+    else
+      return parent.children
+    end
+  end
 
 
   private

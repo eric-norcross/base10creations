@@ -1,7 +1,7 @@
 %header.document
   #search
-    = render "/layouts/product", id: "product_search"
-    = render "/layouts/retailer", id: "retailer_search"
+    = render "/layouts/partials/product_search", id: "product_search"
+    = render "/layouts/partials/retailer_search", id: "retailer_search"
   #logo
     = link_to root_path do
       = image_tag "logo.png"

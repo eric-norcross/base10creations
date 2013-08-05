@@ -1,25 +1,36 @@
-/ %li
-/   - @checked = false
-/   - if section.parent_id == section_selector.id
-/     - @checked = true
+/ - level = level + 1
+/ - @selected = false
+/ - if section.parent_id == section_selector.id
+/   - @selected = true
 
-/   = radio_button_tag "section[parent_id]", section_selector.id, @checked
-/   = label_tag "section_parent_id_#{section_selector.id}", section_selector.title
-
-/   - if !section_selector.children.blank?
-/     %ul
-/       - section_selector.children.each do |child|
-/         = render "section_select", section_selector: child, section: section
+/ %option{ value: section_selector.id, selected: @selected, class: "level#{level}" }
+/   - level.times do 
+/     \&nbsp;&nbsp;&nbsp;
+/   =section_selector.title
+/ - if !section_selector.children.blank?
+/   - section_selector.children.each do |child|
+/     = render "section_select", section_selector: child, section: section, level: level
 
 - level = level + 1
-- @selected = false
-- if section.parent_id == section_selector.id
-  - @selected = true
 
-%option{ value: section_selector.id, selected: @selected, class: "level#{level}" }
+- @selected = false
+- @disabled = false
+
+- if defined?(sections) && sections != nil
+  - sections.each do |listed_section|
+    - if listed_section.id == section.id
+      - @selected = true
+- else 
+  - sections = []
+
+/ - unless section.children.blank?
+/   - unless defined?(override) #Allows parent elements to be selected. This is necessary so that users can add new Sub-Components to a parent element. 
+/     - @disabled = true
+
+%option{ value: section.id, selected: @selected, class: "level#{level}", disabled: @disabled }
   - level.times do 
     \&nbsp;&nbsp;&nbsp;
-  =section_selector.title
-- if !section_selector.children.blank?
-  - section_selector.children.each do |child|
-    = render "section_select", section_selector: child, section: section, level: level
+  = section.title
+- unless section.children.blank?
+  - section.children.each do |child|
+    = render "sections/section_select", section: child, level: level, sections: sections

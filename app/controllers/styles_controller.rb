@@ -12,7 +12,7 @@ class StylesController < ApplicationController
     @side_nav_elements = Style.all
     @products = Style.products_and_compilations(params[:id])
 
-    render "pages/templates/list"
+    render "layouts/templates/list"
   end
 
   def new

@@ -1,4 +1,4 @@
-= render "pages/templates/side_nav", elements: @side_nav_elements
+= render "layouts/partials/side_nav", elements: @side_nav_elements
 
 .page#list-view
   %article
@@ -8,6 +8,6 @@
       - @products.each do |product|
         - if product.show
           - if product.is_a?(Compilation)
-            = render "compilations/templates/list", product: product
+            = render "layouts/partials/compilation_list", product: product
           - else
-            = render "products/templates/list", product: product
+            = render "layouts/partials/product_list", product: product

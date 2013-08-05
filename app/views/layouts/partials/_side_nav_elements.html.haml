@@ -3,4 +3,4 @@
   - if defined?(element.children) && !element.children.blank?
     %ul
       - element.children.each do |child|
-        = render "sections/section_side_nav", element: child
+        = render "layouts/partials/side_nav_elements", element: child

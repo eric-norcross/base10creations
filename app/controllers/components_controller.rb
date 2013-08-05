@@ -48,7 +48,7 @@ class ComponentsController < ApplicationController
     @products = (@products + @compilations).sort_by(&:name)
 
 
-    render "pages/templates/list"
+    render "layouts/templates/list"
   end
 
   def new

@@ -21,7 +21,7 @@ class FinishesController < ApplicationController
     @product_ids = Product.skus_by_finish(params[:id]).map{|sku| sku.product_id}
     @products = Product.where(:id => @product_ids).order(:name)
 
-    render "pages/templates/list"
+    render "layouts/templates/list"
 
     # respond_to do |format|
     #   format.html # show.html.erb
