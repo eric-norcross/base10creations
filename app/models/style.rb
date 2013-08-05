@@ -10,13 +10,6 @@ class Style < ActiveRecord::Base
 
                                 ##has_many##
                                 :collection_ids
-                                # :brand_ids
-
-  # has_many                      :component_styles,  :dependent => :destroy
-  # has_many                      :components,        :through => :component_styles
-
-  # has_many                      :brand_styles,      :dependent => :destroy
-  # has_many                      :brands,            :through => :brand_styles
 
   has_many                      :collection_styles, :include => :collection
   has_many                      :collections,       :through => :collection_styles
@@ -45,7 +38,6 @@ class Style < ActiveRecord::Base
   private
 
     def self.collection_ids(style_id = :id)
-      # return CollectionStyle.where(:style_id => style_id).map{|collection_style| collection_style.collection_id}
       return Style.find(style_id).collection_ids
     end
 

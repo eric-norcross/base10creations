@@ -14,18 +14,12 @@ class Component < ActiveRecord::Base
                                 :product_ids
 
                                 ## nested attributes ##
-                                # :subcomponents_attributes
-
 
   has_many                      :collection_components, :dependent  => :destroy
   has_many                      :collections,           :through    => :collection_components
 
   has_many                      :product_compilation_components,    :dependent  => :destroy
   has_many                      :products,              :through    => :product_compilation_components
-
-  # has_many                      :subcomponents, :dependent => :destroy
-  # accepts_nested_attributes_for :subcomponents, reject_if: proc { |attrs| attrs['title'].blank? }, allow_destroy: true
-
 
   has_many                      :products
   has_many                      :complilations
@@ -72,30 +66,9 @@ class Component < ActiveRecord::Base
     end
   end
 
-  # def self.get_ordered
-  #   ordered = Array.new
-  #   @top_level_components = Component.where(:parent_id => nil)
-
-  #   @top_level_components.each do |component|
-  #     ordered.push(component)
-
-  #     populate_array(component, ordered)
-  #   end
-
-  #   return ordered
-  # end
-
   private
   
   def create_name
     self.name = title.parameterize
   end
-
-  # def self.populate_array(element, array)
-  #   element.children.each do |child|
-  #     array.push(child)
-
-  #     populate_array(child, array)
-  #   end
-  # end
 end

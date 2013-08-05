@@ -98,4 +98,13 @@ class Product < ActiveRecord::Base
     self.name = title.parameterize
     # self.name = component.title.parameterize
   end
+
+  # has_many                      :skus, dependent: :destroy
+  # accepts_nested_attributes_for :skus, reject_if: :validate_skus , allow_destroy: true
+  # def validate_skus(attributes)
+  #   attributes[:lskdjf].blank?
+  #   if self.tasks.size < 1 || self.tasks.all?{|task| task.marked_for_destruction? }
+  #     errors.add_to_base("A list must have at least one task.")
+  #   end
+  # end
 end
