@@ -38,7 +38,7 @@
       = f.label :title
       = f.text_field :title
 
-    #compilation-image.singular-addable
+    #compilation-image.addable
       .addable-group.images
         = f.fields_for :images do |image_builder|
           = render 'images/image_fields', f: image_builder
