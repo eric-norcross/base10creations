@@ -45,18 +45,18 @@ class Collection < ActiveRecord::Base
     return (products(collection_id) + compilations(collection_id)).sort_by(&:name)
   end
 
-  def self.components_and_children(collection_id = :id)
-    @return = Array.new
+  # def self.components_and_children(collection_id = :id)
+  #   @return = Array.new
 
-    @arr = components(collection_id)
-    @arr.each do |component|
-      if !component.children.blank?
-        @return.push(component.children)
-      else
-        @return.push(component)
-      end
-    end
-  end
+  #   @arr = components(collection_id)
+  #   @arr.each do |component|
+  #     if !component.children.blank?
+  #       @return.push(component.children)
+  #     else
+  #       @return.push(component)
+  #     end
+  #   end
+  # end
 
 
   private

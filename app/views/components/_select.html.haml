@@ -1,7 +1,7 @@
 = label_tag "product_components", "Component"
 
 - if !@components && collection_id
-  - @components = Collection.components(collection_id).collect
+  - @components = Collection.components(collection_id).reject{|component| component.parent_id > 0}
 
   - if product_id
     - @selected_components = Product.find(product_id).components

@@ -5,7 +5,7 @@ class FinishesController < ApplicationController
     render "skus/_list", locals: { type: params[:type] }, layout: false
   end
 
-  # Rest Routes
+  # REST Routes
   def index
     @finishes = Finish.all
 
