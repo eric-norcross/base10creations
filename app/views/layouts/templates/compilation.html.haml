@@ -1,17 +1,23 @@
 - if @compilation.skus
   = render "/skus/breadcrumbs", product: @compilation
 
+- @gallery_items = @compilation.images
+- @compilation.sku.each do |gallery_sku|
+  - @gallery_items + gallery_sku.images
+
 .page{:id=>"#{@compilation.skin.name}"}
   %article
     .gallery#product-views
       .gallery-image
-        - if !@compilation.images.blank?
-          = cl_image_tag(@compilation.images.first.asset.filename.to_s, transformation: "gallery", alt: @compilation.images.first.asset.filename.to_s, title: @compilation.title)
-        - else 
-          - if @compilation.skus
-            = cl_image_tag(@compilation.skus.first.images.first.asset.filename.to_s, transformation: "gallery", alt: @compilation.skus.first.images.first.asset.filename.to_s, title: @compilation.skus.first.title)
-          - else 
-            N/A
+        = cl_image_tag(@gallery_items.first.asset.filename.to_s, transformation: "gallery", alt: @gallery_items.first.asset.filename.to_s, title: @compilation.title)
+
+        / - if !@compilation.images.blank?
+        /   = cl_image_tag(@compilation.images.first.asset.filename.to_s, transformation: "gallery", alt: @compilation.images.first.asset.filename.to_s, title: @compilation.title)
+        / - else 
+        /   - if @compilation.skus
+        /     = cl_image_tag(@compilation.skus.first.images.first.asset.filename.to_s, transformation: "gallery", alt: @compilation.skus.first.images.first.asset.filename.to_s, title: @compilation.skus.first.title)
+        /   - else 
+        /     N/A
         %br
         .image-controls
           #enlarge
@@ -27,13 +33,14 @@
             = render :partial => '/layouts/svg/arrow_left'
         .items-container
           %ul
-            - @compilation.skus.each do |sku|
-              - sku.images.each do |image|
-                %li
-                  .image-container
-                    %span.helper
-                    = link_to "#" do
-                      = cl_image_tag(image.asset.filename.to_s, transformation: "scroller", alt: image.asset.filename.to_s, :"data-medium" => cloudinary_url(image.asset.filename.to_s, transformation: "gallery"), :"data-large" => cloudinary_url(image.asset.filename.to_s, transformation: "large"))
+            - @gallery_items.each do |item|
+            / - @compilation.skus.each do |sku|
+            /   - sku.images.each do |image|
+              %li
+                .image-container
+                  %span.helper
+                  = link_to "#" do
+                    = cl_image_tag(item.asset.filename.to_s, transformation: "scroller", alt: item.asset.filename.to_s, :"data-medium" => cloudinary_url(item.asset.filename.to_s, transformation: "gallery"), :"data-large" => cloudinary_url(item.asset.filename.to_s, transformation: "large"))
 
         .control.next
           = link_to "#" do
@@ -154,7 +161,7 @@
               - @related.each_with_index do |product, index|
                 - if product.id != @compilation.id && product.show == true
                   %li
-                    - if !product.images.blank?
+                    - unless product.images.blank?
                       = cl_image_tag(product.images.first.asset.filename.to_s, transformation: "related", alt: product.images.first.asset.filename.to_s, title: product.title)
                     - else 
                       = cl_image_tag(product.skus.first.images.first.asset.filename.to_s, transformation: "related", alt: product.skus.first.images.first.asset.filename.to_s, title: product.skus.first.title)
