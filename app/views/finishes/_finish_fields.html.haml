@@ -4,7 +4,7 @@
   - if local_assigns.has_key? :options
     - if options[:header]
       %h2
-        Dimension Info
+        Finish Info
         - if options[:removable]
           = link_to_remove_fields f
 
@@ -16,7 +16,7 @@
     .addable-group.images
       = f.fields_for :image do |image_builder|
         = render 'images/image_fields', f: image_builder
-
-    .addable.button{class: ("hidden" unless f.object.image.blank?)}
-      = link_to_add_fields({ name: "Add Image", f: f, association: :image, container: "finish-image-#{@unique_id}" })
+    - if f.object.image.blank?
+      .addable.button{class: ("hidden" unless f.object.image.blank?)}
+        = link_to_add_fields({ name: "Add Image", f: f, association: :image, container: "finish-image-#{@unique_id}" })
     

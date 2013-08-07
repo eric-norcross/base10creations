@@ -23,7 +23,7 @@ class CompilationsController < ApplicationController
   def new
     @compilation = Compilation.new
 
-    1.times do
+    3.times do
       @compilation.images.build
     end
 

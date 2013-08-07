@@ -43,9 +43,8 @@
         = f.fields_for :images do |image_builder|
           = render 'images/image_fields', f: image_builder
 
-      - if f.object.images.blank?
-        .addable.button
-          = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "compilation-image" })
+      .addable.button
+        = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "compilation-image" })
 
   %fieldset
     %legend
