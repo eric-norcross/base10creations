@@ -5,6 +5,7 @@
     %table
       %thead
         %tr
+          %th Id:
           %th Title:
           %th Width:
           %th Height:
@@ -16,6 +17,7 @@
       %tbody
         - @dimensions.each do |dimension|
           %tr
+            %td= dimension.id
             %td= dimension.title
             %td= dimension.width
             %td= dimension.height

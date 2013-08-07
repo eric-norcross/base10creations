@@ -2,18 +2,12 @@
   %li
     .list-view-image
       = link_to product.path, { title: product.title } do
-        - if !product.images.blank?
-          = cl_image_tag(product.images.first.asset.filename.to_s, transformation: "list", alt: product.images.first.asset.filename.to_s, title: product.title)
-        - else 
-          - if !sku.images.blank?
-            = cl_image_tag(sku.images.second.asset.filename.to_s, transformation: "list", alt: sku.images.second.asset.filename.to_s, title: product.title)
-          - else
-            N/A
+        = cl_image_tag(product.list_image.asset.filename.to_s, transformation: "list", alt: product.list_image.asset.filename.to_s, title: product.title)
     .list-view-info
       %h1.collection
         = link_to product.collection.title, collection_path(product.collection.id)
       %h2.title
-        = product.title
+        = link_to product.title, product.path
       %h3.finish
         sku#
       %ul

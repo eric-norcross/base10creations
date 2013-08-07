@@ -48,6 +48,22 @@ class Compilation < ActiveRecord::Base
     return @products
   end
 
+  def list_image
+    if images.length > 0 
+      return images.first
+    else
+      if skus.length == 0
+        return Image.default
+      else 
+        if skus.first.images.length > 1
+          return skus.first.images.second
+        else 
+          return skus.first.images.first
+        end
+      end
+    end
+  end
+
 	private
 
   def create_name

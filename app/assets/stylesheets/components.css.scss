@@ -87,6 +87,10 @@
               line-height: 12px;
               margin: 5px 0 5px 0;
               white-space: normal !important;
+
+              a {
+                color: inherit;
+              }
             }
 
             h1 {
