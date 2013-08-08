@@ -38,6 +38,10 @@ form {
     width: 100%;
   }
 
+  select#component_ids {
+    height: 200px;
+  }
+
   .actions {
     text-align: right;
     /*width: 287px;*/

@@ -24,10 +24,6 @@
       = f.check_box :shown, {checked: checked(f.object.shown)}
 
     .field
-      = f.label :include_finish_name
-      = f.check_box :include_finish_name, {checked: checked(f.object.include_finish_name)}
-
-    .field
       = f.label :skin_id, "Template"
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Template" }
 

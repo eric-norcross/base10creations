@@ -39,8 +39,8 @@ class Product < ActiveRecord::Base
   belongs_to                    :collection
   belongs_to                    :skin
 
-  has_many                      :product_components,    :dependent  => :destroy
-  has_many                      :components,                        :through    => :product_components
+  has_many                      :product_components,  :dependent  => :destroy
+  has_many                      :components,          :through    => :product_components
 
   has_many                      :dimensions, dependent: :destroy
   accepts_nested_attributes_for :dimensions, reject_if: lambda { |a| a[:width].blank? || a[:height].blank? || a[:depth].blank? }, allow_destroy: true
@@ -58,12 +58,6 @@ class Product < ActiveRecord::Base
 
   before_save                   :create_name
 
-  # def components
-  #   @component_ids = components.map{ |component| component.component_id } #collection_id is "Bradley"
-  #   @components = Component.all(:conditions => { :id => @component_ids })
-  #   return @components
-  # end
-
   def show
     if self.active && self.shown
       return true
@@ -77,19 +71,19 @@ class Product < ActiveRecord::Base
   end
 
   def categories
-    @category_ids = collection.components.map{ |component| component.category_id } #collection_id is "Bradley"
-    @categories = Category.all(:conditions => { :id => @category_ids })
+    @category_ids = components.map{ |component| component.category_id }
+    @categories = Category.where(id: @category_ids)
     return @categories
   end 
 
   def brands
-    @brand_ids = collection.styles.map{|style| style.brand_id}
-    @brands = Brand.all(:conditions => { :id => @brand_ids })
+    @brand_ids = collection.styles.map{ |style| style.brand_id }
+    @brands = Brand.where(id: @brand_ids)
     return @brands
   end
 
   def self.skus_by_finish(finish_id)
-    @skus = Sku.where(:finish_id => finish_id);
+    @skus = Sku.where(finish_id: finish_id);
     return @skus
   end
 

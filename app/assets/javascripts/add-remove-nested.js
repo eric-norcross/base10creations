@@ -22,22 +22,22 @@ $(document).on("change", "#compilation-finish select", function(event) {
   });
 });
 
-$(document).on("change", "#product-collection select", function(event) {
-  var product_id = $(this).attr("data-product-id")
-  var collection_id = $("option:selected", this).val();
-  var append = "";
+// $(document).on("change", "#product-collection select", function(event) {
+//   var product_id = $(this).attr("data-product-id")
+//   var collection_id = $("option:selected", this).val();
+//   var append = "";
   
-  if (product_id) {
-    append = "?product_id=" + product_id
-  }
+//   if (product_id) {
+//     append = "?product_id=" + product_id
+//   }
 
-  $.post("/collections/components/" + collection_id + append, function(data){
-    console.log($("#product-components"))
-    $("#product-components").empty();
-    $("#product-components").html(data);
-    console.log(data);
-  });
-});
+//   $.post("/collections/components/" + collection_id + append, function(data){
+//     console.log($("#product-components"))
+//     $("#product-components").empty();
+//     $("#product-components").html(data);
+//     console.log(data);
+//   });
+// });
 
 
 // $(document).on("replaceFileInput", ".cloudinary-fileupload", function(event) {

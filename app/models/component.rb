@@ -10,22 +10,18 @@ class Component < ActiveRecord::Base
                                 :product_id,
 
                                 ## has_many ##
-                                :collection_ids,
                                 :product_ids
 
                                 ## nested attributes ##
 
-  has_many                      :collection_components, :dependent  => :destroy
-  has_many                      :collections,           :through    => :collection_components
+
 
   has_many                      :product_components,    :dependent  => :destroy
   has_many                      :products,              :through    => :product_components
 
   has_many                      :products
-  has_many                      :complilations
   
   belongs_to                    :category
-  belongs_to                    :product
   
   validates_presence_of         :category
   validates_presence_of         :title

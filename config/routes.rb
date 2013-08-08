@@ -19,7 +19,6 @@ Martinfurniture::Application.routes.draw do
   resources :carousels
   resources :categories
   resources :collections
-  resources :collection_components
   resources :collection_styles
   resources :product_components
   resources :components
@@ -41,7 +40,6 @@ Martinfurniture::Application.routes.draw do
   root to: 'pages#home'
 
   # Ajax Routes
-  post '/collections/components/:id'  => 'collections#components'
   post '/collections/products/:id'    => 'collections#products'
   post '/collections/finishes/:id'    => 'collections#finishes'
   post '/finishes/skus/:id'           => 'finishes#skus'

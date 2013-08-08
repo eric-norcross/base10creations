@@ -1,6 +1,3 @@
-/ - @dimension_options = { header: true, removable: true }
-/ - @sku_options = { header: true, removable: true }
-
 = form_for @compilation, :html => { :multipart => true } do |f|
   - if @compilation.errors.any?
     #error-explanation
@@ -52,10 +49,6 @@
 
     .field#compilation-skus
       = render '/skus/list', f: f, type: :compilation
-
-      / GET products WHERE collection_id = selected-collection-id
-      /   GET skus WHERE sku.finish.id = selected-finish-id
-
 
   .actions
     = f.submit 'Save'

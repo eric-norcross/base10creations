@@ -10,10 +10,6 @@ class CollectionsController < ApplicationController
     render "products/_select", layout: false
   end
 
-  def components
-    render "components/_select", locals: { product_id: params[:product_id], collection_id: params[:id] }, layout: false
-  end
-
 
   # REST Routes
   def index
