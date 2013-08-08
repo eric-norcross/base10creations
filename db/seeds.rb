@@ -677,8 +677,8 @@ Product.create([
 
 
 
-ProductCompilationComponent.create([
-  { :created_at => nil, :updated_at => nil, :product_id => nil, :component_id => nil, :compilation_id => nil }
+ProductComponent.create([
+  { :created_at => nil, :updated_at => nil, :product_id => nil, :component_id => nil }
 ], :without_protection => true )
 
 

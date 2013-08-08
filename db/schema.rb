@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726230447) do
+ActiveRecord::Schema.define(:version => 20130807230845) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -151,12 +151,11 @@ ActiveRecord::Schema.define(:version => 20130726230447) do
     t.integer  "skin_id"
   end
 
-  create_table "product_compilation_components", :force => true do |t|
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+  create_table "product_components", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "product_id"
     t.integer  "component_id"
-    t.integer  "compilation_id"
   end
 
   create_table "products", :force => true do |t|

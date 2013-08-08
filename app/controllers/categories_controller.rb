@@ -10,12 +10,16 @@ class CategoriesController < ApplicationController
 
   # GET /category/1
   def show
+    # Get Component 
     @category = Category.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @category }
-    end
+    # Set up side nav
+    @side_nav_elements = Category.all
+
+    # Get Products & Compilations
+    @products = Component.products_and_compilations(@category.component_ids)
+
+    render "layouts/templates/list"
   end
 
   # GET /category/new

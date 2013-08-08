@@ -38,8 +38,8 @@ class Product < ActiveRecord::Base
   belongs_to                    :collection
   belongs_to                    :skin
 
-  has_many                      :product_compilation_components,    :dependent  => :destroy
-  has_many                      :components,                        :through    => :product_compilation_components
+  has_many                      :product_components,    :dependent  => :destroy
+  has_many                      :components,                        :through    => :product_components
 
   has_many                      :dimensions, dependent: :destroy
   accepts_nested_attributes_for :dimensions, reject_if: lambda { |a| a[:width].blank? || a[:height].blank? || a[:depth].blank? }, allow_destroy: true

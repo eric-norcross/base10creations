@@ -21,7 +21,7 @@ Martinfurniture::Application.routes.draw do
   resources :collections
   resources :collection_components
   resources :collection_styles
-  resources :product_compilation_components
+  resources :product_components
   resources :components
   resources :compilations
   resources :figures

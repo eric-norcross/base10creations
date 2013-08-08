@@ -18,8 +18,8 @@ class Component < ActiveRecord::Base
   has_many                      :collection_components, :dependent  => :destroy
   has_many                      :collections,           :through    => :collection_components
 
-  has_many                      :product_compilation_components,    :dependent  => :destroy
-  has_many                      :products,              :through    => :product_compilation_components
+  has_many                      :product_components,    :dependent  => :destroy
+  has_many                      :products,              :through    => :product_components
 
   has_many                      :products
   has_many                      :complilations
@@ -64,6 +64,29 @@ class Component < ActiveRecord::Base
     else
       return parent.children
     end
+  end
+
+  def self.products_and_compilations(component_ids)
+    # Get all Products based on the Components/Sub-Components [Optimize by selected product_id's only]
+    @product_ids = ProductComponent.where(:component_id => component_ids).map{ |product_component| product_component.product_id }
+    @products = Product.where(:id => @product_ids)
+
+    # Create an array of Skus where the Sku belongs to a Compilation
+    # Also create an array of Products not to include if their skus belong to a Compilation
+    @compilation_ids = []
+    @products.each do |product|
+      product.skus.each do |sku|
+        if sku.compilation_id
+          @compilation_ids.push(sku.compilation_id) unless @compilation_ids.include?(sku.compilation_id)
+        end
+      end
+    end
+
+    # Get Compilations where the Product of the Sku had one of the Components assigned
+    @compilations = Compilation.where(:id => @compilation_ids)
+
+    # Return the combined Products and Compilations
+    return (@products + @compilations).sort_by(&:name)
   end
 
   private
