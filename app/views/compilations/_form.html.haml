@@ -27,14 +27,14 @@
       = f.label :collection_id, "Collection"
       = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }, :"data-type" => :compilation
 
+      #include-finish-name
+        = f.check_box :include_finish_name
+        = f.label :include_finish_name
+
     .field#compilation-finish
       = render '/finishes/select', f: f, type: :compilation
 
-    / .field#product-subcomponent
-    /   - if defined?(f) && f.object.component_id
-    /     = render '/subcomponents/select', f: f, type: :product
-
-    .field
+    .field#compilation-title
       = f.label :title
       = f.text_field :title
 

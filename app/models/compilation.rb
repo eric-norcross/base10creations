@@ -4,6 +4,7 @@ class Compilation < ActiveRecord::Base
   attr_accessible 							:name, 
   															:title,
                                 :active,
+                                :include_finish_name,
 
   															# belongs_to ##
  																:skin_id,

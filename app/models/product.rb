@@ -21,6 +21,7 @@ class Product < ActiveRecord::Base
                                 :active,
                                 :shown,
                                 :video,
+                                :include_finish_name,
 
                                 ## belongs_to ##
                                 :collection_id,

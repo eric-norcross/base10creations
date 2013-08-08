@@ -111,8 +111,16 @@ form {
     h1 {
       color: #000 !important;
     }
+
+    #include-finish-name {
+      display: inline;
+
+      label {
+        float: none;
+      }
+    }
   }
-  
+
   /*
   .remove-fields,
   .add-fields {

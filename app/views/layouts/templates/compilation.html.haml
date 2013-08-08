@@ -45,9 +45,10 @@
               sku
 
             - @compilation.skus.each do |sku|
-              %span.comma ##{sku.title}
+              %span.comma= link_to "##{sku.title}", sku_path
           %h2
-            #{@compilation.collection.title} #{@compilation.finish.title}
+            = @compilation.collection.title 
+            = @compilation.finish.title if @compilation.include_finish_name
           %h3
             = @compilation.title
         #icons

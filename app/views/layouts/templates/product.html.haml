@@ -39,7 +39,8 @@
           %h1 
             sku ##{@sku.title}
           %h2
-            #{@product.collection.title} #{@sku.finish.title}
+            = @product.collection.title 
+            = @sku.finish.title if @product.include_finish_name
           %h3
             = @product.title
         #icons
