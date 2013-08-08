@@ -22,6 +22,8 @@
 *.rbc
 *.sassc
 .DS_Store
+*.DS_Store
+*/.DS_Store
 .sass-cache
 .rspec
 .idea
