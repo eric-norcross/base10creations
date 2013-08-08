@@ -26,7 +26,7 @@ class Sku < ActiveRecord::Base
 
   before_save                   :create_name
 
-  def self.product(product_id = :product_id)
+  def product
     return Product.find(product_id)
   end
 

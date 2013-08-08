@@ -68,40 +68,37 @@
 
         .tab-content
           #features.tab-pane.active
-
-            - @compilation.products.each do |product|
-              %div
-                %h1
-                  = product.title
-                = raw product.features
-                %ul
-                  - product.brands.each do |brand|
-                    - if !brand.images.blank?
-                      %li
-                        = cl_image_tag(brand.images.first.asset.filename.to_s, alt: brand.title)
+            %div
+              - @compilation.products.each do |product|
+                %div
+                  %h1= product.title
+                  = raw product.features
+                  %ul
+                    - product.brands.each do |brand|
+                      - if !brand.images.blank?
+                        %li
+                          = cl_image_tag(brand.images.first.asset.filename.to_s, alt: brand.title)
                 
-            / .finishes
-            /   - if @compilation.skus.length > 1
-            /     %div
-            /       %h1
-            /         Also available in
-            /       %ul
-            /         - @compilation.skus.each do |sku|
-            /           - if sku != @compilation.skus
-            /             %li
-            /               - if sku.finish.image.first
-            /                 = link_to product_sku_path(@compilation, sku) do
-            /                   = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
+            .finishes
+              / - if @compilation.skus.length > 1
+              /   %div
+              /     %h1
+              /       Also available in
+              /     %ul
+              /       - @compilation.skus.each do |sku|
+              /         - if sku != @compilation.skus
+              /           %li
+              /             - if sku.finish.image.first
+              /               = link_to product_sku_path(@compilation, sku) do
+              /                 = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
 
-            /   - @compilation.products.each do |product|
-            /     - if product.categories.length > 1
-            /       %div
-            /         %h1
-            /           #{@compilation.collection.title} is also available in
-            /         %ul
-            /           - product.categories.each do |category|
-            /             %li
-            /               = link_to category.title, category_path(category.id)
+              - unless @compilation.skus.first.product.categories.blank?
+                %div
+                  %h1 #{@compilation.skus.first.product.collection.title} is also available in
+                  %ul
+                    - @compilation.skus.first.product.categories.each do |category|
+                      %li
+                        = link_to category.title, category_path(category.id)
 
           #dimensions.tab-pane
             - @compilation.products.each do |product|
