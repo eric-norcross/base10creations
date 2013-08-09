@@ -25,7 +25,7 @@ class Finish < ActiveRecord::Base
   before_save                   :create_name
 
   def self.skus(finish_id = :id)
-    @skus = Sku.where(:finish_id => finish_id)
+    @skus = Sku.where(finish_id: finish_id)
     return @skus
   end
 
@@ -40,13 +40,7 @@ class Finish < ActiveRecord::Base
   end
 
   def self.compilations(finish_id = :id)
-    @compilation_ids = []
-
-    skus(finish_id).each do |sku|
-      @compilation_ids.push(sku.compilation_id)
-    end
-
-    return Compilation.where(id: @compilation_ids)
+    return Compilation.where(finish_id: finish_id)
   end
 
   def self.products_and_compilations(finish_id = :id)
