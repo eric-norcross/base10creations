@@ -17,16 +17,11 @@ class FinishesController < ApplicationController
 
   # GET /finishes/1
   def show
-    # @finish = Finish.find(params[:id])
-    @product_ids = Product.skus_by_finish(params[:id]).map{|sku| sku.product_id}
-    @products = Product.where(:id => @product_ids).order(:name)
+    @side_nav_elements = Finish.all
+    
+    @products = Finish.products_and_compilations(params[:id])
 
     render "layouts/templates/list"
-
-    # respond_to do |format|
-    #   format.html # show.html.erb
-    #   # format.json { render json: @style }
-    # end
   end
 
   # GET /finishes/new

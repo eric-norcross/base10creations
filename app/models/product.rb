@@ -82,10 +82,10 @@ class Product < ActiveRecord::Base
     return @brands
   end
 
-  def self.skus_by_finish(finish_id)
-    @skus = Sku.where(finish_id: finish_id);
-    return @skus
-  end
+  # def self.skus_by_finish(finish_id)
+  #   @skus = Sku.where(finish_id: finish_id);
+  #   return @skus
+  # end
 
   def list_image
     if images.length > 0 

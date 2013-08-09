@@ -29,6 +29,30 @@ class Finish < ActiveRecord::Base
     return @skus
   end
 
+  def self.products(finish_id = :id)
+    @product_ids = []
+
+    skus(finish_id).each do |sku|
+      @product_ids.push(sku.product_id)
+    end
+
+    return Product.where(id: @product_ids)
+  end
+
+  def self.compilations(finish_id = :id)
+    @compilation_ids = []
+
+    skus(finish_id).each do |sku|
+      @compilation_ids.push(sku.compilation_id)
+    end
+
+    return Compilation.where(id: @compilation_ids)
+  end
+
+  def self.products_and_compilations(finish_id = :id)
+    return products(finish_id) + compilations(finish_id)
+  end
+
   private
   
   def create_name

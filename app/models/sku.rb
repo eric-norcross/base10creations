@@ -26,8 +26,12 @@ class Sku < ActiveRecord::Base
 
   before_save                   :create_name
 
-  def product
+  def self.product(product_id = :product_id)
     return Product.find(product_id)
+  end
+
+  def self.compilation(compilation_id = :compilation_id)
+    return Compilation.find(compilation_id)
   end
 
   private
