@@ -39,12 +39,6 @@ $(document).on("change", "#compilation-finish select", function(event) {
 //   });
 // });
 
-
-// $(document).on("replaceFileInput", ".cloudinary-fileupload", function(event) {
-
-// });
-//$('.cloudinary-fileupload').fileupload('option', 'replaceFileInput', false);
-
 $(document).on("change", "[id^='component']", function(event) {
   console.log($(this).attr("data-parent"))
   if ($(this).attr("data-parent") == 0) {
@@ -84,15 +78,6 @@ $(document).on("change", "[id^='component']", function(event) {
 //   }
 // });
 
-// $(document).on("change", "[id$=-component] select", function(event) {
-//   var type = $(this).attr("data-type");
-//   console.log(type)
-//   var component_id = $("option:selected", this).val();
-//   $.post("/subcomponents/retrieve_subcomponents/" + component_id + "?type=" + type, function(data){
-//     $("[id$=-subcomponent]").empty();
-//     $("[id$=-subcomponent]").html(data);
-//   });
-// });
 
 $(document).on("click", "a.remove", function(event) {
   var group = $(this).parent().parent().parent();

@@ -17,7 +17,7 @@ class Style < ActiveRecord::Base
 
   belongs_to                    :brand
   
-  #validates_presence_of        :collection
+  validates_presence_of         :collections
   validates_presence_of         :title
 
   before_save                   :create_name

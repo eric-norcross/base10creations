@@ -16,7 +16,7 @@ class Collection < ActiveRecord::Base
   accepts_nested_attributes_for :collection_styles,     :allow_destroy => true
   
   validates_presence_of         :title
-  # validates_presence_of         :style_ids
+  validates_presence_of         :description
 
   before_save                   :create_name
 

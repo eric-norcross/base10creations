@@ -31,7 +31,6 @@ Martinfurniture::Application.routes.draw do
   resources :skus
   resources :styles
   resources :images
-  resources :subsections
 
   resources :dimensions
   

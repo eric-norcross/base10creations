@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130808171522) do
+ActiveRecord::Schema.define(:version => 20130809001045) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -61,13 +61,6 @@ ActiveRecord::Schema.define(:version => 20130808171522) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
-  create_table "collection_components", :force => true do |t|
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "collection_id"
-    t.integer  "component_id"
-  end
-
   create_table "collection_styles", :force => true do |t|
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
@@ -89,7 +82,6 @@ ActiveRecord::Schema.define(:version => 20130808171522) do
     t.integer  "skin_id"
     t.integer  "collection_id"
     t.integer  "component_id"
-    t.integer  "subcomponent_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.boolean  "active"
@@ -169,7 +161,6 @@ ActiveRecord::Schema.define(:version => 20130808171522) do
     t.text     "style"
     t.string   "video"
     t.text     "features"
-    t.integer  "subcomponent_id"
     t.boolean  "active"
     t.boolean  "shown"
     t.boolean  "include_finish_name"
@@ -210,24 +201,6 @@ ActiveRecord::Schema.define(:version => 20130808171522) do
     t.datetime "updated_at",  :null => false
     t.integer  "brand_id"
     t.text     "description"
-  end
-
-  create_table "subcomponents", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.integer  "component_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "subsections", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "section_id"
-    t.integer  "skin_id"
   end
 
 end

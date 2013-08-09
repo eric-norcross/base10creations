@@ -4,6 +4,6 @@ class RemoveCompilationIdFromProductComponents < ActiveRecord::Migration
   end
 
   def down
-    add_column :product_components, :compilation_id, :string
+    add_column :product_components, :compilation_id, :integer
   end
 end

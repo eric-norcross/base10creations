@@ -110,6 +110,11 @@ class Product < ActiveRecord::Base
     # self.name = component.title.parameterize
   end
 
+
+  # Things to look into for validation:
+  # validates_associated :user
+
+
   # has_many                      :skus, dependent: :destroy
   # accepts_nested_attributes_for :skus, reject_if: :validate_skus , allow_destroy: true
   # def validate_skus(attributes)

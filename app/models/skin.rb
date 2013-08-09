@@ -19,13 +19,11 @@ class Skin < ActiveRecord::Base
                                 ##belongs_to##
 
                                 ##has_many##
-                                :product_ids, 
-                                :subsection_ids, 
+                                :product_ids,
                                 :page_ids
 
 
   has_many                      :products
-  has_many                      :susections
   has_many                      :pages
   has_many                      :complilations
 

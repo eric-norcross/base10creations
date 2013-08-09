@@ -10,11 +10,6 @@ class Section < ActiveRecord::Base
                                 :skin_id
 
                                 ##has_many##
-  #                               :subsection_ids
-
-
-
-  # has_many                      :subsections
 
   belongs_to                    :skin
 
