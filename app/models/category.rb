@@ -23,6 +23,15 @@ class Category < ActiveRecord::Base
   before_save           :create_name
 
   private
+
+  def products
+  end
+
+  def compilations
+  end
+
+  def products_and_compilations
+  end
   
   def create_name
     self.name = title.parameterize
