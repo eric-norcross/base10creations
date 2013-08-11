@@ -22,23 +22,6 @@ $(document).on("change", "#compilation-finish select", function(event) {
   });
 });
 
-// $(document).on("change", "#product-collection select", function(event) {
-//   var product_id = $(this).attr("data-product-id")
-//   var collection_id = $("option:selected", this).val();
-//   var append = "";
-  
-//   if (product_id) {
-//     append = "?product_id=" + product_id
-//   }
-
-//   $.post("/collections/components/" + collection_id + append, function(data){
-//     console.log($("#product-components"))
-//     $("#product-components").empty();
-//     $("#product-components").html(data);
-//     console.log(data);
-//   });
-// });
-
 $(document).on("change", "[id^='component']", function(event) {
   console.log($(this).attr("data-parent"))
   if ($(this).attr("data-parent") == 0) {
@@ -48,42 +31,13 @@ $(document).on("change", "[id^='component']", function(event) {
       $(this).parent().find("input:checkbox").prop("checked", false);
     }
   } 
- 
-  // var type = $(this).attr("data-type");
-  // var finish_id = $("option:selected", this).val();
-
-  // $.post("/finishes/skus/" + finish_id + "?type=" + type, function(data){
-  //   console.log($("#compilation-skus"))
-  //   $("#compilation-skus").empty();
-  //   $("#compilation-skus").html(data);
-  //   console.log(data);
-  // });
 });
-
-// $(document).on("change", "[id$=-collection] select", function(event) {
-//   var type = $(this).attr("data-type");
-//   var collection_id = $("option:selected", this).val();
-//   $.post("/components/components_by_collection/" + collection_id + "?type=" + type, function(data){
-//     $("[id$=-component]").empty();
-//     $("[id$=-component]").html(data);
-//     //console.log(data);
-//   });
-
-//   if ($("#compilation-collection").length > 0) {
-//     $.post("/products/products_by_collection/" + collection_id, function(data){
-//       $("#compilation-collection-products").empty();
-//       $("#compilation-collection-products").html(data);
-//       //console.log(data);
-//     });
-//   }
-// });
-
 
 $(document).on("click", "a.remove", function(event) {
   var group = $(this).parent().parent().parent();
   var container = $(this).parent().parent();
-  var field = group.find("input[type=hidden]");
-  field.val("1");
+  var field = container.find("input[type=hidden].destroy");
+  field.val("true");
   container.hide();
 
   console.log("triggering event from remove");
@@ -118,6 +72,7 @@ $(document).on("click", ".button", function(event) {
   group.trigger('contentChanged', ["add", group]);
 
   var cloudinaryInput = content.find("input");
+  
   //Initializes Cloudinary Input 
   cloudinaryInput.cloudinary_fileupload({replaceFileInput: false});
 
@@ -132,8 +87,6 @@ $(document).on('contentChanged', '.singular-addable', function(event, toggler, c
     console.log("Groups: " + groups)
 
     if (toggler == "add") {
-      //console.log("Showing add button")
-
       if (groups.length > 0) {
         console.log("Groups length: " + groups.length)
         groups.each(function(index) {
@@ -161,25 +114,5 @@ $(document).on('contentChanged', '.singular-addable', function(event, toggler, c
     console.log("$(this)[0]: " + $(this)[0]);
     console.log("$(container)[0]: " + $(container)[0]);
   }
-});
-
-
-$(document).ready(function() {
-  // console.log($('#product-collection select'));
-
-  // $('#product-collection select').on('change', function() {
-  //   console.log("test")
-  //   // make a POST call and replace the content
-  //   var collection_id = $("option:selected", this).val() || 0;
-
-  //   //if (collection_id == "") { collection_id = "0" };
-
-  //   //$.post('/components/get_components', {id: that.val()}, null, "script");
-  //   $.post('/components/get_components/' + collection_id, function(data){
-  //     //$("#cities").html(data);
-  //     console.log(data);
-  //   })
-  //   return false;
-  // });
 });
 
