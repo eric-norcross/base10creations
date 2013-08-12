@@ -20,12 +20,24 @@ form {
   input[type=submit]:hover,
   .button:hover {
     background-color: $linkColor;
-    color: #fff !important;
+    color: #fff;
     cursor: pointer;
 
     a, a:hover {
       color: #fff !important;
       text-decoration: none;
+    }
+  }
+
+  input[type=submit].disabled:hover,
+  .button.disabled:hover {
+    background-color: inherit;
+    color: $linkColor;
+    cursor: inherit;
+
+    a, a:hover {
+      color: inherit;
+      text-decoration: inherit;
     }
   }
 
@@ -36,6 +48,11 @@ form {
     font-weight: bold;
     margin-left: 0px;
     width: 100%;
+  }
+
+  .disabled {
+    opacity:0.5;
+    filter:alpha(opacity=50); /* For IE8 and earlier */
   }
 
   select#component_ids {
