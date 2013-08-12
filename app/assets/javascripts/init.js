@@ -1,5 +1,5 @@
-var imageUploads;
-var uploadsComplete;
+var uploadsStarted = [];
+var uploadsCompleted = [];
 
 $(document).on("focus", ".clear-input", function(event) {
   if ($(this).val() == $(this).attr("data-message")) {
@@ -15,26 +15,24 @@ $(document).on("blur", ".clear-input", function(event) {
 
 $(document).on("fileuploadadd", function(event) {
   var submitButton = $("input[type=submit]");
+
+  uploadsStarted.push(event.target);
+
   submitButton.attr("disabled", "disabled");
   submitButton.addClass("disabled")
-  submitButton.attr("value", "Please wait for image(s) to finish uploading.");
-
-  // submitButton.css({ 'opacity' : 0.5 });
-  console.log(submitButton)
-  console.log(imageUploads.length)
-  imageUploads.push(event.target)
-  console.log("Added file to " + event.target)
+  submitButton.attr("value", ("Plase wait for " + (uploadsStarted.length - uploadsCompleted.length) + " image(s) to finish uploading."));
 })
 
 $(document).on("fileuploaddone", function(event) {
   var submitButton = $("input[type=submit]");
-  submitButton.removeAttr('disabled');
-  submitButton.removeClass("disabled")
-  submitButton.attr("value", "Save");
+  uploadsCompleted.push(event.target);
 
-  uploadsComplete.push(event.target)
-  if (imageUploads.length == uploadsComplete.length) {
-    console.log("Ok to save!")
+  if (uploadsStarted.length == uploadsCompleted.length) {
+    submitButton.removeAttr('disabled');
+    submitButton.removeClass("disabled");
+    submitButton.attr("value", "Save");
+  } else {
+    submitButton.attr("value", ("Plase wait for " + (uploadsStarted.length - uploadsCompleted.length) + " image(s) to finish uploading."));
   }
 })
 
@@ -54,6 +52,6 @@ $(document).ready(function(){
 
   $('.cloudinary-fileupload').fileupload('option', 'replaceFileInput', false);
 
-  imageUploads = [];
-  uploadsComplete = [];
+  uploadsStarted = [];
+  uploadsCompleted = [];
 });
