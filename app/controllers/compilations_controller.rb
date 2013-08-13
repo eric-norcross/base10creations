@@ -13,7 +13,17 @@ class CompilationsController < ApplicationController
   # GET /compilations/1
   def show
     @compilation = Compilation.find(params[:id])
-    @related = Product.where(collection_id: @compilation.collection_id) + Compilation.where(collection_id: @compilation.collection_id)
+    @products_and_compilations = Product.where(collection_id: @compilation.collection_id) + Compilation.where(collection_id: @compilation.collection_id)
+    @categories = @compilation.categories
+    
+    @related = []
+    @products_and_compilations.each do |item|
+      if item.categories.to_set.superset?(@categories.to_set)
+        @related.push(item)
+      end
+    end
+    
+    # @related = Product.where(collection_id: @compilation.collection_id) + Compilation.where(collection_id: @compilation.collection_id)
 
     render "#{@compilation.skin.template}"
   end

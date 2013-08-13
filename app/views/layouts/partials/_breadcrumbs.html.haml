@@ -3,7 +3,7 @@
   >
   = link_to product.collection.title, collection_path(product.collection.id)
   >  
-  = link_to product.skus.first.finish.title, finish_path(product.skus.first.finish.id)
+  = link_to sku.finish.title, finish_path(sku.finish.id)
   >  
   = product.title
   / - product.skus.each do |sku|

@@ -1,5 +1,5 @@
 - if @compilation.skus
-  = render "/skus/breadcrumbs", product: @compilation
+  = render "layouts/partials/breadcrumbs", product: @compilation, sku: @compilation.skus.first
 
 - @gallery_items = @compilation.images
 - @compilation.skus.each do |gallery_sku|
@@ -47,8 +47,7 @@
             - @compilation.skus.each do |sku|
               %span.comma= link_to "##{sku.title}", sku_path
           %h2
-            = @compilation.collection.title 
-            = @compilation.finish.title if @compilation.include_finish_name
+            = association(@compilation, @compilation.finish)
           %h3
             = @compilation.title
         #icons

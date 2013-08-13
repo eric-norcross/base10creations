@@ -11,4 +11,12 @@ module ProductsHelper
 
     return @collection
   end
+
+  def association(product, finish)
+    if product.include_finish_name
+      return product.collection.title + " " + finish.title
+    else 
+      return product.collection.title
+    end
+  end
 end

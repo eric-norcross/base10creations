@@ -22,17 +22,30 @@ class Category < ActiveRecord::Base
 
   before_save           :create_name
 
-  private
-
   def products
+    @product_ids = ProductComponent.where(component_id: component_ids).map{|product| product.id}
+    return Product.where(id: @product_ids)
   end
 
   def compilations
+    @compilation_ids = []
+    products.each do |product| 
+      product.skus.each do |sku|
+        if (sku.compilation_id)
+          @compilation_ids.push(sku.compilation_id) unless @compilation_ids.include?(sku.compilation_id)
+        end
+      end
+    end
+
+    return Compilation.where(id: @compilation_ids)
   end
 
   def products_and_compilations
+    return products + compilations
   end
   
+  private
+
   def create_name
     self.name = title.parameterize
   end

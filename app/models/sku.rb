@@ -34,6 +34,18 @@ class Sku < ActiveRecord::Base
     return Compilation.find(compilation_id)
   end
 
+  def list_image
+    if images.length == 0 
+      return Image.default
+    else
+      if images.length > 1
+        return images.second
+      else 
+        return images.first
+      end
+    end
+  end
+
   private
   
   def create_name

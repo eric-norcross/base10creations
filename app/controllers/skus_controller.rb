@@ -15,14 +15,19 @@ class SkusController < ApplicationController
   def show
     @sku = Sku.find(params[:id])
     @product = Product.find(@sku.product.id)
-    @related = (Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)) - [@product]
+    @products_and_compilations = Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)
+    @categories = @product.categories
+    
+    @related = []
+    @products_and_compilations.each do |item|
+      if item.categories.to_set.superset?(@categories.to_set)
+        @related.push(item)
+      end
+    end
+
+    #@related = (Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)) - [@product]
 
     render "#{@product.skin.template}"
-
-    # respond_to do |format|
-    #   format.html # show.html.erb
-    #   format.json { render json: @sku }
-    # end
   end
 
   # GET /skus/new

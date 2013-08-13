@@ -1,5 +1,5 @@
 - if @sku
-  = render "/skus/breadcrumbs", product: @product, sku: @sku
+  = render "layouts/partials/breadcrumbs", product: @product, sku: @sku
 
 - @gallery_items = @product.images + @sku.images
 
@@ -39,8 +39,7 @@
           %h1 
             sku ##{@sku.title}
           %h2
-            = @product.collection.title 
-            = @sku.finish.title if @product.include_finish_name
+            = association(@product, @sku.finish)
           %h3
             = @product.title
         #icons
@@ -128,23 +127,7 @@
               = link_to "#" do
                 = render :partial => '/layouts/svg/arrow_left'
             .items-container
-              %ul
-                - @related.each_with_index do |related_product, index|
-                  - if related_product.show
-                    %li
-                      = link_to related_product.path, { title: related_product.title } do
-                        = cl_image_tag(related_product.list_image.asset.filename.to_s, transformation: "related", alt: related_product.list_image.asset.filename.to_s, title: related_product.skus.first.title)
-                      .product-info
-                        %hgroup
-                          %h1 
-                            = link_to related_product.path do
-                              #{related_product.collection.title} #{related_product.skus.first.finish.title}
-                          %h2
-                            = link_to related_product.path do
-                              = related_product.title
-                          %h3
-                            = link_to related_product.path do
-                              sku ##{related_product.skus.first.title}
+              = render "/layouts/partials/related", related: @related, finish: @sku.finish
             .control.next
               = link_to "#" do
                 = render :partial => '/layouts/svg/arrow_right'

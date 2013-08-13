@@ -33,7 +33,7 @@ class Compilation < ActiveRecord::Base
 	before_save                   :create_name
 
   def show
-    return :active
+    return active
   end
 
   def path(sku = nil)
@@ -45,8 +45,18 @@ class Compilation < ActiveRecord::Base
   end
 
   def products
-    @products = Product.where(:id => skus.map{ |sku| sku.product_id })
-    return @products
+    return Product.where(id: skus.map{ |sku| sku.product_id })
+  end
+
+  def categories
+    @categories = []
+    products.each do |product|
+      product.categories.each do |category|
+        @categories.push(category) unless @categories.include?(category)
+      end
+    end
+
+    return @categories
   end
 
   def list_image
