@@ -60,16 +60,20 @@ class Compilation < ActiveRecord::Base
   end
 
   def list_image
-    if images.length > 0 
-      return images.first
+    if images.length > 1 
+      return images.second
     else
-      if skus.length == 0
-        return Image.default
+      if images.length == 1
+        images.first
       else 
-        if skus.first.images.length > 1
-          return skus.first.images.second
+        if skus.length == 0
+          return Image.default
         else 
-          return skus.first.images.first
+          if skus.first.images.length > 1
+            return skus.first.images.second
+          else 
+            return skus.first.images.first
+          end
         end
       end
     end

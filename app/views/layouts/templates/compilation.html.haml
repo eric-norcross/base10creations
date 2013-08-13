@@ -117,8 +117,7 @@
                       = dimension.depth
                       d
                     - if dimension.image.length > 0
-                      - dimension.image.each do |asset|
-                        = cl_image_tag(asset.filename.to_s, transformation: 'thumb', alt: "Dimensions")
+                      = cl_image_tag(dimension.image.first.asset.filename.to_s, alt: "Dimensions")
               
           #style.tab-pane
             = raw @compilation.collection.description 
@@ -142,25 +141,9 @@
         .scroller
           .control.previous
             = link_to "#" do
-              = render :partial => '/layouts/svg/arrow_left'
+              = render "layouts/svg/arrow_left"
           .items-container
-            %ul
-              - @related.each_with_index do |related_product, index|
-                - if related_product.id != @compilation.id && related_product.show == true
-                  %li
-                    = link_to related_product.path, { title: related_product.title } do
-                      = cl_image_tag(related_product.list_image.asset.filename.to_s, transformation: "related", alt: related_product.list_image.asset.filename.to_s, title: related_product.skus.first.title)
-                    .product-info
-                      %hgroup
-                        %h1 
-                          = link_to related_product.path do
-                            #{related_product.collection.title} #{related_product.skus.first.finish.title}
-                        %h2
-                          = link_to related_product.path do
-                            = related_product.title
-                        %h3
-                          = link_to related_product.path do
-                            sku ##{related_product.skus.first.title}
+            = render "layouts/partials/related", related: @related, finish: @compilation.finish
           .control.next
             = link_to "#" do
-              = render :partial => '/layouts/svg/arrow_right'
+              = render "layouts/svg/arrow_right"

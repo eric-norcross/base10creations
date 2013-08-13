@@ -101,8 +101,7 @@
                   = dimension.depth
                   d
               - if dimension.image.length > 0
-                - dimension.image.each do |asset|
-                  = cl_image_tag(asset.filename.to_s, transformation: 'thumb', alt: "Dimensions")
+                = cl_image_tag(dimension.image.first.asset.filename.to_s, alt: "Dimensions")
               
           #style.tab-pane
             = raw @product.collection.description 
@@ -125,9 +124,9 @@
           .scroller
             .control.previous
               = link_to "#" do
-                = render :partial => '/layouts/svg/arrow_left'
+                = render "layouts/svg/arrow_left"
             .items-container
-              = render "/layouts/partials/related", related: @related, finish: @sku.finish
+              = render "layouts/partials/related", related: @related, finish: @sku.finish
             .control.next
               = link_to "#" do
-                = render :partial => '/layouts/svg/arrow_right'
+                = render "layouts/svg/arrow_right"

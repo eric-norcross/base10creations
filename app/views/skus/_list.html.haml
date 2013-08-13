@@ -32,5 +32,5 @@
               = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: image.asset.filename.to_s)
           / %td= sku.images.length
           %td= link_to 'Show', sku
-          %td= link_to 'Edit', edit_sku_path(sku)
+          %td= link_to 'Edit', edit_product_path(sku.product)
           %td= link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }
