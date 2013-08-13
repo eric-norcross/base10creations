@@ -92,13 +92,12 @@
               /               = link_to product_sku_path(@compilation, sku) do
               /                 = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
 
-              - unless @compilation.skus.first.product.categories.blank?
-                %div
-                  %h1 #{@compilation.skus.first.product.collection.title} is also available in
-                  %ul
-                    - @compilation.skus.first.product.categories.each do |category|
-                      %li
-                        = link_to category.title, category_path(category.id)
+              %div
+                %h1 #{@compilation.collection.title} is available in
+                %ul
+                  - @compilation.categories.each do |category|
+                    %li
+                      = link_to category.title, category_path(category.id)
 
           #dimensions.tab-pane
             - @compilation.products.each do |product|
@@ -110,12 +109,11 @@
                     %span.title
                       = dimension.title
                     %span.specs
-                      = dimension.width
-                      w x
-                      = dimension.height
-                      h x
-                      = dimension.depth
-                      d
+                      #{number_with_precision(dimension.width, strip_insignificant_zeros: true)}w 
+                      x
+                      #{number_with_precision(dimension.height, strip_insignificant_zeros: true)}h
+                      x
+                      #{number_with_precision(dimension.depth, strip_insignificant_zeros: true)}d
                     - if dimension.image.length > 0
                       = cl_image_tag(dimension.image.first.asset.filename.to_s, alt: "Dimensions")
               

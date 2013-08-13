@@ -19,9 +19,9 @@
           %tr
             %td= dimension.id
             %td= dimension.title
-            %td= dimension.width
-            %td= dimension.height
-            %td= dimension.depth
+            %td= number_with_precision(dimension.width, strip_insignificant_zeros: true)
+            %td= number_with_precision(dimension.height, strip_insignificant_zeros: true)
+            %td= number_with_precision(dimension.depth, strip_insignificant_zeros: true)
             %td
               - if !dimension.image.blank?
                 = cl_image_tag(dimension.image.first.asset.filename.to_s, transformation: "hint", alt: dimension.image.first.asset.filename.to_s, title: dimension.title)

@@ -36,7 +36,6 @@ class Collection < ActiveRecord::Base
   def self.products_and_compilations(collection_id = :id)
     return (products(collection_id) + compilations(collection_id)).sort_by(&:name)
   end
-  
 
   private
   
