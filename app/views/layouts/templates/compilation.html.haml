@@ -1,6 +1,7 @@
 - if @compilation.skus
   = render "layouts/partials/breadcrumbs", product: @compilation, sku: @compilation.skus.first
 
+- @videos = compilation.products.map{|product| product.video}
 - @gallery_items = @compilation.images
 - @compilation.skus.each do |gallery_sku|
   - @gallery_items + gallery_sku.images
@@ -63,8 +64,10 @@
             %a.gradient{"data-toggle" => "tab", :href => "#dimensions"} Dimensions
           %li
             %a.gradient{"data-toggle" => "tab", :href => "#style"} Style
-          %li
-            %a.gradient{"data-toggle" => "tab", :href => "#videos"} Videos
+
+          - unless @videos.blank?
+            %li
+              %a.gradient{"data-toggle" => "tab", :href => "#videos"} Videos
 
         .tab-content
           #features.tab-pane.active
@@ -123,14 +126,14 @@
               %div   
                 = raw style.description 
 
-          #videos.tab-pane
-            %h1 Features of #{@compilation.collection.title} #{@compilation.finish.title} 
-            %p 
-              This can be some text about sharing the video or something
+          - unless @videos.blank?
+            #videos.tab-pane
+              %h1 Features of #{@compilation.collection.title} #{@compilation.finish.title} 
+              %p 
+                This can be some text about sharing the video or something
 
-            - @compilation.products.each do |product|
-              - if product.video && product.video != ""
-                %iframe{:width => "420", :height => "267", :src => product.video, :frameborder => "0", :allowfullscreen => ""}
+              - @videos.each do |video|
+                  %iframe{:width => "420", :height => "267", :src => video, :frameborder => "0", :allowfullscreen => ""}
         
     %footer
       %h1#rubric
