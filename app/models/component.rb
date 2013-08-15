@@ -7,7 +7,6 @@ class Component < ActiveRecord::Base
 
                                 ## belongs_to ##
                                 :category_id,
-                                :product_id,
 
                                 ## has_many ##
                                 :product_ids
@@ -18,8 +17,6 @@ class Component < ActiveRecord::Base
 
   has_many                      :product_components,    :dependent  => :destroy
   has_many                      :products,              :through    => :product_components
-
-  has_many                      :products
   
   belongs_to                    :category
   
