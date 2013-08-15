@@ -84,7 +84,7 @@
               %div
                 %h1 #{@product.collection.title} is available in
                 %ul
-                  - @product.categories.each do |category|
+                  - @product.collection.categories.each do |category|
                     %li
                       = link_to category.title, category_path(category.id)
 

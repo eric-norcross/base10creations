@@ -71,10 +71,7 @@ class Product < ActiveRecord::Base
   end
 
   def categories
-    @category_ids = components.map{ |component| component.category_id }
-    @categories = Category.where(id: @category_ids)
-    STDOUT << "@categories: " + @categories.first.name.to_s + ";\n"
-    return @categories
+    return components.map{ |component| component.categories }.flatten
   end 
 
   def brands

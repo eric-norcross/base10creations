@@ -7,7 +7,7 @@
         %tr
           %th Id
           %th Title
-          %th Category
+          %th Categories
           %th Main Section
           %th Parent Section
           %th Child Sections
@@ -20,7 +20,8 @@
           %tr
             %td= component.id
             %td= component.title
-            %td= component.category.title
+            %td= component.categories.map{|category| category.title}.join(", ")
+            / %td= component.category.title
             %td= component.patriarch.title
             %td= component.parent.title
             %td= component.children.length

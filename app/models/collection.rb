@@ -21,21 +21,34 @@ class Collection < ActiveRecord::Base
   before_save                   :create_name
 
 
-  def self.finishes(collection_id = :id)
-    return Finish.all(:conditions => { :id => finish_ids(collection_id) })
+  def self.finishes(collection_id)
+    return Finish.where(id: finish_ids(collection_id))
   end
 
-  def self.products(collection_id = :id)
-    return Product.where(:collection_id => collection_id)
+  def self.products(collection_id)
+    return Product.where(collection_id: collection_id)
   end
 
-  def self.compilations(collection_id = :id)
-    return Compilation.where(:collection_id => collection_id)
+  def self.compilations(collection_id)
+    return Compilation.where(collection_id: collection_id)
   end
 
-  def self.products_and_compilations(collection_id = :id)
+  def self.products_and_compilations(collection_id)
     return (products(collection_id) + compilations(collection_id)).sort_by(&:name)
   end
+
+  def categories
+    @products_and_compilations = self.class.products_and_compilations(id)
+    @categories = []
+    @products_and_compilations.each do |item|
+      item.categories.each do |category| 
+        @categories.push(category) unless @categories.include?(category)
+      end
+    end
+
+    return @categories
+  end
+
 
   private
   
@@ -43,7 +56,7 @@ class Collection < ActiveRecord::Base
       self.name = title.parameterize
     end
 
-    def self.finish_ids(collection_id = :id)
+    def self.finish_ids(collection_id)
       finish_ids = Array.new
       products(collection_id).each do |product|
         product.skus.each do |sku|

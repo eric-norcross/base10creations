@@ -59,6 +59,15 @@ class Component < ActiveRecord::Base
     end
   end
 
+  def categories
+    @categories = [category]
+    if parent_id > 0
+      @categories.push(parent.categories)
+    end
+
+    return @categories.flatten.uniq
+  end
+
   def self.products_and_compilations(component_ids)
     # Get all Products based on the Components/Sub-Components [Optimize by selected product_id's only]
     @product_ids = ProductComponent.where(:component_id => component_ids).map{ |product_component| product_component.product_id }
