@@ -39,6 +39,8 @@ $(document).on("click", "a.remove", function(event) {
   var field = container.find("input[type=hidden].destroy");
   field.val("true");
   container.hide();
+  container.removeClass("active");
+  group.append(container);
 
   console.log("triggering event from remove");
   group.parent().trigger('contentChanged', ["remove", group.parent()]);

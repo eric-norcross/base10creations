@@ -235,11 +235,11 @@ form {
     padding: 10px;
   }
 
-  .nested > .addable-group > div.active:nth-of-type(even) {
+  .nested > .addable-group > div:nth-of-type(even) {
     background: $lightEven;
   }
 
-  .nested > .addable-group > div.active:nth-of-type(odd) {
+  .nested > .addable-group > div:nth-of-type(odd) {
     background: $lightOdd;
   }
 }
