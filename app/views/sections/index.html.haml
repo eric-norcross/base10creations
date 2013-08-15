@@ -20,7 +20,7 @@
             %td= section.id
             %td= section.title
             %td= section.patriarch.title
-            %td= section.parent.title
+            %td= section.parent ? section.parent.title : "n/a"
             %td= section.children.length
             
             %td= link_to 'Show', section

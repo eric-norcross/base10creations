@@ -33,19 +33,19 @@ class Section < ActiveRecord::Base
   
   def parent
     if parent_id == 0
-      return self
+      return nil
     else 
       return Section.find(parent_id)
     end
   end
 
   def children
-    return Section.where(:parent_id => id)
+    return Section.where(parent_id: id)
   end
 
   def siblings
     if parent_id == 0
-      return Section.where(:parent_id => parent_id)
+      return Section.where(parent_id: parent_id)
     else
       return parent.children
     end
