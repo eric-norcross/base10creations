@@ -54,4 +54,13 @@ $(document).ready(function(){
 
   uploadsStarted = [];
   uploadsCompleted = [];
+
+  // $(function() {  
+  //   $("textarea[maxlength]").bind('input propertychange', function() {  
+  //     var maxLength = $(this).attr('maxlength');  
+  //     if ($(this).val().length > maxLength) {  
+  //       $(this).val($(this).val().substring(0, maxLength));  
+  //     }  
+  //   })  
+  // });
 });

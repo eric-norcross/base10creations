@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
     @page = Section.find(params[:section_id])
 
     if @message.valid?
+      ContactMailer.get_in_touch(@message).deliver
       # TODO send message here
       render @page.skin.template, locals: { notice: "Message sent! Thank you for contacting us." }
     else

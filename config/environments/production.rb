@@ -69,4 +69,19 @@ Martinfurniture::Application.configure do
   config.assets.precompile += ["ie/IE9.css", "ie/IE8.css", "ie/IE7.css", "ie/IE6.css"]
   config.assets.precompile += %w( font-awesome-ie7.min.css )
 
+  # Change mail delvery to either :smtp, :sendmail, :file, :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:               "mail.martinfurniture.com",
+    port:                  25,
+    domain:                "martinfurniture.com",
+    user_name:             "info@martinfurniture.com",
+    password:              "shipping7757",
+    authentication:        "plain",
+    enable_starttls_auto:  true
+  }
+
+  # specify what domain to use for mailer URLs
+  config.action_mailer.default_url_options = { host: "martinfurniture.com" }
+
 end
