@@ -6,7 +6,7 @@
     #error-explanation
       %h1
         = "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
-      %ul
+      %ol
         - @product.errors.full_messages.each do |msg|
           %li
             = msg

@@ -3,7 +3,7 @@
     #error-explanation
       %h1
         = "#{pluralize(@section.errors.count, "error")} prohibited this section from being saved:"
-      %ul
+      %ol
         - @section.errors.full_messages.each do |msg|
           %li
             = msg

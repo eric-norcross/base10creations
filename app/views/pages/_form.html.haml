@@ -7,7 +7,7 @@
     #error-explanation
       %h1
         = "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
-      %ul
+      %ol
         - @page.errors.full_messages.each do |msg|
           %li
             = msg

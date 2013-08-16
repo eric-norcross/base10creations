@@ -51,7 +51,6 @@ class Section < ActiveRecord::Base
     end
   end
 
-
   private
   
   def create_name

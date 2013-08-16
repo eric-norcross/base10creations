@@ -13,7 +13,7 @@ class SectionsController < ApplicationController
     @side_nav_elements = Section.where(parent_id: 0)
     @page = Section.find(params[:id])
 
-    render "#{@page.skin.template}"
+    render @page.skin.template
 
     # respond_to do |format|
     #   format.html # show.html.erb

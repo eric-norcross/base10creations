@@ -1,10 +1,12 @@
 = form_for @category do |f|
   - if @category.errors.any?
     #error-explanation
-      %h1= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
-      %ul
+      %h1
+        = "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
+      %ol
         - @category.errors.full_messages.each do |msg|
-          %li= msg
+          %li
+            = msg
 
   %fieldset
     %legend

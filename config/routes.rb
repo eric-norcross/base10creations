@@ -15,6 +15,7 @@ Martinfurniture::Application.routes.draw do
     end
   end
 
+  resources :messages
   resources :brands
   resources :carousels
   resources :categories

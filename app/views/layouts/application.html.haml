@@ -18,7 +18,7 @@
     #container
       = render :partial => "layouts/partials/header"
       #content
-        #messages
+        .messages
           - flash.each do |name, msg|
             = content_tag :div, msg, :id => "flash_#{name}"
         = yield

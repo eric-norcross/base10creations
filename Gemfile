@@ -15,6 +15,7 @@ gem "cloudinary"
 gem "font-awesome-rails"
 gem 'newrelic_rpm'
 gem "seed_dump", "~> 0.6.0"
+gem 'active_attr'
 
 # gem 'friendly_id'
 

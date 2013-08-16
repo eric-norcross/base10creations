@@ -3,7 +3,7 @@
     #error-explanation
       %h1
         = "#{pluralize(@compilation.errors.count, "error")} prohibited this compilation from being saved:"
-      %ul
+      %ol
         - @compilation.errors.full_messages.each do |msg|
           %li
             = msg

@@ -49,32 +49,3 @@
     margin-top: 10px;
   }
 }
-
-#error-explanation {
-  border-width: 1px 0;
-  border-style: solid;
-  border-color: red;
-  padding: .5rem 0;
-
-  h2 {
-    font-size: 12px;
-    line-height: normal;
-  }
-
-  ul {
-    margin-top: 10px;
-
-    li {
-      color: red;
-      font-size: 10px;
-      font-weight: bold;
-    }
-  }
-}
-
-#messages {
-  font-weight: bold;
-  font-size: 14px;
-  color: #009727;
-  //margin-bottom: 15px;
-}
