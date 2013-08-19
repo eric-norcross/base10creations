@@ -1,19 +1,16 @@
 class SkusController < ApplicationController
-  # GET /skus
-  # GET /skus.json
-  def index
-    @skus = Sku.all
+  load_and_authorize_resource
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @skus }
-    end
-  end
+  # def index
+  #   # @skus = Sku.all
 
-  # GET /skus/1
-  # GET /skus/1.json
+  #   respond_to do |format|
+  #     format.html
+  #   end
+  # end
+
   def show
-    @sku = Sku.find(params[:id])
+    # @sku = Sku.find(params[:id])
     @product = Product.find(@sku.product.id)
     @products_and_compilations = Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)
     @categories = @product.categories
@@ -25,70 +22,51 @@ class SkusController < ApplicationController
       end
     end
 
-    #@related = (Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)) - [@product]
-
-    render "#{@product.skin.template}"
+    render @product.skin.template
   end
 
-  # GET /skus/new
-  # GET /skus/new.json
   def new
-    @sku = Sku.new
+    # @sku = Sku.new
 
     3.times { @sku.images.build }
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @sku }
+      format.html
     end
   end
 
-  # GET /skus/1/edit
   def edit
-    @sku = Sku.find(params[:id])
+    # @sku = Sku.find(params[:id])
   end
 
-  # POST /skus
-  # POST /skus.json
   def create
-    @sku = Sku.new(params[:sku])
+    # @sku = Sku.new(params[:sku])
 
     respond_to do |format|
       if @sku.save
         format.html { redirect_to skus_url, notice: 'Sku was successfully created.' }
-        format.json { render json: @sku, status: :created, location: @sku }
       else
         format.html { render action: "new" }
-        format.json { render json: @sku.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /skus/1
-  # PUT /skus/1.json
   def update
-    @sku = Sku.find(params[:id])
+    # @sku = Sku.find(params[:id])
 
     respond_to do |format|
       if @sku.update_attributes(params[:sku])
         format.html { redirect_to skus_url, notice: 'Sku was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @sku.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /skus/1
-  # DELETE /skus/1.json
   def destroy
-    @sku = Sku.find(params[:id])
+    # @sku = Sku.find(params[:id])
     @sku.destroy
 
-    respond_to do |format|
-      format.html { redirect_to skus_url }
-      format.json { head :no_content }
-    end
+    redirect_to skus_url
   end
 end

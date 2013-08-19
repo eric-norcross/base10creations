@@ -9,8 +9,6 @@
           %th Title
           %th Template
           %th
-          %th
-          %th
           
       %tbody
         - @pages.each do |page|
@@ -18,9 +16,14 @@
             %td= page.id
             %td= page.title
             %td= page.skin.title
-            %td= link_to 'Show', page
-            %td= link_to 'Edit', edit_page_path(page)
-            %td= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }
-
-  .links
-    = link_to 'New Page', new_page_path
+            %td
+              = link_to 'Show', page
+              - if can? :update, @page
+                |
+                = link_to 'Edit', edit_page_path(page)
+                |
+                = link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }
+            
+  - if can? :update, @page
+    .links
+      = link_to 'New Page', new_page_path

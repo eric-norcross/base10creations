@@ -1,31 +1,7 @@
 #admin
   %h1 Available Collections
 
-  - if @collections
-    %table
-      %thead
-        %tr
-          %th Id
-          %th Title
-          / %th Style
-          /%th Category
-          %th
-      %tbody
-        - @collections.each do |collection|
-          %tr
-            %td= collection.id
-            %td= collection.title
-            / %td
-            /   - if collection.style
-            /     = collection.style.title
-            / %td
-            /   / - collection.components.each do |component| 
-            /   /   = component.category.title
-            /   = collection.components[0].category.title
-
-            %td= link_to 'Show', collection
-            %td= link_to 'Edit', edit_collection_path(collection)
-            %td= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' }
-
-  .links
-    = link_to 'Add New Collection', new_collection_path
+  %ul 
+    - @collections.each do |collection|
+      %li
+        = link_to collection.title, collection

@@ -1,45 +1,42 @@
 class SkinsController < ApplicationController
-def index
-    @skins = Skin.all
+  load_and_authorize_resource
+
+  def index
+    # @skins = Skin.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      # format.json { render json: @skins }
+      format.html
     end
   end
 
-  def show
-    @skin = Skin.find(params[:id])
+  # def show
+  #   # @skin = Skin.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      # format.json { render json: @skin }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html
+  #   end
+  # end
 
   def new
-    @skin = Skin.new
+    # @skin = Skin.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      # format.json { render json: @skin }
+      format.html
     end
   end
 
   def edit
-    @skin = Skin.find(params[:id])
+    # @skin = Skin.find(params[:id])
   end
 
   def create
-    @skin = Skin.new(params[:skin])
+    # @skin = Skin.new(params[:skin])
 
     respond_to do |format|
       if @skin.save
         format.html { redirect_to skins_url, notice: 'Skin was successfully created.' }
-        # format.json { render json: @skin, status: :created, location: @skin }
       else
         format.html { render action: "new" }
-        # format.json { render json: @skin.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,10 +47,8 @@ def index
     respond_to do |format|
       if @skin.update_attributes(params[:skin])
         format.html { redirect_to skins_url, notice: 'Skin was successfully updated.' }
-        # format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        # format.json { render json: @skin.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,9 +57,6 @@ def index
     @skin = Skin.find(params[:id])
     @skin.destroy
 
-    respond_to do |format|
-      format.html { redirect_to skins_url }
-      # format.json { head :no_content }
-    end
+    redirect_to skins_url
   end
 end

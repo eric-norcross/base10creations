@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_filter :load_imageable
+  load_and_authorize_resource
 
   def index
     @images = @imageable.images
@@ -23,14 +24,6 @@ class ImagesController < ApplicationController
     else 
       format.html { render :new }
     end
-
-    # respond_to do |format|
-    #   if @image.save
-    #     format.html { redirect_to @image, notice: 'Image was successfully created.' }
-    #   else
-    #     format.html { render action: "new" }
-    #   end
-    # end
   end
 
   def update
@@ -48,10 +41,6 @@ class ImagesController < ApplicationController
   def destroy
     @image = @imageable.images.find(params[:id])
     @image.destroy
-
-    # respond_to do |format|
-    #   format.html { redirect_to images_url }
-    # end
   end
 
 

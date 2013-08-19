@@ -11,9 +11,9 @@
     #page-body
       = raw @page.content
 
-    - if defined?(notice) && notice != ""
-      .messages
-        = notice
+    / - if defined?(notice) && notice != ""
+    /   .messages
+    /     = notice
 
     = form_for @message do |f|
       - if @message.errors.any?

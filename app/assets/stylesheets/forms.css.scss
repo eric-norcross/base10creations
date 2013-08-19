@@ -1,11 +1,11 @@
 #error-explanation {
-  border-width: 1px 0;
-  border-style: solid;
-  border-color: red;
-  padding: 5px 0;
+  background-color: #FCC;
+  border: solid 1px #C66;
+  padding: 5px 8px;
   margin: 15px 0;
 
   h1 {
+    color: #000;
     font-size: 12px;
     line-height: normal;
   }
@@ -14,7 +14,7 @@
     margin-top: 10px;
 
     li {
-      color: red;
+      color: #C66;
       font-size: 10px;
       font-weight: bold;
       list-style-position: inside;
@@ -22,13 +22,6 @@
       margin-bottom: 3px;
     }
   }
-}
-
-.messages {
-  font-weight: bold;
-  font-size: 14px;
-  color: #009727;
-  //margin-bottom: 15px;
 }
 
 form#new_message {

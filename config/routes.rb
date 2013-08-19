@@ -1,4 +1,6 @@
 Martinfurniture::Application.routes.draw do
+  devise_for :users
+
   mount Ckeditor::Engine => "/ckeditor"
 
   resources :finishes do
@@ -15,6 +17,7 @@ Martinfurniture::Application.routes.draw do
     end
   end
 
+  resources :admins
   resources :messages
   resources :brands
   resources :carousels

@@ -3,19 +3,21 @@ ruby '2.0.0'
 
 gem 'rails', '3.2.11'
 gem 'unicorn'
-gem "jquery-rails"
-gem "haml-rails"
-gem "pg"
-gem "bcrypt-ruby", :require => "bcrypt"
-gem 'annotate', ">=2.5.0"
-gem "ckeditor"
-gem "carrierwave"
-gem "mini_magick"
-gem "cloudinary"
-gem "font-awesome-rails"
+gem 'jquery-rails'
+gem 'haml-rails'
+gem 'pg'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'annotate', '>=2.5.0'
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'cloudinary'
+gem 'font-awesome-rails'
 gem 'newrelic_rpm'
-gem "seed_dump", "~> 0.6.0"
+gem 'seed_dump', '~> 0.6.0'
 gem 'active_attr'
+gem 'devise'
+gem 'cancan'
 
 # gem 'friendly_id'
 
@@ -43,20 +45,20 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   
-  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
-  gem "rspec",              :git => "git://github.com/rspec/rspec.git"
-  gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
-  gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
-  gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
+  gem 'rspec-rails',        :git => 'git://github.com/rspec/rspec-rails.git'
+  gem 'rspec',              :git => 'git://github.com/rspec/rspec.git'
+  gem 'rspec-core',         :git => 'git://github.com/rspec/rspec-core.git'
+  gem 'rspec-expectations', :git => 'git://github.com/rspec/rspec-expectations.git'
+  gem 'rspec-mocks',        :git => 'git://github.com/rspec/rspec-mocks.git'
   #gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
 group :test do
-  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
-  gem "rspec",              :git => "git://github.com/rspec/rspec.git"
-  gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
-  gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
-  gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
+  gem 'rspec-rails',        :git => 'git://github.com/rspec/rspec-rails.git'
+  gem 'rspec',              :git => 'git://github.com/rspec/rspec.git'
+  gem 'rspec-core',         :git => 'git://github.com/rspec/rspec-core.git'
+  gem 'rspec-expectations', :git => 'git://github.com/rspec/rspec-expectations.git'
+  gem 'rspec-mocks',        :git => 'git://github.com/rspec/rspec-mocks.git'
   gem 'webrat', '0.7.1'
   #gem 'sqlite3-ruby', :require => 'sqlite3'
 end

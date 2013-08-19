@@ -58,4 +58,4 @@ Martinfurniture::Application.configure do
   # specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = { host: "localhost:8080" }
 
-end
+ end
