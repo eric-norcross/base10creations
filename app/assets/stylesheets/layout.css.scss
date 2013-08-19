@@ -57,6 +57,14 @@
   content: "";
 }
 
+* span.pipe:after {
+  content: " | ";
+}
+
+* span.pipe:last-child:after {
+  content: "";
+}
+
 html { 
   /*
   background: asset-url('background.jpg', image) no-repeat center center fixed; 
@@ -155,6 +163,12 @@ header.document {
   #logo {
     float: left;
     margin-top: 29px;
+  }
+
+  nav#user {
+    text-align: right;
+    padding-top: 5px;
+    margin-bottom: -20px;
   }
 
   nav#main {

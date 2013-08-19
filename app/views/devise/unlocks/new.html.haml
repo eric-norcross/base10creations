@@ -1,0 +1,16 @@
+#public
+  = form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| 
+    = devise_error_messages! 
+
+    %fieldset{id: "unlock-instructions"}
+      %legend
+        Resend unlock instructions
+
+      .field
+        = f.label :email
+        = f.email_field :email, :autofocus => true 
+
+      .field
+        = f.submit "Resend unlock instructions"  
+
+  = render "devise/shared/links" 
