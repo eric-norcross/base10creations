@@ -25,7 +25,6 @@
         = link_to "Products", "#", :class => ( 'active' if @active == "products" )
         .subnav
           .column-group
-            //- create_columns
             - Category.all.each_slice(3) do |column|
               .column
                 - column.each do |category|

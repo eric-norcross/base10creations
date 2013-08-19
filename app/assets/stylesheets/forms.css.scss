@@ -50,6 +50,8 @@
     }
 
     input[type=text],
+    input[type=password],
+    input[type=email],
     textarea {
       border-color: $headerColor;
       border-style: solid;
@@ -57,12 +59,9 @@
       border-radius: 4px;
       -moz-border-radius: 4px;
       -webkit-border-radius: 4px;
+      height: 19px;
       padding: 2px 3px;
       width: 270px;
-    }
-
-    input[type=text] {
-      height: 19px;
     }
 
     textarea {
