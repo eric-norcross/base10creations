@@ -1,7 +1,7 @@
 - if @compilation.skus
   = render "layouts/partials/breadcrumbs", product: @compilation, sku: @compilation.skus.first
 
-- @videos = compilation.products.map{|product| product.video}
+- @videos = @compilation.products.map{|product| product.video}
 - @gallery_items = @compilation.images
 - @compilation.skus.each do |gallery_sku|
   - @gallery_items + gallery_sku.images
@@ -133,7 +133,7 @@
                 This can be some text about sharing the video or something
 
               - @videos.each do |video|
-                  %iframe{:width => "420", :height => "267", :src => video, :frameborder => "0", :allowfullscreen => ""}
+                %iframe{:width => "420", :height => "267", :src => video, :frameborder => "0", :allowfullscreen => ""}
         
     %footer
       %h1#rubric
