@@ -9,11 +9,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # def show
-  #   # @product = Product.find(params[:id])
-
-  #   render @product.skin.template
-  # end
+  def show
+    redirect_to product_sku_path(params[:id], @product.skus.first.id)
+  end
 
   def new
     # @product = Product.new

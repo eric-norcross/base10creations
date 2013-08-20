@@ -1,7 +1,15 @@
 Martinfurniture::Application.routes.draw do
+  devise_for :admins
   devise_for :users
 
   mount Ckeditor::Engine => "/ckeditor"
+
+  # Ajax Routes
+  post '/collections/products/:id'    => 'collections#products'
+  post '/collections/finishes/:id'    => 'collections#finishes'
+  post '/finishes/skus/:id'           => 'finishes#skus'
+
+  get '/admins/dashboard'                  => 'admins#dashboard', as: :dashboard_admins
 
   resources :finishes do
     resources :images
@@ -18,6 +26,7 @@ Martinfurniture::Application.routes.draw do
   end
 
   resources :admins
+  # resources :users
   resources :messages
   resources :brands
   resources :carousels
@@ -35,17 +44,9 @@ Martinfurniture::Application.routes.draw do
   resources :skus
   resources :styles
   resources :images
-
   resources :dimensions
-  
-  #root :to => redirect('/pages/home'), :action => :index
 
   root to: 'pages#home'
-
-  # Ajax Routes
-  post '/collections/products/:id'    => 'collections#products'
-  post '/collections/finishes/:id'    => 'collections#finishes'
-  post '/finishes/skus/:id'           => 'finishes#skus'
 
   # match '*path' => redirect('/') unless Rails.env.development?
 

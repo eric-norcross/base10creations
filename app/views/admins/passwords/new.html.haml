@@ -1,0 +1,16 @@
+#public
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| 
+    = devise_error_messages! 
+
+    %fieldset{id: "reset-password"}
+      %legend
+        Forgot your password?
+
+      .field
+        = f.label :email
+        = f.email_field :email, :autofocus => true
+
+      .field
+        = f.submit "Send me reset password instructions"
+
+  = render "devise/shared/links" 
