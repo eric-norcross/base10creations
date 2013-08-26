@@ -48,11 +48,11 @@ Martinfurniture::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              "smtp.gmail.com",
     port:                 587,
-    domain:               "asciicasts.com",
+    domain:               "martinfurniture.com",
     authentication:       "plain",
     enable_starttls_auto: true,
-    user_name:            "",
-    password:             ""
+    user_name:            "martinhf.info@gmail.com",
+    password:             "shipping7757"
   }
 
   # specify what domain to use for mailer URLs

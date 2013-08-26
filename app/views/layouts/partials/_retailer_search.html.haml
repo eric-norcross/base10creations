@@ -1,5 +1,5 @@
-= form_tag("/products/2", method: "get") do
+= form_tag locations_path, :method => :get do 
   .search-field
-    = text_field_tag "#{id}", "Find a dealer near you", {class: "clear-input", "data-message" => "Find a dealer near you"}
-    /= submit_tag "Submit"
-
+    = text_field_tag id, "Find a dealer near you", {class: "clear-input", "data-message" => "Find a dealer near you"}
+    / = text_field_tag :search, params[:search]
+  = submit_tag "Search Near", :name => nil 

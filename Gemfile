@@ -18,6 +18,7 @@ gem 'seed_dump', '~> 0.6.0'
 gem 'active_attr'
 gem 'devise'
 gem 'cancan'
+gem 'geocoder'
 
 # gem 'friendly_id'
 

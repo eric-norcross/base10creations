@@ -14,7 +14,8 @@ Martinfurniture::Application.routes.draw do
   post '/collections/finishes/:id'    => 'collections#finishes'
   post '/finishes/skus/:id'           => 'finishes#skus'
 
-  get '/admins/dashboard'                  => 'admins#dashboard', as: :dashboard_admins
+  get '/admins/dashboard'             => 'admins#dashboard',      as: :dashboard_admins
+  get '/admins/locations'             => 'locations#admin_index', as: :admins_locations
 
   resources :finishes do
     resources :images
@@ -32,6 +33,7 @@ Martinfurniture::Application.routes.draw do
 
   resources :admins
   # resources :users
+  resources :locations
   resources :messages
   resources :brands
   resources :carousels

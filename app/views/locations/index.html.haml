@@ -1,0 +1,45 @@
+.page
+  #locations
+    #location-search.small-form
+      = form_tag locations_path, :method => :get do 
+        .field
+          = label_tag "Zip Code"
+          = text_field_tag "retailer_search", "Zip Code"
+
+        .field
+          = label_tag "Radius"
+          = select_tag "radius", options_for_select([["5 Miles", 5], ["10 Miles", 10], ["25 Miles", 25], ["50 Miles", 50], ["100 Miles", 100], ["All", 5000]])
+
+        .field
+          = submit_tag "Search", :name => nil 
+
+    - if @locations
+      %ul
+        - @locations.each do |location|
+          %li.location
+            .location-data{id: location.id, :"data-latitude" => location.latitude, :"data-longitude" => location.longitude}
+              .location-name
+                = location.name.capitalize
+              .location-address
+                = location.address.capitalize
+              .location-city= location.city.capitalize
+              .location-province
+                = location.province.capitalize
+              .location-postal-code
+                = location.postal_code
+              .location-country
+                = location.country
+              .location-phone
+                = location.phone
+              .location-extension
+                = location.ext
+              .location-alt-phone
+                = location.phone_alt
+              .location-alt-phone-extension
+                = location.ext_alt
+
+  #map
+    %h1 
+      Find a retailer near you
+
+    MAP GOES HERE

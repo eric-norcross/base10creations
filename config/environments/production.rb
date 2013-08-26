@@ -72,13 +72,13 @@ Martinfurniture::Application.configure do
   # Change mail delvery to either :smtp, :sendmail, :file, :test
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:               "mail.martinfurniture.com",
-    port:                  25,
-    domain:                "martinfurniture.com",
-    user_name:             "info@martinfurniture.com",
-    password:              "shipping7757",
-    authentication:        "plain",
-    enable_starttls_auto:  true
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               "martinfurniture.com",
+    authentication:       "plain",
+    enable_starttls_auto: true,
+    user_name:            "martinhf.info@gmail.com",
+    password:             "shipping7757"
   }
 
   # specify what domain to use for mailer URLs

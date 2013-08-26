@@ -1,0 +1,41 @@
+#admin
+  %h1 Available Locations
+
+  - if @locations
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Name
+          %th Address
+          %th City
+          %th State/Province
+          %th Postal Code
+          %th Country
+          %th Phone
+          %th Extension
+          %th Alternate Phone
+          %th Alternate Phone Extension
+          %th
+          %th
+          %th
+      %tbody
+        - @locations.each do |location|
+          %tr
+            %td= location.id
+            %td= location.name
+            %td= location.address
+            %td= location.city
+            %td= location.province
+            %td= location.postal_code
+            %td= location.country
+            %td= location.phone
+            %td= location.ext
+            %td= location.phone_alt
+            %td= location.ext_alt
+            %td= link_to 'Show', location
+            %td= link_to 'Edit', edit_location_path(location)
+            %td= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add New Location', new_location_path

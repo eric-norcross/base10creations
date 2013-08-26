@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820002046) do
+ActiveRecord::Schema.define(:version => 20130823204819) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -151,6 +151,23 @@ ActiveRecord::Schema.define(:version => 20130820002046) do
   end
 
   add_index "images", ["imageable_id", "imageable_type"], :name => "index_images_on_imageable_id_and_imageable_type"
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
+    t.string   "country"
+    t.integer  "phone"
+    t.integer  "ext"
+    t.integer  "phone_alt"
+    t.integer  "ext_alt"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "name"

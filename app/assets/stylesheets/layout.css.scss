@@ -153,7 +153,7 @@ header.document {
         width: 180px;
         height: 16px;
         float: right;
-        @include rem('font-size', 9px);
+        font-size: 9px;
         margin: 9px;
         padding: 2px 40px 2px 9px;
       }
@@ -233,7 +233,7 @@ header.document {
 
               h1 {
                 color: $headerColor;
-                @include rem('font-size', 14px);
+                font-size: 14px;
                 margin-bottom: 8px;
               }
 
@@ -243,7 +243,7 @@ header.document {
                 li {
                   float: none;
                   font-family: $sans-serif;
-                  @include rem('font-size', 11px);
+                  font-size: 11px;
                   font-weight: normal;
                   margin-left: 0;
                   margin-bottom: 0;
@@ -291,7 +291,7 @@ nav#side {
     li {
       color: $headerColor;
       font-family: $serif;
-      @include rem('font-size', 12px);
+      font-size: 12px;
       font-weight: bold;
       margin-bottom: 15px;
 
@@ -312,7 +312,7 @@ nav#side {
         li {
           color: #000;
           font-family: $sans-serif;
-          @include rem('font-size', 10px);
+          font-size: 10px;
           font-weight: normal;
           margin-bottom: 10px;
 
@@ -333,6 +333,45 @@ nav#side {
   }
 }
 
+#locations {
+  float: left;
+  width: 200px;
+
+  ul {
+    height: 446px;
+    overflow: auto;
+
+    li {
+      padding: 7px;
+      cursor: pointer;
+    }
+
+    li:nth-of-type(even) {
+      background: $lightEven;
+    }
+
+    li:nth-of-type(odd) {
+      background: $lightOdd;
+    }
+  }
+}
+
+#map {
+  float: left;
+
+  h1 {
+    color: $headerColor;
+    border-color: $headerColor;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 17px;
+    padding-bottom: 12px;
+    text-transform: uppercase;
+  }
+}
+
 #content {
   margin: auto;
   display: inline-block;
@@ -340,7 +379,7 @@ nav#side {
 
   header {
     p {
-      @include rem('font-size', 12px);
+      font-size: 12px;
       line-height: 16px;
       -webkit-hyphens: auto;
       -moz-hyphens: auto;
@@ -372,7 +411,7 @@ footer.document {
     h1 {
       color: $headerColor;
       font-family: $serif;
-      @include rem('font-size', 12px);
+      font-size: 12px;
       margin-bottom: 12px;
     }
 
@@ -421,7 +460,7 @@ footer.document {
 
   small {
     color: $headerColor;
-    @include rem('font-size', 9px);
+    font-size: 9px;
     line-height: 15px;
   }
 }

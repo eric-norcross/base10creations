@@ -1,0 +1,37 @@
+.location {
+  color: $locationInfo;
+  line-height: 13px;
+
+  .location-name,
+  .location-address,
+  .location-city,
+  .location-province,
+  .location-phone, {
+    text-transform: capitalize;
+  }
+
+  .location-city,
+  .location-province,
+  .location-postal-code,
+  .location-country,
+  .location-extension,
+  .location-alt-phone,
+  .location-alt-phone-extension {
+    display: inline;
+  }
+
+  .location-name {
+    color: #000;
+    font-weight: bold;
+  }
+
+  .location-city:after {
+    content: ","
+  }
+
+  .location-province,
+  .location-country {
+    text-transform: uppercase;
+  }
+
+}
