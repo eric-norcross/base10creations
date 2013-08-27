@@ -19,6 +19,10 @@ class LocationsController < ApplicationController
       @locations = Location.all
     end
 
+    @json = @locations.to_gmaps4rails do |location, marker|
+      marker.infowindow render_to_string(:partial => "/layouts/partials/infowindow", :locals => { :location => location})
+    end
+
     respond_to do |format|
       format.html
     end
@@ -32,6 +36,9 @@ class LocationsController < ApplicationController
     # render "layouts/templates/list"
 
     @location = Location.find(params[:id])
+    @json = @location.to_gmaps4rails do |location, marker|
+      marker.infowindow render_to_string(:partial => "/layouts/partials/infowindow", :locals => { :location => location})
+    end
 
     respond_to do |format|
       format.html

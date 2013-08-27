@@ -1,4 +1,4 @@
-- @unique_id = randomNum
+- unique_id ||= randomNum
 
 .active
   - if local_assigns.has_key? :options
@@ -16,9 +16,9 @@
     = f.label :title, "Sku Number"
     = f.text_field :title
 
-  %div{id: "sku-image-#{@unique_id}"}
+  %div{id: "sku-image-#{unique_id}"}
     .addable-group.images
       = f.fields_for :images do |image_builder|
         = render 'images/image_fields', f: image_builder
     .addable.button
-      = link_to_add_fields({ name: "Add Images", f: f, association: :images, container: "sku-image-#{@unique_id}" })
+      = link_to_add_fields({ name: "Add Images", f: f, association: :images, container: "sku-image-#{unique_id}" })

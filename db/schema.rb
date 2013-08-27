@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823204819) do
+ActiveRecord::Schema.define(:version => 20130827001814) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -159,14 +159,16 @@ ActiveRecord::Schema.define(:version => 20130823204819) do
     t.string   "province"
     t.string   "postal_code"
     t.string   "country"
-    t.integer  "phone"
-    t.integer  "ext"
-    t.integer  "phone_alt"
-    t.integer  "ext_alt"
+    t.integer  "phone",       :limit => 8
+    t.integer  "ext",         :limit => 8
+    t.integer  "phone_alt",   :limit => 8
+    t.integer  "ext_alt",     :limit => 8
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "url"
+    t.boolean  "gmaps"
   end
 
   create_table "pages", :force => true do |t|

@@ -5,34 +5,27 @@
     %table
       %thead
         %tr
-          %th Id
           %th Name
           %th Address
           %th City
-          %th State/Province
+          %th Province
           %th Postal Code
           %th Country
           %th Phone
-          %th Extension
-          %th Alternate Phone
-          %th Alternate Phone Extension
-          %th
+          %th URL
           %th
           %th
       %tbody
         - @locations.each do |location|
           %tr
-            %td= location.id
-            %td= location.name
-            %td= location.address
-            %td= location.city
+            %td= location.name.titleize
+            %td= location.address.titleize
+            %td= location.city.titleize
             %td= location.province
             %td= location.postal_code
             %td= location.country
-            %td= location.phone
-            %td= location.ext
-            %td= location.phone_alt
-            %td= location.ext_alt
+            %td= number_to_phone(location.phone, area_code: true, extension: location.ext) 
+            %td= location.url
             %td= link_to 'Show', location
             %td= link_to 'Edit', edit_location_path(location)
             %td= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }

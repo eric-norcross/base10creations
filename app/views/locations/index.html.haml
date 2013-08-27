@@ -1,5 +1,5 @@
 .page
-  #locations
+  #locations-column
     #location-search.small-form
       = form_tag locations_path, :method => :get do 
         .field
@@ -30,16 +30,14 @@
               .location-country
                 = location.country
               .location-phone
-                = location.phone
-              .location-extension
-                = location.ext
+                = number_to_phone(location.phone, area_code: true, extension: location.ext)
               .location-alt-phone
-                = location.phone_alt
-              .location-alt-phone-extension
-                = location.ext_alt
+                = number_to_phone(location.phone_alt, area_code: true, extension: location.ext_alt)
+              .location-url
+                = location.url
 
-  #map
+  #map-column
     %h1 
       Find a retailer near you
 
-    MAP GOES HERE
+    = render "map"

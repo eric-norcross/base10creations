@@ -25,7 +25,7 @@
       = f.text_field :city
 
     .field
-      = f.label :province
+      = f.label :province, "State"
       = f.text_field :province
 
     .field
@@ -45,12 +45,24 @@
       = f.text_field :ext
 
     .field
-      = f.label :phone_alt
+      = f.label :phone_alt, "Alt phone"
       = f.text_field :phone_alt
 
     .field
-      = f.label :ext_alt
+      = f.label :ext_alt, "Alt phone ext"
       = f.text_field :ext_alt
+
+    .field
+      = f.label :latitude
+      = f.text_field :latitude
+
+    .field
+      = f.label :longitude
+      = f.text_field :longitude
+
+    .field
+      = f.label :url, "URL"
+      = f.text_field :url
   
   .actions
     = f.submit 'Save'

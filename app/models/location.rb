@@ -1,7 +1,9 @@
 class Location < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
-  default_scope order('locations.id ASC')
+  default_scope order('locations.name ASC')
+
+  acts_as_gmappable             
 
   attr_accessible               :name,
                                 :address, 
@@ -12,7 +14,8 @@ class Location < ActiveRecord::Base
                                 :phone,
                                 :ext,
                                 :phone_alt,
-                                :ext_alt, 
+                                :ext_alt,
+                                :url, 
                                 :latitude, 
                                 :longitude 
 
@@ -26,6 +29,10 @@ class Location < ActiveRecord::Base
   validates_presence_of         :country
 
   
-  after_validation              :geocode, :if => :address_changed?
-                                   
+  after_validation              :geocode
+
+
+  def gmaps4rails_address
+    "#{self.address} #{self.city} #{self.province} #{self.postal_code} #{self.country}" 
+  end                          
 end

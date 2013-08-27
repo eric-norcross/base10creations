@@ -1,5 +1,5 @@
 .page
-  #locations
+  #locations-column
     .location
       .location-data{id: @location.id, :"data-latitude" => @location.latitude, :"data-longitude" => @location.longitude}
         .location-name
@@ -14,16 +14,14 @@
         .location-country
           = @location.country
         .location-phone
-          = @location.phone
-        .location-extension
-          = @location.ext
+          = number_to_phone(@location.phone, area_code: true, extension: @location.ext)
         .location-alt-phone
-          = @location.phone_alt
-        .location-alt-phone-extension
-          = @location.ext_alt
+          = number_to_phone(@location.phone_alt, area_code: true, extension: @location.ext_alt)
+        .location-url
+          = @location.url
 
-  #map
+  #map-column
     %h1 
       Find a retailer near you
 
-    = image_tag "http://maps.google.com/maps/api/staticmap?size=700x530&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}"
+    = render "map"
