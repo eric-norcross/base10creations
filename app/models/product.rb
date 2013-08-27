@@ -92,11 +92,12 @@ class Product < ActiveRecord::Base
       if skus.length == 0
         return Image.default
       else 
-        if skus.first.images.length > 1
-          return skus.first.images.second
-        else 
-          return skus.first.images.first
-        end
+        # if skus.first.images.length > 1
+        #   return skus.first.images.second
+        # else 
+        #   return skus.first.images.first
+        # end
+        return skus.first.images.first
       end
     end
   end
