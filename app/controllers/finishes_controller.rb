@@ -7,14 +7,20 @@ class FinishesController < ApplicationController
     render "skus/_list", locals: { type: params[:type] }, layout: false
   end
 
+ # Admin Routes
+  def admin_index
+    respond_to do |format|
+      format.html
+    end
+  end
+
+
   # REST Routes
   def index
-    # @finishes = Finish.all
+    @side_nav_elements = @finishes
+    @products = @finishes
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @finishes }
-    end
+    render "layouts/templates/list"
   end
 
   def show
@@ -28,7 +34,11 @@ class FinishesController < ApplicationController
   def new
     # @finish = Finish.new
 
-    @finish.image.build
+    # @finish.image.build
+
+    1.times do
+      @finish.images.build
+    end
 
     respond_to do |format|
       format.html
@@ -44,7 +54,7 @@ class FinishesController < ApplicationController
 
     respond_to do |format|
       if @finish.save
-        format.html { redirect_to finishes_path, notice: 'Finish was successfully created.' }
+        format.html { redirect_to admin_finishes_path, notice: 'Finish was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -56,7 +66,7 @@ class FinishesController < ApplicationController
 
     respond_to do |format|
       if @finish.update_attributes(params[:finish])
-        format.html { redirect_to finishes_url, notice: 'Finish was successfully updated.' }
+        format.html { redirect_to admin_finishes_path, notice: 'Finish was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -67,6 +77,6 @@ class FinishesController < ApplicationController
     # @finish = Finish.find(params[:id])
     @finish.destroy
 
-    redirect_to finishes_url
+    redirect_to admin_finishes_path
   end
 end

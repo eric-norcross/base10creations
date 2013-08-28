@@ -78,9 +78,9 @@
                   = raw product.features
                   %ul
                     - product.brands.each do |brand|
-                      - if !brand.images.blank?
+                      - brand.figures.each do |figure|
                         %li
-                          = cl_image_tag(brand.images.first.asset.filename.to_s, alt: brand.title)
+                          = cl_image_tag(figure.images.first.asset.filename.to_s, alt: brand.title)
                 
             .finishes
               / - if @compilation.skus.length > 1
@@ -91,9 +91,9 @@
               /       - @compilation.skus.each do |sku|
               /         - if sku != @compilation.skus
               /           %li
-              /             - if sku.finish.image.first
+              /             - if sku.finish.images.first
               /               = link_to product_sku_path(@compilation, sku) do
-              /                 = cl_image_tag(sku.finish.image.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
+              /                 = cl_image_tag(sku.finish.images.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
 
               %div
                 %h1 #{@compilation.collection.title} is available in
@@ -117,8 +117,8 @@
                       #{number_with_precision(dimension.height, strip_insignificant_zeros: true)}h
                       x
                       #{number_with_precision(dimension.depth, strip_insignificant_zeros: true)}d
-                    - if dimension.image.length > 0
-                      = cl_image_tag(dimension.image.first.asset.filename.to_s, alt: "Dimensions")
+                    - if dimension.images.length > 0
+                      = cl_image_tag(dimension.images.first.asset.filename.to_s, alt: "Dimensions")
               
           #style.tab-pane
             = raw @compilation.collection.description 

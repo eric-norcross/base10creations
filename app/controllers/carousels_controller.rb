@@ -1,6 +1,7 @@
 class CarouselsController < ApplicationController
   load_and_authorize_resource :page
   load_and_authorize_resource :carousel, :through => :page
+  
   # def index
   #   @carousels = Carousel.all
 
@@ -22,7 +23,7 @@ class CarouselsController < ApplicationController
 
     1.times do
       figures = @carousel.figures.build
-      figures.image.build
+      figures.images.build
     end
 
     respond_to do |format|

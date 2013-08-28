@@ -1,3 +1,5 @@
+- @figure_options = { header: true, removable: true }
+
 = form_for @brand do |f|
   - if @brand.errors.any?
     #error_explanation
@@ -22,6 +24,17 @@
       - if f.object.images.blank?
         .addable.button
           = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "brand-image" })
+
+  %fieldset{id: "figures-fields"}
+    %legend
+      Figures
+
+    #figures.nested
+      .addable-group
+        = f.fields_for :figures, false do |figure|
+          = render 'figures/figure_fields', f: figure, options: @figure_options
+      .addable.button
+        = link_to_add_fields({ name: "Add Figure", f: f, association: :figures, container: "figures", child_association: :images, options: @figure_options })
 
   %fieldset
     %legend

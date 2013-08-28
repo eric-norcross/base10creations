@@ -80,24 +80,14 @@ class Product < ActiveRecord::Base
     return @brands
   end
 
-  # def self.skus_by_finish(finish_id)
-  #   @skus = Sku.where(finish_id: finish_id);
-  #   return @skus
-  # end
-
   def list_image
     if images.length > 0 
-      return images.first
+      return images.first.asset.filename.to_s
     else
       if skus.length == 0
-        return Image.default
+        return Image.default.to_s
       else 
-        # if skus.first.images.length > 1
-        #   return skus.first.images.second
-        # else 
-        #   return skus.first.images.first
-        # end
-        return skus.first.images.first
+        return skus.first.images.first.asset.filename.to_s
       end
     end
   end
@@ -106,7 +96,6 @@ class Product < ActiveRecord::Base
   
   def create_name
     self.name = title.parameterize
-    # self.name = component.title.parameterize
   end
 
 

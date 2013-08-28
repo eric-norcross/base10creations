@@ -3,16 +3,17 @@
     %thead
       %tr
         %th Name:
-        - if defined? @finish.image
-          %th Image:
+        %th Image:
     %tbody
       %tr
         %td
           = @finish.name
-        - if defined? @finish.image
-          - @finish.image.each do |img|
-            %td
-              = cl_image_tag(img.asset.filename.to_s, transformation: "thumb", alt: img.asset.filename.to_s)
+        %td
+          - if @finish.images.blank?
+            n/a
+          -else 
+            - @finish.images.each do |image|
+              = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @finish.title)
 
   .links
     = link_to 'Edit', edit_finish_path(@finish)

@@ -1,0 +1,37 @@
+#admin
+  %h1 Available Brand
+
+  - if @brands
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Title
+          %th Styles
+          %th List Image
+          %th Figures
+          %th
+      %tbody
+        - @brands.each do |brand|
+          %tr
+            %td= brand.id
+            %td= brand.title
+            %td
+              - brand.styles.each do |style|
+                %span.comma= style.title
+            %td
+              - if brand.images.blank?
+                n/a
+              - else 
+                = cl_image_tag(brand.images.first.asset.filename.to_s, transformation: "hint", alt: brand.images.first.asset.filename.to_s, title: brand.title)
+            %td
+              - brand.figures.each do |figure|
+                - figure.images.each do |image|
+                  = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: image.asset.filename.to_s)
+
+            %td= link_to 'Show', brand
+            %td= link_to 'Edit', edit_brand_path(brand)
+            %td= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add a new Brand', new_brand_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828041805) do
+ActiveRecord::Schema.define(:version => 20130828210201) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20130828041805) do
     t.integer  "page_id"
     t.text     "link"
     t.integer  "carousel_id"
+    t.integer  "brand_id"
   end
 
   create_table "finishes", :force => true do |t|

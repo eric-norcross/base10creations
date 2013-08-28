@@ -78,6 +78,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
+  def default_url
+    'v1375725611/default_image_p8yvwn.jpg'
+    # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+  end
+
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename

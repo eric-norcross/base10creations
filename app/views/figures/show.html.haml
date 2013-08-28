@@ -4,16 +4,17 @@
       %tr
         %th Caption:
         %th Link:
-        - if defined? @figure.image
-          %th Image:
+        %th Image:
     %tbody
       %tr
         %td= @figure.caption
         %td= @figure.link
-        - if defined? @figure.image
-          - @figure.image.each do |image|
-            %td
-              = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @figure.caption)
+        %td
+          - if @figure.images.blank?
+            n/a
+          - else 
+            - @figure.images.each do |image|
+                = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @figure.caption)
 
   .links
     = link_to 'Edit', edit_figure_path(@figure)

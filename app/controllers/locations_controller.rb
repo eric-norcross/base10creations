@@ -2,14 +2,16 @@ class LocationsController < ApplicationController
   # before_filter :find_products, :only => :show
   load_and_authorize_resource
 
+
+  # Admin Routes
   def admin_index
-    # @locations = Location.all
-    
     respond_to do |format|
       format.html
     end
   end
 
+
+  # REST Routes
   def index
     @current_location = request.location
 
@@ -55,7 +57,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to locations_url, notice: 'Location was successfully created.' }
+        format.html { redirect_to admin_locations_path, notice: 'Location was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -67,7 +69,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to locations_url, notice: 'Location was successfully updated.' }
+        format.html { redirect_to admin_locations_path, notice: 'Location was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -79,7 +81,7 @@ class LocationsController < ApplicationController
     @location.destroy
 
     respond_to do |format|
-      format.html { redirect_to locations_url }
+      format.html { redirect_to admin_locations_path }
     end
   end
 

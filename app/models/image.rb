@@ -8,7 +8,7 @@ class Image < ActiveRecord::Base
 
   mount_uploader                :asset, ImageUploader
 
-  def default
-    return {asset: "v1375725611/default_image_p8yvwn.jpg"}
+  def self.default
+    return ImageUploader.new
   end
 end

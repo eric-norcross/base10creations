@@ -1,4 +1,6 @@
 class Brand < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   default_scope order('brands.name ASC')
 
   attr_accessible               :name, 
@@ -10,13 +12,16 @@ class Brand < ActiveRecord::Base
                                 :style_ids,
 
                                 ## nested attributes ##
-                                :images_attributes
+                                :images_attributes,
+                                :figures_attributes
 
   has_many                      :styles
 
   has_many                      :images, as: :imageable, :dependent => :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
+  has_many                      :figures, dependent: :destroy
+  accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:link].blank?}, allow_destroy: true
 
   validates_presence_of         :title
 
@@ -36,6 +41,18 @@ class Brand < ActiveRecord::Base
 
   def self.products_and_compilations(brand_id = :id)
     return (products(brand_id) + compilations(brand_id)).sort_by(&:name)
+  end
+
+  def path
+    return brand_path(id)
+  end
+
+  def list_image
+    if images.length > 0 
+      return images.first.asset.filename.to_s
+    else
+      return Image.default.to_s
+    end
   end
 
   private

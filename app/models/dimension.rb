@@ -12,13 +12,13 @@ class Dimension < ActiveRecord::Base
                                 ##has_many##
 
                                 ## nested attributes ##
-                                :image_attributes
+                                :images_attributes
                                               
 
   belongs_to                    :product
 
-  has_many                      :image, as: :imageable, :dependent => :destroy
-  accepts_nested_attributes_for :image, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
+  has_many                      :images, as: :imageable, :dependent => :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
   # validates_presence_of         :image
   validates_presence_of         :title

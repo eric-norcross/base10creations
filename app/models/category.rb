@@ -1,26 +1,30 @@
 class Category < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   default_scope order('categories.title ASC')
-
-  # CATEGORY_KINDS = [["Product", 0],["Page", 1]]
-
-  # scope :products, where(:kind => 0)
-  # scope :pages, where(:kind => 1)
   
-  attr_accessible       :name, 
-                        :title, 
+  attr_accessible               :name, 
+                                :title, 
 
-                        ##belongs_to##
+                                ##belongs_to##
 
-                        ##has_many##
-                        :component_ids
+                                ##has_many##
+                                :component_ids,
+
+                                ## nested attributes ##
+                                :images_attributes
 
 
 
-  has_many              :components
+  has_many                      :components
 
-  validates_presence_of :title
+  has_many                      :images, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
-  before_save           :create_name
+
+  validates_presence_of         :title
+
+  before_save                   :create_name
 
   def products
     @product_ids = ProductComponent.where(component_id: component_ids).map{|product| product.id}
@@ -42,6 +46,18 @@ class Category < ActiveRecord::Base
 
   def products_and_compilations
     return products + compilations
+  end
+
+  def path
+    return category_path(id)
+  end
+
+  def list_image
+    if images.length > 0 
+      return images.first.asset.filename.to_s
+    else
+      return Image.default.to_s
+    end
   end
   
   private

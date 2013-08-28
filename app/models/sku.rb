@@ -36,12 +36,12 @@ class Sku < ActiveRecord::Base
 
   def list_image
     if images.length == 0 
-      return Image.default
+      return Image.default.to_s
     else
       if images.length > 1
-        return images.second
+        return images.second.asset.filename.to_s
       else 
-        return images.first
+        return images.first.asset.filename.to_s
       end
     end
   end

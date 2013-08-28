@@ -2,12 +2,20 @@ class BrandsController < ApplicationController
   # before_filter :find_products, :only => :show
   load_and_authorize_resource
 
-  def index
-    # @brands = Brand.all
-
+  # Admin Routes
+  def admin_index
     respond_to do |format|
       format.html
     end
+  end
+
+
+  # REST Routes
+  def index
+    @side_nav_elements = @brands
+    @products = @brands
+
+    render "layouts/templates/list"
   end
 
   def show
@@ -20,6 +28,15 @@ class BrandsController < ApplicationController
 
   def new
     # @brand = Brand.new
+
+    1.times do
+      @brand.images.build
+    end
+
+    1.times do
+      figures = @brand.figures.build
+      figures.images.build
+    end
 
     respond_to do |format|
       format.html
@@ -35,7 +52,7 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.save
-        format.html { redirect_to brands_url, notice: 'Brand was successfully created.' }
+        format.html { redirect_to admin_brands_path, notice: 'Brand was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -47,7 +64,7 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.update_attributes(params[:brand])
-        format.html { redirect_to brands_url, notice: 'Brand was successfully updated.' }
+        format.html { redirect_to admin_brands_path, notice: 'Brand was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -58,9 +75,7 @@ class BrandsController < ApplicationController
     # @brand = Brand.find(params[:id])
     @brand.destroy
 
-    respond_to do |format|
-      format.html { redirect_to brands_url }
-    end
+    redirect_to admin_brands_path
   end
 
   private

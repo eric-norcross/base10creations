@@ -1,4 +1,6 @@
 class Component < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   default_scope order('components.title ASC')
 
   attr_accessible               :name, 
@@ -9,14 +11,19 @@ class Component < ActiveRecord::Base
                                 :category_id,
 
                                 ## has_many ##
-                                :product_ids
+                                :product_ids,
 
                                 ## nested attributes ##
+                                :images_attributes
 
 
 
   has_many                      :product_components,    :dependent  => :destroy
   has_many                      :products,              :through    => :product_components
+
+  has_many                      :images, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
+
   
   belongs_to                    :category
   
@@ -89,6 +96,18 @@ class Component < ActiveRecord::Base
 
     # Return the combined Products and Compilations
     return (@products + @compilations).sort_by(&:name)
+  end
+
+  def path
+    return component_path(id)
+  end
+
+  def list_image
+    if images.length > 0 
+      return images.first.asset.filename.to_s
+    else
+      return Image.default.to_s
+    end
   end
 
   private

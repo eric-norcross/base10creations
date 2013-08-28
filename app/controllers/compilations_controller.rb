@@ -1,13 +1,21 @@
 class CompilationsController < ApplicationController
   load_and_authorize_resource
-
-  def index
-    # @compilations = Compilation.all
-
+  
+  # Admin Routes
+  def admin_index
     respond_to do |format|
       format.html
     end
   end
+
+
+  # REST Routes
+  # def index
+  #   @side_nav_elements = @compilations
+  #   @products = @compilations
+
+  #   render "layouts/templates/list"
+  # end
 
   def show
     # @compilation = Compilation.find(params[:id])
@@ -45,7 +53,7 @@ class CompilationsController < ApplicationController
 
     respond_to do |format|
       if @compilation.save
-        format.html { redirect_to compilations_url, notice: 'Compilation was successfully created.' }
+        format.html { redirect_to admin_compilations_path, notice: 'Compilation was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -57,7 +65,7 @@ class CompilationsController < ApplicationController
 
     respond_to do |format|
       if @compilation.update_attributes(params[:compilation])
-        format.html { redirect_to compilations_url, notice: 'Compilation was successfully updated.' }
+        format.html { redirect_to admin_compilations_path, notice: 'Compilation was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -69,7 +77,7 @@ class CompilationsController < ApplicationController
     @compilation.destroy
 
     respond_to do |format|
-      format.html { redirect_to compilations_url }
+      format.html { redirect_to admin_compilations_path }
     end
   end
 end

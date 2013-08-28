@@ -7,12 +7,21 @@ class PagesController < ApplicationController
     render @page.skin.template
   end 
 
-  def index
-    # @pages = Page.all
+  # Admin Routes
+  def admin_index
     respond_to do |format|
-      format.html  
+      format.html
     end
   end
+
+
+  # REST Routes
+  # def index
+  #   # @pages = Page.all
+  #   respond_to do |format|
+  #     format.html  
+  #   end
+  # end
 
   def show
     # @page = Page.find(params[:id])
@@ -26,13 +35,13 @@ class PagesController < ApplicationController
       carousel = @page.carousels.build 
       3.times do
         figure = carousel.figures.build
-        figure.image.build
+        figure.images.build
       end
     }
 
     3.times do
       figures = @page.figures.build
-      figures.image.build
+      figures.images.build
     end
 
     respond_to do |format|
@@ -49,7 +58,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to pages_url, notice: 'Page was successfully created.' }
+        format.html { redirect_to admin_pages_path, notice: 'Page was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -61,7 +70,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to pages_url, notice: 'Page was successfully updated.' }
+        format.html { redirect_to admin_pages_path, notice: 'Page was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -73,7 +82,7 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_url }
+      format.html { redirect_to admin_pages_path }
     end
   end
 end

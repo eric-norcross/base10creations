@@ -14,27 +14,18 @@
       = f.label :title
       = f.text_field :title
 
+    #collection-image.singular-addable
+      .addable-group.images
+        = f.fields_for :images do |image_builder|
+          = render 'images/image_fields', f: image_builder
+
+      - if f.object.images.blank?
+        .addable.button
+          = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "collection-image" })
+
     .field
       / = f.label :description
       = f.cktext_area :description
-
-  / %fieldset
-  /   %legend
-  /     Components
-      
-  /   .field
-  /     %h1 Categories:
-
-  /     - Category.all.each_slice(3) do |column|
-  /       .column
-  /         - column.each do |category|
-  /           .column-group
-  /             %h2
-  /               = category.title
-  /             - category.components.each do |component|
-  /               %ul
-  /                 - if component.parent_id.blank? || component.parent_id == 0 || component.patriarch.category_id != category.id
-  /                   = render "components/component_checkboxes", parent_id: 0, component: component, f: f, collection: @collection
     
   .actions
     = f.submit 'Save'

@@ -6,8 +6,10 @@
       No products are avaliable for your selection.
     %ul
       - @products.each do |product|
-        - if product.show
-          - if product.is_a?(Compilation)
-            = render "layouts/partials/compilation_list", product: product
-          - else
+        - if defined?(product.show)
+          - if product.is_a?(Product)
             = render "layouts/partials/product_list", product: product
+          - else
+            = render "layouts/partials/compilation_list", product: product
+        - else 
+          = render "layouts/partials/index_list", product: product

@@ -11,7 +11,6 @@ class FiguresController < ApplicationController
   #   end
   # end
 
-  # # GET /figures/1
   # def show
   #   @figure = Figure.find(params[:id])
 
@@ -21,11 +20,12 @@ class FiguresController < ApplicationController
   #   end
   # end
 
-
   def new
     @figure = Figure.new
 
-    @figure.image.build
+    1.times do
+      @figure.images.build
+    end
 
     respond_to do |format|
       format.html

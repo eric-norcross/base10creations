@@ -2,9 +2,9 @@ class ImagesController < ApplicationController
   before_filter :load_imageable
   load_and_authorize_resource
 
-  def index
-    @images = @imageable.images
-  end
+  # def index
+  #   @images = @imageable.images
+  # end
 
   # def show
   # end

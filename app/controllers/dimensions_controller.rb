@@ -1,26 +1,37 @@
 class DimensionsController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    # @dimensions = Dimension.all
-
+  # Admin Routes
+  def admin_index
     respond_to do |format|
       format.html
     end
   end
 
-  def show
-    # @dimension = Dimension.find(params[:id])
 
-    respond_to do |format|
-      format.html
-    end
-  end
+  # REST Routes
+  # def index
+  #   # @dimensions = Dimension.all
+
+  #   respond_to do |format|
+  #     format.html
+  #   end
+  # end
+
+  # def show
+  #   # @dimension = Dimension.find(params[:id])
+
+  #   respond_to do |format|
+  #     format.html
+  #   end
+  # end
 
   def new
     # @dimension = Dimension.new
 
-    @dimension.image.build
+    1.times do
+      @dimension.images.build
+    end
 
     respond_to do |format|
       format.html

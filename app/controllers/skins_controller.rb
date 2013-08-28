@@ -1,13 +1,22 @@
 class SkinsController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    # @skins = Skin.all
-
+  # Admin Routes
+  def admin_index
     respond_to do |format|
       format.html
     end
   end
+
+
+  # REST Routes
+  # def index
+  #   # @skins = Skin.all
+
+  #   respond_to do |format|
+  #     format.html
+  #   end
+  # end
 
   # def show
   #   # @skin = Skin.find(params[:id])
@@ -34,7 +43,7 @@ class SkinsController < ApplicationController
 
     respond_to do |format|
       if @skin.save
-        format.html { redirect_to skins_url, notice: 'Skin was successfully created.' }
+        format.html { redirect_to admin_skins_path, notice: 'Skin was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -46,7 +55,7 @@ class SkinsController < ApplicationController
 
     respond_to do |format|
       if @skin.update_attributes(params[:skin])
-        format.html { redirect_to skins_url, notice: 'Skin was successfully updated.' }
+        format.html { redirect_to admin_skins_path, notice: 'Skin was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -57,6 +66,6 @@ class SkinsController < ApplicationController
     @skin = Skin.find(params[:id])
     @skin.destroy
 
-    redirect_to skins_url
+    redirect_to admin_skins_path
   end
 end

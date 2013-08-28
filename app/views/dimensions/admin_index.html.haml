@@ -23,8 +23,8 @@
             %td= number_with_precision(dimension.height, strip_insignificant_zeros: true)
             %td= number_with_precision(dimension.depth, strip_insignificant_zeros: true)
             %td
-              - if !dimension.image.blank?
-                = cl_image_tag(dimension.image.first.asset.filename.to_s, transformation: "hint", alt: dimension.image.first.asset.filename.to_s, title: dimension.title)
+              - if !dimension.images.blank?
+                = cl_image_tag(dimension.images.first.asset.filename.to_s, transformation: "hint", alt: dimension.images.first.asset.filename.to_s, title: dimension.title)
               - else
                 n/a
             %td= link_to 'Show', dimension

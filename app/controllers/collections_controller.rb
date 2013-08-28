@@ -13,15 +13,20 @@ class CollectionsController < ApplicationController
     render "products/_select", layout: false
   end
 
+  # Admin Routes
+  def admin_index
+    respond_to do |format|
+      format.html
+    end
+  end
+
 
   # REST Routes
   def index
-    # @collections = Collection.all
+    @side_nav_elements = @collections
+    @products = @collections
 
-    respond_to do |format|
-      format.html # index.html.erb
-      # format.json { render json: @collections }
-    end
+    render "layouts/templates/list"
   end
 
   def show
@@ -49,7 +54,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       if @collection.save
-        format.html { redirect_to collections_url, notice: 'Collection was successfully created.' }
+        format.html { redirect_to admin_collections_path, notice: 'Collection was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -61,7 +66,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       if @collection.update_attributes(params[:collection])
-        format.html { redirect_to collections_url, notice: 'Collection was successfully updated.' }
+        format.html { redirect_to admin_collections_path, notice: 'Collection was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -72,6 +77,6 @@ class CollectionsController < ApplicationController
     # @collection = Collection.find(params[:id])
     @collection.destroy
 
-    redirect_to collections_url
+    redirect_to admin_collections_path
   end
 end

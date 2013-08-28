@@ -1,12 +1,20 @@
 class CategoriesController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    # @categories = Category.all
-
+  # Admin Routes
+  def admin_index
     respond_to do |format|
       format.html
     end
+  end
+
+
+  # REST Routes
+  def index
+    @side_nav_elements = @categories
+    @products = @categories
+
+    render "layouts/templates/list"
   end
 
   def show
@@ -39,7 +47,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to categories_path, notice: 'Category was successfully updated.' }
+        format.html { redirect_to admin_categories_path, notice: 'Category was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -51,7 +59,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
+        format.html { redirect_to admin_categories_path, notice: 'Category was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -62,6 +70,6 @@ class CategoriesController < ApplicationController
     # @category = Category.find(params[:id])
     @category.destroy
 
-    redirect_to categories_path
+    redirect_to admin_categories_path
   end
 end

@@ -1,12 +1,20 @@
 class ComponentsController < ApplicationController
   load_and_authorize_resource
   
-  def index
-    # @components = Component.all
-
+  # Admin Routes
+  def admin_index
     respond_to do |format|
       format.html
     end
+  end
+
+
+  # REST Routes
+  def index
+    @side_nav_elements = @components
+    @products = @components
+
+    render "layouts/templates/list"
   end
 
   def show
@@ -44,7 +52,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to components_url, notice: 'Component was successfully created.' }
+        format.html { redirect_to admin_components_path, notice: 'Component was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -56,7 +64,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.update_attributes(params[:component])
-        format.html { redirect_to components_url, notice: 'Component was successfully updated.' }
+        format.html { redirect_to admin_components_path, notice: 'Component was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -68,7 +76,7 @@ class ComponentsController < ApplicationController
     @component.destroy
 
     respond_to do |format|
-      format.html { redirect_to components_url }
+      format.html { redirect_to admin_components_path }
     end
   end
 end

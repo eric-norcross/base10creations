@@ -1,22 +1,38 @@
 Martinfurniture::Application.routes.draw do
-  devise_for :admins, :skip => [:registrations] 
-  as :admin do
-    get 'admins/edit' => 'devise/registrations#edit',   :as => 'edit_admin_registration'
-    put 'admins'      => 'devise/registrations#update', :as => 'admin_registration'
-  end
-
-  devise_for :users
-
   mount Ckeditor::Engine => "/ckeditor"
+
+  root to: 'pages#home'
 
   # Ajax Routes
   post '/collections/products/:id'    => 'collections#products'
   post '/collections/finishes/:id'    => 'collections#finishes'
   post '/finishes/skus/:id'           => 'finishes#skus'
 
-  get '/admins/dashboard'             => 'admins#dashboard',      as: :dashboard_admins
-  get '/admins/locations'             => 'locations#admin_index', as: :admins_locations
+  # Admins/Users Routes
+  devise_for :admins, :skip => [:registrations] 
+  as :admin do
+    get 'admin/edit'           => 'devise/registrations#edit',   as: :edit_admin_registration
+    put 'admin'                => 'devise/registrations#update', as: :admin_registration
 
+    get 'admin/dashboard'      => 'admins#dashboard',            as: :admin_dashboard
+  
+    get 'admin/brands'         => 'brands#admin_index',          as: :admin_brands
+    get 'admin/categories'     => 'categories#admin_index',      as: :admin_categories
+    get 'admin/collections'    => 'collections#admin_index',     as: :admin_collections
+    get 'admin/compilations'   => 'compilations#admin_index',    as: :admin_compilations
+    get 'admin/components'     => 'components#admin_index',      as: :admin_components
+    get 'admin/finishes'       => 'finishes#admin_index',        as: :admin_finishes
+    get 'admin/dealers'        => 'dealers#admin_index',         as: :admin_locations
+    get 'admin/pages'          => 'pages#admin_index',           as: :admin_pages
+    get 'admin/products'       => 'products#admin_index',        as: :admin_products
+    get 'admin/sections'       => 'sections#admin_index',        as: :admin_sections
+    get 'admin/skins'          => 'skins#admin_index',           as: :admin_skins
+    get 'admin/styles'         => 'styles#admin_index',          as: :admin_styles
+  end
+
+  devise_for :users
+
+  # General Routes
   resources :finishes do
     resources :images
   end
@@ -52,8 +68,6 @@ Martinfurniture::Application.routes.draw do
   resources :styles
   resources :images
   resources :dimensions
-
-  root to: 'pages#home'
 
   # match '*path' => redirect('/') unless Rails.env.development?
 

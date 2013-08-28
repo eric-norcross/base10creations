@@ -1,4 +1,6 @@
 class Finish < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   default_scope order('finishes.title ASC')
   attr_accessible               :name,
                                 :title,
@@ -10,16 +12,16 @@ class Finish < ActiveRecord::Base
                                 :compilation_ids,
 
                                 ## nested attributes ##
-                                :image_attributes
+                                :images_attributes
 
 
   has_many                      :skus
   has_many                      :compilations
 
-  has_many                      :image, as: :imageable, :dependent => :destroy
-  accepts_nested_attributes_for :image, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
+  has_many                      :images, as: :imageable, :dependent => :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
-  validates_presence_of         :image
+  validates_presence_of         :images
   validates_presence_of         :title
 
   before_save                   :create_name
@@ -45,6 +47,18 @@ class Finish < ActiveRecord::Base
 
   def self.products_and_compilations(finish_id = :id)
     return products(finish_id) + compilations(finish_id)
+  end
+
+  def path
+    return finish_path(id)
+  end
+
+  def list_image
+    if images.length > 0 
+      return images.first.asset.filename.to_s
+    else
+      return Image.default.to_s
+    end
   end
 
   private

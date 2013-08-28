@@ -1,4 +1,6 @@
 class Style < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   default_scope order('styles.title ASC')
 
   attr_accessible               :name, 
@@ -9,11 +11,17 @@ class Style < ActiveRecord::Base
                                 :brand_id,
 
                                 ##has_many##
-                                :collection_ids
+                                :collection_ids,
+
+                                ## nested attributes ##
+                                :images_attributes
 
   has_many                      :collection_styles, :include => :collection
   has_many                      :collections,       :through => :collection_styles
   accepts_nested_attributes_for :collection_styles, :allow_destroy => true
+
+  has_many                      :images, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
   belongs_to                    :brand
   
@@ -34,6 +42,17 @@ class Style < ActiveRecord::Base
     return (products(style_id) + compilations(style_id)).sort_by(&:name)
   end
 
+  def path
+    return style_path(id)
+  end
+
+  def list_image
+    if images.length > 0 
+      return images.first.asset.filename.to_s
+    else
+      return Image.default.to_s
+    end
+  end
 
   private
 

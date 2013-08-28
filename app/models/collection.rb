@@ -1,4 +1,6 @@
 class Collection < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   default_scope order('collections.name ASC')
 
   attr_accessible               :name, 
@@ -8,12 +10,19 @@ class Collection < ActiveRecord::Base
                                 ##belongs_to##
 
                                 ##has_many##,
-                                :style_ids
+                                :style_ids,
+
+                                ## nested attributes ##
+                                :images_attributes
 
 
   has_many                      :collection_styles,     :include => :style
   has_many                      :styles,                :through => :collection_styles
   accepts_nested_attributes_for :collection_styles,     :allow_destroy => true
+
+  has_many                      :images, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
+
   
   validates_presence_of         :title
   validates_presence_of         :description
@@ -47,6 +56,18 @@ class Collection < ActiveRecord::Base
     end
 
     return @categories
+  end
+
+  def path
+    return collection_path(id)
+  end
+
+  def list_image
+    if images.length > 0 
+      return images.first.asset.filename.to_s
+    else
+      return Image.default.to_s
+    end
   end
 
 
