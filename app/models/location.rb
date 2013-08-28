@@ -42,5 +42,10 @@ class Location < ActiveRecord::Base
   # end
   def gmaps4rails_address
     "#{self.address}, #{self.city}, #{self.province}, #{self.postal_code}, #{self.country}" 
-  end                          
+  end 
+
+  def self.locations(search_term, radius = 50000)
+    return Location.near(search_term, radius, :order => :distance)
+  end
+
 end

@@ -3,41 +3,23 @@
     #location-search.small-form
       = form_tag locations_path, :method => :get do 
         .field
+          - @value = "Zip Code"
+          - if params[:retailer_search].present? && params[:retailer_search] != ""
+            - @value = params[:retailer_search]
           = label_tag "Zip Code"
-          = text_field_tag "retailer_search", "Zip Code"
+          = number_field_tag "retailer_search", @value, {class: "clear-input", "data-message" => @value, maxlength: 5}
 
         .field
           = label_tag "Radius"
-          = select_tag "radius", options_for_select([["5 Miles", 5], ["10 Miles", 10], ["25 Miles", 25], ["50 Miles", 50], ["100 Miles", 100], ["All", 5000]])
+          = select_tag "radius", options_for_select([["5 Miles", 5], ["10 Miles", 10], ["25 Miles", 25], ["50 Miles", 50], ["100 Miles", 100], ["All", 50000]], params[:radius])
 
         .field
           = submit_tag "Search", :name => nil 
 
-    - if @locations
-      %ul
-        - @locations.each do |location|
-          %li.location
-            .location-data{id: location.id, :"data-latitude" => location.latitude, :"data-longitude" => location.longitude}
-              .location-name
-                = location.name.capitalize
-              .location-address
-                = location.address.capitalize
-              .location-city= location.city.capitalize
-              .location-province
-                = location.province.capitalize
-              .location-postal-code
-                = location.postal_code
-              .location-country
-                = location.country
-              .location-phone
-                = number_to_phone(location.phone, area_code: true, extension: location.ext)
-              .location-alt-phone
-                = number_to_phone(location.phone_alt, area_code: true, extension: location.ext_alt)
-              .location-url
-                = location.url
+    = render "location"
 
   #map-column
     %h1 
       Find a retailer near you
 
-    = render "map", zoom_level: 7
+    = render "map", zoom_level: 10, center_on_user: true

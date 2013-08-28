@@ -1,24 +1,6 @@
 .page
   #locations-column
-    .location
-      .location-data{id: @location.id, :"data-latitude" => @location.latitude, :"data-longitude" => @location.longitude}
-        .location-name
-          = @location.name.capitalize
-        .location-address
-          = @location.address.capitalize
-        .location-city= @location.city.capitalize
-        .location-province
-          = @location.province.capitalize
-        .location-postal-code
-          = @location.postal_code
-        .location-country
-          = @location.country
-        .location-phone
-          = number_to_phone(@location.phone, area_code: true, extension: @location.ext)
-        .location-alt-phone
-          = number_to_phone(@location.phone_alt, area_code: true, extension: @location.ext_alt)
-        .location-url
-          = @location.url
+    = render "location"
 
   #map-column
     %h1 

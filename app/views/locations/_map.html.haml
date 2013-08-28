@@ -1,6 +1,7 @@
 - zoom_level ||= 15
+- center_on_user ||= false
 
-= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_zoom" => false, "zoom" => zoom_level},"markers" => { "data" => @json })
+= gmaps("map_options" => { "detect_location" => true, "center_on_user" => center_on_user, "auto_zoom" => false, "zoom" => zoom_level}, "markers" => { "data" => @json })
 
 / - @location ||= @locations.first
 

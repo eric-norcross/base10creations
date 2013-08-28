@@ -11,17 +11,13 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @radius = params[:radius] || 5000 
-
     if params[:retailer_search].present?
-      @locations = Location.near(params[:retailer_search], @radius, :order => :distance)
-    else
+      @locations = Location.locations(params[:retailer_search], params[:radius])
+    else 
       @locations = Location.all
     end
 
-    @json = @locations.to_gmaps4rails do |location, marker|
-      marker.infowindow render_to_string(:partial => "/layouts/partials/infowindow", :locals => { :location => location})
-    end
+    @json = markers(@locations)
 
     respond_to do |format|
       format.html
@@ -29,16 +25,9 @@ class LocationsController < ApplicationController
   end
 
   def show
-    # @side_nav_elements = Location.all
+    @locations = Location.where(id: params[:id])
 
-    # @products = Location.products_and_compilations(params[:id])
-
-    # render "layouts/templates/list"
-
-    @location = Location.find(params[:id])
-    @json = @location.to_gmaps4rails do |location, marker|
-      marker.infowindow render_to_string(:partial => "/layouts/partials/infowindow", :locals => { :location => location})
-    end
+    @json = markers(@locations)
 
     respond_to do |format|
       format.html
@@ -90,11 +79,16 @@ class LocationsController < ApplicationController
     end
   end
 
+
+  # Private methods
   private
 
-  # def find_products
-  #   # Get Products & Compilations
-  #   @products = Location.products_and_compilations(params[:id])
-  # end
+    def markers(locations)
+      @json = locations.to_gmaps4rails do |location, marker|
+        marker.infowindow render_to_string(:partial => "/layouts/partials/infowindow", :locals => { :location => location})
+      end
+
+      return @json
+    end
 end
 
