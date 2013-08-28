@@ -3,7 +3,12 @@ class Location < ActiveRecord::Base
 
   default_scope order('locations.name ASC')
 
-  acts_as_gmappable             
+  acts_as_gmappable
+  # acts_as_gmappable             :lat => 'latitude', :lng => 'longitude', :process_geocoding => :geocode?,
+  #                               :address => "address", :normalized_address => "address",
+  #                               :msg => "Sorry, not even Google could figure out where that is"  
+
+  acts_as_gmappable     
 
   attr_accessible               :name,
                                 :address, 
@@ -29,10 +34,13 @@ class Location < ActiveRecord::Base
   validates_presence_of         :country
 
   
-  after_validation              :geocode
+  after_validation              :geocode # if :geocode?
 
 
+  # def geocode?
+  #   (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
+  # end
   def gmaps4rails_address
-    "#{self.address} #{self.city} #{self.province} #{self.postal_code} #{self.country}" 
+    "#{self.address}, #{self.city}, #{self.province}, #{self.postal_code}, #{self.country}" 
   end                          
 end

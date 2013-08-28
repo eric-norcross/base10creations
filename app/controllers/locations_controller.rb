@@ -13,11 +13,16 @@ class LocationsController < ApplicationController
   def index
     # @locations = Location.all
 
+    @radius = params[:retailer_search] || 5000
+
     if params[:retailer_search].present?
-      @locations = Location.near(params[:retailer_search], 5000, :order => :distance)
+      @locations = Location.near(params[:retailer_search], @radius, :order => :distance)
     else
       @locations = Location.all
     end
+
+    # @locations = Location.all
+    # @locations = Location.near(params[:retailer_search])
 
     @json = @locations.to_gmaps4rails do |location, marker|
       marker.infowindow render_to_string(:partial => "/layouts/partials/infowindow", :locals => { :location => location})
