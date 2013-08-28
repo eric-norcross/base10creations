@@ -4,6 +4,7 @@ class Section < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title, 
                                 :content,
+                                :link,
                                 :parent_id,
 
                                 ##belongs_to##

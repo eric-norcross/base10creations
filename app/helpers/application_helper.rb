@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def uri?(string)
+    uri = URI.parse(string)
+    %w( http https ).include?(uri.scheme)
+  rescue URI::BadURIError
+    false
+  rescue URI::InvalidURIError
+    false
+  end
+
   def create_columns
     Category.all.each_slice(2) do |column|
       haml_tag :div, class: "column" do

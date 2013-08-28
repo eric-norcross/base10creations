@@ -7,6 +7,7 @@
         %tr
           %th Id
           %th Title
+          %th Link:
           %th Main Section
           %th Parent Section
           %th Child Sections
@@ -19,6 +20,7 @@
           %tr
             %td= section.id
             %td= section.title
+            %td= section.link
             %td= section.patriarch.title
             %td= section.parent ? section.parent.title : "n/a"
             %td= section.children.length

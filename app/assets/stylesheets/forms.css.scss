@@ -2,6 +2,10 @@ form {
   label.required:after {
     content: "*";
   }
+
+  .instructions {
+    font-style: italic;
+  }
 }
 
 #error-explanation {

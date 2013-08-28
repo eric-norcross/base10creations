@@ -18,7 +18,7 @@
           - else 
             - section.children.each do |subsection|
               %li
-                = link_to subsection.title, subsection
+                = link_to subsection.title, subsection.link || subsection
 
   %nav#rights
     %small 

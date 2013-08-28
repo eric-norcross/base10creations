@@ -28,6 +28,13 @@
     .field
       = f.label :title
       = f.text_field :title
+
+    .field
+      = f.label :link
+      = f.text_field :link
+
+      %div.instructions{style: "margin: 8px 0 0 3px;"}
+        (If used, "Link" will connect directly without displaying the contents of this page. Prefix "http://" to all external links. Use "/" for all internal. e.g.: "/locations")
     
     .field
       /= f.label :content
