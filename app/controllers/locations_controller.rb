@@ -11,6 +11,8 @@ class LocationsController < ApplicationController
   end
 
   def index
+    @current_location = request.location
+
     if params[:retailer_search].present?
       @locations = Location.locations(params[:retailer_search], params[:radius])
     else 
@@ -25,6 +27,8 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @current_location = request.location
+
     @locations = Location.where(id: params[:id])
 
     @json = markers(@locations)

@@ -34,12 +34,13 @@ class Location < ActiveRecord::Base
   validates_presence_of         :country
 
   
-  after_validation              :geocode # if :geocode?
+  after_validation              :geocode, :if => lambda{ |obj| obj.address_changed? }  # if :geocode?
 
 
   # def geocode?
   #   (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
   # end
+
   def gmaps4rails_address
     "#{self.address}, #{self.city}, #{self.province}, #{self.postal_code}, #{self.country}" 
   end 

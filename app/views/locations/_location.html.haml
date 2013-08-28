@@ -9,6 +9,7 @@
       = location.province.capitalize
     .location-postal-code
       = location.postal_code
+
     - if location.country != "USA"
       .location-country
         = location.country
@@ -18,3 +19,6 @@
       = number_to_phone(location.phone_alt, area_code: true, extension: location.ext_alt)
     .location-url
       = location.url
+    .location-directions
+      %a{href: "http://maps.google.com/maps?daddr=#{location.address},+#{location.city},+#{location.province}", target: "_blank"}
+        Directions

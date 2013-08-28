@@ -53,16 +53,24 @@
       = f.text_field :ext_alt
 
     .field
+      = f.label :url, "URL"
+      = f.text_field :url
+
+  %fieldset
+    %legend
+      Hidden fields. These will only visible during testing phases. DO NOT EDIT.
+
+    .field
       = f.label :latitude
-      = f.text_field :latitude
+      = f.text_field :latitude, disabled: true
 
     .field
       = f.label :longitude
-      = f.text_field :longitude
+      = f.text_field :longitude, disabled: true
 
     .field
-      = f.label :url, "URL"
-      = f.text_field :url
+      = f.label :match_type
+      = f.text_field :match_type, disabled: true
   
   .actions
     = f.submit 'Save'

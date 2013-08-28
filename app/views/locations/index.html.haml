@@ -1,15 +1,18 @@
 - @value = "Zip Code"
 - @center_on_user = true
 
+- if params[:retailer_search].present? 
+  - @center_on_user = false
+  - if params[:retailer_search] != ""
+    - @value = params[:retailer_search]
+
 .page
   #locations-column
+    = @current_location.ip
+
     #location-search.small-form
       = form_tag locations_path, :method => :get do 
         .field
-          - if params[:retailer_search].present? 
-            - @center_on_user = false
-            - if params[:retailer_search] != ""
-              - @value = params[:retailer_search]
           = label_tag "Zip Code"
           = number_field_tag "retailer_search", @value, {class: "clear-input", "data-message" => @value, maxlength: 5}
 
@@ -23,7 +26,7 @@
     - if @locations
       %ul
         - @locations.each do |location|
-          = render "location", location: location
+          = render "location", location: location, current_location: @current_location
 
   #map-column
     %h1 
