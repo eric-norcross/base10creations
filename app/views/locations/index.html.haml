@@ -4,7 +4,7 @@
 - if params[:retailer_search].present? 
   - @center_on_user = false
   - if params[:retailer_search] != ""
-    - @value = params[:retailer_search]
+    - @value = params[:retailer_search] if Float(params[:retailer_search]) rescue false
 
 .page
   #locations-column

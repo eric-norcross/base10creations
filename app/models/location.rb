@@ -45,7 +45,8 @@ class Location < ActiveRecord::Base
     "#{self.address}, #{self.city}, #{self.province}, #{self.postal_code}, #{self.country}" 
   end 
 
-  def self.locations(search_term, radius = 50000)
+  def self.locations(search_term, radius)
+    radius ||= 50
     return Location.near(search_term, radius, :order => :distance)
   end
 
