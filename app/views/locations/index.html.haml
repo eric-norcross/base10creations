@@ -1,11 +1,15 @@
+- @value = "Zip Code"
+- @center_on_user = true
+
 .page
   #locations-column
     #location-search.small-form
       = form_tag locations_path, :method => :get do 
         .field
-          - @value = "Zip Code"
-          - if params[:retailer_search].present? && params[:retailer_search] != ""
-            - @value = params[:retailer_search]
+          - if params[:retailer_search].present? 
+            - @center_on_user = false
+            - if params[:retailer_search] != ""
+              - @value = params[:retailer_search]
           = label_tag "Zip Code"
           = number_field_tag "retailer_search", @value, {class: "clear-input", "data-message" => @value, maxlength: 5}
 
@@ -25,4 +29,4 @@
     %h1 
       Find a retailer near you
 
-    = render "map", zoom_level: 10, center_on_user: true
+    = render "map", zoom_level: 10, center_on_user: @center_on_user
