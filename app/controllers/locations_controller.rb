@@ -85,7 +85,7 @@ class LocationsController < ApplicationController
 
     def markers(locations)
       @json = locations.to_gmaps4rails do |location, marker|
-        marker.infowindow render_to_string(:partial => "/layouts/partials/infowindow", :locals => { :location => location})
+        marker.infowindow render_to_string(:partial => "/locations/location", :locals => { location: location})
       end
 
       return @json

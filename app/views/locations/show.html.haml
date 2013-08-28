@@ -1,6 +1,9 @@
 .page
   #locations-column
-    = render "location"
+    - if @locations
+      %ul
+        - @locations.each do |location|
+          = render "location", location: location
 
   #map-column
     %h1 

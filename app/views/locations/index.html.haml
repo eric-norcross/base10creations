@@ -16,7 +16,10 @@
         .field
           = submit_tag "Search", :name => nil 
 
-    = render "location"
+    - if @locations
+      %ul
+        - @locations.each do |location|
+          = render "location", location: location
 
   #map-column
     %h1 
