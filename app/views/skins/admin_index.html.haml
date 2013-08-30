@@ -3,24 +3,26 @@
 #admin
   %h1 Available Skins
 
+  .links
+    = link_to 'Add New Skin', new_skin_path, {class: "button"}
+
+
   - if @skins
     %table
       %thead
         %tr
-          / %th Id
           %th Title
           %th Template Location
-          %th
           %th
       %tbody
         - @skins.each do |skin|
           %tr
-            / %td= skin.id
             %td= skin.title
             %td= skin.template
-            %td= link_to 'Show', skin
-            %td= link_to 'Edit', edit_skin_path(skin)
-            %td= link_to 'Destroy', skin, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', skin
+              = link_to 'Edit', edit_skin_path(skin)
+              = link_to 'Destroy', skin, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Skin', new_skin_path
+    = link_to 'Add New Skin', new_skin_path, {class: "button"}

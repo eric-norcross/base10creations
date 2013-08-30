@@ -3,6 +3,9 @@
 #admin
   %h1 Available Locations
 
+  .links
+    = link_to 'Add New Location', new_location_path, {class: "button"}
+
   - if @locations
     %table
       %thead
@@ -16,7 +19,6 @@
           %th Phone
           %th URL
           %th
-          %th
       %tbody
         - @locations.each do |location|
           %tr
@@ -26,11 +28,13 @@
             %td= location.province
             %td= location.postal_code
             %td= location.country
-            %td= number_to_phone(location.phone, area_code: true, extension: location.ext) 
+            %td.no-wrap
+              = number_to_phone(location.phone, area_code: true, extension: location.ext) 
             %td= location.url
-            %td= link_to 'Show', location
-            %td= link_to 'Edit', edit_location_path(location)
-            %td= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', location
+              = link_to 'Edit', edit_location_path(location)
+              = link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Location', new_location_path
+    = link_to 'Add New Location', new_location_path, {class: "button"}

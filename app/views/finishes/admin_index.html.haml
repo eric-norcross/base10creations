@@ -3,6 +3,9 @@
 #admin
   %h1 Available Finish
 
+  .links
+    = link_to 'Add a new Finish', new_finish_path, {class: "button"}
+
   - if @finishes
     %table
       %thead
@@ -10,8 +13,6 @@
           %th Id
           %th Title
           %th Images
-          %th
-          %th
           %th
       %tbody
         - @finishes.each do |finish|
@@ -23,9 +24,10 @@
                 = cl_image_tag(finish.images.first.asset.filename.to_s, transformation: "hint", alt: finish.images.first.asset.filename.to_s, title: finish.title)
               - else
                 n/a
-            %td= link_to 'Show', finish
-            %td= link_to 'Edit', edit_finish_path(finish)
-            %td= link_to 'Destroy', finish, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', finish
+              = link_to 'Edit', edit_finish_path(finish)
+              = link_to 'Destroy', finish, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Finish', new_finish_path
+    = link_to 'Add a new Finish', new_finish_path, {class: "button"}

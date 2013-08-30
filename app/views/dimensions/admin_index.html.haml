@@ -1,6 +1,9 @@
 #admin
   %h1 Available Dimension
 
+  .links
+    = link_to 'Add a new Dimension', new_dimension_path, {class: "button"}
+
   - if @dimensions
     %table
       %thead
@@ -11,8 +14,6 @@
           %th Height:
           %th Depth:
           %th Image:
-          %th
-          %th
           %th
       %tbody
         - @dimensions.each do |dimension|
@@ -27,9 +28,10 @@
                 = cl_image_tag(dimension.images.first.asset.filename.to_s, transformation: "hint", alt: dimension.images.first.asset.filename.to_s, title: dimension.title)
               - else
                 n/a
-            %td= link_to 'Show', dimension
-            %td= link_to 'Edit', edit_dimension_path(dimension)
-            %td= link_to 'Destroy', dimension, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', dimension
+              = link_to 'Edit', edit_dimension_path(dimension)
+              = link_to 'Destroy', dimension, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Dimension', new_dimension_path
+    = link_to 'Add a new Dimension', new_dimension_path, {class: "button"}

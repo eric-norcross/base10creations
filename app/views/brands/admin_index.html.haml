@@ -3,6 +3,9 @@
 #admin
   %h1 Available Brand
 
+  .links
+    = link_to 'Add a new Brand', new_brand_path, {class: "button"}
+
   - if @brands
     %table
       %thead
@@ -31,9 +34,10 @@
                 - figure.images.each do |image|
                   = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: image.asset.filename.to_s)
 
-            %td= link_to 'Show', brand
-            %td= link_to 'Edit', edit_brand_path(brand)
-            %td= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', brand
+              = link_to 'Edit', edit_brand_path(brand)
+              = link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Brand', new_brand_path
+    = link_to 'Add a new Brand', new_brand_path, {class: "button"}

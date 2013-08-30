@@ -28,6 +28,10 @@
   font-family: $serif !important;
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 .sans-serif {
   font-family: $sans-serif !important;
 }
@@ -40,6 +44,13 @@
   float: right;
 }
 
+.button {
+  @include button;
+}
+
+.mini-button {
+  @include mini-button;
+}
 
 .text-align-left {
   text-align: left;

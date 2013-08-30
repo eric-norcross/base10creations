@@ -3,23 +3,25 @@
 #admin
   %h1 Available Style
 
+  .links
+    = link_to 'Add a new Style', new_style_path, {class: "button"}
+
   - if @styles
     %table
       %thead
         %tr
           %th Id
           %th Title
-          /%th Category
           %th
       %tbody
         - @styles.each do |style|
           %tr
             %td= style.id
             %td= style.title
-            /%td= style.category.title
-            %td= link_to 'Show', style
-            %td= link_to 'Edit', edit_style_path(style)
-            %td= link_to 'Destroy', style, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', style
+              = link_to 'Edit', edit_style_path(style)
+              = link_to 'Destroy', style, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Style', new_style_path
+    = link_to 'Add a new Style', new_style_path, {class: "button"}

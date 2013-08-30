@@ -48,7 +48,7 @@
           = render 'images/image_fields', f: image_builder
 
       - if f.object.images.blank?
-        .addable.button
+        .addable.admin-button
           = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "product-image" })
 
   %fieldset{id: "features-fields"}
@@ -66,7 +66,7 @@
       .addable-group
         = f.fields_for :dimensions, false do |dimension|
           = render 'dimensions/dimension_fields', f: dimension, options: @dimension_options
-      .addable.button
+      .addable.admin-button
         = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :images, options: @dimension_options })    
   
   %fieldset{id: "video-fields"}
@@ -86,7 +86,7 @@
       .addable-group
         = f.fields_for :skus do |sku_builder|
           = render 'skus/sku_fields', f: sku_builder, options: @sku_options
-      .addable.button
+      .addable.admin-button
         = link_to_add_fields({ name: "Add Skus", f: f, container: "skus", association: :skus, child_association: :images, options: @sku_options })
 
   .actions

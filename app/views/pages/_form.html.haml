@@ -36,7 +36,7 @@
       .addable-group
         = f.fields_for :carousels, false do |carousel|
           = render 'carousels/carousel_fields', f: carousel, options: @carousel_options
-      / .addable.button
+      / .addable.admin-button
       /   = link_to_add_fields({ name: "Add Carousel", f: f, association: :carousels, container: "carousels", child_association: :figures, options: @carousel_options })
 
 
@@ -48,7 +48,7 @@
       .addable-group
         = f.fields_for :figures, false do |figure|
           = render 'figures/figure_fields', f: figure, options: @figure_options
-      .addable.button
+      .addable.admin-button
         = link_to_add_fields({ name: "Add Figure", f: f, association: :figures, container: "figures", child_association: :images, options: @figure_options })
       
   .actions

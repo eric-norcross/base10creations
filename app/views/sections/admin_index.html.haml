@@ -3,6 +3,9 @@
 #admin
   %h1 Available Sections
 
+  .links
+    = link_to 'Add New Section', new_section_path, {class: "button"}
+
   - if @sections
     %table
       %thead
@@ -13,9 +16,6 @@
           %th Main Section
           %th Parent Section
           %th Child Sections
-
-          %th
-          %th
           %th
       %tbody
         - @sections.each do |section|
@@ -27,9 +27,10 @@
             %td= section.parent ? section.parent.title : "n/a"
             %td= section.children.length
             
-            %td= link_to 'Show', section
-            %td= link_to 'Edit', edit_section_path(section)
-            %td= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', section
+              = link_to 'Edit', edit_section_path(section)
+              = link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Section', new_section_path
+    = link_to 'Add New Section', new_section_path, {class: "button"}

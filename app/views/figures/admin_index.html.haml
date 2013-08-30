@@ -1,14 +1,15 @@
 #admin
   %h1 Available Figure
 
+  .links
+    = link_to 'Add a new Figure', new_figure_path, {class: "button"}
+
   - if @figures
     %table
       %thead
         %tr
           %th Caption:
           %th Image:
-          %th
-          %th
           %th
       %tbody
         - @figures.each do |figure|
@@ -19,9 +20,10 @@
                 = cl_image_tag(figure.images.first.asset.filename.to_s, transformation: "hint", alt: figure.images.first.asset.filename.to_s, title: figure.caption)
               - else
                 n/a
-            %td= link_to 'Show', figure
-            %td= link_to 'Edit', edit_figure_path(figure)
-            %td= link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', figure
+              = link_to 'Edit', edit_figure_path(figure)
+              = link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Figure', new_figure_path
+    = link_to 'Add a new Figure', new_figure_path, {class: "button"}

@@ -3,6 +3,9 @@
 #admin
   %h1 Listing Compilations
 
+  .links
+    = link_to 'New Compilation', new_compilation_path, {class: "button"}
+
   - if @compilations
     %table
       %thead
@@ -11,8 +14,6 @@
           %th Template
           %th Collection
           %th Skus
-          %th
-          %th 
           %th
 
       %tbody
@@ -25,9 +26,10 @@
               - compilation.skus.each_with_index do |sku, index|
                 - product = sku.product
                 %span.comma= link_to sku.title, compilation_product_sku_path(compilation, product, sku), { title: product.title }
-            %td= link_to 'Show', compilation
-            %td= link_to 'Edit', edit_compilation_path(compilation)
-            %td= link_to 'Destroy', compilation, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', compilation
+              = link_to 'Edit', edit_compilation_path(compilation)
+              = link_to 'Destroy', compilation, method: :delete, data: { confirm: 'Are you sure?' }
   
   .links
-    = link_to 'New Compilation', new_compilation_path
+    = link_to 'New Compilation', new_compilation_path, {class: "button"}

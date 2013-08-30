@@ -21,5 +21,5 @@
     .addable-group
       = f.fields_for :figures do |figure_builder|
         = render 'figures/figure_fields', f: figure_builder, options: @figure_options
-    .addable.button
+    .addable.admin-button
       = link_to_add_fields({ name: "Add Figures", f: f, container: "figures", association: :figures, child_association: :images, options: @figure_options })

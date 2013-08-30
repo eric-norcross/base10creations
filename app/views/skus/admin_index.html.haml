@@ -1,6 +1,9 @@
 #admin
   %h1 Available Sku
 
+  .links
+    = link_to 'Add a new Sku', new_sku_path, {class: "button"}
+
   - if @skus
     %table
       %thead
@@ -8,8 +11,6 @@
           %th Title:
           %th Finish: 
           %th Images:
-          %th
-          %th
           %th
       %tbody
         - @skus.each do |sku|
@@ -23,10 +24,10 @@
             %td
               - sku.images.each do |image|
                 = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: image.asset.filename.to_s)
-            / %td= sku.images.length
-            %td= link_to 'Show', sku
-            %td= link_to 'Edit', edit_sku_path(sku)
-            %td= link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', sku
+              = link_to 'Edit', edit_sku_path(sku)
+              = link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Sku', new_sku_path
+    = link_to 'Add a new Sku', new_sku_path, {class: "button"}

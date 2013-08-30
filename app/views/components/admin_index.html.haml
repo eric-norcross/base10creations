@@ -3,6 +3,9 @@
 #admin
   %h1 Available Components
 
+  .links
+    = link_to 'Add New Component', new_component_path, {class: "button"}
+
   - if @components
     %table
       %thead
@@ -13,9 +16,6 @@
           %th Main Section
           %th Parent Section
           %th Child Sections
-
-          %th
-          %th
           %th
       %tbody
         - @components.each do |component|
@@ -28,9 +28,10 @@
             %td= component.parent.title
             %td= component.children.length
             
-            %td= link_to 'Show', component
-            %td= link_to 'Edit', edit_component_path(component)
-            %td= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', component
+              = link_to 'Edit', edit_component_path(component)
+              = link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Component', new_component_path
+    = link_to 'Add New Component', new_component_path, {class: "button"}

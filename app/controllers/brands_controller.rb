@@ -33,10 +33,10 @@ class BrandsController < ApplicationController
       @brand.images.build
     end
 
-    1.times do
-      figures = @brand.figures.build
-      figures.images.build
-    end
+    # 1.times do
+    #   figures = @brand.figures.build
+    #   figures.images.build
+    # end
 
     respond_to do |format|
       format.html

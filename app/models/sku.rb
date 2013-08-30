@@ -38,11 +38,7 @@ class Sku < ActiveRecord::Base
     if images.length == 0 
       return Image.default.to_s
     else
-      if images.length > 1
-        return images.second.asset.filename.to_s
-      else 
-        return images.first.asset.filename.to_s
-      end
+      return images.first.asset.filename.to_s
     end
   end
 

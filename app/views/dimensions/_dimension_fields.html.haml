@@ -34,6 +34,6 @@
       = f.fields_for :images do |image_builder|
         = render 'images/image_fields', f: image_builder
 
-    .addable.button{class: ("hidden" unless f.object.images.blank?)}
+    .addable.admin-button{class: ("hidden" unless f.object.images.blank?)}
       = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "dimension-image-#{unique_id}" })
     

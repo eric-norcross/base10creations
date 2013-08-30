@@ -1,6 +1,9 @@
 #admin
   %h1 Available Carousel
 
+  .links
+    = link_to 'Add a new Carousel', new_carousel_path, {class: "button"}
+
   - if @carousels
     %table
       %thead
@@ -8,16 +11,15 @@
           %th Title:
           %th Figure Count:
           %th 
-          %th
-          %th
       %tbody
         - @carousels.each do |carousel|
           %tr
             %td= carousel.title
             %td= carousel.figures.length
-            %td= link_to 'Show', carousel
-            %td= link_to 'Edit', edit_carousel_path(carousel)
-            %td= link_to 'Destroy', carousel, method: :delete, data: { confirm: 'Are you sure?' }
+            %td.controls
+              = link_to 'Show', carousel
+              = link_to 'Edit', edit_carousel_path(carousel)
+              = link_to 'Destroy', carousel, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Carousel', new_carousel_path
+    = link_to 'Add a new Carousel', new_carousel_path, {class: "button"}
