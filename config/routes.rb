@@ -30,7 +30,9 @@ Martinfurniture::Application.routes.draw do
     get 'admin/compilations'   => 'compilations#admin_index',    as: :admin_compilations
     get 'admin/components'     => 'components#admin_index',      as: :admin_components
     get 'admin/finishes'       => 'finishes#admin_index',        as: :admin_finishes
-    get 'admin/dealers'        => 'dealers#admin_index',         as: :admin_locations
+    get 'admin/locations'      => 'locations#admin_index',       as: :admin_locations
+    get 'admin/dealers'        => 'locations#admin_index'
+    get 'admin/retailers'      => 'locations#admin_index'
     get 'admin/pages'          => 'pages#admin_index',           as: :admin_pages
     get 'admin/products'       => 'products#admin_index',        as: :admin_products
     get 'admin/sections'       => 'sections#admin_index',        as: :admin_sections

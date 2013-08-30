@@ -15,6 +15,8 @@
   .field
     = f.label :link
     = f.text_field :link, value: "#"
+    %span.instructions
+      (Prefix "http://" to all external links. Use "/" for all internal. e.g.: "/locations")
 
   %div{id: "figure-image-#{unique_id}", class: "singular-addable"}
     .addable-group.images

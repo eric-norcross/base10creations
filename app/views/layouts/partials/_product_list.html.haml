@@ -3,7 +3,7 @@
     %li
       .list-view-image
         = link_to product.path(sku), { title: product.title } do
-          = cl_image_tag(product.list_image(sku), transformation: "list", alt: product.list_image(sku), title: product.title)
+          = cl_image_tag(product.list_image(sku), transformation: "list_med", alt: product.list_image(sku), title: product.title)
       .list-view-info
         %h1.collection
           = link_to product.collection.title, collection_path(product.collection.id)

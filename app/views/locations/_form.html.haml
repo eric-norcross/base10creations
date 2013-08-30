@@ -55,6 +55,8 @@
     .field
       = f.label :url, "URL"
       = f.text_field :url
+      %span.instructions
+        (Prefix "http://" to all external links. Use "/" for all internal. e.g.: "/locations")
 
   %fieldset
     %legend

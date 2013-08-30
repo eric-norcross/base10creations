@@ -1,16 +1,4 @@
-#admin
-  %h1 Admin Areas
+= render "layouts/partials/admin_side_nav"
 
-  %ul
-    %li= link_to "Manage Brands",        admin_brands_path
-    %li= link_to "Manage Categories",    admin_categories_path
-    %li= link_to "Manage Collections",   admin_collections_path
-    %li= link_to "Manage Compilations",  admin_compilations_path
-    %li= link_to "Manage Components",    admin_components_path
-    %li= link_to "Manage Finishes",      admin_finishes_path
-    %li= link_to "Manage Dealers",       admin_locations_path
-    %li= link_to "Manage Pages",         admin_pages_path
-    %li= link_to "Manage Products",      admin_products_path
-    %li= link_to "Manage Sections",      admin_sections_path
-    %li= link_to "Manage Skins",         admin_skins_path
-    %li= link_to "Manage Styles",        admin_styles_path
+%p
+    Choose an area to manage on the left.
