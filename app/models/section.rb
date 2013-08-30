@@ -33,7 +33,7 @@ class Section < ActiveRecord::Base
   end
   
   def parent
-    if parent_id == 0
+    if !parent_id || parent_id == 0
       return nil
     else 
       return Section.find(parent_id)

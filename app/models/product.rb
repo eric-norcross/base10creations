@@ -80,14 +80,20 @@ class Product < ActiveRecord::Base
     return @brands
   end
 
-  def list_image
+  def list_image(sku = nil)
     if images.length > 0 
       return images.first.asset.filename.to_s
     else
-      if skus.length == 0
-        return Image.default.to_s
-      else 
+      if sku
+        if sku.images.length > 0
+          return sku.images.first.asset.filename.to_s
+        else
+          return Image.default.to_s
+        end
+      elseif skus.length > 0
         return skus.first.images.first.asset.filename.to_s
+      else
+        return Image.default.to_s
       end
     end
   end

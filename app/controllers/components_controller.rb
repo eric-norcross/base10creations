@@ -38,6 +38,10 @@ class ComponentsController < ApplicationController
   def new
     # @component = Component.new
 
+    1.times do
+      @component.images.build
+    end
+
     respond_to do |format|
       format.html
     end

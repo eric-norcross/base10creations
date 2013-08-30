@@ -9,11 +9,19 @@ Martinfurniture::Application.routes.draw do
   post '/finishes/skus/:id'           => 'finishes#skus'
 
   # Admins/Users Routes
-  devise_for :admins, :skip => [:registrations] 
-  as :admin do
-    get 'admin/edit'           => 'devise/registrations#edit',   as: :edit_admin_registration
-    put 'admin'                => 'devise/registrations#update', as: :admin_registration
+  if Rails.env.production?
+    devise_for :admins, :skip => [:registrations]
+  else
+    devise_for :admins
+  end
 
+  as :admin do
+    get 'admins/edit'          => 'devise/registrations#edit',   as: :edit_admin_registration
+    put 'admins'               => 'devise/registrations#update', as: :admin_registration
+
+
+    get 'admin'                => 'admins#dashboard'
+    get 'admin/home'           => 'admins#dashboard'
     get 'admin/dashboard'      => 'admins#dashboard',            as: :admin_dashboard
   
     get 'admin/brands'         => 'brands#admin_index',          as: :admin_brands

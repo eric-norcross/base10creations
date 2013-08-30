@@ -33,6 +33,10 @@ class CategoriesController < ApplicationController
   def new
     # @category = Category.new
 
+    1.times do
+      @category.images.build
+    end
+
     respond_to do |format|
       format.html
     end

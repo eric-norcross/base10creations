@@ -1,15 +1,16 @@
-- product.skus.each do |sku|
-  %li
-    .list-view-image
-      = link_to product.path, { title: product.title } do
-        = cl_image_tag(product.list_image, transformation: "list", alt: product.list_image, title: product.title)
-    .list-view-info
-      %h1.collection
-        = link_to product.collection.title, collection_path(product.collection.id)
-      %h2.title
-        = link_to product.title, product.path
-      %h3.finish
-        sku#
-      %ul
-        %li
-          = link_to sku.title, product.path(sku)
+- if product.show
+  - product.skus.each do |sku|
+    %li
+      .list-view-image
+        = link_to product.path(sku), { title: product.title } do
+          = cl_image_tag(product.list_image(sku), transformation: "list", alt: product.list_image(sku), title: product.title)
+      .list-view-info
+        %h1.collection
+          = link_to product.collection.title, collection_path(product.collection.id)
+        %h2.title
+          = link_to product.title, product.path(sku)
+        %h3.finish
+          sku#
+        %ul
+          %li
+            = link_to sku.title, product.path(sku)

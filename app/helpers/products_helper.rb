@@ -19,4 +19,16 @@ module ProductsHelper
       return product.collection.title
     end
   end
+
+  def template_picker(item)
+    if item.is_a?(Product)
+      return "layouts/partials/product_list"
+    else
+      if item.is_a?(Compilation)
+        return "layouts/partials/compilation_list"
+      else 
+        return "layouts/partials/index_list"
+      end
+    end
+  end
 end

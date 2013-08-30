@@ -27,6 +27,15 @@ class StylesController < ApplicationController
   def new
     # @style = Style.new
 
+    @collections = Collection.all
+
+    @slice_size = 3
+    if @collections.length < 3
+      @slice_size = 1
+    end
+
+    1.times { @style.images.build }
+
     respond_to do |format|
       format.html
     end

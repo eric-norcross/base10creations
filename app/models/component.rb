@@ -78,7 +78,8 @@ class Component < ActiveRecord::Base
   def self.products_and_compilations(component_ids)
     # Get all Products based on the Components/Sub-Components [Optimize by selected product_id's only]
     @product_ids = ProductComponent.where(:component_id => component_ids).map{ |product_component| product_component.product_id }
-    @products = Product.where(:id => @product_ids)
+    @products = Product.where(id: @product_ids)
+    # @products = Product.where(id: @product_ids, shown: true)
 
     # Create an array of Skus where the Sku belongs to a Compilation
     # Also create an array of Products not to include if their skus belong to a Compilation

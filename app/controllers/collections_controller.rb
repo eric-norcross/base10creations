@@ -40,6 +40,10 @@ class CollectionsController < ApplicationController
   def new
     # @collection = Collection.new
 
+    1.times do
+      @collection.images.build
+    end
+
     respond_to do |format|
       format.html
     end

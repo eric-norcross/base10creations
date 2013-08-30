@@ -7,12 +7,19 @@
         %tr
           %th Id
           %th Title
+          %th Image
           %th
       %tbody
         - @categories.each do |category|
           %tr
             %td= category.id
             %td= category.title
+            %td
+              - if category.images.blank?
+                n/a
+              - else 
+                = cl_image_tag(category.images.first.asset.filename.to_s, transformation: "hint", alt: category.images.first.asset.filename.to_s, title: category.title)
+                
             %td= link_to 'Show', category
             %td= link_to 'Edit', edit_category_path(category)
             %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
