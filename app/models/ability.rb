@@ -6,8 +6,6 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
 
-    STDOUT << "USER IS A: " + user.class.name.to_s
-
     if user.is_a?(Admin)
       can :manage, :all
     else

@@ -3,9 +3,14 @@ class ProductsController < ApplicationController
 
   # Admin Routes
   def admin_index
-    respond_to do |format|
-      format.html
-    end
+    @products = Product.joins(:collection, :skus).order('collections.name ASC, skus.name ASC')
+    @options = @products.map{|product| [product.collection.title, product.collection.name]}
+    @options.unshift(["All", "all"])
+    
+    render "products/admin_index"
+    # respond_to do |format|
+    #   format.html
+    # end
   end
 
 

@@ -4,7 +4,7 @@
   %h1 Available Sections
 
   .links
-    = link_to 'Add New Section', new_section_path, {class: "button"}
+    = link_to 'Add New Section', new_section_path
 
   - if @sections
     %table
@@ -33,4 +33,4 @@
               = link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Section', new_section_path, {class: "button"}
+    = link_to 'Add New Section', new_section_path

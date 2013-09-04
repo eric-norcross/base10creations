@@ -27,8 +27,7 @@ class Finish < ActiveRecord::Base
   before_save                   :create_name
 
   def self.skus(finish_id = :id)
-    @skus = Sku.where(finish_id: finish_id)
-    return @skus
+    return Sku.where(finish_id: finish_id)
   end
 
   def self.products(finish_id = :id)

@@ -34,6 +34,20 @@ class Collection < ActiveRecord::Base
     return Finish.where(id: finish_ids(collection_id))
   end
 
+  def self.skus_by_finish(collection_id, finish_id)
+    skus = []
+
+    products(collection_id).each do |product|
+      product.skus.each do |sku|
+        if sku.finish_id.to_s == finish_id.to_s
+          skus.push(sku) unless skus.include?(sku)
+        end
+      end
+    end
+
+    return skus
+  end
+
   def self.products(collection_id)
     return Product.where(collection_id: collection_id)
   end

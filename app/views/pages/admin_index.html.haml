@@ -4,7 +4,7 @@
   %h1 Listing pages
 
   .links
-    = link_to 'New Page', new_page_path, {class: "button"}
+    = link_to 'New Page', new_page_path
 
   - if @pages
     %table
@@ -27,4 +27,4 @@
               = link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }
             
   .links
-    = link_to 'New Page', new_page_path, {class: "button"}
+    = link_to 'New Page', new_page_path

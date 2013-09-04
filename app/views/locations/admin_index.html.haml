@@ -4,7 +4,7 @@
   %h1 Available Locations
 
   .links
-    = link_to 'Add New Location', new_location_path, {class: "button"}
+    = link_to 'Add New Location', new_location_path
 
   - if @locations
     %table
@@ -37,4 +37,4 @@
               = link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Location', new_location_path, {class: "button"}
+    = link_to 'Add New Location', new_location_path

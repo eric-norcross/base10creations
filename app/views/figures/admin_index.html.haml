@@ -2,7 +2,7 @@
   %h1 Available Figure
 
   .links
-    = link_to 'Add a new Figure', new_figure_path, {class: "button"}
+    = link_to 'Add a new Figure', new_figure_path
 
   - if @figures
     %table
@@ -26,4 +26,4 @@
               = link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Figure', new_figure_path, {class: "button"}
+    = link_to 'Add a new Figure', new_figure_path

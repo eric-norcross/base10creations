@@ -4,7 +4,7 @@
   %h1 Available Components
 
   .links
-    = link_to 'Add New Component', new_component_path, {class: "button"}
+    = link_to 'Add New Component', new_component_path
 
   - if @components
     %table
@@ -34,4 +34,4 @@
               = link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Component', new_component_path, {class: "button"}
+    = link_to 'Add New Component', new_component_path

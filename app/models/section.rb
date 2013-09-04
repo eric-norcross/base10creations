@@ -1,4 +1,6 @@
 class Section < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   default_scope order('sections.id ASC')
   
   attr_accessible               :name, 
@@ -50,6 +52,16 @@ class Section < ActiveRecord::Base
     else
       return parent.children
     end
+  end
+
+  def path
+    if link && link != ""
+      @path = link;
+    else 
+      @path = section_path(id)
+    end
+
+    return @path
   end
 
   private

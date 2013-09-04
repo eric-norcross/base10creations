@@ -11,14 +11,37 @@ $(document).on("change", "#compilation-collection select", function(event) {
 });
 
 $(document).on("change", "#compilation-finish select", function(event) {
-  var type = $(this).attr("data-type");
+  var collection_id = $("#compilation-collection option:selected").val();
   var finish_id = $("option:selected", this).val();
 
-  $.post("/finishes/skus/" + finish_id + "?type=" + type, function(data){
+  console.log("Collection Id: " + collection_id);
+  console.log("Finish Id: " + finish_id);
+
+  $.post("/collections/skus_by_finish/" + collection_id + "?finish_id=" + finish_id, function(data){
     console.log($("#compilation-skus"))
     $("#compilation-skus").empty();
     $("#compilation-skus").html(data);
     console.log(data);
+  });
+});
+
+$(document).on("change", "select#sort", function(event) {
+  var collection_name = $("option:selected", this).val();
+  var rows = $(document).find("tbody tr");
+
+  rows.each(function(index) {
+    row = jQuery(rows[index]);
+
+    row.removeClass("hidden");
+
+    if (collection_name != "all") {
+      console.log("Row Class: " + row.attr("class"));
+      console.log("Collection Name: " + collection_name);
+
+      if (row.attr("class") != collection_name) {
+        row.addClass("hidden");
+      }
+    }
   });
 });
 

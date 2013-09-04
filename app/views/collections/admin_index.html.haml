@@ -4,7 +4,7 @@
   %h1 Available Collections
 
   .links
-    = link_to 'Add New Collection', new_collection_path, {class: "button"}
+    = link_to 'Add New Collection', new_collection_path
 
   - if @collections
     %table
@@ -24,4 +24,4 @@
               = link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Collection', new_collection_path, {class: "button"}
+    = link_to 'Add New Collection', new_collection_path

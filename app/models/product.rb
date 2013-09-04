@@ -13,7 +13,7 @@
 class Product < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
-  default_scope order('products.id ASC')
+  # default_scope order('products.id ASC')
   
   attr_accessible               :name, 
                                 :title,

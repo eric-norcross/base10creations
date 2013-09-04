@@ -5,6 +5,11 @@
     margin-bottom: 5px;
   }
 
+  h2 {
+    margin: 10px 0 5px 0;
+    font-size: 12px;
+  }
+
   a {
     color: $linkColor;
     font-size: 11px;
@@ -60,5 +65,9 @@
 
   .links {
     margin: 20px 0;
+    
+    a {
+      @include mini-button;
+    }
   }
 }

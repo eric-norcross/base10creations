@@ -4,9 +4,9 @@ Martinfurniture::Application.routes.draw do
   root to: 'pages#home'
 
   # Ajax Routes
-  post '/collections/products/:id'    => 'collections#products'
-  post '/collections/finishes/:id'    => 'collections#finishes'
-  post '/finishes/skus/:id'           => 'finishes#skus'
+  post '/collections/products/:id'        => 'collections#products'
+  post '/collections/finishes/:id'        => 'collections#finishes'
+  post '/collections/skus_by_finish/:id'  => 'collections#skus_by_finish'
 
   # Admins/Users Routes
   if Rails.env.production?

@@ -4,7 +4,7 @@
   %h1 Listing Compilations
 
   .links
-    = link_to 'New Compilation', new_compilation_path, {class: "button"}
+    = link_to 'New Compilation', new_compilation_path
 
   - if @compilations
     %table
@@ -32,4 +32,4 @@
               = link_to 'Destroy', compilation, method: :delete, data: { confirm: 'Are you sure?' }
   
   .links
-    = link_to 'New Compilation', new_compilation_path, {class: "button"}
+    = link_to 'New Compilation', new_compilation_path

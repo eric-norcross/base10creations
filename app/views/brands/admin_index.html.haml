@@ -4,7 +4,7 @@
   %h1 Available Brand
 
   .links
-    = link_to 'Add a new Brand', new_brand_path, {class: "button"}
+    = link_to 'Add a new Brand', new_brand_path
 
   - if @brands
     %table
@@ -40,4 +40,4 @@
               = link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Brand', new_brand_path, {class: "button"}
+    = link_to 'Add a new Brand', new_brand_path

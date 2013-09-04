@@ -4,7 +4,7 @@
   %h1 Available Finish
 
   .links
-    = link_to 'Add a new Finish', new_finish_path, {class: "button"}
+    = link_to 'Add a new Finish', new_finish_path
 
   - if @finishes
     %table
@@ -30,4 +30,4 @@
               = link_to 'Destroy', finish, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Finish', new_finish_path, {class: "button"}
+    = link_to 'Add a new Finish', new_finish_path

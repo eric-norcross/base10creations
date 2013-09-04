@@ -1,13 +1,7 @@
 class FinishesController < ApplicationController
   load_and_authorize_resource
 
-  # Ajax Routes
-  def skus
-    @skus = Finish.skus(params[:id])
-    render "skus/_list", locals: { type: params[:type] }, layout: false
-  end
-
- # Admin Routes
+  # Admin Routes
   def admin_index
     respond_to do |format|
       format.html

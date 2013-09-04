@@ -4,8 +4,7 @@
   %h1 Available Categories
 
   .links
-    = link_to 'Add New Category', new_category_path, {class: "button"}
-
+    = link_to 'Add New Category', new_category_path
   - if @categories
     %table
       %thead
@@ -31,4 +30,4 @@
               = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Category', new_category_path, {class: "button"}
+    = link_to 'Add New Category', new_category_path

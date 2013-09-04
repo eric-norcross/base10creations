@@ -1,5 +1,6 @@
 class ContactMailer < ActionMailer::Base
-  default from: "info@martinfurniture.com"
+  default from: "MartinFurniture.com - Get in Touch form <info@martinfurniture.com>"
+  default to: "info@martinfurniture.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -9,6 +10,6 @@ class ContactMailer < ActionMailer::Base
   def get_in_touch(fields)
     @fields = fields
 
-    mail to: fields.email, subject: fields.subject
+    mail subject: fields.subject
   end
 end

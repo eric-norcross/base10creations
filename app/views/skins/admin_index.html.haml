@@ -4,7 +4,7 @@
   %h1 Available Skins
 
   .links
-    = link_to 'Add New Skin', new_skin_path, {class: "button"}
+    = link_to 'Add New Skin', new_skin_path
 
 
   - if @skins
@@ -25,4 +25,4 @@
               = link_to 'Destroy', skin, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add New Skin', new_skin_path, {class: "button"}
+    = link_to 'Add New Skin', new_skin_path

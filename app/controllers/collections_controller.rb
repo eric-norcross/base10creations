@@ -13,6 +13,11 @@ class CollectionsController < ApplicationController
     render "products/_select", layout: false
   end
 
+  def skus_by_finish
+    @skus = Collection.skus_by_finish(params[:id], params[:finish_id])
+    render "skus/_list", layout: false
+  end
+
   # Admin Routes
   def admin_index
     respond_to do |format|

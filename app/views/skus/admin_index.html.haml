@@ -2,7 +2,7 @@
   %h1 Available Sku
 
   .links
-    = link_to 'Add a new Sku', new_sku_path, {class: "button"}
+    = link_to 'Add a new Sku', new_sku_path
 
   - if @skus
     %table
@@ -30,4 +30,4 @@
               = link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
-    = link_to 'Add a new Sku', new_sku_path, {class: "button"}
+    = link_to 'Add a new Sku', new_sku_path
