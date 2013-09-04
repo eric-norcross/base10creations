@@ -92,8 +92,8 @@
           #dimensions.tab-pane
             - @product.dimensions.each do |dimension|
               %h1
-                %span 
-                  = dimension.title
+                = dimension.title
+                %span
                   #{number_with_precision(dimension.width, strip_insignificant_zeros: true)}w 
                   x
                   #{number_with_precision(dimension.height, strip_insignificant_zeros: true)}h

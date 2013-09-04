@@ -48,20 +48,21 @@
       }
 
       h1 {
-        @include rem('font-size', 11px);
+        font-size: 11px;
       }
 
       h2 {
-        @include rem('font-size', 20px);
+        font-size: 20px;
         font-family: $serif;
         font-weight: bold;
       }
 
       h3 {
         color: $headerColor;
-        @include rem('font-size', 14px);
+        font-size: 14px;
+        line-height: 16px;
         margin-top: 12px;
-        max-width: 375px;
+        max-width: 365px;
       }
     }
 
@@ -91,7 +92,7 @@
     h1#rubric {
       color: $headerColor;
       font-family: $serif;
-      @include rem('font-size', 14px);
+      font-size: 14px;
       font-weight: normal;
       margin: 10px 0 20px 0;
     }
