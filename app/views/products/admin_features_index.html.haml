@@ -1,0 +1,22 @@
+= render "layouts/partials/admin_side_nav"
+
+#admin
+  %h1 Listing Products Features
+
+  - if @products
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Featues
+          %th
+
+      %tbody
+        - @products.each do |product|
+          %tr
+            %td= product.id
+            %td= product.features
+            
+
+            %td.controls
+              = link_to 'Edit', edit_product_path(product)

@@ -16,28 +16,32 @@ Martinfurniture::Application.routes.draw do
   end
 
   as :admin do
-    get 'admins/edit'          => 'devise/registrations#edit',   as: :edit_admin_registration
-    put 'admins'               => 'devise/registrations#update', as: :admin_registration
+    get 'admins/edit'          => 'devise/registrations#edit',      as: :edit_admin_registration
+    put 'admins'               => 'devise/registrations#update',    as: :admin_registration
 
 
     get 'admin'                => 'admins#dashboard'
     get 'admin/home'           => 'admins#dashboard'
-    get 'admin/dashboard'      => 'admins#dashboard',            as: :admin_dashboard
+    get 'admin/dashboard'      => 'admins#dashboard',               as: :admin_dashboard
   
-    get 'admin/brands'         => 'brands#admin_index',          as: :admin_brands
-    get 'admin/categories'     => 'categories#admin_index',      as: :admin_categories
-    get 'admin/collections'    => 'collections#admin_index',     as: :admin_collections
-    get 'admin/compilations'   => 'compilations#admin_index',    as: :admin_compilations
-    get 'admin/components'     => 'components#admin_index',      as: :admin_components
-    get 'admin/finishes'       => 'finishes#admin_index',        as: :admin_finishes
-    get 'admin/locations'      => 'locations#admin_index',       as: :admin_locations
+    get 'admin/brands'         => 'brands#admin_index',             as: :admin_brands
+    get 'admin/categories'     => 'categories#admin_index',         as: :admin_categories
+    get 'admin/collections'    => 'collections#admin_index',        as: :admin_collections
+    get 'admin/compilations'   => 'compilations#admin_index',       as: :admin_compilations
+    get 'admin/components'     => 'components#admin_index',         as: :admin_components
+    get 'admin/finishes'       => 'finishes#admin_index',           as: :admin_finishes
+    get 'admin/locations'      => 'locations#admin_index',          as: :admin_locations
     get 'admin/dealers'        => 'locations#admin_index'
     get 'admin/retailers'      => 'locations#admin_index'
-    get 'admin/pages'          => 'pages#admin_index',           as: :admin_pages
-    get 'admin/products'       => 'products#admin_index',        as: :admin_products
-    get 'admin/sections'       => 'sections#admin_index',        as: :admin_sections
-    get 'admin/skins'          => 'skins#admin_index',           as: :admin_skins
-    get 'admin/styles'         => 'styles#admin_index',          as: :admin_styles
+    get 'admin/pages'          => 'pages#admin_index',              as: :admin_pages
+    get 'admin/products'       => 'products#admin_index',           as: :admin_products
+    get 'admin/sections'       => 'sections#admin_index',           as: :admin_sections
+    get 'admin/skins'          => 'skins#admin_index',              as: :admin_skins
+    get 'admin/styles'         => 'styles#admin_index',             as: :admin_styles
+
+    #For data sanitization
+    get 'admin/dimensions'     => 'dimensions#admin_index',         as: :admin_dimensions
+    get 'admin/features'       => 'products#admin_features_index',  as: :admin_products_features
   end
 
   devise_for :users

@@ -13,6 +13,15 @@ class ProductsController < ApplicationController
     # end
   end
 
+  def admin_features_index
+    @products = Product.all
+    
+    render "products/admin_features_index"
+    # respond_to do |format|
+    #   format.html
+    # end
+  end
+
 
   # REST Routes
   # def index
@@ -24,7 +33,7 @@ class ProductsController < ApplicationController
   # end
 
   def show
-    redirect_to admin_product_spathpath(params[:id], @product.skus.first.id)
+    redirect_to product_sku_path(params[:id], @product.skus.first.id)
   end
 
   def new
