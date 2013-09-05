@@ -99,6 +99,21 @@ class Product < ActiveRecord::Base
     end
   end
 
+
+  # View helpers
+
+  def gallery_items(sku)
+    return images + sku.images + sku.finish.images
+  end
+
+  def videos
+    if video != ""
+      return [video]
+    else
+      return []
+    end
+  end
+
   private
   
   def create_name

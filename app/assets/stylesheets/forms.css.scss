@@ -44,6 +44,7 @@ form {
   input[type="submit"] {
     @include button;
     margin-left: 128px;
+    padding: 6px 25px;
   }
 }
 
@@ -84,7 +85,6 @@ form {
 
     input[type="submit"] {
       margin-left: 0;
-      padding: 6px 25px;
     }
 
     label {
@@ -183,17 +183,16 @@ form {
     input[type="submit"], 
     .admin-button {
       @include admin-button;
-    }
+    
+      &:hover {
+        background-color: $linkColor;
+        color: #fff;
+        cursor: pointer;
 
-    input[type="submit"]:hover,
-    .admin-button:hover {
-      background-color: $linkColor;
-      color: #fff;
-      cursor: pointer;
-
-      a, a:hover {
-        color: #fff !important;
-        text-decoration: none;
+        a, a:hover {
+          color: #fff !important;
+          text-decoration: none;
+        }
       }
     }
 
@@ -215,6 +214,7 @@ form {
       font-family: $sans-serif;
       font-weight: bold;
       margin-left: 0px;
+      padding: 6px 25px;
       width: 100%;
     }
 

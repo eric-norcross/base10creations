@@ -1,41 +1,10 @@
 - if @compilation.skus
   = render "layouts/partials/breadcrumbs", product: @compilation, sku: @compilation.skus.first
 
-- @videos = @compilation.products.map{|product| product.video}
-- @gallery_items = @compilation.images
-- @compilation.skus.each do |gallery_sku|
-  - @gallery_items + gallery_sku.images
-
 .page{:id=>"#{@compilation.skin.name}"}
   %article
-    .gallery#product-views
-      .gallery-image
-        = cl_image_tag(@gallery_items.first.asset.filename.to_s, transformation: "gallery", alt: @gallery_items.first.asset.filename.to_s, title: @compilation.title)
-        %br
-        .image-controls
-          #enlarge
-            = link_to "#" do 
-              = render :partial => '/layouts/svg/enlarge'
-              View Larger Image
-        .image-controls.text-align-right
-          #zoom
-            = link_to "Roll Over Image To Zoom", "#"
-      .scroller
-        .control.previous
-          = link_to "#" do
-            = render :partial => '/layouts/svg/arrow_left'
-        .items-container
-          %ul
-            - @gallery_items.each do |item|
-              %li
-                .image-container
-                  %span.helper
-                  = link_to "#" do
-                    = cl_image_tag(item.asset.filename.to_s, transformation: "scroller", alt: item.asset.filename.to_s, :"data-medium" => cloudinary_url(item.asset.filename.to_s, transformation: "gallery"), :"data-large" => cloudinary_url(item.asset.filename.to_s, transformation: "large"))
+    = render "layouts/partials/gallery", items: @compilation.gallery_items, title: @compilation.title
 
-        .control.next
-          = link_to "#" do
-            = render :partial => '/layouts/svg/arrow_right'
     #product-details
       %header
         %hgroup
@@ -56,95 +25,7 @@
             = render :partial => '/layouts/svg/share'
           = link_to "#", class: "print" do 
             = render :partial => '/layouts/svg/print'
-      #tabs
-        %ul#product_tabs.nav.nav-tabs{"data-tabs" => "tabs"}
-          %li.active
-            %a.gradient{"data-toggle" => "tab", :href => "#features"} Features
-          %li
-            %a.gradient{"data-toggle" => "tab", :href => "#dimensions"} Dimensions
-          %li
-            %a.gradient{"data-toggle" => "tab", :href => "#style"} Style
 
-          - unless @videos.blank?
-            %li
-              %a.gradient{"data-toggle" => "tab", :href => "#videos"} Videos
-
-        .tab-content
-          #features.tab-pane.active
-            %div
-              - @compilation.products.each do |product|
-                %div
-                  %h1= product.title
-                  = raw product.features
-                  %ul
-                    - product.brands.each do |brand|
-                      - brand.figures.each do |figure|
-                        %li
-                          = cl_image_tag(figure.images.first.asset.filename.to_s, alt: brand.title)
-                
-            .finishes
-              / - if @compilation.skus.length > 1
-              /   %div
-              /     %h1
-              /       Also available in
-              /     %ul
-              /       - @compilation.skus.each do |sku|
-              /         - if sku != @compilation.skus
-              /           %li
-              /             - if sku.finish.images.first
-              /               = link_to product_sku_path(@compilation, sku) do
-              /                 = cl_image_tag(sku.finish.images.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
-
-              %div
-                %h1 #{@compilation.collection.title} is available in
-                %ul
-                  - @compilation.categories.each do |category|
-                    %li
-                      = link_to category.title, category_path(category.id)
-
-          #dimensions.tab-pane
-            - @compilation.products.each do |product|
-              %h1
-                = product.title
-              %ul
-                - product.dimensions.each do |dimension|
-                  %li
-                    %span.title
-                      = dimension.title
-                    %span.specs
-                      #{number_with_precision(dimension.width, strip_insignificant_zeros: true)}w 
-                      x
-                      #{number_with_precision(dimension.height, strip_insignificant_zeros: true)}h
-                      x
-                      #{number_with_precision(dimension.depth, strip_insignificant_zeros: true)}d
-                    - if dimension.images.length > 0
-                      = cl_image_tag(dimension.images.first.asset.filename.to_s, alt: "Dimensions")
-              
-          #style.tab-pane
-            = raw @compilation.collection.description 
-            - @compilation.collection.styles.each do |style| 
-              %div   
-                = raw style.description 
-
-          - unless @videos.blank?
-            #videos.tab-pane
-              %h1 Features of #{@compilation.collection.title} #{@compilation.finish.title} 
-              %p 
-                This can be some text about sharing the video or something
-
-              - @videos.each do |video|
-                %iframe{:width => "420", :height => "267", :src => video, :frameborder => "0", :allowfullscreen => ""}
+      = render "layouts/partials/product_tabs", product_object: @compilation, videos: @compilation.videos, feature_set: @compilation.products, collection: @compilation.collection, categories: @compilation.categories
         
-    %footer
-      %h1#rubric
-        You may also be interested in one of these...
-      .gallery#related-products
-        .scroller
-          .control.previous
-            = link_to "#" do
-              = render "layouts/svg/arrow_left"
-          .items-container
-            = render "layouts/partials/related", related: @related, finish: @compilation.finish
-          .control.next
-            = link_to "#" do
-              = render "layouts/svg/arrow_right"
+    = render "layouts/partials/product_footer", finish: @compilation.finish

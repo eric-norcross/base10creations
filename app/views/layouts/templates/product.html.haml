@@ -1,38 +1,10 @@
 - if @sku
   = render "layouts/partials/breadcrumbs", product: @product, sku: @sku
 
-- @gallery_items = @product.images + @sku.images
-
 .page{:id=>"#{@product.skin.name}"}
   %article
-    .gallery#product-views
-      .gallery-image
-        = cl_image_tag(@gallery_items.first.asset.filename.to_s, transformation: "gallery", alt: @gallery_items.first.asset.filename.to_s, title: @product.title)
-        %br
-        .image-controls
-          #enlarge
-            = link_to "#" do 
-              = render :partial => '/layouts/svg/enlarge'
-              View Larger Image
-        .image-controls.text-align-right
-          #zoom
-            = link_to "Roll Over Image To Zoom", "#"
-      .scroller
-        .control.previous
-          = link_to "#" do
-            = render :partial => '/layouts/svg/arrow_left'
-        .items-container
-          %ul
-            - @gallery_items.each do |item|
-              %li
-                .image-container
-                  %span.helper
-                  = link_to "#" do
-                    = cl_image_tag(item.asset.filename.to_s, transformation: "scroller", alt: item.asset.filename.to_s, :"data-medium" => cloudinary_url(item.asset.filename.to_s, transformation: "gallery"), :"data-large" => cloudinary_url(item.asset.filename.to_s, transformation: "large"))
+    = render "layouts/partials/gallery", items: @product.gallery_items(@sku), title: @product.title
 
-        .control.next
-          = link_to "#" do
-            = render :partial => '/layouts/svg/arrow_right'
     #product-details
       %header
         %hgroup
@@ -47,86 +19,8 @@
             = render :partial => '/layouts/svg/share'
           = link_to "#", class: "print" do 
             = render :partial => '/layouts/svg/print'
-      #tabs
-        %ul#product_tabs.nav.nav-tabs{"data-tabs" => "tabs"}
-          %li.active
-            %a.gradient{"data-toggle" => "tab", :href => "#features"} Features
-          %li
-            %a.gradient{"data-toggle" => "tab", :href => "#dimensions"} Dimensions
-          %li
-            %a.gradient{"data-toggle" => "tab", :href => "#style"} Style
 
-          - unless @product.video.blank?
-            %li
-              %a.gradient{"data-toggle" => "tab", :href => "#videos"} Videos
+      = render "layouts/partials/product_tabs", product_object: @product, videos: @product.videos, feature_set: [@product], collection: @product.collection, categories: @product.collection.categories
 
-        .tab-content
-          #features.tab-pane.active
-            %div
-              = raw @product.features
-              %ul
-                - @product.brands.each do |brand|
-                  - brand.figures.each do |figure|
-                    %li
-                      = cl_image_tag(figure.images.first.asset.filename.to_s, alt: brand.title)
-                
-            .finishes
-              - if @product.skus.length > 1
-                %div
-                  %h1
-                    Also available in
-                  %ul
-                    - @product.skus.each do |sku|
-                      - if sku != @sku
-                        %li
-                          - if sku.finish.images.first
-                            = link_to product_sku_path(@product, sku) do
-                              = cl_image_tag(sku.finish.images.first.asset.filename.to_s, transformation: 'thumb', alt: sku.finish.title)
-              %div
-                %h1 #{@product.collection.title} is available in
-                %ul
-                  - @product.collection.categories.each do |category|
-                    %li
-                      = link_to category.title, category_path(category.id)
-
-          #dimensions.tab-pane
-            - @product.dimensions.each do |dimension|
-              %h1
-                = dimension.title
-                %span
-                  #{number_with_precision(dimension.width, strip_insignificant_zeros: true)}w 
-                  x
-                  #{number_with_precision(dimension.height, strip_insignificant_zeros: true)}h
-                  x
-                  #{number_with_precision(dimension.depth, strip_insignificant_zeros: true)}d
-              - if dimension.images.length > 0
-                = cl_image_tag(dimension.images.first.asset.filename.to_s, alt: "Dimensions")
-              
-          #style.tab-pane
-            = raw @product.collection.description 
-            - @product.collection.styles.each do |style| 
-              %div   
-                = raw style.description 
-
-          - unless @product.video.blank?
-            #videos.tab-pane
-              %h1 Features of #{@product.collection.title} #{@sku.finish.title} 
-              %p 
-                This can be some text about sharing the video or something
-
-              %iframe{:width => "440", :height => "267", :src => @product.video, :frameborder => "0", :allowfullscreen => ""}
-    
     - unless @related.blank?
-      %footer
-        %h1#rubric
-          You may also be interested in one of these...
-        .gallery#related-products
-          .scroller
-            .control.previous
-              = link_to "#" do
-                = render "layouts/svg/arrow_left"
-            .items-container
-              = render "layouts/partials/related", related: @related, finish: @sku.finish
-            .control.next
-              = link_to "#" do
-                = render "layouts/svg/arrow_right"
+      = render "layouts/partials/product_footer", finish: @sku.finish

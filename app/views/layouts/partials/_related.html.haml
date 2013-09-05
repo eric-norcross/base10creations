@@ -32,7 +32,7 @@
               .product-info
                 %hgroup
                   %h1
-                    = link_to association(related_product, sku.finish), related_product.path(sku)
+                    = link_to association(related_product, sku.finish), sku.finish.path
                   %h2
                     = link_to related_product.title, related_product.path(sku)
                   %h3

@@ -59,6 +59,8 @@ class Compilation < ActiveRecord::Base
     return @categories
   end
 
+  #View Helpers
+
   def list_image
     if images.length > 0 
       return images.first.asset.filename.to_s
@@ -70,6 +72,43 @@ class Compilation < ActiveRecord::Base
       end
     end
   end
+
+  def gallery_items
+    @skus_images = []
+
+    skus.each do |gallery_sku|
+      gallery_sku.images.each do |sku_image|
+        @skus_images.push(sku_image) unless @skus_images.include?(sku_image)
+      end
+    end
+
+    return images + @skus_images + finish.images
+  end
+
+  def videos
+    @videos = []
+
+    products.each do |product|
+      if product.video && product.video != ""
+        @videos.push(product.video)
+      end
+    end
+
+    return @videos
+  end
+
+  def brands
+    @brands = []
+
+    products.each do |product|
+      product.brands.each do |brand|
+        @brands.push(brand) unless @brands.include?(brand)
+      end
+    end
+
+    return @brands
+  end
+
 
 	private
 
