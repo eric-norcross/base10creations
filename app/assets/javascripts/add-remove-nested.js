@@ -71,7 +71,7 @@ $(document).on("click", "a.remove", function(event) {
   return event.preventDefault();
 });
 
-$(document).on("click", ".button", function(event) {
+$(document).on("click", ".admin-button", function(event) {
   var a = $("a", $(this));
   var group = $("#" + a.attr("data-container"))
   var container = group.find(" > .addable-group");

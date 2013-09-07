@@ -9,17 +9,9 @@
         - if options[:removable]
           = link_to_remove_fields f
 
-  / .field
-  /   = f.label :title
-  /   = f.text_field :title
-
-  / %fieldset{id: "figures-fields"}
-  /   %legend
-  /     Figures
-
-  #figures.nested
+  %div{id: "carousel-figures-#{unique_id}", class: "nested"}
     .addable-group
       = f.fields_for :figures do |figure_builder|
         = render 'figures/figure_fields', f: figure_builder, options: @figure_options
     .addable.admin-button
-      = link_to_add_fields({ name: "Add Figures", f: f, container: "figures", association: :figures, child_association: :images, options: @figure_options })
+      = link_to_add_fields({ name: "Add Figures", f: f, container: "carousel-figures-#{unique_id}", association: :figures, child_association: :images, options: @figure_options })
