@@ -40,8 +40,8 @@
       .addable-group
         = f.fields_for :carousels, false do |carousel|
           = render 'carousels/carousel_fields', f: carousel, options: @carousel_options
-      / .addable.admin-button
-      /   = link_to_add_fields({ name: "Add Carousel", f: f, association: :carousels, container: "carousels", child_association: :figures, options: @carousel_options })
+      .addable.admin-button
+        = link_to_add_fields({ name: "Add Carousel", f: f, association: :carousels, container: "carousels", child_association: :figures, options: @carousel_options })
 
 
   %fieldset{id: "figures-fields"}
