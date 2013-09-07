@@ -31,18 +31,18 @@ class PagesController < ApplicationController
   def new
     # @page = Page.new
 
-    1.times { 
-      carousel = @page.carousels.build 
-      3.times do
-        figure = carousel.figures.build
-        figure.images.build
-      end
-    }
+    # 1.times { 
+    #   carousel = @page.carousels.build 
+    #   3.times do
+    #     figure = carousel.figures.build
+    #     figure.images.build
+    #   end
+    # }
 
-    3.times do
-      figures = @page.figures.build
-      figures.images.build
-    end
+    # 3.times do
+    #   figures = @page.figures.build
+    #   figures.images.build
+    # end
 
     respond_to do |format|
       format.html

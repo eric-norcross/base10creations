@@ -17,7 +17,7 @@
           %th Postal Code
           %th Country
           %th Phone
-          %th URL
+          / %th URL
           %th
       %tbody
         - @locations.each do |location|
@@ -30,7 +30,7 @@
             %td= location.country
             %td.no-wrap
               = number_to_phone(location.phone, area_code: true, extension: location.ext) 
-            %td= location.url
+            / %td= location.url
             %td.controls
               = link_to 'Show', location
               = link_to 'Edit', edit_location_path(location)

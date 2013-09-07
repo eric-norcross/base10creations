@@ -1,5 +1,5 @@
 - unless @message 
-  - @message = Message.new
+  - @message = GetInTouch.new
 
 = render "layouts/partials/side_nav", elements: @side_nav_elements
 
@@ -11,12 +11,8 @@
     #page-body
       = raw @page.content
 
-    / - if defined?(notice) && notice != ""
-    /   .messages
-    /     = notice
-
     .input-form
-      = form_for @message do |f|
+      = form_for @message, url: messenger_path do |f|
         - if @message.errors.any?
           #error-explanation
             %h1
@@ -28,6 +24,7 @@
 
         %fieldset
           %input{ type: "hidden", name: "section_id", value: @page.id }
+          %input{ type: "hidden", name: "message_type", value: "get_in_touch" }
 
           %legend
             Talk to us
@@ -38,11 +35,11 @@
 
           .field
             = f.label :email, {class: "required"}
-            = f.text_field :email
+            = f.email_field :email
 
           .field
             = f.label :phone
-            = f.text_field :phone
+            = f.number_field :phone
 
           .field
             = f.label :subject, "Email Subject", {class: "required"}

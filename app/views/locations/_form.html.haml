@@ -13,48 +13,48 @@
       Location
       
     .field
-      = f.label :name
+      = f.label :name, {class: "required"}
       = f.text_field :name
 
     .field
-      = f.label :address
+      = f.label :address, {class: "required"}
       = f.text_field :address
 
     .field
-      = f.label :city
+      = f.label :city, {class: "required"}
       = f.text_field :city
 
     .field
-      = f.label :province, "State"
-      = f.text_field :province
+      = f.label :province, {class: "required"}
+      = f.select :province, options_for_select(provinces), prompt: "Select a Province"
 
     .field
-      = f.label :postal_code
-      = f.text_field :postal_code
+      = f.label :postal_code, {class: "required"}
+      = f.number_field :postal_code
 
     .field
-      = f.label :country
+      = f.label :country, {class: "required"}
       = f.text_field :country
 
     .field
       = f.label :phone
-      = f.text_field :phone
+      = f.number_field :phone
 
     .field
       = f.label :ext
-      = f.text_field :ext
+      = f.number_field :ext
 
     .field
       = f.label :phone_alt, "Alt phone"
-      = f.text_field :phone_alt
+      = f.number_field :phone_alt
 
     .field
       = f.label :ext_alt, "Alt phone ext"
-      = f.text_field :ext_alt
+      = f.number_field :ext_alt
 
     .field
       = f.label :url, "URL"
-      = f.text_field :url
+      = f.url_field :url
       %span.instructions
         (Prefix "http://" to all external links. Use "/" for all internal. e.g.: "/locations")
 
@@ -64,11 +64,11 @@
 
     .field
       = f.label :latitude
-      = f.text_field :latitude, disabled: true
+      = f.number_field :latitude, disabled: true
 
     .field
       = f.label :longitude
-      = f.text_field :longitude, disabled: true
+      = f.number_field :longitude, disabled: true
 
     .field
       = f.label :match_type

@@ -32,6 +32,12 @@ article {
   width: 100%;
 }
 
+#sales-rep-portal {
+  width: 100%;
+  height: 1800px;
+  overflow: hidden;
+}
+
 #home {
   aside {
     margin-top: 20px;
@@ -127,11 +133,11 @@ article {
           the same line becuase I'm using HAML. 
           There may be a way to do this, I just 
           haven't looked.*/
-          li:before {
+          li:after {
             content: ","
           }
 
-          li:first-child:before {
+          li:last-child:after {
             content: none;
           }
         }

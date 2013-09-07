@@ -16,6 +16,7 @@ class Page < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title, 
                                 :content,
+                                :iframe_url,
 
                                 ##belongs_to##
                                 :skin_id, 

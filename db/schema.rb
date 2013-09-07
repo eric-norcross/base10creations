@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828210201) do
+ActiveRecord::Schema.define(:version => 20130906190250) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(:version => 20130828210201) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "skin_id"
+    t.string   "iframe_url"
   end
 
   create_table "product_components", :force => true do |t|

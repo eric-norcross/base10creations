@@ -12,5 +12,4 @@
         sku#
       %ul
         - product.skus.each do |sku|
-          %li
-            = link_to sku.title, product.path
+          %li= link_to sku.title, product.path
