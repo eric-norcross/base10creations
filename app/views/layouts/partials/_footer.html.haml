@@ -9,13 +9,13 @@
             %li
               - case subsection.name
               - when "pinterest"
-                = link_to section.path, target: "_blank" do
+                = link_to subsection.path, target: "_blank" do
                   = render '/layouts/svg/pinterest' 
               - when "twitter"
-                = link_to section.path, target: "_blank" do
+                = link_to subsection.path, target: "_blank" do
                   = render '/layouts/svg/twitter'
               - when "youtube"
-                = link_to section.path, target: "_blank" do 
+                = link_to subsection.path, target: "_blank" do 
                   = render '/layouts/svg/youtube'
               - else
                 = link_to subsection.title, subsection.path
