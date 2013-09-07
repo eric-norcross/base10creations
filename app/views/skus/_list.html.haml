@@ -1,8 +1,4 @@
-- if defined?(f) && f.object.skus.length > 0
-  - @selected_sku_ids = f.object.skus.map{ |sku| sku.id }
-  - @skus = Finish.skus(f.object.skus[0].finish_id)
-
-- if @skus
+- if skus.length > 0
   %table
     %thead
       %tr
@@ -11,16 +7,14 @@
         %th Finish: 
         %th Images:
         %th
-        %th
-        %th
+
     %tbody
-      - @skus.each do |sku|
-        - if defined?(@selected_sku_ids)
-          - @selected_skus = @selected_sku_ids.include?(sku.id)
-        - else 
-          - @selected_skus = @skus.include?(sku.id)
+      - skus.each do |sku|
+        - unless selected_sku_ids.blank?
+          - @selected = selected_sku_ids.include?(sku.id)
+
         %tr
-          %td= check_box_tag "sku#{sku.id}", sku.id, @selected_skus, :name => 'compilation[sku_ids][]'
+          %td= check_box_tag "sku#{sku.id}", sku.id, @selected, :name => 'compilation[sku_ids][]'
           %td= sku.title
           %td
             - if sku.finish.images.blank?
@@ -30,7 +24,8 @@
           %td
             - sku.images.each do |image|
               = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: image.asset.filename.to_s)
-          / %td= sku.images.length
-          %td= link_to 'Show', sku
-          %td= link_to 'Edit', edit_product_path(sku.product)
-          %td= link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }
+              
+          %td.controls
+            = link_to 'Show', sku
+            = link_to 'Edit', edit_product_path(sku.product)
+            = link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }

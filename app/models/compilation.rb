@@ -28,6 +28,7 @@ class Compilation < ActiveRecord::Base
 
 	validates_presence_of         :title
   validates_presence_of         :collection
+  validates_presence_of         :finish
   validates_presence_of         :skin
 
 	before_save                   :create_name
@@ -57,6 +58,23 @@ class Compilation < ActiveRecord::Base
     end
 
     return @categories
+  end
+
+  def get_skus
+    if defined?(finish)
+      return Finish.skus(finish_id)
+    else
+      return nil
+    end
+  end
+
+  def selected_skus
+    STDOUT << "SKUS.LENGTH: " + self.sku_ids.to_s
+    if skus.length > 0
+      return skus.map{ |sku| sku.id }
+    else
+      return nil
+    end
   end
 
   #View Helpers
