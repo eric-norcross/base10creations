@@ -10,7 +10,7 @@
 
     %tbody
       - skus.each do |sku|
-        - unless selected_sku_ids.blank?
+        - if defined?(selected_sku_ids) && !selected_sku_ids.blank?
           - @selected = selected_sku_ids.include?(sku.id)
 
         %tr
@@ -20,10 +20,10 @@
             - if sku.finish.images.blank?
               = sku.finish.title
             - else
-              = cl_image_tag(sku.finish.images.first.asset.filename.to_s, transformation: 'hint', alt: sku.finish.images.first.asset.filename.to_s, title: sku.finish.title)
+              = cl_image_tag(sku.finish.images.first.asset.filename.to_s, transformation: 'hint', alt: "Finish thumbnail", title: sku.finish.title)
           %td
             - sku.images.each do |image|
-              = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: image.asset.filename.to_s)
+              = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: "Sku thumbnail", title: sku.title)
               
           %td.controls
             = link_to 'Show', sku

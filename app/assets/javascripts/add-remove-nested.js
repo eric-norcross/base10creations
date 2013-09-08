@@ -6,6 +6,10 @@ $(document).on("change", "#compilation-collection select", function(event) {
     console.log($("#compilation-finish"))
     $("#compilation-finish").empty();
     $("#compilation-finish").html(data);
+
+    $("#compilation-skus").empty();
+    $("#compilation-skus").html("Please select a Collection and Finish from above.");
+
     console.log(data);
   });
 });

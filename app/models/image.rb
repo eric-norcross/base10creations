@@ -11,4 +11,8 @@ class Image < ActiveRecord::Base
   def self.default
     return ImageUploader.new
   end
+
+  def alt
+    # STDOUT << imageable..to_s
+  end
 end

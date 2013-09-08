@@ -15,7 +15,8 @@ class CollectionsController < ApplicationController
 
   def skus_by_finish
     @skus = Collection.skus_by_finish(params[:id], params[:finish_id])
-    render "skus/_list", layout: false
+    STDOUT << "WTF: " + @skus.to_s
+    render "skus/_list", locals: { skus: @skus, selected_sku_ids: nil }, layout: false
   end
 
   # Admin Routes

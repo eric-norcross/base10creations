@@ -11,6 +11,7 @@ class Collection < ActiveRecord::Base
 
                                 ##has_many##,
                                 :style_ids,
+                                :products,
 
                                 ## nested attributes ##
                                 :images_attributes
@@ -23,6 +24,7 @@ class Collection < ActiveRecord::Base
   has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
+  has_many                      :products
   
   validates_presence_of         :title
   validates_presence_of         :description
