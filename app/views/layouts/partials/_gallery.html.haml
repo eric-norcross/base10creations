@@ -4,7 +4,7 @@
     %br
     .image-controls
       #enlarge
-        = link_to "#" do 
+        = link_to cloudinary_url(items.first.asset.filename.to_s, transformation: "large") do 
           = render :partial => '/layouts/svg/enlarge'
           View Larger Image
     .image-controls.text-align-right

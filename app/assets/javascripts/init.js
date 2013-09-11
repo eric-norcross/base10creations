@@ -37,6 +37,31 @@ $(document).on("fileuploaddone", function(event) {
 })
 
 $(document).ready(function(){
+  $("#enlarge").click(function(event) {
+    if (!litebox) {
+      var litebox = new LiteBox();
+
+      var src = $(this).find("a").attr("href");
+      var content = "<img src=" + src + ">"
+      var contentWidth,
+          contentHeight;
+
+      var image = $('<img />');
+      image.attr('src', src);
+
+      image.load(function() {
+        console.log(this.width);
+        console.log(this.height);
+        contentWidth = this.width;
+        contentHeight = this.height;
+
+        litebox.open(content, contentWidth, contentHeight);
+      })
+    }
+
+    return event.preventDefault();
+  });
+
   $("a.print").click(function(event) {
     window.print();
   });
