@@ -42,7 +42,8 @@ article {
   }
 
   p {
-    
+    font-size: 11px;
+    line-height: 13px;
   }
 }
 
@@ -82,12 +83,12 @@ article {
     h1 {
       color: $linkColor;
       font-family: $serif;
-      @include rem('font-size', 40px);
+      font-size: 40px;
     }
   }
 
   p {
-    @include rem('font-size', 11px);
+    font-size: 11px;
     line-height: 13px;
   }
 }
@@ -115,7 +116,7 @@ article {
       }
 
       div.list-view-info {
-        @include rem('font-size', 12px);
+        font-size: 12px;
 
         h1,
         h2,
