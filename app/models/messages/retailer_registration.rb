@@ -1,7 +1,7 @@
 class RetailerRegistration
   include ActiveAttr::Model
   
-  attribute             :dealer_number
+  attribute             :retailer_number
   attribute             :company
   attribute             :address
   attribute             :city
@@ -13,7 +13,7 @@ class RetailerRegistration
   attribute             :phone
   attribute             :fax
   
-  # attr_accessible       :dealer_number,
+  # attr_accessible       :retailer_number,
   #                       :company,
   #                       :address,
   #                       :city,
@@ -25,7 +25,7 @@ class RetailerRegistration
   #                       :phone,
   #                       :fax
 
-  validates_presence_of :dealer_number
+  validates_presence_of :retailer_number
   validates_presence_of :company
   validates_presence_of :address
   validates_presence_of :city

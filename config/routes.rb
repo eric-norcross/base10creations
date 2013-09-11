@@ -1,4 +1,11 @@
 Martinfurniture::Application.routes.draw do
+  unless Rails.application.config.consider_all_requests_local
+    match '*not_found', to: 'errors#error_404'
+  end
+  
+  # get "errors/error_404"
+  # get "errors/error_500"
+
   mount Ckeditor::Engine => "/ckeditor"
 
   root to: 'pages#home'
@@ -47,6 +54,7 @@ Martinfurniture::Application.routes.draw do
   devise_for :users
 
   # General Routes
+
   resources :finishes do
     resources :images
   end
