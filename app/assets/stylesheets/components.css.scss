@@ -3,26 +3,26 @@
   margin-bottom: 20px;
 
   .gallery-image {
+  }
+
+  .image-controls { 
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
     margin-bottom: 20px;
+    margin-top: 8px;
+    width: 49.5%;
 
-    .image-controls { 
-      display: inline-block;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-top: 8px;
-      width: 49.5%;
+    img,
+    svg {
+      margin: 0 3px -3px 1px;
+    }      
 
-      img,
+    a:hover {
+      text-decoration: none;
+
       svg {
-        margin: 0 3px -3px 1px;
-      }      
-
-      a:hover {
-        text-decoration: none;
-
-        svg {
-          fill: $headerColor;
-        }
+        fill: $headerColor;
       }
     }
   }

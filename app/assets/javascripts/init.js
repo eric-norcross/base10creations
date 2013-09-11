@@ -36,8 +36,11 @@ $(document).on("fileuploaddone", function(event) {
   }
 })
 
+
 $(document).ready(function(){
-  $("#enlarge").click(function(event) {
+  $('.gallery-image').zoom({url: $('.gallery-image').find("img").attr("data-full")});
+  
+  $(".enlarge").click(function(event) {
     if (!litebox) {
       var litebox = new LiteBox();
 
@@ -50,8 +53,6 @@ $(document).ready(function(){
       image.attr('src', src);
 
       image.load(function() {
-        console.log(this.width);
-        console.log(this.height);
         contentWidth = this.width;
         contentHeight = this.height;
 

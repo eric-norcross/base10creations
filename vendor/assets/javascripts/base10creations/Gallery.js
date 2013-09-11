@@ -80,10 +80,13 @@ function Gallery(gallery) {
         items.each(function(index){
           $(this).find("a").click(function(){
             var largeImage = $(this).find("img").attr("data-large");
+            var fullImage = $(this).find("img").attr("data-full");
             var newImage = $(this).find("img").attr("data-medium");
-            imageControls.find("#enlarge").find("a").attr("href", largeImage);
-            galleryImage.find("a").attr("href", largeImage);
-            galleryImage.find("img").attr("src", newImage);
+            imageControls.find(".enlarge").find("a").attr("href", largeImage);
+            galleryImage.find(".zoomImg").attr("src", fullImage);
+            galleryImage.find(".gallery-view").attr("src", newImage);
+            galleryImage.find(".gallery-view").attr("data-large", largeImage);
+            galleryImage.find(".gallery-view").attr("data-full", fullImage);
             return false;
           });
         });
