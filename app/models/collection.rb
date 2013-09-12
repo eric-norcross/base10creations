@@ -10,7 +10,7 @@ class Collection < ActiveRecord::Base
                                 ##belongs_to##
 
                                 ##has_many##,
-                                :style_ids,
+                                :styles,
                                 :products,
 
                                 ## nested attributes ##

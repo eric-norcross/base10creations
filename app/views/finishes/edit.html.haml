@@ -4,5 +4,5 @@
   = render 'form'
 
   .links
-    = link_to 'Show', @finish
-    = link_to 'Back', admin_finishes_path
+    = link_to 'Show', @finish, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+    = link_to 'Back', admin_finishes_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }

@@ -12,11 +12,11 @@
         - if options[:removable]
           = link_to_remove_fields f
 
-  .field
+  .field.required
     = f.label :title
     = f.text_field :title
 
-  .dimension-values
+  .dimension-values.required
     .field
       = f.label :width, "Dimensions"
       = f.text_field :width, {class: "clear-input", "data-message" => "W"}

@@ -110,6 +110,10 @@ b {}
 em {}
 i {}
 
+p {
+  line-height: 14px;
+}
+
 #messages {
   font-weight: bold;
   font-size: 11px;
@@ -147,10 +151,14 @@ header.document {
   #search {
     background-color: $frameColor;
     height: 40px;
+    text-align: right;
 
     form {
+      display: inline-block;
+      margin-top: 9px;
+
       div {
-        margin: 0;
+        display: inline-block;
       }
 
       input {
@@ -163,9 +171,7 @@ header.document {
         color: $headerColor;
         width: 180px;
         height: 16px;
-        float: right;
         font-size: 9px;
-        margin: 9px;
         padding: 2px 40px 2px 9px;
       }
     }

@@ -4,5 +4,5 @@
   = render 'form'
 
   .links
-    = link_to 'Show', @compilation
-    = link_to 'Back', admin_compilations_path
+    = link_to 'Show', @compilation, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+    = link_to 'Back', admin_compilations_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }

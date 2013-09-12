@@ -21,3 +21,11 @@ a:hover #print {
     fill: $rolloverColor;
   }
 }
+
+svg.search {
+  path,
+  rect,
+  polygon, {
+    fill: $rolloverColor;
+  }
+}

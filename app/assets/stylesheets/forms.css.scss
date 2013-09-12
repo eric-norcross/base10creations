@@ -1,6 +1,15 @@
 form {
-  label.required:after {
+  legend.required:after,
+  .required label:after,
+  label.required:after,
+  p.required:after {
     content: "*";
+  }
+
+  p.required {
+    text-align: right;
+    font-style: italic;
+    margin-top: 5px;
   }
 
   .instructions {
@@ -10,6 +19,19 @@ form {
 
   .link {
     margin: 8px 0 0 67px;
+  }
+
+  .search-field {
+    .magnify {
+      position: relative;
+      left: -28px;
+      top: 4px;
+
+      svg {
+        width: 14.5px;
+        height: 14.5px;
+      }
+    }
   }
 }
 
@@ -281,8 +303,7 @@ form {
       }
     }
 
-    .field,
-    .search-field {
+    .field {
       margin: 10px;
     }
 

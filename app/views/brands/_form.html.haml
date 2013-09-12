@@ -12,7 +12,7 @@
     %legend
       Brand
 
-    .field
+    .field.required
       = f.label :title
       = f.text_field :title
 
@@ -37,9 +37,9 @@
         = link_to_add_fields({ name: "Add Figure", f: f, association: :figures, container: "figures", child_association: :images, options: @figure_options })
 
   %fieldset
-    %legend
+    %legend.required
       Styles
-      
+    
     .field
       .column
         .column-group

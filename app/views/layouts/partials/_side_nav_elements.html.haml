@@ -1,5 +1,8 @@
 %li
-  = link_to element.title, element
+  - if defined?(element.parent_id) && element.parent_id == 0
+    = element.title
+  - else 
+    = link_to element.title, element
   - if defined?(element.children) && !element.children.blank?
     %ul
       - element.children.each do |child|

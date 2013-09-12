@@ -16,22 +16,22 @@
       = f.label :active
       = f.check_box :active, {checked: checked(f.object.active)}
 
-    .field
+    .field.required
       = f.label :skin_id, "Template"
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Template" }
 
     .field#compilation-collection
-      = f.label :collection_id, "Collection"
+      = f.label :collection_id, "Collection", class: "required"
       = f.select :collection_id, Collection.all.collect{|t| [t.title, t.id]}, { prompt: "Select a Collection" }, :"data-type" => :compilation
 
       #include-finish-name
         = f.check_box :include_finish_name
         = f.label :include_finish_name
 
-    .field#compilation-finish
+    .field#compilation-finish.required
       = render '/finishes/select', f: f, type: :compilation
 
-    .field#compilation-title
+    .field#compilation-title.required
       = f.label :title
       = f.text_field :title
 
@@ -44,7 +44,7 @@
         = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "compilation-image" })
 
   %fieldset
-    %legend
+    %legend.required
       Skus
 
     .field#compilation-skus

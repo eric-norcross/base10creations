@@ -42,6 +42,7 @@ class Page < ActiveRecord::Base
   has_many                      :figures, dependent: :destroy
   accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:link].blank?}, allow_destroy: true
 
+  validates_presence_of         :title
   validates_presence_of         :skin
 
   before_save                   :create_name

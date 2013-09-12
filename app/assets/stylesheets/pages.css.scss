@@ -16,7 +16,6 @@ article {
       margin-bottom: 11px;
     }
   }
-
 }
 
 .page#section {
@@ -89,7 +88,17 @@ article {
 
   p {
     font-size: 11px;
-    line-height: 13px;
+    line-height: 15px;
+  }
+
+  ol {
+    list-style-position: outside;
+    margin-left: 18px;
+
+    li {
+      font-size: 11px;
+      margin-bottom: 5px;
+    }
   }
 }
 

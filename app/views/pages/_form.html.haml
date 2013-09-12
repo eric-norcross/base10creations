@@ -16,11 +16,11 @@
     %legend
       Page
 
-    .field
+    .field.required
       = f.label :skin_id, "Template"
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}
 
-    .field
+    .field.required
       = f.label :title
       = f.text_field :title
 
@@ -29,8 +29,8 @@
       = f.text_field :iframe_url
 
     .field
-      //= f.label :content
       = f.cktext_area :content
+
 
   %fieldset{id: "carousels-fields"}
     %legend

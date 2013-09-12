@@ -12,11 +12,11 @@
     %legend
       Component
 
-    .field
+    .field.required
       = f.label :category_id, "Category"
       = f.collection_select(:category_id, Category.all, :id, :title, :prompt => "Select a Category")
 
-    .field
+    .field.required
       = f.label :parent_id, "Parent"
       %select{id: "component_parent_id", name: "component[parent_id]"}
         %option
@@ -26,7 +26,7 @@
             - unless component.id == f.object.id
               = render "component_select", component: component, level: -1, override: true
 
-    .field
+    .field.required
       = f.label :title
       = f.text_field :title
 

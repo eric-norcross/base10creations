@@ -4,5 +4,5 @@
   = render 'form'
 
   .links
-    = link_to 'Show', @skin
-    = link_to 'Back', admin_skins_path
+    = link_to 'Show', @skin, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+    = link_to 'Back', admin_skins_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }

@@ -11,11 +11,10 @@ class Component < ActiveRecord::Base
                                 :category_id,
 
                                 ## has_many ##
-                                :product_ids,
+                                :products,
 
                                 ## nested attributes ##
                                 :images_attributes
-
 
 
   has_many                      :product_components,    :dependent  => :destroy
@@ -29,6 +28,7 @@ class Component < ActiveRecord::Base
   
   validates_presence_of         :category
   validates_presence_of         :title
+  validates_presence_of         :parent_id
 
   validate                      :cannot_assign_to_self
 

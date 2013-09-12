@@ -10,7 +10,7 @@
     %legend
       Collection
 
-    .field
+    .field.required
       = f.label :title
       = f.text_field :title
 
@@ -24,8 +24,9 @@
           = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "collection-image" })
 
     .field
-      / = f.label :description
       = f.cktext_area :description
+      %p.required
+        Description is required
     
   .actions
     = f.submit 'Save'

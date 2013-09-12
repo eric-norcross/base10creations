@@ -4,5 +4,5 @@
   = render 'form'
 
   .links
-    = link_to 'Show', @section
-    = link_to 'Back', admin_sections_path
+    = link_to 'Show', @section, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+    = link_to 'Back', admin_sections_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
