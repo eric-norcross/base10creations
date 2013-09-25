@@ -9,6 +9,15 @@ module FormsHelper
     return @checked
   end
 
+  def default_if_nil(default, value = nil)
+    if value
+      return value
+    else 
+      return default
+    end
+  end
+
+
   def randomNum()
     SecureRandom.random_number(100000)
   end
@@ -22,17 +31,17 @@ module FormsHelper
   end
 
   def link_to_add_fields(data)
-    STDOUT << "name: " + data[:name].to_s + " :: "
-    STDOUT << "f.object: " + data[:f].object.to_s + " :: "
-    STDOUT << "association: " + data[:association].to_s + " :: "
-    STDOUT << "container: " + data[:container].to_s + " :: "
+    STDOUT << "\n"
+    STDOUT << "Name: " + data[:name].to_s + "\n"
+    STDOUT << "Parent (f.object): " + data[:f].object.to_s + "\n"
+    STDOUT << "Association: " + data[:association].to_s + "\n"
+    STDOUT << "Container: " + data[:container].to_s + "\n"
 
     if data[:child_association]
-      STDOUT << "child_association: " + data[:child_association].to_s + " :: "
+      STDOUT << "Child Association: " + data[:child_association].to_s + "\n"
     end
 
     # new_image = Image.new
-
     new_object = data[:f].object.send(data[:association]).klass.new
 
     if data[:child_association]

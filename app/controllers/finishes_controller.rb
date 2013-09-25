@@ -20,7 +20,7 @@ class FinishesController < ApplicationController
   def show
     @side_nav_elements = Finish.all
     
-    @products = Finish.products_and_compilations(params[:id])
+    @products = Finish.skus(params[:id]) + Finish.compilations(params[:id])
 
     render "layouts/templates/list"
   end

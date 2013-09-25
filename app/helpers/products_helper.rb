@@ -21,13 +21,17 @@ module ProductsHelper
   end
 
   def template_picker(item)
-    if item.is_a?(Product)
-      return "layouts/partials/product_list"
-    else
-      if item.is_a?(Compilation)
-        return "layouts/partials/compilation_list"
-      else 
-        return "layouts/partials/index_list"
+    if item.is_a?(Sku)
+      return "layouts/partials/sku_list"
+    else 
+      if item.is_a?(Product)
+        return "layouts/partials/product_list"
+      else
+        if item.is_a?(Compilation)
+          return "layouts/partials/compilation_list"
+        else 
+          return "layouts/partials/index_list"
+        end
       end
     end
   end

@@ -14,7 +14,7 @@
 
   .field.required
     = f.label :link
-    = f.text_field :link, value: "#"
+    = f.text_field :link, value: default_if_nil("#", f.object.link)
     %span.instructions
       (Prefix "http://" to all external links. Use "/" for all internal. e.g.: "/locations")
 

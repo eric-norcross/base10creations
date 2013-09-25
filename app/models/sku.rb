@@ -42,6 +42,26 @@ class Sku < ActiveRecord::Base
     end
   end
 
+  def related(product)
+    @products_and_compilations = Product.where(collection_id: product.collection_id) + Compilation.where(collection_id: product.collection_id)
+    @categories = product.categories
+    @related = []
+    
+    @products_and_compilations.each do |item|
+      if item.categories.to_set.superset?(@categories.to_set)
+        if item.is_a?(Product)
+          @related.push(item)
+        else
+          if item.is_a?(Compilation) && item.finish_id == finish_id
+            @related.push(item)
+          end
+        end
+      end
+    end
+
+    return @related
+  end
+
   private
   
   def create_name

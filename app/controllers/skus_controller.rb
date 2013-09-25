@@ -20,16 +20,9 @@ class SkusController < ApplicationController
 
   def show
     # @sku = Sku.find(params[:id])
-    @product = Product.find(@sku.product.id)
-    @products_and_compilations = Product.where(collection_id: @product.collection_id) + Compilation.where(collection_id: @product.collection_id)
-    @categories = @product.categories
+    @product = Product.find(@sku.product_id)
     
-    @related = []
-    @products_and_compilations.each do |item|
-      if item.categories.to_set.superset?(@categories.to_set)
-        @related.push(item)
-      end
-    end
+    @related = @sku.related(@product)
 
     render @product.skin.template
   end

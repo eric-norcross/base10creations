@@ -17,8 +17,9 @@
       = number_to_phone(location.phone, area_code: true, extension: location.ext)
     .location-alt-phone
       = number_to_phone(location.phone_alt, area_code: true, extension: location.ext_alt)
-    .location-url
-      = link_to location.url, location.url, {target: "_blank"}
+    - if location.url
+      .location-url
+        = link_to location.url, location.url, {target: "_blank"}
     .location-directions
       %a{href: "http://maps.google.com/maps?daddr=#{location.address},+#{location.city},+#{location.province}", target: "_blank"}
         Directions
