@@ -3,7 +3,7 @@ class BrandsController < ApplicationController
   load_and_authorize_resource
 
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -52,7 +52,7 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.save
-        format.html { redirect_to admin_brands_path, notice: 'Brand was successfully created.' }
+        format.html { redirect_to manage_brands_path, notice: 'Brand was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -64,7 +64,7 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.update_attributes(params[:brand])
-        format.html { redirect_to admin_brands_path, notice: 'Brand was successfully updated.' }
+        format.html { redirect_to manage_brands_path, notice: 'Brand was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -75,7 +75,7 @@ class BrandsController < ApplicationController
     # @brand = Brand.find(params[:id])
     @brand.destroy
 
-    redirect_to admin_brands_path
+    redirect_to manage_brands_path
   end
 
   private

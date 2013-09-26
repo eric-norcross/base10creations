@@ -2,7 +2,7 @@ class DimensionsController < ApplicationController
   load_and_authorize_resource
 
   # Admin Routes
-  def admin_index
+  def manage_index
     respond_to do |format|
       format.html
     end

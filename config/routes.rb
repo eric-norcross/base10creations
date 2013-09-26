@@ -11,7 +11,7 @@ Martinfurniture::Application.routes.draw do
   post '/collections/finishes/:id'        => 'collections#finishes'
   post '/collections/skus_by_finish/:id'  => 'collections#skus_by_finish'
 
-  # Admins/Users Routes
+  # Admin Routes
   if Rails.env.production?
     devise_for :admins, :skip => [:registrations]
   else
@@ -22,32 +22,61 @@ Martinfurniture::Application.routes.draw do
     get 'admins/edit'          => 'devise/registrations#edit',      as: :edit_admin_registration
     put 'admins'               => 'devise/registrations#update',    as: :admin_registration
 
-
     get 'admin'                => 'admins#dashboard'
     get 'admin/home'           => 'admins#dashboard'
     get 'admin/dashboard'      => 'admins#dashboard',               as: :admin_dashboard
-  
-    get 'admin/brands'         => 'brands#admin_index',             as: :admin_brands
-    get 'admin/categories'     => 'categories#admin_index',         as: :admin_categories
-    get 'admin/collections'    => 'collections#admin_index',        as: :admin_collections
-    get 'admin/compilations'   => 'compilations#admin_index',       as: :admin_compilations
-    get 'admin/components'     => 'components#admin_index',         as: :admin_components
-    get 'admin/finishes'       => 'finishes#admin_index',           as: :admin_finishes
-    get 'admin/locations'      => 'locations#admin_index',          as: :admin_locations
-    get 'admin/dealers'        => 'locations#admin_index'
-    get 'admin/retailers'      => 'locations#admin_index'
-    get 'admin/pages'          => 'pages#admin_index',              as: :admin_pages
-    get 'admin/products'       => 'products#admin_index',           as: :admin_products
-    get 'admin/sections'       => 'sections#admin_index',           as: :admin_sections
-    get 'admin/skins'          => 'skins#admin_index',              as: :admin_skins
-    get 'admin/styles'         => 'styles#admin_index',             as: :admin_styles
+
+    get 'admin/admins'         => 'admins#index',                   as: :admin_admins
+    delete 'admin/admins/:id'  => 'admins#destroy',                 as: :destroy_admin
+
+    get 'admin/users'          => 'users#index',                    as: :admin_users 
+
+    get 'admin/editors'        => 'editors#index',                  as: :admin_editors
+    get 'admin/editors/new'    => 'editors#new',                    as: :new_editor
+    delete 'admin/editors/:id' => 'editors#destroy',                as: :destroy_editor
 
     #For data sanitization
     get 'admin/dimensions'     => 'dimensions#admin_index',         as: :admin_dimensions
     get 'admin/features'       => 'products#admin_features_index',  as: :admin_products_features
   end
 
-  devise_for :users
+
+  # Editor Routes
+  devise_for :editors,  :controllers => { :registrations => "editors" }
+
+  get "/sign_in"  => redirect("/editors/sign_in")
+  get "/login"    => redirect("/editors/sign_in")
+  get "/log_in"   => redirect("/editors/sign_in")
+
+  as :editor do
+    get 'editors/edit'          => 'devise/registrations#edit',     as: :edit_editor_registration
+    put 'editors'               => 'devise/registrations#update',   as: :editor_registration
+
+    get 'editor'                => 'editors#dashboard'
+    get 'editor/home'           => 'editors#dashboard'
+    get 'editor/dashboard'      => 'editors#dashboard',             as: :editor_dashboard
+  end
+
+  as :admin || :editor do
+    get 'brands/manage'         => 'brands#manage',           as: :manage_brands
+    get 'categories/manage'     => 'categories#manage',       as: :manage_categories
+    get 'collections/manage'    => 'collections#manage',      as: :manage_collections
+    get 'compilations/manage'   => 'compilations#manage',     as: :manage_compilations
+    get 'components/manage'     => 'components#manage',       as: :manage_components
+    get 'finishes/manage'       => 'finishes#manage',         as: :manage_finishes
+    get 'pages/manage'          => 'pages#manage',            as: :manage_pages
+    get 'products/manage'       => 'products#manage',         as: :manage_products
+    get 'sections/manage'       => 'sections#manage',         as: :manage_sections
+    get 'skins/manage'          => 'skins#manage',            as: :manage_skins
+    get 'styles/manage'         => 'styles#manage',           as: :manage_styles
+
+    get 'editor/dealers'        => 'locations#manage'
+    get 'editor/retailers'      => 'locations#manage'
+    get 'editor/locations'      => 'locations#manage',        as: :manage_locations
+  end
+
+
+  # devise_for :users
 
   # General Routes
 

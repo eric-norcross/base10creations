@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   end 
 
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -58,7 +58,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to admin_pages_path, notice: 'Page was successfully created.' }
+        format.html { redirect_to manage_pages_path, notice: 'Page was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -70,7 +70,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to admin_pages_path, notice: 'Page was successfully updated.' }
+        format.html { redirect_to manage_pages_path, notice: 'Page was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -82,7 +82,7 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_pages_path }
+      format.html { redirect_to manage_pages_path }
     end
   end
 end

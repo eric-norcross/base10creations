@@ -1,0 +1,17 @@
+= render "layouts/partials/user_side_nav"
+
+#admin
+  %h1 Admins
+
+  - if @admins
+    %table
+      %thead
+        %tr
+          %th Username/Email
+          %th
+      %tbody
+        - @admins.each do |admin|
+          %tr
+            %td= admin.email
+            %td.controls
+              = link_to 'Destroy', destroy_admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' }

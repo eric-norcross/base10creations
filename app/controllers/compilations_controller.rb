@@ -2,7 +2,7 @@ class CompilationsController < ApplicationController
   load_and_authorize_resource
   
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -53,7 +53,7 @@ class CompilationsController < ApplicationController
 
     respond_to do |format|
       if @compilation.save
-        format.html { redirect_to admin_compilations_path, notice: 'Compilation was successfully created.' }
+        format.html { redirect_to manage_compilations_path, notice: 'Compilation was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -65,7 +65,7 @@ class CompilationsController < ApplicationController
 
     respond_to do |format|
       if @compilation.update_attributes(params[:compilation])
-        format.html { redirect_to admin_compilations_path, notice: 'Compilation was successfully updated.' }
+        format.html { redirect_to manage_compilations_path, notice: 'Compilation was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -77,7 +77,7 @@ class CompilationsController < ApplicationController
     @compilation.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_compilations_path }
+      format.html { redirect_to manage_compilations_path }
     end
   end
 end

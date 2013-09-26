@@ -94,7 +94,7 @@ class Product < ActiveRecord::Base
         else
           return Image.default.to_s
         end
-      elseif skus.length > 0
+      elsif skus.length > 0
         return skus.first.images.first.asset.filename.to_s
       else
         return Image.default.to_s

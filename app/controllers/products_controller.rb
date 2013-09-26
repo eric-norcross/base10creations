@@ -2,21 +2,20 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
 
   # Admin Routes
-  def admin_index
+  def manage
     @products = Product.joins(:collection, :skus).order('collections.name ASC, skus.name ASC')
     @options = @products.map{|product| [product.collection.title, product.collection.name]}
     @options.unshift(["All", "all"])
     
-    render "products/admin_index"
-    # respond_to do |format|
-    #   format.html
-    # end
+    respond_to do |format|
+      format.html
+    end
   end
 
-  def admin_features_index
+  def manage_features_index
     @products = Product.all
     
-    render "products/admin_features_index"
+    render "products/manage_features_index"
     # respond_to do |format|
     #   format.html
     # end
@@ -67,7 +66,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to admin_products_path, notice: 'Product was successfully created.' }
+        format.html { redirect_to manage_products_path, notice: 'Product was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -79,7 +78,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to admin_products_path, notice: 'Product was successfully updated.' }
+        format.html { redirect_to manage_products_path, notice: 'Product was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -90,6 +89,6 @@ class ProductsController < ApplicationController
     # @product = Product.find(params[:id])
     @product.destroy
 
-    redirect_to admin_products_path
+    redirect_to manage_products_path
   end
 end

@@ -2,7 +2,7 @@ class StylesController < ApplicationController
   load_and_authorize_resource
 
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -50,7 +50,7 @@ class StylesController < ApplicationController
 
     respond_to do |format|
       if @style.save
-        format.html { redirect_to admin_styles_path, notice: 'Style was successfully created.' }
+        format.html { redirect_to manage_styles_path, notice: 'Style was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -62,7 +62,7 @@ class StylesController < ApplicationController
 
     respond_to do |format|
       if @style.update_attributes(params[:style])
-        format.html { redirect_to admin_styles_path, notice: 'Style was successfully updated.' }
+        format.html { redirect_to manage_styles_path, notice: 'Style was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -73,6 +73,6 @@ class StylesController < ApplicationController
     # @style = Style.find(params[:id])
     @style.destroy
 
-    redirect_to admin_styles_path
+    redirect_to manage_styles_path
   end
 end

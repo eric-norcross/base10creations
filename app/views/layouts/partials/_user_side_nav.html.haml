@@ -1,0 +1,28 @@
+%nav#side.user
+  - if current_admin || current_editor
+    %h1
+      Manage:
+    %ul
+      %li= link_to "Brands",          manage_brands_path
+      %li= link_to "Categories",      manage_categories_path
+      %li= link_to "Collections",     manage_collections_path
+      %li= link_to "Compilations",    manage_compilations_path
+      %li= link_to "Components",      manage_components_path
+      %li= link_to "Finishes",        manage_finishes_path
+      %li= link_to "Locations",       manage_locations_path
+      %li= link_to "Pages",           manage_pages_path
+      %li= link_to "Products",        manage_products_path
+      %li= link_to "Sections",        manage_sections_path
+      %li= link_to "Skins",           manage_skins_path
+      %li= link_to "Styles",          manage_styles_path
+
+      - if current_admin
+        / %li= link_to "Users",           admin_users_path
+        %li= link_to "Editors",         admin_editors_path
+
+  - if current_admin
+    %h1
+      Sanatize:
+    %ul
+      %li= link_to "Dimensions",      admin_dimensions_path
+      %li= link_to "Features",        admin_products_features_path

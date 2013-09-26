@@ -2,7 +2,7 @@ class ComponentsController < ApplicationController
   load_and_authorize_resource
   
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -56,7 +56,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to admin_components_path, notice: 'Component was successfully created.' }
+        format.html { redirect_to manage_components_path, notice: 'Component was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -68,7 +68,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.update_attributes(params[:component])
-        format.html { redirect_to admin_components_path, notice: 'Component was successfully updated.' }
+        format.html { redirect_to manage_components_path, notice: 'Component was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -80,7 +80,7 @@ class ComponentsController < ApplicationController
     @component.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_components_path }
+      format.html { redirect_to manage_components_path }
     end
   end
 end

@@ -1,0 +1,30 @@
+= render "layouts/partials/user_side_nav"
+
+#admin
+  %h1 Listing pages
+
+  .links
+    = link_to 'New Page', new_page_path
+
+  - if @pages
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Title
+          %th Template
+          %th
+          
+      %tbody
+        - @pages.each do |page|
+          %tr
+            %td= page.id
+            %td= page.title
+            %td= page.skin.title
+            %td.controls
+              = link_to 'Show', page
+              = link_to 'Edit', edit_page_path(page)
+              = link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }
+            
+  .links
+    = link_to 'New Page', new_page_path

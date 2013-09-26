@@ -19,6 +19,21 @@
       |
 
       = link_to "Logout", destroy_admin_session_path, method: :delete
+
+    - else 
+      - if editor_signed_in?
+        Logged in as
+        %strong{style: "margin-right: 10px;"}
+          = current_editor.email
+
+        = link_to "Dashboard", editor_dashboard_path
+        |
+        
+        = link_to 'Edit profile', edit_editor_registration_path
+        |
+
+        = link_to "Logout", destroy_editor_session_path, method: :delete
+
     / - else
     /   = link_to "Sign up", new_admin_registration_path
     /   |

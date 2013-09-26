@@ -1,0 +1,51 @@
+= render "layouts/partials/user_side_nav"
+
+#admin
+  %h1 Listing Products
+
+  %h2
+    Show only:
+
+  %form{action: "#"}
+    = select_tag "sort", options_for_select(@options.uniq)
+
+  .links
+    = link_to 'New Product', new_product_path
+
+  - if @products
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Active
+          %th Shown
+          %th Collection
+          %th Title
+          / %th Template
+          / %th Styles
+          %th Skus
+          %th
+
+      %tbody
+        - @products.each do |product|
+          %tr{class: product.collection.name}
+            %td= product.id
+            %td= check_box_tag 'active', 'active', product.active, {disabled: true}
+            %td= check_box_tag 'shown', 'shown', product.shown, {disabled: true}
+            %td= product.collection.title
+            %td= product.title
+            / %td= product.skin.name
+            / %td
+            /   - product.collection.styles.each_with_index do |style, index| 
+            /     %span.comma= style.title
+            %td
+              - product.skus.each_with_index do |sku, index|
+                %span.comma= link_to sku.title, product_sku_path(product, sku), { title: product.title }
+
+            %td.controls
+              / = link_to 'Show', product
+              = link_to 'Edit', edit_product_path(product)
+              = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+  
+  .links
+    = link_to 'New Product', new_product_path

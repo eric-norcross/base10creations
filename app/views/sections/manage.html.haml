@@ -1,0 +1,36 @@
+= render "layouts/partials/user_side_nav"
+
+#admin
+  %h1 Available Sections
+
+  .links
+    = link_to 'Add New Section', new_section_path
+
+  - if @sections
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Title
+          %th Link
+          %th Main Section
+          %th Parent Section
+          %th Children
+          %th
+      %tbody
+        - @sections.each do |section|
+          %tr
+            %td= section.id
+            %td= section.title
+            %td= section.link
+            %td= section.patriarch.title
+            %td= section.parent ? section.parent.title : "n/a"
+            %td= section.children.length
+            
+            %td.controls
+              = link_to 'Show', section
+              = link_to 'Edit', edit_section_path(section)
+              = link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add New Section', new_section_path

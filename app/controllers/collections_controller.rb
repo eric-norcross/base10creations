@@ -20,7 +20,7 @@ class CollectionsController < ApplicationController
   end
 
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -64,7 +64,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       if @collection.save
-        format.html { redirect_to admin_collections_path, notice: 'Collection was successfully created.' }
+        format.html { redirect_to manage_collections_path, notice: 'Collection was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -76,7 +76,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       if @collection.update_attributes(params[:collection])
-        format.html { redirect_to admin_collections_path, notice: 'Collection was successfully updated.' }
+        format.html { redirect_to manage_collections_path, notice: 'Collection was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -87,6 +87,6 @@ class CollectionsController < ApplicationController
     # @collection = Collection.find(params[:id])
     @collection.destroy
 
-    redirect_to admin_collections_path
+    redirect_to manage_collections_path
   end
 end

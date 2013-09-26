@@ -1,0 +1,28 @@
+= render "layouts/partials/user_side_nav"
+
+#admin
+  %h1 Available Skins
+
+  .links
+    = link_to 'Add New Skin', new_skin_path
+
+
+  - if @skins
+    %table
+      %thead
+        %tr
+          %th Title
+          %th Template Location
+          %th
+      %tbody
+        - @skins.each do |skin|
+          %tr
+            %td= skin.title
+            %td= skin.template
+            %td.controls
+              = link_to 'Show', skin
+              = link_to 'Edit', edit_skin_path(skin)
+              = link_to 'Destroy', skin, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add New Skin', new_skin_path

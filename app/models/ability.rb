@@ -7,13 +7,16 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if user.is_a?(Admin)
-      can :manage, :all
+      can    :manage, :all
+    elsif user.is_a?(Editor)
+      can    :manage, :all
+      cannot :manage, [Admin, User]
     else
-      can :read, :all
+      can    :read, :all
       cannot :read, [Image, Admin]
-      cannot :index, [Carousel, Dimension, Figure, Skin]
+      cannot :index, [Carousel, Dimension, Figure, Skin, Admin, Editor, User]
     end
-    #
+    
     # The first argument to `can` is the action you are giving the user 
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

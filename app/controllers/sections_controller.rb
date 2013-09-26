@@ -2,7 +2,7 @@ class SectionsController < ApplicationController
   load_and_authorize_resource
 
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -42,7 +42,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.update_attributes(params[:section])
-        format.html { redirect_to admin_sections_path, notice: 'Section was successfully updated.' }
+        format.html { redirect_to manage_sections_path, notice: 'Section was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -54,7 +54,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        format.html { redirect_to admin_sections_path, notice: 'Section was successfully created.' }
+        format.html { redirect_to manage_sections_path, notice: 'Section was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -65,6 +65,6 @@ class SectionsController < ApplicationController
     # @section = Section.find(params[:id])
     @section.destroy
 
-    redirect_to admin_sections_path
+    redirect_to manage_sections_path
   end
 end

@@ -2,7 +2,7 @@ class SkusController < ApplicationController
   load_and_authorize_resource
 
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -46,7 +46,7 @@ class SkusController < ApplicationController
 
     respond_to do |format|
       if @sku.save
-        format.html { redirect_to admin_skus_path, notice: 'Sku was successfully created.' }
+        format.html { redirect_to manage_skus_path, notice: 'Sku was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -58,7 +58,7 @@ class SkusController < ApplicationController
 
     respond_to do |format|
       if @sku.update_attributes(params[:sku])
-        format.html { redirect_to admin_skus_path, notice: 'Sku was successfully updated.' }
+        format.html { redirect_to manage_skus_path, notice: 'Sku was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -69,6 +69,6 @@ class SkusController < ApplicationController
     # @sku = Sku.find(params[:id])
     @sku.destroy
 
-    redirect_to admin_skus_path
+    redirect_to manage_skus_path
   end
 end

@@ -1,0 +1,35 @@
+= render "layouts/partials/user_side_nav"
+
+#admin
+  %h1 Listing Compilations
+
+  .links
+    = link_to 'New Compilation', new_compilation_path
+
+  - if @compilations
+    %table
+      %thead
+        %tr
+          %th Title
+          %th Template
+          %th Collection
+          %th Skus
+          %th
+
+      %tbody
+        - @compilations.each do |compilation|
+          %tr
+            %td= compilation.title
+            %td= compilation.skin.name
+            %td= compilation.collection.title
+            %td
+              - compilation.skus.each_with_index do |sku, index|
+                - product = sku.product
+                %span.comma= link_to sku.title, compilation_product_sku_path(compilation, product, sku), { title: product.title }
+            %td.controls
+              = link_to 'Show', compilation
+              = link_to 'Edit', edit_compilation_path(compilation)
+              = link_to 'Destroy', compilation, method: :delete, data: { confirm: 'Are you sure?' }
+  
+  .links
+    = link_to 'New Compilation', new_compilation_path

@@ -5,14 +5,12 @@
         %th Name:
         %th Title:
         %th Link:
-        / %th Child Sections:
     %tbody
       %tr
         %td= @section.name
         %td= @section.title
         %td= @section.link
-        / %td= @section.children.length
 
   .links
     = link_to 'Edit', edit_section_path(@section)
-    = link_to 'Back', admin_sections_path
+    = link_to 'Back', manage_sections_path

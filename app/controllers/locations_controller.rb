@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
 
 
   # Admin Routes
-  def admin_index
+  def manage
     respond_to do |format|
       format.html
     end
@@ -57,7 +57,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to admin_locations_path, notice: 'Location was successfully created.' }
+        format.html { redirect_to manage_locations_path, notice: 'Location was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -69,7 +69,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to admin_locations_path, notice: 'Location was successfully updated.' }
+        format.html { redirect_to manage_locations_path, notice: 'Location was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -81,7 +81,7 @@ class LocationsController < ApplicationController
     @location.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_locations_path }
+      format.html { redirect_to manage_locations_path }
     end
   end
 
