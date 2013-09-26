@@ -44,7 +44,7 @@ Martinfurniture::Application.routes.draw do
 
 
   # Editor Routes
-  devise_for :editors,  :controllers => { :registrations => "editors" }
+  devise_for :editors, :skip => [:registrations],  :controllers => { :registrations => "editors" }
 
   get "/sign_in"  => redirect("/editors/sign_in")
   get "/login"    => redirect("/editors/sign_in")
