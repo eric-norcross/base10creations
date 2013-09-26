@@ -3,7 +3,7 @@ class EditorsController < Devise::RegistrationsController
   skip_before_filter :require_no_authentication
 
   def dashboard
-    render "editors/dashboard.html.haml"
+    render "editors/dashboard"
   end
 
   def index
@@ -15,7 +15,7 @@ class EditorsController < Devise::RegistrationsController
 
   def new
     @resource = Editor.new
-    render 'editor/new'
+    render 'editors/new'
   end
 
   def create

@@ -19,6 +19,7 @@ Martinfurniture::Application.routes.draw do
   end
 
   as :admin do
+    # For production because of skip registrations
     get 'admins/edit'          => 'devise/registrations#edit',      as: :edit_admin_registration
     put 'admins'               => 'devise/registrations#update',    as: :admin_registration
 
@@ -51,8 +52,9 @@ Martinfurniture::Application.routes.draw do
 
 
   as :editor do
-    get 'editors/edit'          => 'devise/registrations#edit',      as: :edit_editor_registration
-    put 'editors'               => 'devise/registrations#update',    as: :editor_registration
+    # For production because of skip registrations
+    # get 'editors/edit'          => 'devise/registrations#edit',      as: :edit_editor_registration
+    # put 'editors'               => 'devise/registrations#update',    as: :editor_registration
 
     get 'editor'                => 'editors#dashboard'
     get 'editor/home'           => 'editors#dashboard'

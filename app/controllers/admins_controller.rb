@@ -2,7 +2,7 @@ class AdminsController < ApplicationController
   load_and_authorize_resource
 
   def dashboard
-    render "admins/dashboard.html.haml"
+    render "admins/dashboard"
   end
 
   def index
