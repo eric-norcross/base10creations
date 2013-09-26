@@ -11,15 +11,11 @@ class ApplicationController < ActionController::Base
 
   private
     def after_sign_in_path_for(resource)
-      STDOUT << "WTF: " + resource.to_s + "\n"
       if resource.is_a?(Admin)
-        STDOUT << "IS ADMIN\n"
         admin_dashboard_path
       elsif resource.is_a?(Editor)
-        STDOUT << "IS EDITOR\n"
         editor_dashboard_path
       else
-        STDOUT << "IS USER\n"
         # users_path
         request.referrer
       end
@@ -31,7 +27,6 @@ class ApplicationController < ActionController::Base
       elsif editor_signed_in?
         current_editor
       else
-        current_user
       end
     end
 

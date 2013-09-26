@@ -13,19 +13,22 @@ class EditorsController < Devise::RegistrationsController
     end
   end
 
-  # def new
-  #   redirect_to editor_registration_path
-  # end
+  def new
+    @resource = Editor.new
+    render 'editor/new'
+  end
 
-  # def create
-  #   respond_to do |format|
-  #     if @brand.save
-  #       format.html { redirect_to manage_brands_path, notice: 'Brand was successfully created.' }
-  #     else
-  #       format.html { render action: "new" }
-  #     end
-  #   end
-  # end
+  def create
+    @editor = Editor.new(params[:editor])
+
+    respond_to do |format|
+      if @editor.save
+        format.html { redirect_to admin_editors_path, notice: 'Editor was successfully created.' }
+      else
+        format.html { render new_editor_path }
+      end
+    end
+  end
 
   def destroy
     @editor = Editor.find(params[:id])

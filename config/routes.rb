@@ -19,9 +19,6 @@ Martinfurniture::Application.routes.draw do
   end
 
   as :admin do
-    get 'admins/edit'          => 'devise/registrations#edit',      as: :edit_admin_registration
-    put 'admins'               => 'devise/registrations#update',    as: :admin_registration
-
     get 'admin'                => 'admins#dashboard'
     get 'admin/home'           => 'admins#dashboard'
     get 'admin/dashboard'      => 'admins#dashboard',               as: :admin_dashboard
@@ -31,8 +28,9 @@ Martinfurniture::Application.routes.draw do
 
     get 'admin/users'          => 'users#index',                    as: :admin_users 
 
-    get 'admin/editors'        => 'editors#index',                  as: :admin_editors
+    get 'admin/list'           => 'editors#index',                  as: :admin_editors
     get 'admin/editors/new'    => 'editors#new',                    as: :new_editor
+    post 'admin/editors'       => 'editors#create',                 as: :editors
     delete 'admin/editors/:id' => 'editors#destroy',                as: :destroy_editor
 
     #For data sanitization
@@ -48,10 +46,8 @@ Martinfurniture::Application.routes.draw do
   get "/login"    => redirect("/editors/sign_in")
   get "/log_in"   => redirect("/editors/sign_in")
 
-  as :editor do
-    get 'editors/edit'          => 'devise/registrations#edit',     as: :edit_editor_registration
-    put 'editors'               => 'devise/registrations#update',   as: :editor_registration
 
+  as :editor do
     get 'editor'                => 'editors#dashboard'
     get 'editor/home'           => 'editors#dashboard'
     get 'editor/dashboard'      => 'editors#dashboard',             as: :editor_dashboard
@@ -95,7 +91,6 @@ Martinfurniture::Application.routes.draw do
   end
 
   resources :admins
-  # resources :users
   resources :locations
   resources :messages
   resources :brands
