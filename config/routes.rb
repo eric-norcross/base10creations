@@ -19,6 +19,9 @@ Martinfurniture::Application.routes.draw do
   end
 
   as :admin do
+    get 'admins/edit'          => 'devise/registrations#edit',      as: :edit_admin_registration
+    put 'admins'               => 'devise/registrations#update',    as: :admin_registration
+
     get 'admin'                => 'admins#dashboard'
     get 'admin/home'           => 'admins#dashboard'
     get 'admin/dashboard'      => 'admins#dashboard',               as: :admin_dashboard
@@ -48,6 +51,9 @@ Martinfurniture::Application.routes.draw do
 
 
   as :editor do
+    get 'editors/edit'          => 'devise/registrations#edit',      as: :edit_editor_registration
+    put 'editors'               => 'devise/registrations#update',    as: :editor_registration
+
     get 'editor'                => 'editors#dashboard'
     get 'editor/home'           => 'editors#dashboard'
     get 'editor/dashboard'      => 'editors#dashboard',             as: :editor_dashboard
