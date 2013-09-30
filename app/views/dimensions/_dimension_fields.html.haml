@@ -28,6 +28,8 @@
     .field
       /= f.label :depth
       = f.text_field :depth, {class: "clear-input", "data-message" => "D"}
+      %span.instructions
+        (H x W x D)
   
   %div{id: "dimension-image-#{unique_id}", class: "singular-addable"}
     .addable-group.images

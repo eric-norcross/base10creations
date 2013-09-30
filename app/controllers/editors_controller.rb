@@ -23,7 +23,7 @@ class EditorsController < Devise::RegistrationsController
 
     respond_to do |format|
       if @editor.save
-        format.html { redirect_to admin_editors_path, notice: 'Editor was successfully created.' }
+        format.html { redirect_to manage_editors_path, notice: 'Editor was successfully created.' }
       else
         format.html { render new_editor_path }
       end
@@ -33,7 +33,7 @@ class EditorsController < Devise::RegistrationsController
   def destroy
     @editor = Editor.find(params[:id])
     @editor.destroy
-    redirect_to admin_editors_path
+    redirect_to manage_editors_path
   end
 
   private

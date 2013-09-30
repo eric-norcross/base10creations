@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925185600) do
+ActiveRecord::Schema.define(:version => 20130927223230) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(:version => 20130925185600) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
+
+  create_table "brand_styles", :force => true do |t|
+    t.integer  "brand_id"
+    t.integer  "style_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "brand_styles", ["brand_id", "style_id"], :name => "index_brand_styles_on_brand_id_and_style_id", :unique => true
+  add_index "brand_styles", ["brand_id"], :name => "index_brand_styles_on_brand_id"
+  add_index "brand_styles", ["style_id"], :name => "index_brand_styles_on_style_id"
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -86,6 +97,10 @@ ActiveRecord::Schema.define(:version => 20130925185600) do
     t.integer  "style_id"
   end
 
+  add_index "collection_styles", ["collection_id", "style_id"], :name => "index_collection_styles_on_collection_id_and_style_id", :unique => true
+  add_index "collection_styles", ["collection_id"], :name => "index_collection_styles_on_collection_id"
+  add_index "collection_styles", ["style_id"], :name => "index_collection_styles_on_style_id"
+
   create_table "collections", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -93,6 +108,17 @@ ActiveRecord::Schema.define(:version => 20130925185600) do
     t.datetime "updated_at",  :null => false
     t.text     "description"
   end
+
+  create_table "compilation_skus", :force => true do |t|
+    t.integer  "compilation_id"
+    t.integer  "sku_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "compilation_skus", ["compilation_id", "sku_id"], :name => "index_compilation_skus_on_compilation_id_and_sku_id", :unique => true
+  add_index "compilation_skus", ["compilation_id"], :name => "index_compilation_skus_on_compilation_id"
+  add_index "compilation_skus", ["sku_id"], :name => "index_compilation_skus_on_sku_id"
 
   create_table "compilations", :force => true do |t|
     t.string   "name"
@@ -208,6 +234,10 @@ ActiveRecord::Schema.define(:version => 20130925185600) do
     t.integer  "component_id"
   end
 
+  add_index "product_components", ["component_id"], :name => "index_product_components_on_component_id"
+  add_index "product_components", ["product_id", "component_id"], :name => "index_product_components_on_product_id_and_component_id", :unique => true
+  add_index "product_components", ["product_id"], :name => "index_product_components_on_product_id"
+
   create_table "products", :force => true do |t|
     t.text     "name"
     t.text     "title"
@@ -243,12 +273,11 @@ ActiveRecord::Schema.define(:version => 20130925185600) do
 
   create_table "skus", :force => true do |t|
     t.integer  "product_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "finish_id"
     t.string   "name"
     t.string   "title"
-    t.integer  "compilation_id"
   end
 
   create_table "styles", :force => true do |t|
@@ -256,7 +285,6 @@ ActiveRecord::Schema.define(:version => 20130925185600) do
     t.string   "title"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "brand_id"
     t.text     "description"
   end
 

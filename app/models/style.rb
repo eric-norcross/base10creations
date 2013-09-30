@@ -7,23 +7,22 @@ class Style < ActiveRecord::Base
                                 :title,
                                 :description,
 
-                                ##belongs_to##
-                                :brand_id,
+                                ## belongs_to ##
 
-                                ##has_many##
+                                ## has_many ##
                                 :collection_ids,
 
                                 ## nested attributes ##
                                 :images_attributes
 
-  has_many                      :collection_styles, :include => :collection
-  has_many                      :collections,       :through => :collection_styles
-  accepts_nested_attributes_for :collection_styles, :allow_destroy => true
+  has_many                      :brand_styles, dependent: :destroy
+  has_many                      :brands,       through: :brand_styles
+
+  has_many                      :collection_styles, dependent: :destroy
+  has_many                      :collections,       through: :collection_styles
 
   has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
-
-  belongs_to                    :brand
   
   validates_presence_of         :collections
   validates_presence_of         :title

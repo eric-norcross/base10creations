@@ -12,12 +12,18 @@
         %tr
           %th Id
           %th Title
+          %th List Image
           %th
       %tbody
         - @collections.each do |collection|
           %tr
             %td= collection.id
             %td= collection.title
+            %td
+              - if collection.images.blank?
+                n/a
+              - else 
+                = cl_image_tag(collection.images.first.asset.filename.to_s, transformation: "hint", alt: collection.images.first.asset.filename.to_s, title: collection.title)
             %td.controls
               = link_to 'Show', collection
               = link_to 'Edit', edit_collection_path(collection)

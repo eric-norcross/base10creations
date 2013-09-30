@@ -12,7 +12,7 @@
         %tr
           %th Id
           %th Title
-          %th Images
+          %th List Image
           %th
       %tbody
         - @finishes.each do |finish|
@@ -20,10 +20,11 @@
             %td= finish.id
             %td= finish.title
             %td
-              - if !finish.images.blank?
-                = cl_image_tag(finish.images.first.asset.filename.to_s, transformation: "hint", alt: finish.images.first.asset.filename.to_s, title: finish.title)
-              - else
+              - if finish.images.blank?
                 n/a
+              - else
+                = cl_image_tag(finish.images.first.asset.filename.to_s, transformation: "hint", alt: finish.images.first.asset.filename.to_s, title: finish.title)
+
             %td.controls
               = link_to 'Show', finish
               = link_to 'Edit', edit_finish_path(finish)

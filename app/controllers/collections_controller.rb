@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   load_and_authorize_resource
-  # skip_authorize_resource :only => [:finishes, :products]
+  skip_authorize_resource :only => [:index, :show]
 
   # Ajax Routes
   def finishes
@@ -15,8 +15,7 @@ class CollectionsController < ApplicationController
 
   def skus_by_finish
     @skus = Collection.skus_by_finish(params[:id], params[:finish_id])
-    STDOUT << "WTF: " + @skus.to_s
-    render "skus/_list", locals: { skus: @skus, selected_sku_ids: nil }, layout: false
+    render "skus/_list", locals: { skus: @skus, sku_ids: nil }, layout: false
   end
 
   # Admin Routes
@@ -39,6 +38,7 @@ class CollectionsController < ApplicationController
     @side_nav_elements = Collection.all
 
     @products = Collection.products_and_compilations(params[:id])
+    STDOUT << "@products: " + @products.to_s + "\n"
 
     render "layouts/templates/list"
   end

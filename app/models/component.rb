@@ -11,14 +11,13 @@ class Component < ActiveRecord::Base
                                 :category_id,
 
                                 ## has_many ##
-                                :products,
 
                                 ## nested attributes ##
                                 :images_attributes
 
 
-  has_many                      :product_components,    :dependent  => :destroy
-  has_many                      :products,              :through    => :product_components
+  has_many                      :product_components,    dependent: :destroy
+  has_many                      :products,              through: :product_components
 
   has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true

@@ -7,19 +7,17 @@ class Collection < ActiveRecord::Base
                                 :title,
                                 :description,
 
-                                ##belongs_to##
+                                ## belongs_to ##
 
-                                ##has_many##,
-                                :styles,
+                                ## has_many ##,
                                 :products,
 
                                 ## nested attributes ##
                                 :images_attributes
 
 
-  has_many                      :collection_styles,     :include => :style
-  has_many                      :styles,                :through => :collection_styles
-  accepts_nested_attributes_for :collection_styles,     :allow_destroy => true
+  has_many                      :collection_styles,     dependent: :destroy
+  has_many                      :styles,                through: :collection_styles
 
   has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true

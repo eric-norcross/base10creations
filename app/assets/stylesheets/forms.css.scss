@@ -262,6 +262,19 @@ form {
       text-align: right;
       width: 90px;
     }
+
+    .checkbox {
+      margin: 8px;
+
+      label {
+        float: none;
+        font-weight: normal;
+        margin-top: 5px;
+        text-align: left;
+        white-space: nowrap;
+        width: 110px;
+      }
+    }
     
     fieldset {
       border-color: #D8D4CB;
@@ -407,19 +420,6 @@ form {
 
       .column-group {
         margin: 10px 10px 25px 10px;
-
-        .checkbox {
-          margin: 8px;
-
-          label {
-            float: none;
-            font-weight: normal;
-            margin-top: 5px;
-            text-align: left;
-            white-space: nowrap;
-            width: 110px;
-          }
-        }
       }
     }
 

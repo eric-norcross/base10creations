@@ -1,31 +1,31 @@
-- if skus.length > 0
-  %table
-    %thead
+%table
+  %thead
+    %tr
+      %th Selected:
+      %th Title:
+      %th Finish: 
+      %th Images:
+      %th
+
+  %tbody
+    = hidden_field_tag "compilation[sku_ids][]", nil
+
+    - skus.each do |sku|
       %tr
-        %th Selected:
-        %th Title:
-        %th Finish: 
-        %th Images:
-        %th
-
-    %tbody
-      - skus.each do |sku|
-        - if defined?(selected_sku_ids) && !selected_sku_ids.blank?
-          - @selected = selected_sku_ids.include?(sku.id)
-
-        %tr
-          %td= check_box_tag "sku#{sku.id}", sku.id, @selected, :name => 'compilation[sku_ids][]'
-          %td= sku.title
-          %td
-            - if sku.finish.images.blank?
-              = sku.finish.title
-            - else
-              = cl_image_tag(sku.finish.images.first.asset.filename.to_s, transformation: 'hint', alt: "Finish thumbnail", title: sku.finish.title)
-          %td
-            - sku.images.each do |image|
-              = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: "Sku thumbnail", title: sku.title)
-              
-          %td.controls
-            = link_to 'Show', sku
-            = link_to 'Edit', edit_product_path(sku.product)
-            = link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = check_box_tag "compilation[sku_ids][]", sku.id, (sku_ids.include?(sku.id) unless sku_ids.blank?), id:dom_id(sku)
+        %td.checkbox
+          = label_tag dom_id(sku), sku.title
+        %td
+          - if sku.finish.images.blank?
+            = sku.finish.title
+          - else
+            = cl_image_tag(sku.finish.images.first.asset.filename.to_s, transformation: 'hint', alt: "Finish thumbnail", title: sku.finish.title)
+        %td
+          - sku.images.each do |image|
+            = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: "Sku thumbnail", title: sku.title)
+            
+        %td.controls
+          = link_to 'Show', sku
+          = link_to 'Edit', edit_product_path(sku.product)
+          = link_to 'Destroy', sku, method: :delete, data: { confirm: 'Are you sure?' }

@@ -13,6 +13,6 @@ class AdminsController < ApplicationController
 
   def destroy
     @admin.destroy
-    redirect_to admin_admins_path
+    redirect_to manage_admins_path
   end
 end

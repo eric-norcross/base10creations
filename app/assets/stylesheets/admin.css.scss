@@ -19,6 +19,10 @@
     font-weight: bold;
   }
 
+  #compilation-skus table {
+    border-width: 0px;
+  }
+
   table {
     border-color: $headerColor;
     border-style: solid;
@@ -57,6 +61,12 @@
           a {
             @include mini-button;
           }
+        }
+
+        td img {
+          border-color: #aaaaaa;
+          border-style: solid;
+          border-width: 1px;
         }
       }
 

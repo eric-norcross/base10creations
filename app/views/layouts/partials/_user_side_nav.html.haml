@@ -17,12 +17,12 @@
       %li= link_to "Styles",          manage_styles_path
 
       - if current_admin
-        / %li= link_to "Users",           admin_users_path
-        %li= link_to "Editors",         admin_editors_path
+        / %li= link_to "Users",           manage_users_path
+        %li= link_to "Editors",         manage_editors_path
 
   - if current_admin
     %h1
       Sanatize:
     %ul
-      %li= link_to "Dimensions",      admin_dimensions_path
-      %li= link_to "Features",        admin_products_features_path
+      %li= link_to "Dimensions",      manage_dimensions_path
+      %li= link_to "Features",        manage_products_features_path

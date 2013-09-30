@@ -15,9 +15,10 @@ class Brand < ActiveRecord::Base
                                 :images_attributes,
                                 :figures_attributes
 
-  has_many                      :styles
+  has_many                      :brand_styles, dependent: :destroy
+  has_many                      :styles,       through: :brand_styles
 
-  has_many                      :images, as: :imageable, :dependent => :destroy
+  has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
   has_many                      :figures, dependent: :destroy

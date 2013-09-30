@@ -27,12 +27,7 @@ class StylesController < ApplicationController
   def new
     # @style = Style.new
 
-    @collections = Collection.all
-
-    @slice_size = 3
-    if @collections.length < 3
-      @slice_size = 1
-    end
+    collection_variables
 
     1.times { @style.images.build }
 
@@ -43,6 +38,9 @@ class StylesController < ApplicationController
 
   def edit
     # @style = Style.find(params[:id])
+    collection_variables
+
+    @collections = Collection.all
   end
 
   def create
@@ -75,4 +73,14 @@ class StylesController < ApplicationController
 
     redirect_to manage_styles_path
   end
+
+  private 
+    def collection_variables
+      @collections = Collection.all
+
+      @slice_size = 3
+      if @collections.length < 3
+        @slice_size = 1
+      end
+    end
 end

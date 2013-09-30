@@ -11,8 +11,9 @@
       %thead
         %tr
           %th Title
-          %th Template
+          / %th Template
           %th Collection
+          %th Finish
           %th Skus
           %th
 
@@ -20,8 +21,13 @@
         - @compilations.each do |compilation|
           %tr
             %td= compilation.title
-            %td= compilation.skin.name
+            / %td= compilation.skin.name
             %td= compilation.collection.title
+            %td
+              - if compilation.finish.images.blank?
+                = compilation.finish.title
+              - else
+                = cl_image_tag(compilation.finish.images.first.asset.filename.to_s, transformation: 'hint', alt: "Finish thumbnail", title: compilation.finish.title)
             %td
               - compilation.skus.each_with_index do |sku, index|
                 - product = sku.product

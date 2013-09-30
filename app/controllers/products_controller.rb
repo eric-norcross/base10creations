@@ -12,13 +12,12 @@ class ProductsController < ApplicationController
     end
   end
 
-  def manage_features_index
+  def manage_product_features
     @products = Product.all
     
-    render "products/manage_features_index"
-    # respond_to do |format|
-    #   format.html
-    # end
+    respond_to do |format|
+      format.html
+    end
   end
 
 

@@ -20,26 +20,26 @@ Martinfurniture::Application.routes.draw do
 
   as :admin do
     # For production because of skip registrations
-    get 'admins/edit'          => 'devise/registrations#edit',      as: :edit_admin_registration
-    put 'admins'               => 'devise/registrations#update',    as: :admin_registration
+    get 'admins/edit'          => 'devise/registrations#edit',        as: :edit_admin_registration
+    put 'admins'               => 'devise/registrations#update',      as: :admin_registration
 
     get 'admin'                => 'admins#dashboard'
     get 'admin/home'           => 'admins#dashboard'
-    get 'admin/dashboard'      => 'admins#dashboard',               as: :admin_dashboard
+    get 'admin/dashboard'      => 'admins#dashboard',                 as: :admin_dashboard
 
-    get 'admin/admins'         => 'admins#index',                   as: :admin_admins
-    delete 'admin/admins/:id'  => 'admins#destroy',                 as: :destroy_admin
+    get 'admin/admins'         => 'admins#index',                     as: :manage_admins
+    delete 'admin/admins/:id'  => 'admins#destroy',                   as: :destroy_admin
 
-    get 'admin/users'          => 'users#index',                    as: :admin_users 
+    # get 'admin/users'          => 'users#index',                    as: :manage_users 
 
-    get 'admin/list'           => 'editors#index',                  as: :admin_editors
-    get 'admin/editors/new'    => 'editors#new',                    as: :new_editor
-    post 'admin/editors'       => 'editors#create',                 as: :editors
-    delete 'admin/editors/:id' => 'editors#destroy',                as: :destroy_editor
+    get 'admin/list'           => 'editors#index',                    as: :manage_editors
+    get 'admin/editors/new'    => 'editors#new',                      as: :new_editor
+    post 'admin/editors'       => 'editors#create',                   as: :editors
+    delete 'admin/editors/:id' => 'editors#destroy',                  as: :destroy_editor
 
     #For data sanitization
-    get 'admin/dimensions'     => 'dimensions#admin_index',         as: :admin_dimensions
-    get 'admin/features'       => 'products#admin_features_index',  as: :admin_products_features
+    get 'admin/dimensions'     => 'dimensions#manage',                as: :manage_dimensions
+    get 'admin/features'       => 'products#manage_product_features', as: :manage_products_features
   end
 
 

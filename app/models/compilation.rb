@@ -24,7 +24,9 @@ class Compilation < ActiveRecord::Base
   has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
-	has_many                      :skus
+  has_many                      :compilation_skus, dependent: :destroy
+  has_many                      :skus,             through: :compilation_skus
+  # accepts_nested_attributes_for :compilation_skus,  :allow_destroy => true
 
 	validates_presence_of         :title
   validates_presence_of         :collection
@@ -63,7 +65,7 @@ class Compilation < ActiveRecord::Base
 
   def get_skus
     if defined?(finish)
-      return Collection.skus_by_finish(collection_id, finish_id)
+      return Collection.skus_by_finish(collection_id, finish_id).sort_by{|p| p[:title].gsub(/\D/, '').to_i}
     else
       return nil
     end

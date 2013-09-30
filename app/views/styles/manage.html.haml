@@ -12,12 +12,18 @@
         %tr
           %th Id
           %th Title
+          %th List Image
           %th
       %tbody
         - @styles.each do |style|
           %tr
             %td= style.id
             %td= style.title
+            %td
+              - if style.images.blank?
+                n/a
+              - else
+                = cl_image_tag(style.images.first.asset.filename.to_s, transformation: "hint", alt: style.images.first.asset.filename.to_s, title: style.title)
             %td.controls
               = link_to 'Show', style
               = link_to 'Edit', edit_style_path(style)
