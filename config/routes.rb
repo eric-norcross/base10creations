@@ -82,6 +82,9 @@ Martinfurniture::Application.routes.draw do
 
   # devise_for :users
 
+  # Search Routes
+
+
   # General Routes
 
   resources :finishes do
@@ -112,6 +115,7 @@ Martinfurniture::Application.routes.draw do
   resources :figures
   resources :pages
   resources :products
+  resources :searches
   resources :sections
   resources :skins
   resources :skus

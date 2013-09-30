@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927223230) do
+ActiveRecord::Schema.define(:version => 20130930185128) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -225,6 +225,14 @@ ActiveRecord::Schema.define(:version => 20130927223230) do
     t.datetime "updated_at", :null => false
     t.integer  "skin_id"
     t.string   "iframe_url"
+  end
+
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "product_components", :force => true do |t|

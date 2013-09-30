@@ -1,4 +1,8 @@
 class Sku < ActiveRecord::Base
+  include PgSearch
+
+  multisearchable against: [:title]
+
   default_scope order('skus.id ASC')
 
   attr_accessible               :name,

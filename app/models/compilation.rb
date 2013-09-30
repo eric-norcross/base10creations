@@ -1,5 +1,8 @@
 class Compilation < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include PgSearch
+
+  multisearchable against: [:title]
 
   attr_accessible 							:name, 
   															:title,

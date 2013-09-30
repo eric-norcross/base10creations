@@ -83,11 +83,18 @@ class Component < ActiveRecord::Base
     # Create an array of Skus where the Sku belongs to a Compilation
     # Also create an array of Products not to include if their skus belong to a Compilation
     @compilation_ids = []
+    @compilations = []
     @products.each do |product|
       product.skus.each do |sku|
-        if sku.compilation_id
-          @compilation_ids.push(sku.compilation_id) unless @compilation_ids.include?(sku.compilation_id)
+        # if sku.compilation_id
+        #   @compilation_ids.push(sku.compilation_id) unless @compilation_ids.include?(sku.compilation_id)
+        # end
+
+        sku.compilations.each do |compilation|
+          @compilation_ids.push(compilation.id) unless @compilation_ids.include?(compilation.id)
         end
+
+        # @compilations + sku.compilations
       end
     end
 

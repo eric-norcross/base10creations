@@ -12,6 +12,9 @@
 
 class Product < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include PgSearch
+
+  multisearchable against: [:title, :features]
 
   # default_scope order('products.id ASC')
   
