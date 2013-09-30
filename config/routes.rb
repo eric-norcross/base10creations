@@ -40,6 +40,9 @@ Martinfurniture::Application.routes.draw do
     #For data sanitization
     get 'admin/dimensions'     => 'dimensions#manage',                as: :manage_dimensions
     get 'admin/features'       => 'products#manage_product_features', as: :manage_products_features
+    
+    # Update Search Relations
+    get 'searchs/update'       => 'searches#update',                  as: :update_searches
   end
 
 

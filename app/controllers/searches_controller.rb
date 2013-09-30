@@ -12,4 +12,15 @@ class SearchesController < ApplicationController
       render "layouts/templates/list"
     end
   end
+
+  def update
+    @actionable = [Compilation, Product, Sku]
+
+    @actionable.each do |model|
+      model.rebuild_pg_search_documents
+    end
+
+    flash[:notice] = 'All searchable records have been updated.'
+    redirect_to :back
+  end
 end
