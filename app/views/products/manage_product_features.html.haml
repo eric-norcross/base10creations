@@ -9,6 +9,7 @@
         %tr
           %th Id
           %th Featues
+          %th Components
           %th
 
       %tbody
@@ -16,6 +17,9 @@
           %tr
             %td= product.id
             %td= product.features
+            %td
+              - product.components.each do |component|
+                %span.comma= component.title
             
 
             %td.controls
