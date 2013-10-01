@@ -1,6 +1,6 @@
 module ProductsHelper
   def build_collection(element)
-    @collection = Array.new
+    @collection = []
 
     @collection.push([element.id, element.title])
     if !element.children.blank?

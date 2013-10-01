@@ -82,9 +82,12 @@ class Product < ActiveRecord::Base
   end 
 
   def brands
-    @brand_ids = collection.styles.map{ |style| style.brand_id }
-    @brands = Brand.where(id: @brand_ids)
-    return @brands
+    @brands = []
+    collection.styles.each do |style|
+      @brands += style.brands
+    end
+    
+    return @brands.uniq
   end
 
   def list_image(sku = nil)

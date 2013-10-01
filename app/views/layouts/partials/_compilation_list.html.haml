@@ -6,6 +6,8 @@
     .list-view-info
       %h1.collection
         = link_to product.collection.title, collection_path(product.collection.id)
+        &ndash;
+        = link_to product.finish.title, finish_path(product.finish.id)
       %h2.title
         = link_to product.title, product.path
       %h3.finish

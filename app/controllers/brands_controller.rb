@@ -21,14 +21,12 @@ class BrandsController < ApplicationController
   def show
     @side_nav_elements = Brand.all
 
-    @products = Brand.products_and_compilations(params[:id])
+    @products = @brand.products_and_compilations
 
     render "layouts/templates/list"
   end
 
   def new
-    # @brand = Brand.new
-
     1.times do
       @brand.images.build
     end

@@ -29,20 +29,17 @@ class Brand < ActiveRecord::Base
 
   before_save                   :create_name
 
-  def self.styles(brand_id = :id)
-    return Style.where(:brand_id => brand_id)
+
+  def products
+    return Product.where(collection_id: collection_ids)
   end
 
-  def self.products(brand_id = :id)
-    return Product.where(:collection_id => collection_ids(brand_id))
+  def compilations
+    return Compilation.where(collection_id: collection_ids)
   end
 
-  def self.compilations(brand_id = :id)
-    return Compilation.where(:collection_id => collection_ids(brand_id))
-  end
-
-  def self.products_and_compilations(brand_id = :id)
-    return (products(brand_id) + compilations(brand_id)).sort_by(&:name)
+  def products_and_compilations
+    return (products + compilations).sort_by(&:name)
   end
 
   def path
@@ -63,15 +60,13 @@ class Brand < ActiveRecord::Base
       self.name = title.parameterize
     end
 
-    def self.collection_ids(brand_id = :id)
-      collection_ids = Array.new
+    def collection_ids
+      ids = []
 
-      styles(brand_id).each do |style|
-        style.collections.each do |collection|
-          collection_ids.push(collection.id) unless collection_ids.include?(collection.id)
-        end
+      styles.each do |style|
+        ids.push(style.collections.map{|collection| collection.id})
       end
 
-      return collection_ids
+      return ids.uniq
     end
 end

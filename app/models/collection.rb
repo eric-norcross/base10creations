@@ -92,7 +92,7 @@ class Collection < ActiveRecord::Base
     end
 
     def self.finish_ids(collection_id)
-      finish_ids = Array.new
+      finish_ids = []
       products(collection_id).each do |product|
         product.skus.each do |sku|
           finish_ids.push(sku.finish_id) unless finish_ids.include?(sku.finish_id)
