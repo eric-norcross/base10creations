@@ -1,8 +1,13 @@
 class ErrorsController < ApplicationController
-  def error_404
-    @not_found_path = params[:not_found]
+ 
+  def show
+    render status_code.to_s, :status => status_code
   end
-
-  def error_500
+ 
+protected
+ 
+  def status_code
+    params[:code] || 500
   end
+ 
 end

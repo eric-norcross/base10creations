@@ -60,6 +60,8 @@ module Martinfurniture
 
     config.sass.debug_info = true
 
+    config.exceptions_app = self.routes
+
     # Enable the asset pipeline
     config.assets.enabled = true
 

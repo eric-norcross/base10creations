@@ -1,7 +1,4 @@
 Martinfurniture::Application.routes.draw do  
-  # get "errors/error_404"
-  # get "errors/error_500"
-
   mount Ckeditor::Engine => "/ckeditor"
 
   root to: 'pages#home'
@@ -84,6 +81,11 @@ Martinfurniture::Application.routes.draw do
 
 
   # devise_for :users
+
+  # Error Pages
+  %w( 404 422 500 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
 
   # Search Routes
 
