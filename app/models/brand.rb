@@ -5,6 +5,7 @@ class Brand < ActiveRecord::Base
 
   attr_accessible               :name, 
                                 :title,
+                                :description,
 
                                 ##belongs_to##
 

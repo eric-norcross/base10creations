@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130930185128) do
+ActiveRecord::Schema.define(:version => 20131002234654) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -55,8 +55,9 @@ ActiveRecord::Schema.define(:version => 20130930185128) do
   create_table "brands", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
   end
 
   create_table "carousels", :force => true do |t|

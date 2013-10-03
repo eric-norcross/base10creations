@@ -26,6 +26,7 @@ class Skin < ActiveRecord::Base
   has_many                      :products
   has_many                      :pages
   has_many                      :complilations
+  has_many                      :sections
 
   validates_presence_of         :title
   validates_presence_of         :template
