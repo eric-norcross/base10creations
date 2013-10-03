@@ -117,7 +117,10 @@ function Gallery(gallery) {
       params.visibleWidth    = gallery.find(".items-container").width();
       params.stopPosition    = params.visibleWidth - params.totalWidth + params.offset;
 
-      
+      if (params.totalWidth < params.visibleWidth) {
+        btnNext.addClass("disabled")
+      }
+
       /*
       Sets the width of the UL. It would be better to use 
       "display: inline-block" or even set this with css
@@ -142,8 +145,11 @@ function Gallery(gallery) {
       var animateTo;
       var nextPosition = itemsList.position().left - params.data.itemWidth;
 
-      if (nextPosition < params.data.stopPosition) {
+      btnPrevious.removeClass("disabled");
+
+      if (nextPosition <= params.data.stopPosition) {
         animateTo = params.data.stopPosition;
+        btnNext.addClass("disabled");
       } else {
         animateTo = nextPosition;
       }
@@ -162,9 +168,12 @@ function Gallery(gallery) {
 
       //Scrolls back -= itemWidth
       var nextPosition = itemsList.position().left + params.data.itemWidth;
+      
+      btnNext.removeClass("disabled");
 
-      if (nextPosition > 0) {
+      if (nextPosition >= 0) {
         animateTo = 0;
+        btnPrevious.addClass("disabled");
       } else {
         animateTo = nextPosition;
       }
