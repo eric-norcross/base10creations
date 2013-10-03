@@ -1,7 +1,5 @@
 = form_tag(searches_path, method: "get") do
   .search-field
-    = text_field_tag "#{id}", "Keyword or item #", {class: "clear-input", "data-message" => "Keyword or item #"}
+    = search_field_tag "#{id}", "", {placeholder: "Keyword or item #", class: "clear-input"}
     %div.magnify
       = render '/layouts/svg/search'
-    /= submit_tag "Submit"
-

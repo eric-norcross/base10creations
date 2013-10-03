@@ -11,11 +11,10 @@ class SkusController < ApplicationController
 
   # REST Routes
   # def index
-  #   # @skus = Sku.all
+  #   @side_nav_elements = @skus
+  #   @products = @skus.sort_by! {|p| p.collection.title}
 
-  #   respond_to do |format|
-  #     format.html
-  #   end
+  #   render "layouts/templates/list"
   # end
 
   def show

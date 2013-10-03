@@ -63,6 +63,10 @@ class Sku < ActiveRecord::Base
     return @related
   end
 
+  def collection
+    return product.collection 
+  end
+
   def self.rebuild_pg_search_documents
     find_each { |record| record.update_pg_search_document }
   end

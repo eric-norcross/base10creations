@@ -1,15 +1,22 @@
 var uploadsStarted = [];
 var uploadsCompleted = [];
 
+// Fallback for placeholder attribute
 $(document).on("focus", ".clear-input", function(event) {
-  if ($(this).val() == $(this).attr("data-message")) {
-    $(this).val("");
+  if (!("placeholder" in document.createElement("input"))) {
+    alert("here")
+    if ($(this).val() == $(this).attr("placeholder")) {
+      $(this).val("");
+    }
   }
 });
 
+// Fallback for placeholder attribute
 $(document).on("blur", ".clear-input", function(event) {
-  if ($(this).val() == ""){
-    $(this).val($(this).attr("data-message"));
+  if (!("placeholder" in document.createElement("input"))) {
+    if ($(this).val() == ""){
+      $(this).val($(this).attr("placeholder"));
+    }
   }
 });
 

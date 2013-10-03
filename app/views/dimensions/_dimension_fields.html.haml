@@ -1,7 +1,3 @@
-- f.object.width  ||= "W"
-- f.object.height ||= "H"
-- f.object.depth  ||= "D"
-
 - unique_id ||= randomNum
 
 .active
@@ -19,15 +15,13 @@
   .dimension-values.required
     .field
       = f.label :width, "Dimensions"
-      = f.text_field :width, {class: "clear-input", "data-message" => "W"}
+      = f.text_field :width, placeholder: "W", class: "clear-input"
       x
     .field
-      /= f.label :height
-      = f.text_field :height, {class: "clear-input", "data-message" => "H"}
+      = f.text_field :height, placeholder: "H", class: "clear-input"
       x 
     .field
-      /= f.label :depth
-      = f.text_field :depth, {class: "clear-input", "data-message" => "D"}
+      = f.text_field :depth, placeholder: "D", class: "clear-input"
       %span.instructions
         (H x W x D)
   

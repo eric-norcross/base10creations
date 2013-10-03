@@ -1,6 +1,5 @@
 = form_tag locations_path, :method => :get do 
   .search-field
-    = text_field_tag id, "Find a retailer near you", {class: "clear-input", "data-message" => "Find a retailer near you"}
+    = search_field_tag id, "", {placeholder: "Find a retailer near you", class: "clear-input"}
     %div.magnify
       = render '/layouts/svg/search'
-    / = submit_tag

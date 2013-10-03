@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
     @side_nav_elements = Category.all
 
     # Get Products & Compilations
-    @products = Component.products_and_compilations(@category.component_ids)
+    @products = Component.products_and_compilations(@category.component_ids).sort_by! {|p| p.collection.title}
 
     render "layouts/templates/list"
   end

@@ -37,8 +37,7 @@ class CollectionsController < ApplicationController
   def show
     @side_nav_elements = Collection.all
 
-    @products = Collection.products_and_compilations(params[:id])
-    STDOUT << "@products: " + @products.to_s + "\n"
+    @products = Collection.products_and_compilations(params[:id]).sort_by! {|p| p.collection.title}
 
     render "layouts/templates/list"
   end

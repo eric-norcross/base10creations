@@ -19,7 +19,7 @@ class StylesController < ApplicationController
 
   def show
     @side_nav_elements = Style.all
-    @products = Style.products_and_compilations(params[:id])
+    @products = Style.products_and_compilations(params[:id]).sort_by! {|p| p.collection.title}
 
     render "layouts/templates/list"
   end

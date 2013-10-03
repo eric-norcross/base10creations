@@ -30,7 +30,8 @@ class ComponentsController < ApplicationController
       @component_ids = @component.children.map{ |component| component.id }
     end
 
-    @products = Component.products_and_compilations(@component_ids)
+    @products = Component.products_and_compilations(@component_ids).sort_by! {|p| p.collection.title}
+
 
     render "layouts/templates/list"
   end

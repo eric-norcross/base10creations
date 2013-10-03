@@ -12,7 +12,7 @@
       = form_tag locations_path, :method => :get do 
         .field
           = label_tag "Zip Code"
-          = number_field_tag "retailer_search", @value, {class: "clear-input", "data-message" => @value, maxlength: 5}
+          = number_field_tag "retailer_search", "", placeholder: @value, class: "clear-input", maxlength: 5
 
         .field
           = label_tag "Radius"
