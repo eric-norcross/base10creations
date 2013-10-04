@@ -8,22 +8,30 @@
     %table
       %thead
         %tr
+          %th Id:
           %th Caption:
+          %th Link: 
+          %th Type:
+          %th Type Id:
           %th Image:
-          %th
+          / %th
       %tbody
         - @figures.each do |figure|
           %tr
+            %td= figure.id
             %td= figure.caption
+            %td= figure.link
+            %td= figure.figurable_type
+            %td= figure.figurable_id
             %td
               - if !figure.images.blank?
                 = cl_image_tag(figure.images.first.asset.filename.to_s, transformation: "hint", alt: figure.images.first.asset.filename.to_s, title: figure.caption)
               - else
                 n/a
-            %td.controls
-              = link_to 'Show', figure
-              = link_to 'Edit', edit_figure_path(figure)
-              = link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
+            / %td.controls
+            /   = link_to 'Show', figure
+            /   = link_to 'Edit', edit_figure_path(figure)
+            /   = link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
 
   .links
     = link_to 'Add a new Figure', new_figure_path

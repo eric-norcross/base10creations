@@ -14,7 +14,7 @@ class Carousel < ActiveRecord::Base
 
   belongs_to                    :page
 
-  has_many                      :figures, dependent: :destroy
+  has_many                      :figures, as: :figurable, dependent: :destroy
   accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:link].blank?}, allow_destroy: true
 
   # validates_presence_of         :title

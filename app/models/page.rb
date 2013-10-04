@@ -39,7 +39,7 @@ class Page < ActiveRecord::Base
   has_many                      :carousels, dependent: :destroy
   accepts_nested_attributes_for :carousels, allow_destroy: true #, reject_if: lambda { |a| a[:image].blank?}
 
-  has_many                      :figures, dependent: :destroy
+  has_many                      :figures, as: :figurable, dependent: :destroy
   accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:link].blank?}, allow_destroy: true
 
   validates_presence_of         :title

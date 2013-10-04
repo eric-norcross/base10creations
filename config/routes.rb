@@ -68,6 +68,7 @@ Martinfurniture::Application.routes.draw do
     get 'compilations/manage'   => 'compilations#manage',     as: :manage_compilations
     get 'components/manage'     => 'components#manage',       as: :manage_components
     get 'finishes/manage'       => 'finishes#manage',         as: :manage_finishes
+    get 'figures/manage'        => 'figures#manage',          as: :manage_figures
     get 'pages/manage'          => 'pages#manage',            as: :manage_pages
     get 'products/manage'       => 'products#manage',         as: :manage_products
     get 'sections/manage'       => 'sections#manage',         as: :manage_sections

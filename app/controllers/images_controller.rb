@@ -19,10 +19,12 @@ class ImagesController < ApplicationController
   def create
     @image = @imageable.images.new(params[:image])
 
-    if @image.save
-      format.html { redirect_to @imageable, notice: "Image created." }
-    else 
-      format.html { render :new }
+    respond_to do |format|
+      if @image.save
+        format.html { redirect_to @imageable, notice: "Image created." }
+      else 
+        format.html { render :new }
+      end
     end
   end
 
