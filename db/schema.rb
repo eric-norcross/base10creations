@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131004172705) do
+ActiveRecord::Schema.define(:version => 20131004182539) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -175,13 +175,12 @@ ActiveRecord::Schema.define(:version => 20131004172705) do
     t.string   "caption"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "page_id"
     t.text     "link"
-    t.integer  "carousel_id"
-    t.integer  "brand_id"
     t.integer  "figurable_id"
     t.string   "figurable_type"
   end
+
+  add_index "figures", ["figurable_id", "figurable_type"], :name => "index_figures_on_figurable_id_and_figurable_type"
 
   create_table "finishes", :force => true do |t|
     t.string   "name"

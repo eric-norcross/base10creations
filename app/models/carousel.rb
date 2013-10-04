@@ -16,15 +16,4 @@ class Carousel < ActiveRecord::Base
 
   has_many                      :figures, as: :figurable, dependent: :destroy
   accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:link].blank?}, allow_destroy: true
-
-  # validates_presence_of         :title
-
-  # before_save                   :create_name
-
-  # private
-  
-  # def create_name
-  #   self.name = title.parameterize
-  # end
-  
 end
