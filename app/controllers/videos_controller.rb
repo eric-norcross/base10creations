@@ -49,7 +49,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.update_attributes(params[:video])
-        format.html { redirect_to videos_url, notice: 'Video was successfully updated.' }
+        format.html { redirect_to manage_videos, notice: 'Video was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -61,7 +61,7 @@ class VideosController < ApplicationController
     @video.destroy
 
     respond_to do |format|
-      format.html { redirect_to videos_url }
+      format.html { redirect_to manage_videos }
       format.json { head :no_content }
     end
   end
