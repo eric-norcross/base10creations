@@ -51,6 +51,10 @@ class ProductsController < ApplicationController
       1.times { skus.images.build }
     end
 
+    1.times do
+      @product.videos.build
+    end
+
     respond_to do |format|
       format.html
     end

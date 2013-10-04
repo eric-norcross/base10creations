@@ -18,7 +18,9 @@
 
     .field
       = f.label :template
-      = f.url_field :template
+      = f.text_field :template
+      %span.instructions
+        (e.g.: /layouts/templates/product)
     
   .actions
     = f.submit 'Save'

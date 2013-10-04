@@ -27,6 +27,8 @@
     .field
       = f.label :iframe_url
       = f.url_field :iframe_url
+      %span.instructions
+        (Prefix "http://" to all links. e.g.: http://www.apple.com)
 
     .field
       = f.cktext_area :content

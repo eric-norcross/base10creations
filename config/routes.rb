@@ -73,6 +73,7 @@ Martinfurniture::Application.routes.draw do
     get 'sections/manage'       => 'sections#manage',         as: :manage_sections
     get 'skins/manage'          => 'skins#manage',            as: :manage_skins
     get 'styles/manage'         => 'styles#manage',           as: :manage_styles
+    get 'videos/manage'         => 'videos#manage',           as: :manage_videos
 
     get 'editor/dealers'        => 'locations#manage'
     get 'editor/retailers'      => 'locations#manage'
@@ -107,26 +108,31 @@ Martinfurniture::Application.routes.draw do
   end
 
   resources :admins
-  resources :locations
-  resources :messages
+  
   resources :brands
   resources :carousels
   resources :categories
   resources :collections
   resources :collection_styles
-  resources :product_components
   resources :components
   resources :compilations
+  resources :dimensions
   resources :figures
+  resources :images
+  resources :locations
+  resources :messages
   resources :pages
   resources :products
+  resources :product_components
   resources :searches
   resources :sections
   resources :skins
   resources :skus
   resources :styles
-  resources :images
-  resources :dimensions
+  resources :videos
+
+  
+  
 
   # match '*path' => redirect('/') unless Rails.env.development?
 

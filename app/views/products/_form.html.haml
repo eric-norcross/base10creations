@@ -69,6 +69,18 @@
       .addable.admin-button
         = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :images, options: @dimension_options })    
   
+
+  %fieldset{id: "videos-fields"}
+    %legend
+      Videos
+
+    #videos.nested
+      .addable-group
+        = f.fields_for :videos, false do |video|
+          = render 'videos/video_fields', f: video
+      .addable.admin-button
+        = link_to_add_fields({ name: "Add Video", f: f, association: :videos, container: "videos" })
+
   %fieldset{id: "video-fields"}
     %legend
       Videos

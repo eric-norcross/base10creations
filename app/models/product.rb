@@ -36,6 +36,7 @@ class Product < ActiveRecord::Base
                                 ## nested attributes ##
                                 :skus_attributes,
                                 :dimensions_attributes,
+                                :videos_attributes,
                                 :images_attributes
                         
 
@@ -47,6 +48,9 @@ class Product < ActiveRecord::Base
 
   has_many                      :dimensions, dependent: :destroy
   accepts_nested_attributes_for :dimensions, reject_if: lambda { |a| a[:width].blank? || a[:height].blank? || a[:depth].blank? }, allow_destroy: true
+
+  has_many                      :videos, dependent: :destroy
+  accepts_nested_attributes_for :videos, reject_if: lambda { |a| a[:url].blank? }, allow_destroy: true
 
   has_many                      :skus, dependent: :destroy
   accepts_nested_attributes_for :skus, reject_if: lambda { |a| a[:title].blank? }, allow_destroy: true
@@ -115,13 +119,13 @@ class Product < ActiveRecord::Base
     return images + sku.images + sku.finish.images
   end
 
-  def videos
-    if video != ""
-      return [video]
-    else
-      return []
-    end
-  end
+  # def videos
+  #   if video != ""
+  #     return [video]
+  #   else
+  #     return []
+  #   end
+  # end
 
   def self.rebuild_pg_search_documents
     find_each { |record| record.update_pg_search_document }

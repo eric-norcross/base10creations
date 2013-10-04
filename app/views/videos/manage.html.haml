@@ -1,0 +1,28 @@
+= render "layouts/partials/user_side_nav"
+
+#admin
+  %h1 Available Video
+
+  .links
+    = link_to 'Add a new Video', new_video_path
+
+  - if @videos
+    %table
+      %thead
+        %tr
+          %th Id
+          %th URL
+          %th
+      %tbody
+        - @videos.each do |video|
+          %tr
+            %td= video.id
+            %td= video.url
+            
+            %td.controls
+              = link_to 'Show', video
+              = link_to 'Edit', edit_video_path(video)
+              = link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add a new Video', new_video_path
