@@ -13,8 +13,8 @@ class Ability
       cannot :manage, [Admin, User]
     else
       can    :read, :all
-      cannot :read, [Image, Admin]
-      cannot :index, [Carousel, Dimension, Figure, Skin, Admin, Editor, User]
+      cannot :read, [Image, Admin, Video, User, Editor]
+      cannot :index, [Carousel, Dimension, Figure, Skin, Admin, Editor, User, Video]
     end
     
     # The first argument to `can` is the action you are giving the user 

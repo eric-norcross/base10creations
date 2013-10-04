@@ -358,6 +358,11 @@
         @include rem('font-size', 12px);
         margin-bottom: 20px;
       }
+
+      iframe {
+        overflow-y: hidden;
+        margin-bottom: 10px;
+      }
     }
   }
 }

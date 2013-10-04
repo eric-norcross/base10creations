@@ -23,7 +23,6 @@ class Product < ActiveRecord::Base
                                 :features, 
                                 :active,
                                 :shown,
-                                :video,
                                 :include_finish_name,
 
                                 ## belongs_to ##

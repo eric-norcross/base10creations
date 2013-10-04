@@ -81,14 +81,6 @@
       .addable.admin-button
         = link_to_add_fields({ name: "Add Video", f: f, association: :videos, container: "videos" })
 
-  %fieldset{id: "video-fields"}
-    %legend
-      Videos
-
-    .field
-      = f.label :video, "YouTube URL"
-      = f.url_field :video
-
 
   %fieldset{id: "skus-fields"}
     %legend

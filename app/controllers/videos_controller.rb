@@ -11,32 +11,22 @@ class VideosController < ApplicationController
 
   # REST Routes
   # def index
-  #   # @videos = Video.all
-
   #   respond_to do |format|
   #     format.html
   #   end
   # end
 
   # def show
-  #   # @video = Video.find(params[:id])
-
   #   respond_to do |format|
   #     format.html
   #   end
   # end
 
-  def new
-    # @video = Video.new
-
-    # 1.times do
-    #   @video.images.build
-    # end
-
-    respond_to do |format|
-      format.html
-    end
-  end
+  # def new
+  #   respond_to do |format|
+  #     format.html
+  #   end
+  # end
 
   def edit
     # @video = Video.find(params[:id])

@@ -10,7 +10,7 @@
           %th Id
           %th Featues
           %th Components
-          %th Video
+          %th Videos
 
       %tbody
         - @products.each do |product|
@@ -20,7 +20,9 @@
             %td
               - product.components.each do |component|
                 %span.comma= component.title
-            %th= product.video
+            %td
+              - product.videos.each do |video|
+                %span.comma= video.url
             
 
             %td.controls

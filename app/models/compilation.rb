@@ -112,13 +112,11 @@ class Compilation < ActiveRecord::Base
     @videos = []
 
     products.each do |product|
-      if product.video && product.video != ""
-        @videos.push(product.video)
-      end
+      @videos + product.videos
     end
 
     return @videos
-  end
+  end 
 
   def brands
     @brands = []
