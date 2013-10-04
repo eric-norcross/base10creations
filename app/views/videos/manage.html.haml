@@ -11,12 +11,14 @@
       %thead
         %tr
           %th Id
+          %th Product Id
           %th URL
           %th
       %tbody
         - @videos.each do |video|
           %tr
             %td= video.id
+            %td= video.product_id
             %td= video.url
             
             %td.controls
