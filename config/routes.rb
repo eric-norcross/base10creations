@@ -63,6 +63,7 @@ Martinfurniture::Application.routes.draw do
 
   as :admin || :editor do
     get 'brands/manage'         => 'brands#manage',           as: :manage_brands
+    get 'carousels/manage'      => 'carousels#manage',        as: :manage_carousels
     get 'categories/manage'     => 'categories#manage',       as: :manage_categories
     get 'collections/manage'    => 'collections#manage',      as: :manage_collections
     get 'compilations/manage'   => 'compilations#manage',     as: :manage_compilations

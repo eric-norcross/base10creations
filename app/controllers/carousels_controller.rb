@@ -1,6 +1,15 @@
 class CarouselsController < ApplicationController
   load_and_authorize_resource :page
   load_and_authorize_resource :carousel, :through => :page
+
+  # Admin 
+  def manage
+    @carousels = Carousel.all
+    
+    respond_to do |format|
+      format.html
+    end
+  end
   
   # def index
   #   @carousels = Carousel.all

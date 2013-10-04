@@ -25,7 +25,8 @@
             - product_object.brands.each do |brand|
               - unless brand.figures.blank?
                 %li
-                  = cl_image_tag(brand.figures.first.images.first.asset.filename.to_s, alt: brand.title)
+                  = link_to brand.figures.first.link do
+                    = cl_image_tag(brand.figures.first.images.first.asset.filename.to_s, alt: brand.title)
       
       .finishes
         - if product_object.is_a?(Product) && product_object.skus.length > 1
