@@ -2,7 +2,8 @@ class Image < ActiveRecord::Base
   default_scope order('images.id ASC')
 
   attr_accessible               :asset,
-                                :asset_cache
+                                :asset_cache, 
+                                :active
 
   belongs_to                    :imageable, polymorphic: true
 

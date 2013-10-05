@@ -5,7 +5,7 @@ class CarouselsController < ApplicationController
   # Admin 
   def manage
     @carousels = Carousel.all
-    
+     
     respond_to do |format|
       format.html
     end

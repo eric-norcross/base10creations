@@ -7,6 +7,7 @@ Martinfurniture::Application.routes.draw do
   post '/collections/products/:id'        => 'collections#products'
   post '/collections/finishes/:id'        => 'collections#finishes'
   post '/collections/skus_by_finish/:id'  => 'collections#skus_by_finish'
+  post '/images/set_active/:id'           => 'images#set_active'
 
   # Admin Routes
   if Rails.env.production?

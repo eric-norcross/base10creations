@@ -11,6 +11,54 @@ $(document).on("focus", ".clear-input", function(event) {
   }
 });
 
+
+$(document).on("click", ".toggle-image", function(event) {
+  var image = $(this);
+  var id = image.attr("data-id");
+  var active = false;
+
+  if (image.hasClass("disabled")) {
+    active = true;
+  }
+
+  // $.post("/images/set_active/" + id + "?active=" + active, function(data){
+  //   console.log("Set");
+  //   console.log("Image: " + jQuery(image).attr("class"))
+  //   console.log("Active: " + active);
+
+  //   if (active) {
+  //     image.removeClass("disabled");
+  //   } else {
+  //     image.addClass("disabled");
+  //   }
+    
+  //   // $("#compilation-finish").empty();
+  //   // $("#compilation-finish").html(data);
+
+  //   // $("#compilation-skus").empty();
+  //   // $("#compilation-skus").html("Please select a Collection and Finish from above.");
+  // });
+
+  $.ajax({
+    type: "POST",
+    dataType: "script",
+    url: '/images/set_active/' + id,
+    contentType: 'application/json',
+    data: JSON.stringify({ image:{active:active}, _method:'post' })
+  }).done(function(msg) {
+    console.log("Set");
+    console.log("Image: " + jQuery(image).attr("class"))
+    console.log("Active: " + active);
+
+    if (active) {
+      image.removeClass("disabled");
+    } else {
+      image.addClass("disabled");
+    }
+  });
+});
+
+
 // Fallback for placeholder attribute
 $(document).on("blur", ".clear-input", function(event) {
   if (!("placeholder" in document.createElement("input"))) {

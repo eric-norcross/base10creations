@@ -23,7 +23,11 @@
             = cl_image_tag(sku.finish.images.first.asset.filename.to_s, transformation: 'hint', alt: "Finish thumbnail", title: sku.finish.title)
         %td
           - sku.images.each do |image|
-            = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: "Sku thumbnail", title: sku.title)
+            - @status = ""
+            - if image.active == false
+              - @status = "disabled"
+
+            = cl_image_tag(image.asset.filename.to_s, transformation: 'hint', alt: "Sku thumbnail", title: sku.title, "data-id" => image.id, class: "toggle-image #{@status}")
             
         %td.controls
           = link_to 'Show', sku
