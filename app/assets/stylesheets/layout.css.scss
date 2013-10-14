@@ -169,10 +169,13 @@ header.document {
         -moz-border-radius: 15px;
         -webkit-border-radius: 15px;
         color: $headerColor;
-        width: 180px;
-        height: 16px;
         font-size: 9px;
-        padding: 2px 40px 2px 9px;
+        padding: 5px 5px 5px 9px;
+        width: 180px;
+      }
+
+      #product_search {
+        
       }
     }
   }

@@ -22,6 +22,7 @@ and ".next" class respectivly.
 
 .items-container ul {
   position: relative;
+  width: 1000000px;
 }
 
 .items-container ul li {

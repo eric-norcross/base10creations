@@ -29,7 +29,7 @@
 
   .control {
     float: left;
-    @include rem('font-size', 60px);
+    font-size: 60px;
     padding-top: 3%;
    
     a {
@@ -165,7 +165,7 @@
         border-radius: 0;
         border-top-width: 2px;
 
-        @include rem('font-size', 10px);
+        font-size: 10px;
 
         margin-right: 0;
 
@@ -242,7 +242,7 @@
 
         h1 {
           color: $headerColor;
-          @include rem('font-size', 12px);
+          font-size: 12px;
           font-weight: normal;
           margin-bottom: 21px;
         }
@@ -350,12 +350,12 @@
     #videos {
       h1 {
         font-family: $serif;
-        @include rem('font-size', 22px);
+        font-size: 22px;
         margin-bottom: 10px;
       }
 
       p {
-        @include rem('font-size', 12px);
+        font-size: 12px;
         margin-bottom: 20px;
       }
 

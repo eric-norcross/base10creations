@@ -1,8 +1,11 @@
 %li
   - if defined?(element.parent_id) && element.parent_id == 0
     = element.title
-  - else 
+  - elsif element.has_attribute?("link") && element.link != nil
+    = link_to element.title, element.link
+  - else
     = link_to element.title, element
+
   - if defined?(element.children) && !element.children.blank?
     %ul
       - element.children.each do |child|

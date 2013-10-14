@@ -4,14 +4,22 @@ var uploadsCompleted = [];
 // Fallback for placeholder attribute
 $(document).on("focus", ".clear-input", function(event) {
   if (!("placeholder" in document.createElement("input"))) {
-    alert("here")
     if ($(this).val() == $(this).attr("placeholder")) {
       $(this).val("");
     }
   }
 });
 
+// Fallback for placeholder attribute
+$(document).on("blur", ".clear-input", function(event) {
+  if (!("placeholder" in document.createElement("input"))) {
+    if ($(this).val() == ""){
+      $(this).val($(this).attr("placeholder"));
+    }
+  }
+});
 
+// Toggle Compilation images
 $(document).on("click", ".toggle-image", function(event) {
   var image = $(this);
   var id = image.attr("data-id");
@@ -20,24 +28,6 @@ $(document).on("click", ".toggle-image", function(event) {
   if (image.hasClass("disabled")) {
     active = true;
   }
-
-  // $.post("/images/set_active/" + id + "?active=" + active, function(data){
-  //   console.log("Set");
-  //   console.log("Image: " + jQuery(image).attr("class"))
-  //   console.log("Active: " + active);
-
-  //   if (active) {
-  //     image.removeClass("disabled");
-  //   } else {
-  //     image.addClass("disabled");
-  //   }
-    
-  //   // $("#compilation-finish").empty();
-  //   // $("#compilation-finish").html(data);
-
-  //   // $("#compilation-skus").empty();
-  //   // $("#compilation-skus").html("Please select a Collection and Finish from above.");
-  // });
 
   $.ajax({
     type: "POST",
@@ -56,16 +46,6 @@ $(document).on("click", ".toggle-image", function(event) {
       image.addClass("disabled");
     }
   });
-});
-
-
-// Fallback for placeholder attribute
-$(document).on("blur", ".clear-input", function(event) {
-  if (!("placeholder" in document.createElement("input"))) {
-    if ($(this).val() == ""){
-      $(this).val($(this).attr("placeholder"));
-    }
-  }
 });
 
 $(document).on("fileuploadadd", function(event) {
@@ -120,6 +100,7 @@ $(document).ready(function(){
 
   $("a.print").click(function(event) {
     window.print();
+    return event.preventDefault();
   });
   
   $(".gallery").each(function(index) {
@@ -135,6 +116,15 @@ $(document).ready(function(){
 
   uploadsStarted = [];
   uploadsCompleted = [];
+
+  //Sets input value to placeholder text when placeholder isn't supported
+  if (!("placeholder" in document.createElement("input"))) {
+    $(":input").each(function(index, element) {
+      if (!$(this).val() && $(this).attr("placeholder")) {
+        $(this).val($(this).attr("placeholder"));
+      }
+    });
+  }
 
   // $(function() {  
   //   $("textarea[maxlength]").bind('input propertychange', function() {  

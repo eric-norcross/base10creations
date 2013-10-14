@@ -313,11 +313,37 @@ form {
       /*float: left;
       clear: none;*/
       display: inline-block;
+      vertical-align: top;
+      border-width: 0px;
+      border-style: solid;
+      border-color: red;
+    }
 
-      i {
-        margin-top: 13px;
+    .image-field-group {
+      padding-top: 10px; 
+
+      .field {
+        margin: 0px;
+        padding: 3px 0 0 0;
+      }
+
+      .image-box {
+        img {
+          border-color: #aaaaaa;
+          border-style: solid;
+          border-width: 1px;
+        }
+      }
+
+      .remove-fields {
+        a {
+          i {
+            padding: 4px 0 0 5px;
+          }
+        }
       }
     }
+
 
     .inline {
       .field {

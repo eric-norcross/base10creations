@@ -121,14 +121,6 @@ function Gallery(gallery) {
         btnNext.addClass("disabled")
       }
 
-      /*
-      Sets the width of the UL. It would be better to use 
-      "display: inline-block" or even set this with css
-      and not have to set here, but IE sucks. And this is 
-      easier than the alternatives.
-      */
-      itemsList.width(1000000);
-
       // console.log("itemsList.width(): "  + itemsList.width());
       // console.log("itemsList.height(): " + itemsList.height());
       // console.log("totalItems: "         + items.length);
