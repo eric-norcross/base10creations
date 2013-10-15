@@ -77,6 +77,33 @@
         width: 35px;
       }
 
+      .tooltip {
+        margin-left: 3px;
+        margin-top: -2px;
+        
+        .tooltip-arrow {
+          border-bottom-color: $headerColor;
+        }
+
+        .tooltip-inner {
+          background-color: #fff;
+          border-color: $headerColor;
+          border-style: solid;
+          border-width: 1px;
+
+          li {
+            margin: 5px;
+
+            img,
+            svg {
+              margin-left: 0px;
+              height: 25px;
+              width: 25px;
+            }
+          }
+        }
+      }
+
       a:hover {
         text-decoration: none !important;
       }

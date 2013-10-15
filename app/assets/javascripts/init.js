@@ -1,5 +1,36 @@
 var uploadsStarted = [];
 var uploadsCompleted = [];
+var timer;
+
+// $(document).on("click", ".share", function(event) {
+//   if ($(this).attr("data-link")) {
+//     console.log($(this).attr("data-link"))
+//     window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+//       'facebook-share-dialog', 
+//       'width=626,height=436');
+//   }
+
+//   return event.preventDefault(); 
+// })
+
+$(document).on("mouseenter", ".tooltip", function(event) {
+  //console.log("TT enter")
+
+  if (timer) {
+    timer.stop();
+  }
+});
+
+$(document).on("mouseleave", ".tooltip", function(event) {
+  //console.log("TT leave")
+
+  timer = $.timer(function() {
+    //console.log('This message was sent by a timer.');
+    $('.tt').tooltip('hide');
+  });
+
+  timer.set({ time : 3000, autostart : true });
+});
 
 // Fallback for placeholder attribute
 $(document).on("focus", ".clear-input", function(event) {
@@ -125,6 +156,20 @@ $(document).ready(function(){
       }
     });
   }
+
+  $('.tt').tooltip({    
+    //selector: "a[rel=tooltip]"
+    html: true,
+    placement: "bottom",
+    trigger: "click", 
+    animation: true
+  })
+
+  $('.tt').click(function(event) {
+    return event.preventDefault();
+  })
+
+
 
   // $(function() {  
   //   $("textarea[maxlength]").bind('input propertychange', function() {  

@@ -114,6 +114,49 @@ p {
   line-height: 14px;
 }
 
+.colored,
+.colored a:hover {
+  /*
+  svg#facebook {
+    path {
+      fill: $headerColor;
+      stroke: $headerColor;
+    }
+  }
+
+  svg#google-plus {
+    path {
+      fill: $headerColor;
+      stroke: $headerColor;
+    }
+  }
+  */
+
+  svg#pinterest {
+    path {
+      fill: #CB2027;
+      stroke: #CB2027;
+    }
+  }
+
+  svg#twitter {
+    path {
+      fill: #4099FF;
+      stroke: #4099FF;
+    }
+  }
+
+  svg#email {
+    rect {
+      fill: $linkColor;
+    }
+
+    path {
+      fill: $linkColor;
+    }
+  }
+}
+
 #messages {
   font-weight: bold;
   font-size: 11px;

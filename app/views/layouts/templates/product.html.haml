@@ -15,7 +15,7 @@
           %h3
             = @product.title
         #icons
-          = link_to "#" do 
+          = link_to "#", :"data-toggle" => "tooltip", title: "#{render 'layouts/partials/tooltip'}", class: "tt" do 
             = render :partial => '/layouts/svg/share'
           = link_to "#", class: "print" do 
             = render :partial => '/layouts/svg/print'

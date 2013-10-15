@@ -1,0 +1,16 @@
+%ul
+  %li
+    = link_to "#", target: "_blank", class: "share", onclick: "window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" do
+      = render '/layouts/svg/facebook'
+  %li.colored
+    = link_to "#", target: "_blank", class: "share", :"data-link" => "" do
+      = render '/layouts/svg/pinterest' 
+  %li.colored
+    = link_to "#", target: "_blank", class: "share", :"data-link" => "" do
+      = render '/layouts/svg/twitter'
+  %li
+    = link_to "#", target: "_blank", class: "share", :"data-link" => "" do 
+      = render '/layouts/svg/google_plus'
+  %li.colored
+    = link_to "#", target: "_blank", class: "share", :"data-link" => "" do 
+      = render '/layouts/svg/email'
