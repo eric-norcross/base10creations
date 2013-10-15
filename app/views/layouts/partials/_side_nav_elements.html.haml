@@ -1,7 +1,7 @@
 %li
   - if defined?(element.parent_id) && element.parent_id == 0
     = element.title
-  - elsif element.has_attribute?("link") && element.link != nil
+  - elsif element.has_attribute?("link") && element.link != nil && element.link != ""
     = link_to element.title, element.link
   - else
     = link_to element.title, element
