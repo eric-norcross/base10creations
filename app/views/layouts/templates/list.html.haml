@@ -3,7 +3,7 @@
 .page#list-view
   %article
     - if @products.length == 0
-      No products are avaliable for your selection.
+      No products are available for your selection.
     %ul
       - @products.each do |product|
         = render template_picker(product), product: product

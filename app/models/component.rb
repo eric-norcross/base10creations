@@ -66,7 +66,10 @@ class Component < ActiveRecord::Base
   end
 
   def categories
-    @categories = [category]
+    @categories = []
+
+    @categories.push(category) if category
+    
     if parent_id > 0
       @categories.push(parent.categories)
     end
