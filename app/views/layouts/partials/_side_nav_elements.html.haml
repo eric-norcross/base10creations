@@ -1,7 +1,10 @@
-%li
-  - if defined?(element.parent_id) && element.parent_id == 0
-    = element.title
-  - elsif element.has_attribute?("link") && element.link != nil && element.link != ""
+- if @expanded && element.id == @expanded.id
+  - @class = "expanded"
+- else
+  - @class = nil
+
+%li{class: @class}
+  - if element.has_attribute?("link") && element.link != nil && element.link != ""
     = link_to element.title, element.link
   - else
     = link_to element.title, element

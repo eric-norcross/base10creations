@@ -374,6 +374,11 @@ nav#side {
   width: 220px; //15%;
 
   ul {
+    li.expanded ul,
+    li:hover ul {
+      display: block;
+    }
+
     li {
       color: $headerColor;
       font-family: $serif;
@@ -393,6 +398,7 @@ nav#side {
       }
 
       ul {
+        display: none;
         margin: 15px 0 0 10px;
 
         li {

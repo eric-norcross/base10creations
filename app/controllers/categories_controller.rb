@@ -23,6 +23,7 @@ class CategoriesController < ApplicationController
 
     # Set up side nav
     @side_nav_elements = Category.all
+    @expanded = @category
 
     # Get Products & Compilations
     @products = Component.products_and_compilations(@category.component_ids).sort_by! {|p| p.collection.title}

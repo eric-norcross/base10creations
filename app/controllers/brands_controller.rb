@@ -15,12 +15,14 @@ class BrandsController < ApplicationController
     @side_nav_elements = @brands
     @products = @brands
 
+
     render "layouts/templates/list"
   end
 
   def show
     @side_nav_elements = Brand.all
-
+    @expanded = @barnd
+    
     @products = @brand.products_and_compilations.sort_by! {|p| p.collection.title}
 
     render "layouts/templates/list"

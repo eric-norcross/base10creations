@@ -23,6 +23,7 @@ class ComponentsController < ApplicationController
 
     # Set up side nav
     @side_nav_elements = @component.siblings
+    @expanded = @component
 
     # Get Products & Compilations
     @component_ids = [params[:id]]

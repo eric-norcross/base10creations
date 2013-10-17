@@ -36,6 +36,7 @@ class CollectionsController < ApplicationController
 
   def show
     @side_nav_elements = Collection.all
+    @expanded = @collection
 
     @products = Collection.products_and_compilations(params[:id]).sort_by! {|p| p.collection.title}
 

@@ -19,6 +19,7 @@ class FinishesController < ApplicationController
 
   def show
     @side_nav_elements = Finish.all
+    @expanded = @finish
     
     @products = Finish.skus(params[:id]) + Finish.compilations(params[:id])
 
