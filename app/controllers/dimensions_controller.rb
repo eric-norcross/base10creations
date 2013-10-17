@@ -8,6 +8,14 @@ class DimensionsController < ApplicationController
     end
   end
 
+  def set
+    # Update records that match our conditions
+    Dimension.where(title: "Overall Dimensions").update_all("title='Overall', name='overall'")
+    # Dimension.update_all( "name = 'overall', title = 'Overall'", "title LIKE '%Rails%'" )
+    flash[:notice] = 'All records have been updated.'
+    redirect_to :back
+  end
+
 
   # REST Routes
   # def index
