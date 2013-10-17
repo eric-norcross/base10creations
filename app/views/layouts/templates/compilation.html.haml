@@ -15,7 +15,7 @@
               sku
 
             - @compilation.skus.each do |sku|
-              %span.comma= link_to "##{sku.title}", sku_path
+              %span.comma= link_to "##{sku.title}", sku
           %h2
             = association(@compilation, @compilation.finish)
           %h3
