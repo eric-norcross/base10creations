@@ -18,15 +18,16 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    # Get Component 
-    # @category = Category.find(params[:id])
-
-    # Set up side nav
+    # # Set up side nav
     @side_nav_elements = Category.all
     @expanded = @category
 
     # Get Products & Compilations
-    @products = Component.products_and_compilations(@category.component_ids).sort_by! {|p| p.collection.title}
+    if params[:collection_id] && params[:finish_id]
+      @products = @category.also_available_in(params[:collection_id], params[:finish_id])
+    else
+      @products = Component.products_and_compilations(@category.component_ids).sort_by! {|p| p.collection.title}
+    end
 
     render "layouts/templates/list"
   end

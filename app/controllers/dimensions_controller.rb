@@ -67,7 +67,7 @@ class DimensionsController < ApplicationController
 
     respond_to do |format|
       if @dimension.update_attributes(params[:dimension])
-        format.html { redirect_to dimensions_url, notice: 'Dimension was successfully updated.' }
+        format.html { redirect_to manage_dimensions_path, notice: 'Dimension was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -79,7 +79,7 @@ class DimensionsController < ApplicationController
     @dimension.destroy
 
     respond_to do |format|
-      format.html { redirect_to dimensions_url }
+      format.html { redirect_to manage_dimensions_path }
       format.json { head :no_content }
     end
   end

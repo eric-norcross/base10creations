@@ -27,26 +27,50 @@ class Category < ActiveRecord::Base
 
   before_save                   :create_name
 
-  def products
-    @product_ids = ProductComponent.where(component_id: component_ids).map{|product| product.id}
-    return Product.where(id: @product_ids)
+  def products(collection_id = nil)
+    # Rails.logger.debug "DEBUG: component_ids: #{component_ids}"
+
+    product_ids = ProductComponent.where(component_id: component_ids).map{|product_component| product_component.product_id}
+
+    conditions = {}
+    conditions[:id] = product_ids.uniq
+    conditions[:collection_id] = collection_id unless collection_id.blank?
+
+    thing = Product.find(:all, conditions: conditions)
+
+    return thing
   end
 
-  def compilations
-    @compilation_ids = []
+  def compilations(collection_id = nil)
+    compilation_ids = []
     products.each do |product| 
       product.skus.each do |sku|
-        if (sku.compilation_id)
-          @compilation_ids.push(sku.compilation_id) unless @compilation_ids.include?(sku.compilation_id)
-        end
+        compilation_ids.push(sku.compilation_ids)
       end
     end
 
-    return Compilation.where(id: @compilation_ids)
+    conditions = {}
+    conditions[:id] = compilation_ids.uniq
+    conditions[:collection_id] = collection_id unless collection_id.blank?
+
+    return Compilation.find(:all, conditions: conditions)
   end
 
-  def products_and_compilations
-    return products + compilations
+  def products_and_compilations(collection_id = nil)
+    return products(collection_id) + compilations(collection_id)
+  end
+
+  def also_available_in(collection_id, finish_id)
+    finish_id = finish_id.to_i
+
+    product_skus = []
+    products(collection_id).each do |product|
+      product.skus.each do |sku|
+        product_skus.push(sku) if sku.finish_id == finish_id
+      end
+    end
+
+    return product_skus + compilations(collection_id).delete_if{|compilation| compilation.finish_id != finish_id}
   end
 
   def path

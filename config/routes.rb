@@ -96,7 +96,6 @@ Martinfurniture::Application.routes.draw do
 
 
   # General Routes
-
   resources :finishes do
     resources :images
   end

@@ -45,7 +45,7 @@
           %ul
             - categories.each do |category|
               %li
-                = link_to category.title, category_path(category.id)
+                = link_to category.title, category_path(id: category.id, collection_id: product_object.collection_id, finish_id: @sku.finish_id)
 
         .button
           = link_to "Find a Retailer", locations_path

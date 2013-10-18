@@ -2,8 +2,9 @@
 
 .page#list-view
   %article
-    - if @products.length == 0
+    - if @products.blank?
       No products are available for your selection.
-    %ul
-      - @products.each do |product|
-        = render template_picker(product), product: product
+    - else 
+      %ul
+        - @products.each do |product|
+          = render template_picker(product), product: product
