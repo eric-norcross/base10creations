@@ -6,6 +6,7 @@ class Collection < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title,
                                 :description,
+                                :link,
 
                                 ## belongs_to ##
 
@@ -73,7 +74,11 @@ class Collection < ActiveRecord::Base
   end
 
   def path
-    return collection_path(id)
+    if link && link != ""
+      return link
+    else
+      return collection_path(id)
+    end
   end
 
   def list_image

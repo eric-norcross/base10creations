@@ -6,6 +6,7 @@ class Brand < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title,
                                 :description,
+                                :link,
 
                                 ##belongs_to##
 
@@ -44,7 +45,11 @@ class Brand < ActiveRecord::Base
   end
 
   def path
-    return brand_path(id)
+    if link && link != ""
+      return link
+    else
+      return brand_path(id)
+    end
   end
 
   def list_image

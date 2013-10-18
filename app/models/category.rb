@@ -5,6 +5,7 @@ class Category < ActiveRecord::Base
   
   attr_accessible               :name, 
                                 :title, 
+                                :link,
 
                                 ##belongs_to##
 
@@ -49,7 +50,11 @@ class Category < ActiveRecord::Base
   end
 
   def path
-    return category_path(id)
+    if link && link != ""
+      return link
+    else
+      return category_path(id)
+    end
   end
 
   def list_image

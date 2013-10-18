@@ -66,7 +66,7 @@
                 %ul
                   - column.each do |collection|
                     %li
-                      = link_to collection.title, collection
+                      = link_to collection.title, collection.path
       %li#styles
         = link_to "Styles", "#", :class => ( 'active' if @active == "styles" )
         .subnav
@@ -76,6 +76,6 @@
                 %ul
                   - column.each do |style|
                     %li
-                      = link_to style.title, style
+                      = link_to style.title, style.path
       %li#brands
-        = link_to "kathy ireland™ Home", brand_path(1), :class => ( 'active' if @active == "KIHome" )
+        = link_to "kathy ireland™ Home", Brand.find(1).path, :class => ( 'active' if @active == "KIHome" )

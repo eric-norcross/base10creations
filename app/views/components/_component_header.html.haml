@@ -1,5 +1,5 @@
 %li
-  = link_to element.title, element
+  = link_to element.title, element.path
   - if !element.children.blank?
     %ul
       - element.children.each do |child|

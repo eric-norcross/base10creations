@@ -13,6 +13,13 @@
     .field.required
       = f.label :title
       = f.text_field :title
+      
+    .field
+      = f.label :link
+      = f.text_field :link
+
+      %div.instructions.link
+        (If used, "Link" will connect directly without displaying the contents of this page. Prefix "http://" to all external links. Use "/" for all internal. e.g.: "/locations")
 
     #collection-image.singular-addable
       .addable-group.images

@@ -6,6 +6,7 @@ class Style < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title,
                                 :description,
+                                :link,
 
                                 ## belongs_to ##
 
@@ -42,7 +43,11 @@ class Style < ActiveRecord::Base
   end
 
   def path
-    return style_path(id)
+    if link && link != ""
+      return link
+    else
+      return style_path(id)
+    end
   end
 
   def list_image
