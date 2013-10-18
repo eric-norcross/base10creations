@@ -91,6 +91,16 @@
           border-style: solid;
           border-width: 1px;
 
+          li#pinterest-button {
+            a {
+              display: block !important;
+              height: 25px !important;
+              width: 25px !important;
+              margin-bottom: -25px !important;
+              background-image: none !important;
+            }
+          }
+
           li {
             margin: 5px;
 
