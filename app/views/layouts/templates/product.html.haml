@@ -15,12 +15,12 @@
           %h3
             = @product.title
         #icons
-          = link_to "#", :"data-toggle" => "tooltip", title: "#{render 'layouts/partials/tooltip'}", class: "tt" do 
+          = link_to "#", :"data-toggle" => "tooltip", title: "#{render 'layouts/partials/tooltip', product: @product}", class: "tt" do 
             = render '/layouts/svg/share'
           = link_to "#", class: "print" do 
             = render '/layouts/svg/print'
 
-      = render "layouts/partials/product_tabs", product_object: @product, videos: @product.videos, feature_set: [@product], collection: @product.collection, categories: @product.collection.categories
+      = render "layouts/partials/product_tabs", product_object: @product, videos: @product.videos, feature_set: [@product], collection: @product.collection, categories: @product.collection.categories, collection_id: @product.collection_id, finish_id: @sku.finish_id
 
     - unless @related.blank?
       = render "layouts/partials/product_footer", finish: @sku.finish

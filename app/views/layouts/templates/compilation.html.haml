@@ -21,11 +21,11 @@
           %h3
             = @compilation.title
         #icons
-          = link_to "#" do 
+          = link_to "#", :"data-toggle" => "tooltip", title: "#{render 'layouts/partials/tooltip', product: @compilation}", class: "tt" do 
             = render :partial => '/layouts/svg/share'
           = link_to "#", class: "print" do 
             = render :partial => '/layouts/svg/print'
 
-      = render "layouts/partials/product_tabs", product_object: @compilation, videos: @compilation.videos, feature_set: @compilation.products, collection: @compilation.collection, categories: @compilation.categories
+      = render "layouts/partials/product_tabs", product_object: @compilation, videos: @compilation.videos, feature_set: @compilation.products, collection: @compilation.collection, categories: @compilation.categories, collection_id: @compilation.collection_id, finish_id: @compilation.finish_id
         
     = render "layouts/partials/product_footer", finish: @compilation.finish

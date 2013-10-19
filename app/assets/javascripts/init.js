@@ -13,24 +13,26 @@ var timer;
 //   return event.preventDefault(); 
 // })
 
-$(document).on("mouseenter", ".tooltip", function(event) {
-  //console.log("TT enter")
+$(document).on("mouseenter", ".tooltip", clearTimer);
+$(document).on("mouseleave", ".tooltip", setToolTipTimeout);
+$(document).on("mouseleave", "#share", setToolTipTimeout);
 
+function clearTimer() {
   if (timer) {
     timer.stop();
+    timer = null;
   }
-});
+}
 
-$(document).on("mouseleave", ".tooltip", function(event) {
-  //console.log("TT leave")
+function setToolTipTimeout() {
+  clearTimer();
 
   timer = $.timer(function() {
-    //console.log('This message was sent by a timer.');
     $('.tt').tooltip('hide');
   });
 
   timer.set({ time : 3000, autostart : true });
-});
+}
 
 // Fallback for placeholder attribute
 $(document).on("focus", ".clear-input", function(event) {
