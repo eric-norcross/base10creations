@@ -24,6 +24,7 @@ class Category < ActiveRecord::Base
 
 
   validates_presence_of         :title
+  validates                     :link, :format => /(^$)|(^(http:\/\/|https:\/\/|\/))/ix 
 
   before_save                   :create_name
 

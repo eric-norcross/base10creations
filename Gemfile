@@ -42,28 +42,37 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 group :development do
   gem 'awesome_print', :require => 'ap'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
   
-  gem 'rspec-rails',        :git => 'git://github.com/rspec/rspec-rails.git'
-  gem 'rspec',              :git => 'git://github.com/rspec/rspec.git'
-  gem 'rspec-core',         :git => 'git://github.com/rspec/rspec-core.git'
-  gem 'rspec-expectations', :git => 'git://github.com/rspec/rspec-expectations.git'
-  gem 'rspec-mocks',        :git => 'git://github.com/rspec/rspec-mocks.git'
-  #gem 'sqlite3-ruby', :require => 'sqlite3'
+  # gem 'rspec-rails',        :git => 'git://github.com/rspec/rspec-rails.git'
+  # gem 'rspec',              :git => 'git://github.com/rspec/rspec.git'
+  # gem 'rspec-core',         :git => 'git://github.com/rspec/rspec-core.git'
+  # gem 'rspec-expectations', :git => 'git://github.com/rspec/rspec-expectations.git'
+  # gem 'rspec-mocks',        :git => 'git://github.com/rspec/rspec-mocks.git'
+  # # gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
 group :test do
-  gem 'rspec-rails',        :git => 'git://github.com/rspec/rspec-rails.git'
-  gem 'rspec',              :git => 'git://github.com/rspec/rspec.git'
-  gem 'rspec-core',         :git => 'git://github.com/rspec/rspec-core.git'
-  gem 'rspec-expectations', :git => 'git://github.com/rspec/rspec-expectations.git'
-  gem 'rspec-mocks',        :git => 'git://github.com/rspec/rspec-mocks.git'
-  gem 'webrat', '0.7.1'
-  #gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+  # gem 'rspec-rails',        :git => 'git://github.com/rspec/rspec-rails.git'
+  # gem 'rspec',              :git => 'git://github.com/rspec/rspec.git'
+  # gem 'rspec-core',         :git => 'git://github.com/rspec/rspec-core.git'
+  # gem 'rspec-expectations', :git => 'git://github.com/rspec/rspec-expectations.git'
+  # gem 'rspec-mocks',        :git => 'git://github.com/rspec/rspec-mocks.git'
+  # gem 'webrat', '0.7.1'
+  # # gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
 # To use ActiveModel has_secure_password
