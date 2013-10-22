@@ -4,7 +4,4 @@ class CollectionStyle < ActiveRecord::Base
 
   belongs_to      :collection
   belongs_to      :style
-
-  validates       :collection_id, presence: true
-  validates       :style_id,      presence: true
 end

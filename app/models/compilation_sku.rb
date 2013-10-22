@@ -4,8 +4,5 @@ class CompilationSku < ActiveRecord::Base
 
   belongs_to      :compilation
   belongs_to      :sku
-
-  validates       :compilation_id,  presence: true
-  validates       :sku_id,          presence: true
 end
 

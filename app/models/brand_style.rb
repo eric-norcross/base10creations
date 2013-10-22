@@ -4,7 +4,4 @@ class BrandStyle < ActiveRecord::Base
 
   belongs_to      :brand
   belongs_to      :style
-
-  validates       :brand_id,    presence: true
-  validates       :style_id,    presence: true
 end
