@@ -14,4 +14,4 @@
       = f.fields_for :figures do |figure_builder|
         = render 'figures/figure_fields', f: figure_builder, options: @figure_options
     .addable.admin-button
-      = link_to_add_fields({ name: "Add Figures", f: f, container: "carousel-figures-#{unique_id}", association: :figures, child_association: :images, options: @figure_options })
+      = link_to_add_fields({ name: "Add Figures", f: f, container: "carousel-figures-#{unique_id}", association: :figures, nested: [ { association: :images } ], options: @figure_options })

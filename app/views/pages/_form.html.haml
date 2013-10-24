@@ -43,7 +43,7 @@
         = f.fields_for :carousels, false do |carousel|
           = render 'carousels/carousel_fields', f: carousel, options: @carousel_options
       .addable.admin-button
-        = link_to_add_fields({ name: "Add Carousel", f: f, association: :carousels, container: "carousels", child_association: :figures, options: @carousel_options })
+        = link_to_add_fields2({ name: "Add Carousel", f: f, association: :carousels, nested: [ { association: :figures, nested: [ { association: :images } ] } ],  container: "carousels",  options: @carousel_options })
 
 
   %fieldset{id: "figures-fields"}
@@ -55,7 +55,7 @@
         = f.fields_for :figures, false do |figure|
           = render 'figures/figure_fields', f: figure, options: @figure_options
       .addable.admin-button
-        = link_to_add_fields({ name: "Add Figure", f: f, association: :figures, container: "figures", child_association: :images, options: @figure_options })
+        = link_to_add_fields({ name: "Add Figure", f: f, association: :figures, nested: [ { association: :images } ], container: "figures", options: @figure_options })
       
   .actions
     = f.submit 'Save'

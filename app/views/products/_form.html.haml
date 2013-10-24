@@ -67,7 +67,7 @@
         = f.fields_for :dimensions, false do |dimension|
           = render 'dimensions/dimension_fields', f: dimension, options: @dimension_options
       .addable.admin-button
-        = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, container: "dimensions", child_association: :images, options: @dimension_options })    
+        = link_to_add_fields({ name: "Add Dimension", f: f, association: :dimensions, nested: [ { association: :images } ], container: "dimensions", options: @dimension_options })    
   
 
   %fieldset{id: "videos-fields"}
@@ -91,7 +91,7 @@
         = f.fields_for :skus do |sku_builder|
           = render 'skus/sku_fields', f: sku_builder, options: @sku_options
       .addable.admin-button
-        = link_to_add_fields({ name: "Add Skus", f: f, container: "skus", association: :skus, child_association: :images, options: @sku_options })
+        = link_to_add_fields({ name: "Add Skus", f: f, container: "skus", association: :skus, nested: [ { association: :images } ], options: @sku_options })
 
   .actions
     = f.submit 'Save'
