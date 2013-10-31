@@ -1,8 +1,8 @@
 require 'faker'
 
 FactoryGirl.define do
-  factory :category do |f|
+  factory :category do
     # f.title { Faker::Name.title }
-    f.title "Bedroom"
+    title "Bedroom Sets"
   end
 end

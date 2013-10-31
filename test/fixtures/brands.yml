@@ -1,0 +1,13 @@
+martin_home_furnishings:
+  name:         martin-home-funishings
+  title:        Martin Home Furnishings
+  description:  The original Martin collection
+  link:         
+  brand_styles: one
+
+no_styles:
+  name:         martin-home-funishings
+  title:        Martin Home Furnishings
+  description:  The original Martin collection
+  link:         
+  # brand_styles: modern, contemporary, traditional

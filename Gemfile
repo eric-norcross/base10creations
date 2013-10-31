@@ -42,10 +42,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-end
+# group :development, :test do
+#   gem 'minitest-rails'
+#   # gem 'rspec-rails'
+#   # gem 'factory_girl_rails', "~> 4.0"
+# end
 
 group :development do
   gem 'awesome_print', :require => 'ap'
@@ -62,10 +63,14 @@ group :development do
 end
 
 group :test do
-  gem 'faker'
-  gem 'capybara'
-  gem 'guard-rspec'
-  gem 'launchy'
+  gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
+  gem 'minitest-focus'
+  # gem 'faker'
+  # gem 'capybara'
+  # gem 'guard-rspec'
+  # gem 'launchy'
   # gem 'rspec-rails',        :git => 'git://github.com/rspec/rspec-rails.git'
   # gem 'rspec',              :git => 'git://github.com/rspec/rspec.git'
   # gem 'rspec-core',         :git => 'git://github.com/rspec/rspec-core.git'

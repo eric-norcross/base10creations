@@ -19,10 +19,18 @@ describe Category do
 		FactoryGirl.build(:category, link: nil).should be_valid
 	end
 
-	it 'only accepts "http://", "https://", and "/" prefixed to links' do
-		FactoryGirl.build(:category, link: "http://").should be_valid
-		FactoryGirl.build(:category, link: "https://").should be_valid
-		FactoryGirl.build(:category, link: "/").should be_valid
-		FactoryGirl.build(:category, link: "locations/10").should_not be_valid
+	it 'accepts blank for link' do
+		FactoryGirl.build(:category, link: "").should be_valid
+	end
+
+	it 'only accepts "http://", "https://", and "/" prefixed to links when filled in' do
+		# valid
+    FactoryGirl.build(:category, link: "http://").should be_valid
+    FactoryGirl.build(:category, link: "https://").should be_valid
+    FactoryGirl.build(:category, link: "/").should be_valid
+    
+    # invalid
+    FactoryGirl.build(:category, link: "locations/10").should_not be_valid
+    FactoryGirl.build(:category, link: "lskdfjldskf").should_not be_valid
 	end
 end
