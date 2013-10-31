@@ -27,6 +27,7 @@ class Collection < ActiveRecord::Base
   
   validates_presence_of         :title
   validates_presence_of         :description
+  validates                     :link, :format => /(^$)|(^(http:\/\/|https:\/\/|\/))/ix
 
   before_save                   :create_name
 

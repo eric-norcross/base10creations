@@ -27,6 +27,7 @@ class Brand < ActiveRecord::Base
   accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:link].blank?}, allow_destroy: true
 
   validates_presence_of         :title
+  validates                     :link, :format => /(^$)|(^(http:\/\/|https:\/\/|\/))/ix
   validates_presence_of         :styles
 
   before_save                   :create_name

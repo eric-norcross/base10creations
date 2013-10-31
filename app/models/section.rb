@@ -16,8 +16,10 @@ class Section < ActiveRecord::Base
 
   belongs_to                    :skin
 
-  validates_presence_of         :skin
+  
   validates_presence_of         :title
+  validates                     :link, :format => /(^$)|(^(http:\/\/|https:\/\/|\/))/ix
+  validates_presence_of         :skin
   validate                      :cannot_assign_to_self
 
   before_save                   :create_name
