@@ -97,15 +97,15 @@ class Compilation < ActiveRecord::Base
   end
 
   def gallery_items
-    @skus_images = []
+    skus_images = []
 
     skus.each do |gallery_sku|
       gallery_sku.images.each do |sku_image|
-        @skus_images.push(sku_image) unless @skus_images.include?(sku_image)
+        skus_images.push(sku_image) unless skus_images.include?(sku_image) || !sku_image.active
       end
     end
 
-    return images + @skus_images + finish.images
+    return images + skus_images + finish.images
   end
 
   def videos

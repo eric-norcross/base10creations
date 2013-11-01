@@ -22,13 +22,18 @@
 
   - if current_admin
     %h1
-      Sanatize:
+      Manage Admin Features:
     %ul
-      %li= link_to "Dimensions",      manage_dimensions_path
-      %li= link_to "Features",        manage_products_features_path
-      %li= link_to "Set Overall",     manage_dimensions_set_overall_path
+      %li= link_to "Dimensions",          manage_dimensions_path
+      %li= link_to "Features",            manage_products_features_path
+    
+    %h1
+      Tools
+    %ul
+      %li= link_to "Set Dimension Name",  manage_dimensions_set_overall_path
+      %li= link_to "Set Images Active",   manage_images_active_path
 
     %h1
-      Searchable Records:
+      Update Searchable Records:
     %ul
       %li= link_to "Update All",      update_searches_path

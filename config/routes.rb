@@ -35,10 +35,11 @@ Martinfurniture::Application.routes.draw do
     post 'admin/editors'       => 'editors#create',                   as: :editors
     delete 'admin/editors/:id' => 'editors#destroy',                  as: :destroy_editor
 
-    #For data sanitization
+    #For data tools
     get 'admin/dimensions'     => 'dimensions#manage',                as: :manage_dimensions
     get 'dimensions/set'       => 'dimensions#set',                   as: :manage_dimensions_set_overall
     get 'admin/features'       => 'products#manage_product_features', as: :manage_products_features
+    get 'images/set'           => 'images#set_nil_active_to_true',    as: :manage_images_active
     
     # Update Search Relations
     get 'searchs/update'       => 'searches#update',                  as: :update_searches
