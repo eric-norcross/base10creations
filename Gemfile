@@ -42,11 +42,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-# group :development, :test do
-#   gem 'minitest-rails'
-#   # gem 'rspec-rails'
-#   # gem 'factory_girl_rails', "~> 4.0"
-# end
+group :development, :test do
+  # gem 'minitest-rails'
+  # # gem 'rspec-rails'
+  # # gem 'factory_girl_rails', "~> 4.0"
+  gem 'rspec-rails'
+  gem 'fabrication'
+end
 
 group :development do
   gem 'awesome_print', :require => 'ap'
