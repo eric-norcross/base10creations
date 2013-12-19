@@ -64,6 +64,7 @@ class SectionsController < ApplicationController
 
   def destroy
     # @section = Section.find(params[:id])
+    
     @section.destroy
 
     redirect_to manage_sections_path

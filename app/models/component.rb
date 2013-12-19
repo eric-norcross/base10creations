@@ -6,6 +6,7 @@ class Component < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title,
                                 :parent_id,
+                                :active,
 
                                 ## belongs_to ##
                                 :category_id,
@@ -32,6 +33,7 @@ class Component < ActiveRecord::Base
   validate                      :cannot_assign_to_self
 
   before_save                   :create_name
+  before_destroy                :update_children
 
   def cannot_assign_to_self
     errors.add :base, "You cannot add a Component as a parent of it's self." if self.parent_id == self.id
@@ -75,6 +77,12 @@ class Component < ActiveRecord::Base
     end
 
     return @categories.flatten.uniq
+  end
+
+  def update_children
+    children.each do |child|
+      child.update_attributes(:parent_id => 0, :active => false)
+    end
   end
 
   def self.products_and_compilations(component_ids)

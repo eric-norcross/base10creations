@@ -19,7 +19,7 @@
           %th
       %tbody
         - @components.each do |component|
-          %tr
+          %tr{class: ("inactive" unless component.active)}
             %td= component.id
             %td= component.title
             %td= component.categories.map{|category| category.title}.join(", ")

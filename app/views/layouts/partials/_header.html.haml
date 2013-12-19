@@ -52,10 +52,7 @@
                     = category.title
                   %ul
                     - category.components.each do |component|
-                      / %li
-                      /   = link_to component.title, component
-                      - if component.parent_id.blank? || component.parent_id == 0 || component.patriarch.category_id != category.id
-                        = render "components/component_header", element: component
+                      = render "components/component_header", element: component, category: category
 
       %li#collections
         = link_to "Collections", "#", :class => ( 'active' if @active == "collections" )

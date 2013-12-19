@@ -8,6 +8,7 @@ class Section < ActiveRecord::Base
                                 :content,
                                 :link,
                                 :parent_id,
+                                :active,
 
                                 ##belongs_to##
                                 :skin_id
@@ -24,6 +25,8 @@ class Section < ActiveRecord::Base
 
   before_save                   :create_name
 
+  before_destroy                :update_children
+
   def cannot_assign_to_self
     errors.add :base, "You cannot add a Section as a parent of it's self." if self.parent_id == self.id
   end
@@ -33,6 +36,12 @@ class Section < ActiveRecord::Base
       return self
     else 
       return parent.patriarch
+    end
+  end
+
+  def update_children
+    children.each do |child|
+      child.update_attributes(:parent_id => 0, :active => false)
     end
   end
   

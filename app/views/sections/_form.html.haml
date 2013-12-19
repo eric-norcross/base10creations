@@ -13,6 +13,10 @@
       Section
 
     .field
+      = f.label :active
+      = f.check_box :active, {checked: checked(f.object.active)}
+
+    .field
       = f.label :parent_id, "Parent Section"
       %select{id: "section_parent_id", name: "section[parent_id]"}
         %option

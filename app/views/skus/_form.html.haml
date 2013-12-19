@@ -1,6 +1,6 @@
 = form_for @sku, :html => { :multipart => true } do |f|
   - if @sku.errors.any?
-    #error_explanation
+    #error-explanation
       %h1
         = "#{pluralize(@sku.errors.count, "error")} prohibited this sku from being saved:"
       %ul

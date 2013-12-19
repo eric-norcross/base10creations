@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031213525) do
+ActiveRecord::Schema.define(:version => 20131218045416) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -139,10 +139,11 @@ ActiveRecord::Schema.define(:version => 20131031213525) do
   create_table "components", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "category_id"
     t.integer  "parent_id"
+    t.boolean  "active",      :default => true
   end
 
   create_table "dimensions", :force => true do |t|
@@ -268,12 +269,13 @@ ActiveRecord::Schema.define(:version => 20131031213525) do
   create_table "sections", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.text     "content"
     t.integer  "parent_id"
     t.integer  "skin_id"
     t.string   "link"
+    t.boolean  "active",     :default => true
   end
 
   create_table "skins", :force => true do |t|

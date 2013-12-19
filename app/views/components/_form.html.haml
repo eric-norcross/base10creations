@@ -1,6 +1,6 @@
 = form_for @component do |f|
   - if @component.errors.any?
-    #error_explanation
+    #error-explanation
       %h1
         = "#{pluralize(@component.errors.count, "error")} prohibited this component from being saved:"
       %ul
@@ -11,6 +11,10 @@
   %fieldset
     %legend
       Component
+
+    .field
+      = f.label :active
+      = f.check_box :active, {checked: checked(f.object.active)}
 
     .field.required
       = f.label :category_id, "Category"

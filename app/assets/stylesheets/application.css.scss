@@ -8,8 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require bootstrap
  *= require baseline
+ *= require bootstrap
  *= require base10creations/gallery_required
  *= require base10creations/LiteBox-required
  *= require font-awesome
@@ -18,7 +18,6 @@
 
 */
 
-@import 'baseline.css.scss';
 @import 'rem.css.scss';
 @import 'common.css.scss';
 @import 'admin.css.scss';

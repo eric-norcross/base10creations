@@ -6,7 +6,7 @@
           = link_to related_product.path, { title: related_product.title } do
             = cl_image_tag(related_product.list_image, transformation: "related", alt: related_product.list_image, title: related_product.title)
           .product-info
-            %hgroup
+            .hgroup
               %h1
                 = link_to association(related_product, related_product.finish), related_product.path
               %h2
@@ -30,7 +30,7 @@
               = link_to related_product.path(sku), { title: related_product.title } do
                 = cl_image_tag(sku.list_image, transformation: "related", alt: sku.list_image, title: related_product.title)
               .product-info
-                %hgroup
+                .hgroup
                   %h1
                     = link_to association(related_product, sku.finish), sku.finish.path
                   %h2

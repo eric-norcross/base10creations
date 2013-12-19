@@ -15,16 +15,18 @@
           %th Link
           %th Main Section
           %th Parent Section
+          %th Parent Id
           %th Children
           %th
       %tbody
         - @sections.each do |section|
-          %tr
+          %tr{class: ("inactive" unless section.active)}
             %td= section.id
             %td= section.title
             %td= section.link
             %td= section.patriarch.title
             %td= section.parent ? section.parent.title : "n/a"
+            %td= section.parent_id
             %td= section.children.length
             
             %td.controls

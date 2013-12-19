@@ -7,7 +7,7 @@
   - if f.object.parent.id == section.id
     - @selected = "selected"
 
-- if f.object.id == section.id
+- if f.object.id == section.id || !f.object.active
   - @disabled = "disabled"
 
 / - unless section.children.blank?

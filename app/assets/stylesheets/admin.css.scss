@@ -70,7 +70,12 @@
         }
       }
 
-      tr:hover {
+      tr.inactive {
+        background-color: #FCC;
+      }
+
+      tr:hover,
+      tr.inactive:hover {
         background-color: $lightOdd;
       }
     }

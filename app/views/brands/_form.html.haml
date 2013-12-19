@@ -2,7 +2,7 @@
 
 = form_for @brand do |f|
   - if @brand.errors.any?
-    #error_explanation
+    #error-explanation
       %h1= "#{pluralize(@brand.errors.count, "error")} prohibited this brand from being saved:"
       %ul
         - @brand.errors.full_messages.each do |msg|

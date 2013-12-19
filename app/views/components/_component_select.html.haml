@@ -15,6 +15,9 @@
   - unless defined?(override) #Allows parent elements to be selected. This is necessary so that users can add new Sub-Components to a parent element. 
     - @disabled = true
 
+- unless component.active
+  - @disabled = true
+
 %option{ value: component.id, selected: @selected, class: "level#{level}", disabled: @disabled }
   - level.times do 
     \&nbsp;&nbsp;&nbsp;
