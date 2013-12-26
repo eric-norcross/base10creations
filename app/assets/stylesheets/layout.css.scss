@@ -234,14 +234,16 @@ header.document {
     margin-bottom: -20px;
   }
 
+  nav#main > ul > li > a {
+    text-transform: uppercase;
+  }
+
   nav#main {
     border: none;
     float: right;
     margin: 62px 0 0 0;
     
-
     ul {
-
       li:hover .subnav {
         display: inline-block;
       }
@@ -263,7 +265,6 @@ header.document {
         margin-left: 30px;
         padding: 5px 0;
         text-align: right;
-        text-transform: uppercase;
 
         a:link,
         a:hover,
