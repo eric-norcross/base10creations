@@ -248,7 +248,7 @@ header.document {
 
       li#products .subnav     { margin-left: -210px; }
       li#collections .subnav  { margin-left: -242px; }
-      li#styles .subnav       { margin-left: -53px;  }
+      li#styles .subnav       { margin-left: -100px;  }
       li#brands:hover { 
         border-bottom: 5px solid $frameColor;
         padding-bottom: 13px !important;
@@ -259,10 +259,11 @@ header.document {
         float: left;
         font-family: $serif;
         font-size: 14px;
-        font-weight: bold;
+        font-weight: normal;
         margin-left: 30px;
         padding: 5px 0;
         text-align: right;
+        text-transform: uppercase;
 
         a:link,
         a:hover,
