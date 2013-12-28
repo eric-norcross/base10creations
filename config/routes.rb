@@ -93,6 +93,12 @@ Martinfurniture::Application.routes.draw do
     get code, :to => "errors#show", :code => code
   end
 
+  # Backward compatible routes for previous website
+
+  match '/collections/entertainment'  => 'categories#show', id: 2
+  match '/collections/occasional'     => 'categories#show', id: 3
+  match '/collections/office'         => 'categories#show', id: 4
+
   # Search Routes
 
 
