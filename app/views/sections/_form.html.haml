@@ -18,7 +18,7 @@
 
     .field
       = f.label :parent_id, "Parent Section"
-      %select{id: "section_parent_id", name: "section[parent_id]"}
+      %select{id: "section_parent_id", name: "section[parent_id]", class: "tiered"}
         %option
           Main Section / No Parent
         %optgroup{label: "Existing Sections"}

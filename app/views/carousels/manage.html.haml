@@ -8,12 +8,14 @@
     %table
       %thead
         %tr
-          %th Title:
-          %th Figure Count:
+          %th Id
+          %th Title
+          %th Figure Count
           %th 
       %tbody
         - @carousels.each do |carousel|
           %tr
+            %td= carousel.id
             %td= carousel.title
             %td= carousel.figures.length
             %td.controls

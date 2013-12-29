@@ -10,6 +10,7 @@
     %table
       %thead
         %tr
+          %th Id
           %th Title
           / %th Template
           %th Collection
@@ -20,6 +21,7 @@
       %tbody
         - @compilations.each do |compilation|
           %tr
+            %td= compilation.id
             %td= compilation.title
             / %td= compilation.skin.name
             %td= compilation.collection.title

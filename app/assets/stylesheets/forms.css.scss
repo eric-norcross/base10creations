@@ -373,13 +373,6 @@ form {
       }
     }
 
-    /*
-    .remove-fields,
-    .add-fields {
-      display: none;
-    }
-    */
-
     .remove-fields {
       display: inline;
 
@@ -420,11 +413,7 @@ form {
       }
     }
 
-    #skus {
-
-    }
-
-    #section {
+    .tiered {
       .level0 {
         font-weight: bold;
       }
@@ -443,14 +432,6 @@ form {
         display: inline;
       }
     }
-
-    /*
-    .singular-addable {
-      .addable {
-        display: none;
-      }
-    }
-    */
 
     .column {
       float: left;

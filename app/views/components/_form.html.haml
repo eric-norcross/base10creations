@@ -22,7 +22,7 @@
 
     .field.required
       = f.label :parent_id, "Parent"
-      %select{id: "component_parent_id", name: "component[parent_id]"}
+      %select{id: "component_parent_id", name: "component[parent_id]", class: "tiered"}
         %option
           Main Component / No Parent
         %optgroup{label: "Existing Components"}

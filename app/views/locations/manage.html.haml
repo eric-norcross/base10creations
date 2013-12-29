@@ -10,6 +10,7 @@
     %table
       %thead
         %tr
+          %th Id
           %th Name
           %th Address
           %th City
@@ -22,6 +23,7 @@
       %tbody
         - @locations.each do |location|
           %tr
+            %td= location.id
             %td= location.name.titleize
             %td= location.address.titleize
             %td= location.city.titleize

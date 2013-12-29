@@ -8,13 +8,15 @@
     %table
       %thead
         %tr
-          %th Title:
-          %th Finish: 
-          %th Images:
+          %th Id
+          %th Title
+          %th Finish 
+          %th Images
           %th
       %tbody
         - @skus.each do |sku|
           %tr
+            %td= sku.id
             %td= sku.title
             %td
               - if sku.finish.images.blank?

@@ -11,12 +11,14 @@
     %table
       %thead
         %tr
+          %th Id
           %th Title
           %th Template Location
           %th
       %tbody
         - @skins.each do |skin|
           %tr
+            %td= skin.id
             %td= skin.title
             %td= skin.template
             %td.controls

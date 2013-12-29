@@ -252,10 +252,12 @@ article {
           color: $headerColor;
           display: inline-block;
           font-size: 10px;
+          vertical-align: top;
         }
 
         ul {
           display: inline-block;
+          width: 190px;
 
           li {
             color: $headerColor;
