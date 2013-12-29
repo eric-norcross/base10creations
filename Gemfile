@@ -21,6 +21,7 @@ gem 'cancan'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'pg_search'
+gem 'rails_12factor'
 
 # gem 'friendly_id'
 
