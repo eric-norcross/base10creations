@@ -171,6 +171,9 @@ $(document).ready(function(){
     return event.preventDefault();
   })
 
+  // Side nav parent expanding
+  $("#side li.active").parents('li').addClass('expanded');
+
 
 
   // $(function() {  

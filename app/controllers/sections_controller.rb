@@ -20,8 +20,8 @@ class SectionsController < ApplicationController
 
   def show
     @side_nav_elements = Section.where(parent_id: 0)
-    @expanded = @section.patriarch
-    @page = Section.find(params[:id])
+    @page = @section
+    @active = @page
 
     render @page.skin.template
   end

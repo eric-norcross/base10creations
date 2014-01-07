@@ -23,7 +23,6 @@ class ComponentsController < ApplicationController
 
     # Set up side nav
     @side_nav_elements = @component.siblings
-    @expanded = @component
 
     # Get Products & Compilations
     @component_ids = [params[:id]]
@@ -32,6 +31,8 @@ class ComponentsController < ApplicationController
     end
 
     @products = Component.products_and_compilations(@component_ids).sort_by! {|p| p.collection.title}
+
+    @active = @component
 
 
     render "layouts/templates/list"

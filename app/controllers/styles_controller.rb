@@ -19,8 +19,8 @@ class StylesController < ApplicationController
 
   def show
     @side_nav_elements = Style.all
-    @expanded = @style
     @products = Style.products_and_compilations(params[:id]).sort_by! {|p| p.collection.title}
+    @active = @style
 
     render "layouts/templates/list"
   end

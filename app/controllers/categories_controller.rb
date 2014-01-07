@@ -20,7 +20,6 @@ class CategoriesController < ApplicationController
   def show
     # # Set up side nav
     @side_nav_elements = Category.all
-    @expanded = @category
 
     # Get Products & Compilations
     if params[:collection_id] && params[:finish_id]
@@ -28,6 +27,8 @@ class CategoriesController < ApplicationController
     else
       @products = Component.products_and_compilations(@category.component_ids).sort_by! {|p| p.collection.title}
     end
+
+    @active = @category
 
     render "layouts/templates/list"
   end

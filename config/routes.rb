@@ -50,6 +50,7 @@ Martinfurniture::Application.routes.draw do
   devise_for :editors, :skip => [:registrations],  :controllers => { :registrations => "editors" }
 
   get "/sign_in"  => redirect("/editors/sign_in")
+  get "/sign-in"  => redirect("/editors/sign_in")
   get "/login"    => redirect("/editors/sign_in")
   get "/log_in"   => redirect("/editors/sign_in")
 
@@ -94,10 +95,17 @@ Martinfurniture::Application.routes.draw do
   end
 
   # Backward compatible routes for previous website
+  match '/index.php'                          => 'pages#home'
 
-  match '/collections/entertainment'  => 'categories#show', id: 2
-  match '/collections/occasional'     => 'categories#show', id: 3
-  match '/collections/office'         => 'categories#show', id: 4
+  match '/collections/entertainment'          => 'categories#show', id: 2
+    match '/collections/entertainment/*page'  => 'categories#show', id: 2
+
+  match '/collections/occasional'             => 'categories#show', id: 3
+    match '/collections/occasional/*page'     => 'categories#show', id: 3
+
+  match '/collections/office'                 => 'categories#show', id: 4
+    match '/collections/office/*page'         => 'categories#show', id: 4
+
 
   # Search Routes
 
@@ -143,8 +151,8 @@ Martinfurniture::Application.routes.draw do
 
   
   
-
-  # match '*path' => redirect('/') unless Rails.env.development?
+  # Catch all for anything else
+  match '*path' => redirect('/') unless Rails.env.development?
 
   # match '/pages/:name', :to => redirect {"/%{name}"}
 
@@ -201,4 +209,5 @@ Martinfurniture::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
 end

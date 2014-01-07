@@ -20,10 +20,9 @@ class BrandsController < ApplicationController
   end
 
   def show
-    @side_nav_elements = Brand.all
-    @expanded = @barnd
-    
+    @side_nav_elements = Brand.all    
     @products = @brand.products_and_compilations.sort_by! {|p| p.collection.title}
+    @active = @barnd
 
     render "layouts/templates/list"
   end

@@ -141,7 +141,7 @@
   }
 
   ul.nav-tabs {
-    border-color: $frameColor;
+    //border-color: $frameColor;
     //border-bottom-width: 0px;*/
   
     li {
@@ -163,7 +163,8 @@
         
         border-color: $frameColor;
         border-radius: 0;
-        border-top-width: 2px;
+        border-width: 1px 0 0 1px !important;
+        //border-top-width: 1px;
 
         font-size: 10px;
 
@@ -184,15 +185,15 @@
     li.active a {
       color: #000;
       background: #fff;
-      border-color: $frameColor $frameColor transparent;
+      //border-color: $frameColor $frameColor transparent;
     }
 
     li:first-child a {
-      border-left-width: 2px;
+      //border-left-width: 1px;
     }
 
     li:last-child a {
-      border-right-width: 2px;
+      border-right-width: 1px !important;
     }
   }
 

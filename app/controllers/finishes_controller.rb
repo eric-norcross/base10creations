@@ -18,10 +18,9 @@ class FinishesController < ApplicationController
   end
 
   def show
-    @side_nav_elements = Finish.all
-    @expanded = @finish
-    
+    @side_nav_elements = Finish.all    
     @products = Finish.skus(params[:id]) + Finish.compilations(params[:id])
+    @active = @finish
 
     render "layouts/templates/list"
   end

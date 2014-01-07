@@ -376,9 +376,12 @@ nav#side {
   width: 220px; //15%;
 
   ul {
-    li.expanded ul,
-    li:hover ul {
+    li.expanded > ul {
       display: block;
+    }
+
+    li.active a {
+      font-weight: bold;
     }
 
     li {
