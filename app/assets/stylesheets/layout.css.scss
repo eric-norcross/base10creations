@@ -380,7 +380,7 @@ nav#side {
       display: block;
     }
 
-    li.active a {
+    li.active > a {
       font-weight: bold;
     }
 
