@@ -56,14 +56,16 @@ class Compilation < ActiveRecord::Base
   end
 
   def categories
-    @categories = []
-    products.each do |product|
-      product.categories.each do |category|
-        @categories.push(category) unless @categories.include?(category)
-      end
-    end
+    # @categories = []
+    # products.each do |product|
+    #   product.categories.each do |category|
+    #     @categories.push(category) unless @categories.include?(category)
+    #   end
+    # end
 
-    return @categories
+    # return @categories
+
+    return Category.categories_by_collection(collection_id)
   end
 
   def get_skus

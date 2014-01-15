@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131218045416) do
+ActiveRecord::Schema.define(:version => 20140115010225) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -256,14 +256,15 @@ ActiveRecord::Schema.define(:version => 20131218045416) do
   create_table "products", :force => true do |t|
     t.text     "name"
     t.text     "title"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.integer  "collection_id"
     t.integer  "skin_id"
     t.text     "features"
     t.boolean  "active"
     t.boolean  "shown"
     t.boolean  "include_finish_name"
+    t.boolean  "branded",             :default => true
   end
 
   create_table "sections", :force => true do |t|

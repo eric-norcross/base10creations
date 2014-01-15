@@ -61,6 +61,15 @@ class Category < ActiveRecord::Base
     return products(collection_id) + compilations(collection_id)
   end
 
+  def self.categories_by_collection(collection_id)
+    # @product_ids_by_collection = Product.where(collection_id: collection_id).pluck(:id)
+    # @component_ids = ProductComponent.where(product_id: @product_ids_by_collection).pluck(:component_id).uniq
+    # @category_ids = Component.where(id: @component_ids).pluck(:category_id).uniq
+    # return Category.find(@category_ids)
+
+    return Category.joins(:components => :products).where(:products => {:collection_id => collection_id}).uniq
+  end
+
   def also_available_in(collection_id, finish_id)
     finish_id = finish_id.to_i
 

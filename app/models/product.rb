@@ -24,6 +24,7 @@ class Product < ActiveRecord::Base
                                 :active,
                                 :shown,
                                 :include_finish_name,
+                                :branded,
 
                                 ## belongs_to ##
                                 :collection_id,
@@ -81,7 +82,9 @@ class Product < ActiveRecord::Base
   end
 
   def categories
-    return components.map{ |component| component.categories }.flatten
+    # return components.map{ |component| component.categories }.flatten
+
+    return Category.categories_by_collection(collection_id)
   end 
 
   def brands
