@@ -19,7 +19,8 @@ class SectionsController < ApplicationController
   # end
 
   def show
-    @side_nav_elements = Section.where(parent_id: 0)
+    @sections = Section.all
+    @side_nav_elements = @sections.select{|section| section.parent_id == 0} #Section.where(parent_id: 0)
     @page = @section
     @active = @page
 

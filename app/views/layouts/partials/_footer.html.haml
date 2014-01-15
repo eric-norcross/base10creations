@@ -1,11 +1,13 @@
+- @sections = Section.all
+
 %footer.document
-  - Section.all.each do |section|
+  - @sections.each do |section|
     - if section.parent_id.blank? || section.parent_id == 0 && section.active != false
       %nav{:id=>"#{section.name}"}
         %h1
           = section.title
         %ul
-          - section.children.each do |subsection|
+          - get_children(@sections, section).each do |subsection|
             %li
               - case subsection.name
               - when "pinterest"

@@ -71,6 +71,28 @@ module ApplicationHelper
     ]
   end
 
+  def get_children(elements, item)
+    return elements.select{|element| element.parent_id == item.id}
+  end
+
+  def get_patriarch(elements, item)
+    if item.parent_id == 0
+      return item
+    else 
+      return get_patriarch(elements, get_parent(elements, item))
+      # return parent.patriarch
+    end
+  end
+
+  def get_parent(elements, item)
+    if item.parent_id == 0
+      return item
+    else 
+      return elements.select{|element| element.id == item.parent_id}.first
+      # return Component.find(parent_id)
+    end
+  end
+
   def create_columns
     Category.all.each_slice(2) do |column|
       haml_tag :div, class: "column" do

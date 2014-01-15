@@ -45,14 +45,17 @@
         = link_to "Products", "#", :class => ( 'active' if @active == "products" )
         .subnav
           .column-group
+            - @components = Component.all
             - Category.all.each_slice(2) do |column|
               .column
                 - column.each do |category|
                   %h1 
                     = category.title
                   %ul
-                    - category.components.each do |component|
-                      = render "components/component_header", element: component, category: category
+                    - @components.select{|component| component.category_id == category.id}.each do |component|
+                      - if component.parent_id.blank? || component.parent_id == 0 || get_patriarch(@components, component).category_id != category.id && component.active
+                        %li
+                          = link_to component.title, component.path 
 
       %li#collections
         = link_to "Collections", "#", :class => ( 'active' if @active == "collections" )

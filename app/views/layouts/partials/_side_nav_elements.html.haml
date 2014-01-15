@@ -9,7 +9,7 @@
   - else
     = link_to element.title, element
 
-  - if defined?(element.children) && !element.children.blank?
+  - if defined?(get_children(@sections, element)) && !get_children(@sections, element).blank?
     %ul
-      - element.children.each do |child|
+      - get_children(@sections, element).each do |child|
         = render "layouts/partials/side_nav_elements", element: child
