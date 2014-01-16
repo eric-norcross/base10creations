@@ -53,7 +53,7 @@
                     = category.title
                   %ul
                     - @components.select{|component| component.category_id == category.id}.each do |component|
-                      - if component.parent_id.blank? || component.parent_id == 0 || get_patriarch(@components, component).category_id != category.id && component.active
+                      - if (component.parent_id.blank? || component.parent_id == 0 || Family.patriarch(@components, component).category_id != category.id) && component.active
                         %li
                           = link_to component.title, component.path 
 

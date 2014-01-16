@@ -24,7 +24,6 @@ class Product < ActiveRecord::Base
                                 :active,
                                 :shown,
                                 :include_finish_name,
-                                :branded,
 
                                 ## belongs_to ##
                                 :collection_id,
@@ -82,8 +81,6 @@ class Product < ActiveRecord::Base
   end
 
   def categories
-    # return components.map{ |component| component.categories }.flatten
-
     return Category.categories_by_collection(collection_id)
   end 
 
@@ -120,14 +117,6 @@ class Product < ActiveRecord::Base
   def gallery_items(sku)
     return images + sku.images + sku.finish.images
   end
-
-  # def videos
-  #   if video != ""
-  #     return [video]
-  #   else
-  #     return []
-  #   end
-  # end
 
   def self.rebuild_pg_search_documents
     find_each { |record| record.update_pg_search_document }

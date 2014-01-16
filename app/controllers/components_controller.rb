@@ -1,4 +1,6 @@
 class ComponentsController < ApplicationController
+  require 'family'
+  
   load_and_authorize_resource
   
   # Admin Routes
@@ -21,14 +23,15 @@ class ComponentsController < ApplicationController
     # Get Component 
     # @component = Component.find(params[:id])
 
-    # Set up side nav
-    @side_nav_elements = @component.siblings
+    @components = Component.all
 
-    # Get Products & Compilations
-    @component_ids = [params[:id]]
-    unless @component.children.blank?
-      @component_ids = @component.children.map{ |component| component.id }
-    end
+    # Set up side nav
+    # @side_nav_elements = @component.siblings
+    # @side_nav_elements = Family.siblings(@components, @component)
+    
+    @side_nav_elements = @components #.select{ |component| component.parent_id == 0 }
+    
+    @component_ids = [params[:id]] + Family.children(@components, @component).map{ |component| component.id }
 
     @products = Component.products_and_compilations(@component_ids).sort_by! {|p| p.collection.title}
 

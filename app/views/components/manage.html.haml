@@ -23,10 +23,9 @@
             %td= component.id
             %td= component.title
             %td= component.categories.map{|category| category.title}.join(", ")
-            / %td= component.category.title
-            %td= component.patriarch.title
-            %td= component.parent.title
-            %td= component.children.length
+            %td= Family.patriarch(@components, component).title
+            %td= Family.parent(@components, component).title
+            %td= Family.children(@components, component).length
             
             %td.controls
               = link_to 'Show', component

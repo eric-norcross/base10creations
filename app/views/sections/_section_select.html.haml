@@ -1,23 +1,18 @@
 - level = level + 1
 
-- @selected = nil
-- @disabled = nil
+- selected = nil
+- disabled = nil
 
-- if f.object.parent
-  - if f.object.parent.id == section.id
-    - @selected = "selected"
+- if f.object.parent_id != 0 && f.object.parent_id != nil
+  - if f.object.parent_id == section.id
+    - selected = "selected"
 
 - if f.object.id == section.id || !f.object.active
-  - @disabled = "disabled"
+  - disabled = "disabled"
 
-/ - unless section.children.blank?
-/   - unless defined?(override) #Allows parent elements to be selected. This is necessary so that users can add new Sub-Components to a parent element. 
-/     - @disabled = true
-
-%option{ value: section.id, selected: @selected, class: "level#{level}", disabled: @disabled }
+%option{ value: section.id, selected: selected, class: "level#{level}", disabled: disabled }
   - level.times do 
     \&nbsp;&nbsp;&nbsp;
   = section.title
-- unless section.children.blank?
-  - section.children.each do |child|
-    = render "sections/section_select", section: child, level: level, f: f
+- Family.children(@sections, section).each do |child|
+  = render "sections/section_select", section: child, level: level, f: f

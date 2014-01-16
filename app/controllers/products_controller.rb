@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 
   # Admin Routes
   def manage
-    @products = Product.joins(:collection, :skus).order('collections.name ASC, skus.name ASC')
+    # @products = Product.joins(:collection, :skus).order('collections.name ASC, skus.name ASC')
+    @products = Product.all
     @options = @products.map{|product| [product.collection.title, product.collection.name]}
     @options.unshift(["All", "all"])
     

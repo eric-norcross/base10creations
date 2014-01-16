@@ -23,7 +23,7 @@
         %div 
           %ul
             - product_object.brands.each do |brand|
-              - unless brand.figures.blank?
+              - if brand.figures.present?
                 %li
                   = link_to brand.figures.first.link do
                     = cl_image_tag(brand.figures.first.images.first.asset.filename.to_s, alt: brand.title)

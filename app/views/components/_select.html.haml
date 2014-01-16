@@ -1,26 +1,11 @@
-/ = label_tag "product_components", "Component"
-
-/ - if !@components && collection_id
-/   - @components = Collection.components(collection_id).reject{|component| component.parent_id > 0}
-
-/   - if product_id
-/     - @selected_components = Product.find(product_id).components
-
-/   %select{id: "component_ids", name: "product[component_ids][]", :multiple => true}
-/     - @components.each do |component|
-/       = render "components/component_select", component: component, level: -1, components: @selected_components
-
-/ - else 
-/   = select_tag "prodcut[component_id][]", "", { prompt: "Please select a Collection first", disabled: true }
-
 = label_tag "product_components", "Component"
 
-- @components = Component.where(parent_id: 0)
-- @selected_components = []
+- @components = Component.all
+- selected_components = []
 
 - if product_id
-  - @selected_components = Product.find(product_id).components
+  - selected_components = Product.find(product_id).components
 
 %select{id: "component_ids", name: "product[component_ids][]", :multiple => true}
-  - @components.each do |component|
-    = render "components/component_select", component: component, level: -1, components: @selected_components
+  - @components.select{ |element| element.parent_id == 0 }.each do |component|
+    = render "components/product_component_select", component: component, level: -1, selected_components: selected_components

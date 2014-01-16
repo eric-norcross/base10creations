@@ -3,11 +3,10 @@
 - selected = nil
 - disabled = nil
 
-- if f.object.parent_id != 0 && f.object.parent_id != nil
-  - if f.object.parent_id == component.id
-    - selected = "selected"
+- if selected_components.present?
+  - selected = "selected" if selected_components.any?{ |selected_component| selected_component.id == component.id }
 
-- if f.object.id == component.id || !f.object.active
+- unless component.active
   - disabled = "disabled"
 
 %option{ value: component.id, selected: selected, class: "level#{level}", disabled: disabled }
@@ -15,4 +14,4 @@
     \&nbsp;&nbsp;&nbsp;
   = component.title
 - Family.children(@components, component).each do |child|
-  = render "components/component_select", component: child, level: level, f: f
+  = render "components/product_component_select", component: child, level: level, selected_components: selected_components

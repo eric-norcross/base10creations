@@ -24,10 +24,10 @@
             %td= section.id
             %td= section.title
             %td= section.link
-            %td= section.patriarch.title
-            %td= section.parent ? section.parent.title : "n/a"
+            %td= Family.patriarch(@sections, section).title
+            %td= Family.parent(@sections, section) ? Family.parent(@sections, section).title : "n/a"
             %td= section.parent_id
-            %td= section.children.length
+            %td= Family.children(@sections, section).length
             
             %td.controls
               = link_to 'Show', section

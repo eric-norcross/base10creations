@@ -1,15 +1,17 @@
-- if @active && element.id == @active.id
-  - @class = "active expanded"
-- else
-  - @class = nil
+- classes = nil
+- children = Family.children(@side_nav_elements, element)
 
-%li{class: @class}
+- if @active && element.id == @active.id
+  - classes = "active expanded"
+  
+
+%li{class: classes}
   - if element.has_attribute?("link") && element.link != nil && element.link != ""
     = link_to element.title, element.link
   - else
     = link_to element.title, element
 
-  - if defined?(get_children(@sections, element)) && !get_children(@sections, element).blank?
+  - if children.present?
     %ul
-      - get_children(@sections, element).each do |child|
+      - children.each do |child|
         = render "layouts/partials/side_nav_elements", element: child

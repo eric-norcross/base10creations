@@ -7,7 +7,7 @@
         %h1
           = section.title
         %ul
-          - get_children(@sections, section).each do |subsection|
+          - Family.children(@sections, section).each do |subsection|
             %li
               - case subsection.name
               - when "pinterest"

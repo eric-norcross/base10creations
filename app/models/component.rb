@@ -33,38 +33,10 @@ class Component < ActiveRecord::Base
   validate                      :cannot_assign_to_self
 
   before_save                   :create_name
-  before_destroy                :update_children
+  before_destroy                :reset_children 
 
   def cannot_assign_to_self
     errors.add :base, "You cannot add a Component as a parent of it's self." if self.parent_id == self.id
-  end
-
-  def patriarch
-    if parent_id == 0
-      return self
-    else 
-      return parent.patriarch
-    end
-  end
-  
-  def parent
-    if parent_id == 0
-      return self
-    else 
-      return Component.find(parent_id)
-    end
-  end
-
-  def children
-    return Component.where(:parent_id => id)
-  end
-
-  def siblings
-    if parent_id == 0
-      return Component.where(:parent_id => parent_id)
-    else
-      return parent.children
-    end
   end
 
   def categories
@@ -73,14 +45,14 @@ class Component < ActiveRecord::Base
     @categories.push(category) if category
     
     if parent_id > 0
-      @categories.push(parent.categories)
+      @categories.push(Component.find(parent_id).categories)
     end
 
     return @categories.flatten.uniq
   end
 
-  def update_children
-    children.each do |child|
+  def reset_children # Resets all child elements of a destroyed element back to 0 and inactivates them
+    Component.where(parent_id: id).each do |child|
       child.update_attributes(:parent_id => 0, :active => false)
     end
   end
@@ -88,6 +60,7 @@ class Component < ActiveRecord::Base
   def self.products_and_compilations(component_ids)
     # Get all Products based on the Components/Sub-Components [Optimize by selected product_id's only]
     @product_ids = ProductComponent.where(:component_id => component_ids).map{ |product_component| product_component.product_id }
+    
     @products = Product.where(id: @product_ids)
     # @products = Product.where(id: @product_ids, shown: true)
 
