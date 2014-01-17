@@ -25,7 +25,7 @@
             %td= section.title
             %td= section.link
             %td= Family.patriarch(@sections, section).title
-            %td= Family.parent(@sections, section) ? Family.parent(@sections, section).title : "n/a"
+            %td= Family.parent(@sections, section).title
             %td= section.parent_id
             %td= Family.children(@sections, section).length
             
