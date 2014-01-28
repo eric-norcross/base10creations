@@ -1,0 +1,12 @@
+- @checked = false
+
+- if defined?(f) && f.object.styles.length > 0
+  - f.object.styles.each do |selected_style|
+    - if style.id == selected_style.id
+      - @checked = true
+  
+
+%li
+  .checkbox
+    = check_box_tag "style#{style.id}", style.id, collection.styles.include?(style), name:'collection[style_ids][]', checked: @checked
+    = label_tag "style#{style.id}", style.title

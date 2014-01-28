@@ -20,6 +20,9 @@ Martinfurniture::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Lograge: Silence useless logs
+  config.lograge.enabled = true
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

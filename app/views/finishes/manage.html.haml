@@ -21,7 +21,7 @@
             %td= finish.title
             %td
               - if finish.images.blank?
-                n/a
+                &mdash;
               - else
                 = cl_image_tag(finish.images.first.asset.filename.to_s, transformation: "hint", alt: finish.images.first.asset.filename.to_s, title: finish.title)
 

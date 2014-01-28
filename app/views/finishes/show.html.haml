@@ -10,8 +10,8 @@
           = @finish.name
         %td
           - if @finish.images.blank?
-            n/a
-          -else 
+            &mdash;
+          - else 
             - @finish.images.each do |image|
               = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @finish.title)
 

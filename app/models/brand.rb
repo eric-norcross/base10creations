@@ -11,14 +11,18 @@ class Brand < ActiveRecord::Base
                                 ##belongs_to##
 
                                 ##has_many##
-                                :style_ids,
+                                # :style_ids,
+                                :collection_ids,
 
                                 ## nested attributes ##
                                 :images_attributes,
                                 :figures_attributes
 
-  has_many                      :brand_styles, dependent: :destroy
-  has_many                      :styles,       through: :brand_styles
+  # has_many                      :brand_styles, dependent: :destroy
+  # has_many                      :styles,       through: :brand_styles
+
+  has_many                      :brand_collections, dependent: :destroy
+  has_many                      :collections,       through: :brand_collections
 
   has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
@@ -28,21 +32,13 @@ class Brand < ActiveRecord::Base
 
   validates_presence_of         :title
   validates                     :link, :format => /(^$)|(^(http:\/\/|https:\/\/|\/))/ix
-  validates_presence_of         :styles
+  # validates_presence_of         :styles
 
   before_save                   :create_name
 
-
-  def products
-    return Product.where(collection_id: collection_ids)
-  end
-
-  def compilations
-    return Compilation.where(collection_id: collection_ids)
-  end
-
   def products_and_compilations
-    return (products + compilations).sort_by(&:name)
+    ids = collection_ids
+    return (products(ids) + compilations(ids)).sort_by(&:name)
   end
 
   def path
@@ -67,13 +63,23 @@ class Brand < ActiveRecord::Base
       self.name = title.parameterize
     end
 
+    def products(ids)
+      return Product.where(collection_id: ids)
+    end
+
+    def compilations(ids)
+      return Compilation.where(collection_id: ids)
+    end
+
     def collection_ids
-      ids = []
+      return collections.map{|collection| collection.id}.uniq
 
-      styles.each do |style|
-        ids.push(style.collections.map{|collection| collection.id})
-      end
+      # ids = []
 
-      return ids.uniq
+      # styles.each do |style|
+      #   ids.push(style.collections.map{|collection| collection.id})
+      # end
+
+      # return ids.uniq
     end
 end

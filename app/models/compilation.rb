@@ -121,15 +121,16 @@ class Compilation < ActiveRecord::Base
   end 
 
   def brands
-    @brands = []
+    return collection.brands
+    # @brands = []
 
-    products.each do |product|
-      product.brands.each do |brand|
-        @brands.push(brand) unless @brands.include?(brand)
-      end
-    end
+    # products.each do |product|
+    #   product.brands.each do |brand|
+    #     @brands.push(brand) unless @brands.include?(brand)
+    #   end
+    # end
 
-    return @brands
+    # return @brands
   end
 
   def self.rebuild_pg_search_documents

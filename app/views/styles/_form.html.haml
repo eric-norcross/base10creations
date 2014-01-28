@@ -38,14 +38,20 @@
       Collections
       
     .field
-      = hidden_field_tag "style[collection_ids][]", nil
-      - @collections.each_slice(@collections.length / @slice_size) do |column|
+      / = hidden_field_tag "style[collection_ids][]", nil
+      / - @collections.each_slice(@collections.length / @slice_size) do |column|
+      /   .column
+      /     .column-group
+      /       - column.each do |collection|
+      /         .checkbox
+      /           = check_box_tag "style[collection_ids][]", collection.id, @style.collection_ids.include?(collection.id), id:dom_id(collection)
+      /           = label_tag dom_id(collection), collection.title
+
+      - Collection.where(parent_id: 0).each_slice(@collections.length / @slice_size) do |column|
         .column
           .column-group
-            - column.each do |collection|
-              .checkbox
-                = check_box_tag "style[collection_ids][]", collection.id, @style.collection_ids.include?(collection.id), id:dom_id(collection)
-                = label_tag dom_id(collection), collection.title
+            - column.each do |child|
+              = render "collections/collection_checkboxes", collection: child, f: f
 
-    .actions
-      = f.submit 'Save'
+  .actions
+    = f.submit 'Save'

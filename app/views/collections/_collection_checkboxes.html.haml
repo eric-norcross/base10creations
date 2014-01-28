@@ -1,0 +1,10 @@
+- require 'family'
+- family = Family.children(@collections, collection)
+
+.checkbox
+  = check_box_tag "style[collection_ids][]", collection.id, f.object.collection_ids.include?(collection.id), id:dom_id(collection)
+  = label_tag dom_id(collection), collection.title
+
+  - if family.present?
+    - family.each do |child|
+      = render "collections/collection_checkboxes", collection: child, f: f

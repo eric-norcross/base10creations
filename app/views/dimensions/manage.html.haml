@@ -29,7 +29,7 @@
               - if !dimension.images.blank?
                 = cl_image_tag(dimension.images.first.asset.filename.to_s, transformation: "hint", alt: dimension.images.first.asset.filename.to_s, title: dimension.title)
               - else
-                n/a
+                &mdash;
             %td.controls
               = link_to 'Show', dimension
               = link_to 'Edit', edit_dimension_path(dimension)

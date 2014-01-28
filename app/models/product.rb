@@ -85,12 +85,14 @@ class Product < ActiveRecord::Base
   end 
 
   def brands
-    @brands = []
-    collection.styles.each do |style|
-      @brands += style.brands
-    end
+    return collection.brands
+
+    # @brands = []
+    # collection.styles.each do |style|
+    #   @brands += style.brands
+    # end
     
-    return @brands.uniq
+    # return @brands.uniq
   end
 
   def list_image(sku = nil)

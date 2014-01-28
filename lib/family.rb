@@ -15,6 +15,24 @@ class Family
     end
   end
 
+  def self.decendants(elements, item)
+    decendants = []
+    if elements.present? && item.present?
+      elements.each do |element|
+        elementPatriarch = patriarch(elements, element)
+        if elementPatriarch.id == item.id
+          decendants.push(element) 
+        end
+      end
+    end
+
+    if decendants.blank?
+      decendants.push(item)
+    end
+
+    return decendants
+  end
+
   def self.parent(elements, item)
     if elements.present? && item.present?
       if item.parent_id == 0

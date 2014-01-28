@@ -20,7 +20,7 @@
             %td= category.title
             %td
               - if category.images.blank?
-                n/a
+                &mdash;
               - else 
                 = cl_image_tag(category.images.first.asset.filename.to_s, transformation: "hint", alt: category.images.first.asset.filename.to_s, title: category.title)
                 

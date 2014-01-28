@@ -13,6 +13,7 @@
           %th Id
           %th Title
           %th List Image
+          %th Collections
           %th
       %tbody
         - @styles.each do |style|
@@ -21,9 +22,15 @@
             %td= style.title
             %td
               - if style.images.blank?
-                n/a
+                &mdash;
               - else
                 = cl_image_tag(style.images.first.asset.filename.to_s, transformation: "hint", alt: style.images.first.asset.filename.to_s, title: style.title)
+            %td
+              - if style.collections.blank?
+                &mdash;
+              - else 
+                - style.collections.each do |collection|
+                  %span.comma= collection.title
             %td.controls
               = link_to 'Show', style
               = link_to 'Edit', edit_style_path(style)

@@ -46,16 +46,5 @@
       .addable.admin-button
         = link_to_add_fields({ name: "Add Figure", f: f, association: :figures, container: "figures", nested: [ { association: :images } ], options: @figure_options })
 
-  %fieldset
-    %legend.required
-      Styles
-    
-    .field
-      .column
-        .column-group
-          - Style.all.each do |style|
-            %ul
-              = render "styles/style_checkboxes", style: style, f: f, brand: @brand
-    
   .actions
     = f.submit 'Save'

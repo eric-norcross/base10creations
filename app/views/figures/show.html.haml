@@ -11,7 +11,7 @@
         %td= @figure.link
         %td
           - if @figure.images.blank?
-            n/a
+            &mdash;
           - else 
             - @figure.images.each do |image|
                 = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @figure.caption)

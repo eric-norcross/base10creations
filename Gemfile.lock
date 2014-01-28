@@ -100,6 +100,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.0)
     kgio (2.8.1)
+    lograge (0.2.2)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -242,6 +246,7 @@ DEPENDENCIES
   gmaps4rails
   haml-rails
   jquery-rails
+  lograge
   meta_request
   mini_magick
   minitest-colorize

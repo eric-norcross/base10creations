@@ -12,7 +12,6 @@
         %tr
           %th Id
           %th Title
-          %th Styles
           %th List Image
           %th Figures
           %th
@@ -22,11 +21,8 @@
             %td= brand.id
             %td= brand.title
             %td
-              - brand.styles.each do |style|
-                %span.comma= style.title
-            %td
               - if brand.images.blank?
-                n/a
+                &mdash;
               - else 
                 = cl_image_tag(brand.images.first.asset.filename.to_s, transformation: "hint", alt: brand.images.first.asset.filename.to_s, title: brand.title)
             %td

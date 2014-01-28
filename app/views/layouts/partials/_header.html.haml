@@ -1,3 +1,5 @@
+- require 'family'
+
 %header.document
   #search
     = render "/layouts/partials/product_search", id: "product_search"
@@ -61,7 +63,7 @@
         = link_to "Collections", "#", :class => ( 'active' if @active == "collections" )
         .subnav
           .column-group
-            - Collection.all.each_slice(10) do |column|
+            - Collection.where(parent_id: 0).each_slice(10) do |column|
               .column
                 %ul
                   - column.each do |collection|

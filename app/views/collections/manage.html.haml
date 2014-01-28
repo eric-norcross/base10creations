@@ -12,18 +12,37 @@
         %tr
           %th Id
           %th Title
+          %th Parent Id
           %th List Image
+          %th Brands
+          %th Collections
           %th
       %tbody
         - @collections.each do |collection|
           %tr
             %td= collection.id
             %td= collection.title
+            %td= collection.parent_id
             %td
               - if collection.images.blank?
-                n/a
+                &mdash;
               - else 
                 = cl_image_tag(collection.images.first.asset.filename.to_s, transformation: "hint", alt: collection.images.first.asset.filename.to_s, title: collection.title)
+            %td
+              - if collection.brands.blank?
+                &mdash;
+              - else 
+                - collection.brands.each do |brand|
+                  %span.comma= brand.title
+
+            %td
+              - if collection.styles.blank?
+                &mdash;
+              - else 
+                - collection.styles.each do |style|
+                  %span.comma= style.title
+
+
             %td.controls
               = link_to 'Show', collection
               = link_to 'Edit', edit_collection_path(collection)

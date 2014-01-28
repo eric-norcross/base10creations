@@ -1,0 +1,12 @@
+- @checked = false
+
+- if defined?(f) && f.object.brands.length > 0
+  - f.object.brands.each do |selected_brand|
+    - if brand.id == selected_brand.id
+      - @checked = true
+  
+
+%li
+  .checkbox
+    = check_box_tag "brand#{brand.id}", brand.id, collection.brands.include?(brand), name:'collection[brand_ids][]', checked: @checked
+    = label_tag "brand#{brand.id}", brand.title
