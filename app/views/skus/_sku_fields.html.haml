@@ -9,11 +9,11 @@
           = link_to_remove_fields f
 
   .field
-    = f.label :finish_id, "Finish"
+    = f.label :finish_id, "Finish", class: "required"
     = f.select :finish_id, Finish.all.collect{|t| [t.title, t.id]}
 
   .field
-    = f.label :title, "Sku Number"
+    = f.label :title, "Sku Number", class: "required"
     = f.text_field :title
 
   %div{id: "sku-image-#{unique_id}"}

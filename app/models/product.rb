@@ -80,8 +80,8 @@ class Product < ActiveRecord::Base
     return product_sku_path(id, sku.id)
   end
 
-  def categories
-    return Category.categories_by_collection(collection_id)
+  def categories(id = collection_id)
+    return Category.categories_by_collection(id)
   end 
 
   def brands

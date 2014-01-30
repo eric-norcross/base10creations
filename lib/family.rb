@@ -1,11 +1,18 @@
 class Family
-  def self.children(elements, item)
+  PATRIARCH     = "patriarch"
+  PARENT        = "parent"
+  CHILDREN      = "children"
+  DESCENDANTS   = "descendants"
+  LINEAGE       = "lineage"
+  SIBLINGS      = "siblings"
+
+  def self.children(elements, item) # returns children or empty array
     if elements.present? && item.present?
       return elements.select{|element| element.parent_id == item.id}
     end
   end
 
-  def self.patriarch(elements, item)
+  def self.patriarch(elements, item) # returns patriarch or self if item is patriarch 
     if elements.present? && item.present?
       if item.parent_id == 0
         return item
@@ -15,22 +22,23 @@ class Family
     end
   end
 
-  def self.decendants(elements, item)
-    decendants = []
-    if elements.present? && item.present?
-      elements.each do |element|
-        elementPatriarch = patriarch(elements, element)
-        if elementPatriarch.id == item.id
-          decendants.push(element) 
-        end
-      end
+  def self.descendants(elements, item) # returns descendants or self if there are no descendants
+    items = []  # gets the direct children
+
+    childElements = children(elements, item)
+
+    items.push(childElements)
+
+    childElements.each do |child|
+      items.push(descendants(elements, child))
     end
 
-    if decendants.blank?
-      decendants.push(item)
-    end
+    return items.flatten.uniq
+  end
 
-    return decendants
+  def self.lineage(elements, item) # returns all descendants & self starting at the patriarch
+    familyHead = patriarch(elements, item)
+    return (descendants(elements, familyHead) + [familyHead]).flatten.uniq
   end
 
   def self.parent(elements, item)

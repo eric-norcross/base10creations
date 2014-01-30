@@ -35,7 +35,7 @@ class Compilation < ActiveRecord::Base
   validates_presence_of         :collection
   validates_presence_of         :finish
   validates_presence_of         :skus
-  validates_presence_of         :skin
+  validates_presence_of         :skin, message: "template is required."
 
 	before_save                   :create_name
 
@@ -55,24 +55,18 @@ class Compilation < ActiveRecord::Base
     return Product.where(id: skus.map{ |sku| sku.product_id })
   end
 
-  def categories
-    # @categories = []
-    # products.each do |product|
-    #   product.categories.each do |category|
-    #     @categories.push(category) unless @categories.include?(category)
-    #   end
-    # end
-
-    # return @categories
-
-    return Category.categories_by_collection(collection_id)
-  end
+  def categories(id = collection_id)
+    return Category.categories_by_collection(id)
+  end 
 
   def get_skus
-    if defined?(finish)
-      return Collection.skus_by_finish(collection_id, finish_id).sort_by{|p| p[:title].gsub(/\D/, '').to_i}
-    else
+    Rails.logger.debug "DEBUG - finish.present?: #{finish.present?}"
+
+
+    if finish.blank? || collection.blank?
       return nil
+    else
+      return Collection.skus_by_finish(collection_id, finish_id).sort_by{|p| p[:title].gsub(/\D/, '').to_i}
     end
   end
 

@@ -29,6 +29,14 @@ $(document).on("change", "#compilation-finish select", function(event) {
   });
 });
 
+$(document).on('change','.checkbox input:checkbox', function () {
+  var parent = $(this)
+
+  $(this).parent().find('.checkbox input:checkbox').each(function(index, child_checkbox) {
+    $(child_checkbox).prop("checked", parent.is(":checked"));
+  })
+});
+
 $(document).on("change", "select#sort", function(event) {
   var collection_name = $("option:selected", this).val();
   var rows = $(document).find("tbody tr");

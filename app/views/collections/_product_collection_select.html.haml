@@ -1,0 +1,21 @@
+- require 'family'
+
+- level = level + 1
+
+- selected = nil
+- disabled = nil
+- classes = "level#{level}"
+
+- if f.object.collection_id != 0 && f.object.collection_id != nil
+  - if f.object.collection_id == collection.id
+    - selected = "selected"
+
+- if level > 0
+  - classes += " child"
+
+%option{ value: collection.id, selected: selected, class: classes, disabled: disabled }
+  - level.times do 
+    \&nbsp;&nbsp;&nbsp;
+  = collection.title
+- Family.children(@collections, collection).each do |child|
+  = render "collections/product_collection_select", collection: child, level: level, f: f

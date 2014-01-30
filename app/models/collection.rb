@@ -5,6 +5,12 @@ class Collection < ActiveRecord::Base
 
   default_scope order('collections.name ASC')
 
+  # PATRIARCH     = Family::PATRIARCH
+  # PARENT        = Family::PATRIARCH
+  # CHILDREN      = Family::PATRIARCH
+  # DESCENDANTS   = Family::PATRIARCH
+  # SIBLINGS      = Family::PATRIARCH
+
   attr_accessible               :name, 
                                 :title,
                                 :description,
@@ -51,7 +57,18 @@ class Collection < ActiveRecord::Base
   def self.skus_by_finish(collection_id, finish_id)
     skus = []
 
-    products(collection_ids(collection_id)).each do |product|
+    # col_ids = 
+    # Rails.logger.debug "DEBUG 1 - col_ids.inspect: #{col_ids.inspect}"
+    # col_ids.push(collection_id)
+    # Rails.logger.debug "DEBUG 2 - col_ids.inspect: #{col_ids.inspect}"
+    # col_ids.flatten.uniq
+    # Rails.logger.debug "DEBUG 3 - col_ids.inspect: #{col_ids.inspect}"
+
+    # collection_products = 
+
+    # Rails.logger.debug "DEBUG - collection_products.inspect: #{collection_products.inspect}"
+
+    products(collection_ids(collection_id, Family::DESCENDANTS, true)).each do |product|
       product.skus.each do |sku|
         if sku.finish_id.to_s == finish_id.to_s
           skus.push(sku) unless skus.include?(sku)
@@ -59,11 +76,13 @@ class Collection < ActiveRecord::Base
       end
     end
 
+    Rails.logger.debug "DEBUG - skus: #{skus.inspect}"
+
     return skus
   end
 
-  def self.products_and_compilations(collection_id)
-    ids = collection_ids(collection_id)
+  def self.products_and_compilations(collection_id, relationship = Family::DESCENDANTS)
+    ids = (collection_ids(collection_id, relationship).push(collection_id)).flatten.uniq
     return (products(ids) + compilations(ids)).sort_by(&:name)
   end
 
@@ -108,10 +127,56 @@ class Collection < ActiveRecord::Base
       self.name = title.parameterize
     end
 
-    def self.collection_ids(collection_id)
+    def self.collection_ids(collection_id, relationship = Family::DESCENDANTS, include_self = false)
+      ids = []
       collections = Collection.all
       collection = collections.select{|collection| collection.id == collection_id.to_f}.pop
-      return Family.decendants(collections, collection).map{|collection| collection.id}.uniq
+
+      case relationship
+      when Family::PATRIARCH
+        ids.push(Family.patriarch(collections, collection).id)
+      when Family::PARENT
+        ids.push(Family.parent(collections, collection).id)
+      when Family::CHILDREN
+        ids = Family.children(collections, collection).map{|collection| collection.id}.uniq
+      when Family::DESCENDANTS
+        ids = Family.descendants(collections, collection).map{|collection| collection.id}.uniq
+      when Family::LINEAGE
+        ids = Family.lineage(collections, collection).map{|collection| collection.id}.uniq
+      when Family::SIBLINGS
+        ids = Family.siblings(collections, collection).map{|collection| collection.id}.uniq
+      end
+
+      if include_self
+        ids.push(collection_id)
+      end
+
+      Rails.logger.debug "DEBUG - (ids.flatten.uniq).inspect: #{(ids.flatten.uniq).inspect}"
+
+      return ids.flatten.uniq
+
+
+      # Rails.logger.debug "DEBUG - collection_id: #{collection_id}"
+
+      # collections.each do |temp_collection|
+      #   Rails.logger.debug "DEBUG - temp_collection.id: #{temp_collection.id}"
+      # end
+
+      # Rails.logger.debug "DEBUG 1 - collection: #{collection.inspect}"
+
+      # if relationship
+      #   collection = Family.patriarch(collections, collection) # gets Patriarch so that all related collections are returned
+      # end
+
+      # Rails.logger.debug "DEBUG - ++++ after relationship ++++"
+
+      # Rails.logger.debug "DEBUG 2 - collection: #{collection.inspect}"
+
+      # descendants = Family.descendants(collections, collection)
+
+      # Rails.logger.debug "DEBUG - descendants: #{descendants.inspect}"
+
+      # return descendants.map{|collection| collection.id}.uniq
     end
 
     def self.products(ids)
@@ -124,7 +189,7 @@ class Collection < ActiveRecord::Base
 
     def self.finish_ids(collection_id)
       finish_ids = []
-      products(collection_ids(collection_id)).each do |product|
+      products(collection_ids(collection_id, Family::DESCENDANTS, true)).each do |product|
         product.skus.each do |sku|
           finish_ids.push(sku.finish_id) unless finish_ids.include?(sku.finish_id)
         end

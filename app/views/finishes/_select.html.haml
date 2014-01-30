@@ -11,7 +11,7 @@
       = collection_select(type, :finish_id, @finishes, :id, :title, prompt: "Select a Finish" )
     - else 
       = label_tag "#{type.to_s}_finish_id", "Finish"
-      There are no Finishes associated with this Collection. Please add a Finish befor proceeding.
+      There are no Finishes associated with this Collection. Please add a Finish before proceeding.
   
   - else 
     = label_tag "#{type.to_s}_finish_id", "Finish"
