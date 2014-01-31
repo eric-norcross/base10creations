@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140125022935) do
+ActiveRecord::Schema.define(:version => 20140131001420) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -51,17 +51,6 @@ ActiveRecord::Schema.define(:version => 20140125022935) do
   add_index "brand_collections", ["brand_id", "collection_id"], :name => "index_brand_collections_on_brand_id_and_collection_id", :unique => true
   add_index "brand_collections", ["brand_id"], :name => "index_brand_collections_on_brand_id"
   add_index "brand_collections", ["collection_id"], :name => "index_brand_collections_on_collection_id"
-
-  create_table "brand_styles", :force => true do |t|
-    t.integer  "brand_id"
-    t.integer  "style_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "brand_styles", ["brand_id", "style_id"], :name => "index_brand_styles_on_brand_id_and_style_id", :unique => true
-  add_index "brand_styles", ["brand_id"], :name => "index_brand_styles_on_brand_id"
-  add_index "brand_styles", ["style_id"], :name => "index_brand_styles_on_style_id"
 
   create_table "brands", :force => true do |t|
     t.string   "name"
