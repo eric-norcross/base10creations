@@ -17,7 +17,7 @@
         - if !@dimension.images.blank?
           %td
             - @dimension.images.each do |image|
-              = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @dimension.title)
+              = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: "#{@dimension.title} Image", title: @dimension.title)
 
   .links
     = link_to 'Edit', edit_dimension_path(@dimension)

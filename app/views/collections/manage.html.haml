@@ -15,7 +15,7 @@
           %th Parent Id
           %th List Image
           %th Brands
-          %th Collections
+          %th Styles
           %th
       %tbody
         - @collections.each do |collection|
@@ -27,7 +27,7 @@
               - if collection.images.blank?
                 &mdash;
               - else 
-                = cl_image_tag(collection.images.first.asset.filename.to_s, transformation: "hint", alt: collection.images.first.asset.filename.to_s, title: collection.title)
+                = cl_image_tag(collection.images.first.asset.filename.to_s, transformation: "hint", alt: "#{collection.title} Image", title: collection.title)
             %td
               - if collection.brands.blank?
                 &mdash;

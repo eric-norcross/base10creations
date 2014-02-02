@@ -48,10 +48,10 @@ class Sku < ActiveRecord::Base
     collection = collections.select{|collection| collection.id == product.collection_id.to_f}.pop
     collection_patriarch = Family.patriarch(collections, collection)
 
-    Rails.logger.debug "DEBUG - collection_patriarch: #{collection_patriarch}"
+    # Rails.logger.debug "DEBUG - collection_patriarch: #{collection_patriarch}"
 
     @products_and_compilations = Collection.products_and_compilations(collection_patriarch.id)
-    Rails.logger.debug "DEBUG - @products_and_compilations.inspect: #{@products_and_compilations.inspect}"
+    # Rails.logger.debug "DEBUG - @products_and_compilations.inspect: #{@products_and_compilations.inspect}"
     # Rails.logger.debug "DEBUG - @products_and_compilations: #{@products_and_compilations}"
 
 
@@ -60,10 +60,10 @@ class Sku < ActiveRecord::Base
     @related = []
     
 
-    Rails.logger.debug "DEBUG - @categories.inspect: #{@categories.inspect}"
+    # Rails.logger.debug "DEBUG - @categories.inspect: #{@categories.inspect}"
 
     @products_and_compilations.each do |item|
-      Rails.logger.debug "DEBUG - item.categories.inspect: #{item.categories.inspect}"
+      # Rails.logger.debug "DEBUG - item.categories.inspect: #{item.categories.inspect}"
       if item.categories(collection_patriarch.id).to_set.superset?(@categories.to_set)
         if item.is_a?(Product)
           @related.push(item)

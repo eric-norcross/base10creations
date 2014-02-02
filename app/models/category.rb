@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
+  require 'family'
+
   include Rails.application.routes.url_helpers
 
   default_scope order('categories.title ASC')
@@ -28,21 +30,21 @@ class Category < ActiveRecord::Base
 
   before_save                   :create_name
 
-  def products(collection_id = nil)
+  def products(collection_ids = nil)
     # Rails.logger.debug "DEBUG: component_ids: #{component_ids}"
 
     product_ids = ProductComponent.where(component_id: component_ids).map{|product_component| product_component.product_id}
 
     conditions = {}
     conditions[:id] = product_ids.uniq
-    conditions[:collection_id] = collection_id unless collection_id.blank?
+    conditions[:collection_id] = collection_ids unless collection_ids.blank?
 
     thing = Product.find(:all, conditions: conditions)
 
     return thing
   end
 
-  def compilations(collection_id = nil)
+  def compilations(collection_ids = nil)
     compilation_ids = []
     products.each do |product| 
       product.skus.each do |sku|
@@ -52,9 +54,18 @@ class Category < ActiveRecord::Base
 
     conditions = {}
     conditions[:id] = compilation_ids.uniq
-    conditions[:collection_id] = collection_id unless collection_id.blank?
+    conditions[:collection_id] = collection_ids unless collection_ids.blank?
 
     return Compilation.find(:all, conditions: conditions)
+  end
+
+  def collections
+    collections = []
+    products.each do |product|
+      push(product.collection)
+    end
+
+    return collections.uniq
   end
 
   def products_and_compilations(collection_id = nil)
@@ -67,20 +78,28 @@ class Category < ActiveRecord::Base
     # @category_ids = Component.where(id: @component_ids).pluck(:category_id).uniq
     # return Category.find(@category_ids)
 
-    return Category.joins(:components => :products).where(:products => {:collection_id => collection_id}).uniq
+    collections = Collection.all
+    collection = collections.select{|collection| collection.id == collection_id.to_f}.pop
+    collection_ids = Family.lineage(collections, collection).map{|collection| collection.id}.uniq
+
+    return Category.joins(:components => :products).where(:products => {:collection_id => collection_ids}).uniq
   end
 
   def also_available_in(collection_id, finish_id)
     finish_id = finish_id.to_i
 
+    collections = Collection.all
+    collection = collections.select{|collection| collection.id == collection_id.to_f}.pop
+    collection_ids = Family.lineage(collections, collection).map{|collection| collection.id}.uniq
+
     product_skus = []
-    products(collection_id).each do |product|
+    products(collection_ids).each do |product|
       product.skus.each do |sku|
         product_skus.push(sku) if sku.finish_id == finish_id
       end
     end
 
-    return product_skus + compilations(collection_id).delete_if{|compilation| compilation.finish_id != finish_id}
+    return product_skus + compilations(collection_ids).delete_if{|compilation| compilation.finish_id != finish_id}
   end
 
   def path

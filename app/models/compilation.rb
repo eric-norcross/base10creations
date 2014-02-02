@@ -115,7 +115,7 @@ class Compilation < ActiveRecord::Base
   end 
 
   def brands
-    return collection.brands
+    return collection.get_brands
     # @brands = []
 
     # products.each do |product|

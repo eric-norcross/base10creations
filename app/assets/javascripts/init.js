@@ -34,6 +34,18 @@ function setToolTipTimeout() {
   timer.set({ time : 3000, autostart : true });
 }
 
+function toggleCollectionChildInstructions(topLevel) {
+  console.log("topLevel: " + topLevel)
+  if (topLevel) {
+    $(".collection-form").find("p.required").show();
+    $(".collection-form").find(".alt").hide();
+  } else {
+    console.log("hitting else")
+    $(".collection-form").find("p.required").hide();
+    $(".collection-form").find(".alt").show();
+  }
+}
+
 // Fallback for placeholder attribute
 $(document).on("focus", ".clear-input", function(event) {
   if (!("placeholder" in document.createElement("input"))) {
@@ -174,8 +186,13 @@ $(document).ready(function(){
   // Side nav parent expanding
   $("#side li.active").parents('li').addClass('expanded');
 
-
-
+  // Selecting messaging for managing collections
+  var isTopLevel = false; 
+  if ($(".collection-form #collection-parent option:selected").hasClass("top-level") || $(".collection-form #collection-parent option:selected").attr("class") == undefined) {
+    isTopLevel = true;
+  }
+  toggleCollectionChildInstructions(isTopLevel);
+  
   // $(function() {  
   //   $("textarea[maxlength]").bind('input propertychange', function() {  
   //     var maxLength = $(this).attr('maxlength');  

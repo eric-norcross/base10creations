@@ -1,9 +1,9 @@
 module ProductsHelper
   def association(product, finish)
     if product.include_finish_name
-      return product.collection.title + " " + finish.title
+      return product.collection.get_patriarch_title + " " + finish.title
     else 
-      return product.collection.title
+      return product.collection.get_patriarch_title
     end
   end
 

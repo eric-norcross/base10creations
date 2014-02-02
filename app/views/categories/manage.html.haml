@@ -22,7 +22,7 @@
               - if category.images.blank?
                 &mdash;
               - else 
-                = cl_image_tag(category.images.first.asset.filename.to_s, transformation: "hint", alt: category.images.first.asset.filename.to_s, title: category.title)
+                = cl_image_tag(category.images.first.asset.filename.to_s, transformation: "hint", alt: "#{category.title} Image", title: category.title)
                 
             %td.controls
               = link_to 'Show', category

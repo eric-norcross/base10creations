@@ -25,7 +25,7 @@
             %td= figure.figurable_id
             %td
               - if !figure.images.blank?
-                = cl_image_tag(figure.images.first.asset.filename.to_s, transformation: "hint", alt: figure.images.first.asset.filename.to_s, title: figure.caption)
+                = cl_image_tag(figure.images.first.asset.filename.to_s, transformation: "hint", alt: "#{figure.caption} Image", title: figure.caption)
               - else
                 &mdash;
             / %td.controls

@@ -1,5 +1,5 @@
 - classes = nil
-- children = Family.children(@side_nav_elements, element)
+- children = Family.children(@side_nav_elements, element) unless element.is_a?(Collection)
 
 - if @active && element.id == @active.id
   - classes = "active expanded"

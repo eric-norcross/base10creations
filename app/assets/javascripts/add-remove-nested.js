@@ -14,6 +14,18 @@ $(document).on("change", "#compilation-collection select", function(event) {
   });
 });
 
+$(document).on("change", "#collection-parent select", function(event) {
+  // var isTopLevel = false; 
+
+  // if () {
+  //   isTopLevel = true;
+  // }
+
+  console.log($("option:selected", this).hasClass("top-level"))
+
+  toggleCollectionChildInstructions($("option:selected", this).hasClass("top-level"));
+});
+
 $(document).on("change", "#compilation-finish select", function(event) {
   var collection_id = $("#compilation-collection option:selected").val();
   var finish_id = $("option:selected", this).val();

@@ -8,5 +8,5 @@
 
 %li
   .checkbox
-    = check_box_tag "brand#{brand.id}", brand.id, collection.brands.include?(brand), name:'collection[brand_ids][]', checked: @checked
+    = check_box_tag "brand#{brand.id}", brand.id, collection.get_brands.include?(brand), name:'collection[brand_ids][]', checked: @checked
     = label_tag "brand#{brand.id}", brand.title

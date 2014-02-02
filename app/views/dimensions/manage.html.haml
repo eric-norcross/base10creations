@@ -27,7 +27,7 @@
             %td= number_with_precision(dimension.depth, strip_insignificant_zeros: true)
             %td
               - if !dimension.images.blank?
-                = cl_image_tag(dimension.images.first.asset.filename.to_s, transformation: "hint", alt: dimension.images.first.asset.filename.to_s, title: dimension.title)
+                = cl_image_tag(dimension.images.first.asset.filename.to_s, transformation: "hint", alt: "#{dimension.title} Image", title: dimension.title)
               - else
                 &mdash;
             %td.controls

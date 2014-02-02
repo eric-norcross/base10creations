@@ -14,7 +14,7 @@
             &mdash;
           - else 
             - @figure.images.each do |image|
-                = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @figure.caption)
+                = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: "#{@figure.caption} Image", title: @figure.caption)
 
   .links
     = link_to 'Edit', edit_figure_path(@figure)

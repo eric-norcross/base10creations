@@ -80,12 +80,20 @@ class Product < ActiveRecord::Base
     return product_sku_path(id, sku.id)
   end
 
+  def collection_by_patriarch
+    if collection.parent_id > 0
+      return collection.get_patriarch
+    else
+      return collection
+    end
+  end
+
   def categories(id = collection_id)
     return Category.categories_by_collection(id)
   end 
 
   def brands
-    return collection.brands
+    return collection.get_brands
 
     # @brands = []
     # collection.styles.each do |style|

@@ -13,7 +13,7 @@
             &mdash;
           - else 
             - @finish.images.each do |image|
-              = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: image.asset.filename.to_s, title: @finish.title)
+              = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: "#{@finish.title} Image", title: @finish.title)
 
   .links
     = link_to 'Edit', edit_finish_path(@finish)

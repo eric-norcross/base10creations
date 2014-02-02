@@ -4,7 +4,7 @@
       - if related_product.is_a?(Compilation)
         %li
           = link_to related_product.path, { title: related_product.title } do
-            = cl_image_tag(related_product.list_image, transformation: "related", alt: related_product.list_image, title: related_product.title)
+            = cl_image_tag(related_product.list_image, transformation: "related", alt: "#{related_product.title} Image", title: related_product.title)
           .product-info
             .hgroup
               %h1
@@ -28,7 +28,7 @@
           - if sku.finish == finish
             %li
               = link_to related_product.path(sku), { title: related_product.title } do
-                = cl_image_tag(sku.list_image, transformation: "related", alt: sku.list_image, title: related_product.title)
+                = cl_image_tag(sku.list_image, transformation: "related", alt: "#{related_product.title} Image", title: related_product.title)
               .product-info
                 .hgroup
                   %h1

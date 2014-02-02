@@ -1,7 +1,7 @@
 %nav#breadcrumbs
   = link_to "Home", root_path
   >
-  = link_to product.collection.title, collection_path(product.collection.id)
+  = link_to product.collection.get_patriarch_title, collection_path(product.collection.get_patriarch.id)
   >  
   = link_to sku.finish.title, finish_path(sku.finish.id)
   >  

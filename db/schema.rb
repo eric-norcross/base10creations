@@ -257,14 +257,15 @@ ActiveRecord::Schema.define(:version => 20140131001420) do
   create_table "products", :force => true do |t|
     t.text     "name"
     t.text     "title"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.integer  "collection_id"
     t.integer  "skin_id"
     t.text     "features"
     t.boolean  "active"
     t.boolean  "shown"
     t.boolean  "include_finish_name"
+    t.boolean  "branded",             :default => true
   end
 
   create_table "sections", :force => true do |t|

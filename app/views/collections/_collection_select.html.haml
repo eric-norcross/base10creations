@@ -4,6 +4,7 @@
 
 - selected = nil
 - disabled = nil
+- classes = "level#{level}"
 
 - if f.object.parent_id != 0 && f.object.parent_id != nil
   - if f.object.parent_id == collection.id
@@ -12,7 +13,10 @@
 - if f.object.id == collection.id
   - disabled = "disabled"
 
-%option{ value: collection.id, selected: selected, class: "level#{level}", disabled: disabled }
+- if level > 0
+  - classes += " child"
+
+%option{ value: collection.id, selected: selected, class: classes, disabled: disabled }
   - level.times do 
     \&nbsp;&nbsp;&nbsp;
   = collection.title

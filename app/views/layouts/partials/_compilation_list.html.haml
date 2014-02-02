@@ -2,10 +2,10 @@
   %li
     .list-view-image
       = link_to product.path, { title: product.title } do
-        = cl_image_tag(product.list_image, transformation: "list_med", alt: product.list_image, title: product.title)
+        = cl_image_tag(product.list_image, transformation: "list_med", alt: "#{product.title} Image", title: product.title)
     .list-view-info
       %h1.collection
-        = link_to product.collection.title, collection_path(product.collection.id)
+        = link_to product.collection.get_patriarch_title, collection_path(product.collection.get_patriarch.id)
         &ndash;
         = link_to product.finish.title, finish_path(product.finish.id)
       %h2.title

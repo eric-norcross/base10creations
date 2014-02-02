@@ -23,7 +23,7 @@
               - if finish.images.blank?
                 &mdash;
               - else
-                = cl_image_tag(finish.images.first.asset.filename.to_s, transformation: "hint", alt: finish.images.first.asset.filename.to_s, title: finish.title)
+                = cl_image_tag(finish.images.first.asset.filename.to_s, transformation: "hint", alt: "#{finish.title} Image", title: finish.title)
 
             %td.controls
               = link_to 'Show', finish

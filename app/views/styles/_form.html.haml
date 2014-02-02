@@ -38,7 +38,7 @@
       Collections
       
     .field
-      / = hidden_field_tag "style[collection_ids][]", nil
+      = hidden_field_tag "style[collection_ids][]", nil
       / - @collections.each_slice(@collections.length / @slice_size) do |column|
       /   .column
       /     .column-group

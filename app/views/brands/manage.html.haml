@@ -24,7 +24,7 @@
               - if brand.images.blank?
                 &mdash;
               - else 
-                = cl_image_tag(brand.images.first.asset.filename.to_s, transformation: "hint", alt: brand.images.first.asset.filename.to_s, title: brand.title)
+                = cl_image_tag(brand.images.first.asset.filename.to_s, transformation: "hint", alt: "#{brand.title} Image", title: brand.title)
             %td
               - brand.figures.each do |figure|
                 - figure.images.each do |image|

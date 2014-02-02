@@ -1,4 +1,4 @@
-= form_for @collection do |f|
+= form_for @collection, html: {class: "collection-form"} do |f|
   - if @collection.errors.any?
     #error-explanation
       %h1= "#{pluralize(@collection.errors.count, "error")} prohibited this collection from being saved:"
@@ -10,10 +10,10 @@
     %legend
       Collection
 
-    .field
+    .field#collection-parent
       = f.label :parent_id, "Parent Collection"
       %select{id: "collection_parent_id", name: "collection[parent_id]", class: "tiered"}
-        %option
+        %option{class: "top-level"}
           Main Collection / No Parent
         %optgroup{label: "Existing Collections"}
           - @collections = Collection.all
@@ -41,15 +41,19 @@
           = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "collection-image" })
 
     .field
+      %p.alt
+        Description is not required for children. A child without a description will use it's parents' description.
       = f.cktext_area :description
       %p.required
-        Description is required
+        Description is required 
 
   %fieldset
     %legend.required
       Brands
-    
+      %span.alt
+        &mdash; Brands are not required for children. A child without brands will use it's parents' brands. 
     .field
+      = hidden_field_tag "collection[brand_ids][]", nil
       .column
         .column-group
           - Brand.all.each do |brand|
@@ -59,8 +63,10 @@
   %fieldset
     %legend.required
       Styles
-    
+      %span.alt
+        &mdash; Styles are not required for children. A child without styles will use it's parents' styles. 
     .field
+      = hidden_field_tag "collection[style_ids][]", nil
       .column
         .column-group
           - Style.all.each do |style|

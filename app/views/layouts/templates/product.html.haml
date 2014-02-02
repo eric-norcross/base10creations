@@ -20,7 +20,7 @@
           = link_to "#", class: "print" do 
             = render '/layouts/svg/print'
 
-      = render "layouts/partials/product_tabs", product_object: @product, videos: @product.videos, feature_set: [@product], collection: @product.collection, categories: @product.categories, collection_id: @product.collection_id, finish_id: @sku.finish_id
+      = render "layouts/partials/product_tabs", product_object: @product, videos: @product.videos, feature_set: [@product], collection: @product.collection, categories: @product.categories, finish_id: @sku.finish_id
 
     - unless @related.blank?
       = render "layouts/partials/product_footer", finish: @sku.finish

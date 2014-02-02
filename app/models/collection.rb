@@ -5,12 +5,6 @@ class Collection < ActiveRecord::Base
 
   default_scope order('collections.name ASC')
 
-  # PATRIARCH     = Family::PATRIARCH
-  # PARENT        = Family::PATRIARCH
-  # CHILDREN      = Family::PATRIARCH
-  # DESCENDANTS   = Family::PATRIARCH
-  # SIBLINGS      = Family::PATRIARCH
-
   attr_accessible               :name, 
                                 :title,
                                 :description,
@@ -40,10 +34,10 @@ class Collection < ActiveRecord::Base
   has_many                      :products
   
   validates_presence_of         :title
-  validates_presence_of         :description, :unless => proc { |attrs| attrs['parent_id'].present? && attrs['parent_id'] > 0 }
+  validates                     :description, presence: true, unless: :check_for_parent_id
   validates                     :link, :format => /(^$)|(^(http:\/\/|https:\/\/|\/))/ix
-  validates                     :brands, presence: true
-  validates                     :styles, presence: true
+  validates                     :brands, presence: true, unless: :check_for_parent_id
+  validates                     :styles, presence: true, unless: :check_for_parent_id
 
   before_save                   :create_name
 
@@ -57,17 +51,6 @@ class Collection < ActiveRecord::Base
   def self.skus_by_finish(collection_id, finish_id)
     skus = []
 
-    # col_ids = 
-    # Rails.logger.debug "DEBUG 1 - col_ids.inspect: #{col_ids.inspect}"
-    # col_ids.push(collection_id)
-    # Rails.logger.debug "DEBUG 2 - col_ids.inspect: #{col_ids.inspect}"
-    # col_ids.flatten.uniq
-    # Rails.logger.debug "DEBUG 3 - col_ids.inspect: #{col_ids.inspect}"
-
-    # collection_products = 
-
-    # Rails.logger.debug "DEBUG - collection_products.inspect: #{collection_products.inspect}"
-
     products(collection_ids(collection_id, Family::DESCENDANTS, true)).each do |product|
       product.skus.each do |sku|
         if sku.finish_id.to_s == finish_id.to_s
@@ -75,8 +58,6 @@ class Collection < ActiveRecord::Base
         end
       end
     end
-
-    Rails.logger.debug "DEBUG - skus: #{skus.inspect}"
 
     return skus
   end
@@ -120,8 +101,59 @@ class Collection < ActiveRecord::Base
     end
   end
 
+  def get_description
+    Rails.logger.debug "DEBUG - get_description"
+    if parent_id > 0 && description.blank?
+      collections = Collection.all
+      collection = collections.select{|collection| collection.id == id.to_f}.pop
+      return Family.parent(collections, collection).description
+    else
+      return description
+    end
+  end
+
+  def get_brands
+    if parent_id > 0 && brands.blank?
+      collections = Collection.all
+      collection = collections.select{|collection| collection.id == id.to_f}.pop
+      return Family.parent(collections, collection).brands
+    else
+      return brands
+    end
+  end
+
+  def get_styles
+    if parent_id > 0 && styles.blank?
+      collections = Collection.all
+      collection = collections.select{|collection| collection.id == id.to_f}.pop
+      return Family.parent(collections, collection).styles
+    else
+      return styles
+    end
+  end
+
+  def get_patriarch
+    if parent_id > 0
+      collections = Collection.all
+      collection = collections.select{|collection| collection.id == id.to_f}.pop
+      return Family.patriarch(collections, collection)
+    else 
+      return self
+    end
+  end
+
+  def get_patriarch_title
+    if parent_id > 0
+      return get_patriarch.title
+    else 
+      return title
+    end
+  end
 
   private
+    def check_for_parent_id
+      return proc { |attrs| attrs['parent_id'].present? && attrs['parent_id'] > 0 }
+    end
   
     def create_name
       self.name = title.parameterize
@@ -151,32 +183,7 @@ class Collection < ActiveRecord::Base
         ids.push(collection_id)
       end
 
-      Rails.logger.debug "DEBUG - (ids.flatten.uniq).inspect: #{(ids.flatten.uniq).inspect}"
-
       return ids.flatten.uniq
-
-
-      # Rails.logger.debug "DEBUG - collection_id: #{collection_id}"
-
-      # collections.each do |temp_collection|
-      #   Rails.logger.debug "DEBUG - temp_collection.id: #{temp_collection.id}"
-      # end
-
-      # Rails.logger.debug "DEBUG 1 - collection: #{collection.inspect}"
-
-      # if relationship
-      #   collection = Family.patriarch(collections, collection) # gets Patriarch so that all related collections are returned
-      # end
-
-      # Rails.logger.debug "DEBUG - ++++ after relationship ++++"
-
-      # Rails.logger.debug "DEBUG 2 - collection: #{collection.inspect}"
-
-      # descendants = Family.descendants(collections, collection)
-
-      # Rails.logger.debug "DEBUG - descendants: #{descendants.inspect}"
-
-      # return descendants.map{|collection| collection.id}.uniq
     end
 
     def self.products(ids)

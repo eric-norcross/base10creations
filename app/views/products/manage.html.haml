@@ -28,7 +28,7 @@
 
       %tbody
         - @products.each do |product|
-          %tr{class: product.collection.name}
+          %tr{class: product.collection_by_patriarch.name}
             %td= product.id
             %td= check_box_tag 'active', 'active', product.active, {disabled: true}
             %td= check_box_tag 'shown', 'shown', product.shown, {disabled: true}
