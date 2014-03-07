@@ -42,6 +42,7 @@ class Collection < ActiveRecord::Base
   before_save                   :create_name
 
   before_destroy                :reset_children
+  before_destroy                :destroy_products_and_compilations
 
 
   def self.finishes(collection_id)
@@ -82,6 +83,16 @@ class Collection < ActiveRecord::Base
   def reset_children
     Collection.where(parent_id: id).each do |child|
       child.update_attributes(:parent_id => 0)
+    end
+  end
+
+  def destroy_products_and_compilations
+    Product.where(collection_id: id).each do |product|
+      product.destroy
+    end
+
+    Compilation.where(collection_id: id).each do |compilation|
+      compilation.destroy
     end
   end
 
