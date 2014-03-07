@@ -26,7 +26,7 @@
 
     .field.required
       = f.label :province
-      = f.select :province, options_for_select(provinces), prompt: "Select a Province"
+      = f.select :province, options_for_select(provinces, f.object.province), prompt: "Select a Province"
 
     .field.required
       = f.label :postal_code
@@ -60,7 +60,7 @@
 
   %fieldset
     %legend
-      Hidden fields. These will only visible during testing phases. DO NOT EDIT.
+      These fields are only for informational purposes. DO NOT EDIT.
 
     .field
       = f.label :latitude
@@ -76,3 +76,4 @@
   
   .actions
     = f.submit 'Save'
+
