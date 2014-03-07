@@ -8,6 +8,7 @@ class Location < ActiveRecord::Base
   #                               :address => "address", :normalized_address => "address",
   #                               :msg => "Sorry, not even Google could figure out where that is"  
 
+
   acts_as_gmappable     
 
   attr_accessible               :name,
@@ -24,7 +25,7 @@ class Location < ActiveRecord::Base
                                 :latitude, 
                                 :longitude 
 
-  geocoded_by                   :address
+  geocoded_by                   :full_address
 
   validates_presence_of         :name
   validates_presence_of         :address
@@ -34,12 +35,16 @@ class Location < ActiveRecord::Base
   validates_presence_of         :country
 
   
-  after_validation              :geocode, :if => lambda{ |obj| obj.address_changed? }  # if :geocode?
+  after_validation              :geocode, :if => lambda{ |obj| obj.address_changed? || obj.city_changed? || obj.province_changed? || obj.postal_code_changed? || obj.country_changed? }  # if :geocode?
 
 
   # def geocode?
   #   (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
   # end
+
+  def full_address
+    [address, city, province, postal_code, country].compact.join(', ')
+  end
 
   def gmaps4rails_address
     "#{self.address}, #{self.city}, #{self.province}, #{self.postal_code}, #{self.country}" 
@@ -49,5 +54,4 @@ class Location < ActiveRecord::Base
     radius ||= 50
     return Location.near(search_term, radius, :order => :distance)
   end
-
 end
