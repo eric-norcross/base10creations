@@ -1,6 +1,0 @@
-- zoom_level ||= 15
-- center_on_user ||= false
-
-= gmaps("map_options" => { "detect_location" => true, "center_on_user" => center_on_user, "auto_zoom" => false, "zoom" => zoom_level}, "markers" => { "data" => @json })
-
-/ = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}"
