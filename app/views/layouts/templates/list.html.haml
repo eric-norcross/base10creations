@@ -1,0 +1,10 @@
+= render "layouts/partials/side_nav", elements: @side_nav_elements
+
+.page#list-view
+  %article
+    - if @products.blank?
+      No products are available for your selection.
+    - else 
+      %ul
+        - @products.each do |product|
+          = render template_picker(product), product: product

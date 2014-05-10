@@ -1,0 +1,13 @@
+%footer
+  %h1#rubric
+    You may also be interested in one of these...
+  .gallery#related-products
+    .scroller
+      .control.previous.disabled
+        = link_to "#" do
+          = render "layouts/svg/arrow_left"
+      .items-container
+        = render "layouts/partials/related", related: @related, finish: finish
+      .control.next
+        = link_to "#" do
+          = render "layouts/svg/arrow_right"

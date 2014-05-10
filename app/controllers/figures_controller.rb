@@ -1,6 +1,5 @@
 class FiguresController < ApplicationController
   before_filter :load_figurable
-  load_and_authorize_resource
 
   # Admin Routes
   def manage
@@ -11,13 +10,13 @@ class FiguresController < ApplicationController
     end
   end
 
-  # def show
-  #   @figure = @figurable.figures.find(params[:id])
+  def show
+    @figure = @figurable.figures.find(params[:id])
 
-  #   respond_to do |format|
-  #     format.html
-  #   end
-  # end
+    respond_to do |format|
+      format.html
+    end
+  end
 
   def new
     @figure = @figurable.figures.new
@@ -31,9 +30,9 @@ class FiguresController < ApplicationController
     end
   end
 
-  # def edit
-  #   @figure = @figurable.figures
-  # end
+  def edit
+    @figure = @figurable.figures
+  end
 
   def create
     @figure = @figurable.figures.new(params[:id])

@@ -1,0 +1,28 @@
+.gallery#product-views
+  .gallery-image
+    = cl_image_tag(items.first.asset.filename.to_s, transformation: "gallery", class: "gallery-view", alt: "#{title} Image", title: title, :"data-large" => cloudinary_url(items.first.asset.filename.to_s, transformation: "large"), :"data-full" => cloudinary_url(items.first.asset.filename.to_s))
+  .image-controls
+    .enlarge
+      = link_to cloudinary_url(items.first.asset.filename.to_s, transformation: "large") do 
+        = render :partial => '/layouts/svg/enlarge'
+        View Larger Image
+  .image-controls.text-align-right
+    .zoom
+      = link_to "Roll Over Image To Zoom", "#"
+  .scroller
+    .control.previous.disabled
+      = link_to "#" do
+        = render :partial => '/layouts/svg/arrow_left'
+    .items-container
+      %ul
+        - items.each do |item|
+          / - if item.active
+          %li
+            .image-container
+              %span.helper
+              = link_to "#" do
+                = cl_image_tag(item.asset.filename.to_s, transformation: "scroller", alt: item.asset.filename.to_s, title: title, alt: "#{title} Image", :"data-medium" => cloudinary_url(item.asset.filename.to_s, transformation: "gallery"), :"data-large" => cloudinary_url(item.asset.filename.to_s, transformation: "large"), :"data-full" => cloudinary_url(item.asset.filename.to_s))
+
+    .control.next
+      = link_to "#" do
+        = render :partial => '/layouts/svg/arrow_right'

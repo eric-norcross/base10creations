@@ -1,0 +1,31 @@
+- if @compilation.skus
+  = render "layouts/partials/breadcrumbs", product: @compilation, sku: @compilation.skus.first
+
+.page{:id=>"#{@compilation.skin.name}"}
+  %article
+    = render "layouts/partials/gallery", items: @compilation.gallery_items, title: @compilation.title
+
+    #product-details
+      %header
+        .hgroup
+          %h1 
+            - if @compilation.skus.length > 1
+              skus
+            - else
+              sku
+
+            - @compilation.skus.each do |sku|
+              %span.comma= link_to "##{sku.title}", sku
+          %h2
+            = association(@compilation, @compilation.finish)
+          %h3
+            = @compilation.title
+        #icons
+          = link_to "#", :"data-toggle" => "tooltip", title: "#{render 'layouts/partials/tooltip', product: @compilation}", class: "tt" do 
+            = render :partial => '/layouts/svg/share'
+          = link_to "#", class: "print" do 
+            = render :partial => '/layouts/svg/print'
+
+      = render "layouts/partials/product_tabs", product_object: @compilation, videos: @compilation.videos, feature_set: @compilation.products, collection: @compilation.collection, categories: @compilation.categories, finish_id: @compilation.finish_id
+        
+    = render "layouts/partials/product_footer", finish: @compilation.finish

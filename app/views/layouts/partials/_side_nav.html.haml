@@ -1,0 +1,14 @@
+%nav#side
+  %ul
+    - if elements.first.has_attribute?("parent_id")
+      - elements.select{ |element| element.parent_id == 0 }.each do |child|
+        - if (!child.has_attribute?("active") || child.active)
+          = render "layouts/partials/side_nav_elements", element: child
+    - else
+      - elements.each do |child|
+        - if (!child.has_attribute?("active") || child.active)
+          %li
+            - if child.has_attribute?("link") && child.link != nil && child.link != ""
+              = link_to child.title, child.link
+            - else
+              = link_to child.title, child

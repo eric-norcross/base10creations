@@ -1,0 +1,29 @@
+- @sections = Section.all
+
+%footer.document
+  - @sections.each do |section|
+    - if section.parent_id.blank? || section.parent_id == 0 && section.active != false
+      %nav{:id=>"#{section.name}"}
+        %h1
+          = section.title
+        %ul
+          - Family.children(@sections, section).each do |subsection|
+            %li
+              - case subsection.name
+              - when "pinterest"
+                = link_to subsection.path, target: "_blank" do
+                  = render '/layouts/svg/pinterest' 
+              - when "twitter"
+                = link_to subsection.path, target: "_blank" do
+                  = render '/layouts/svg/twitter'
+              - when "youtube"
+                = link_to subsection.path, target: "_blank" do 
+                  = render '/layouts/svg/youtube'
+              - else
+                = link_to subsection.title, subsection.path
+
+  %nav#rights
+    %small 
+      © 2013 Martin Home Furnishings 
+      %br 
+      All Rights Reserved

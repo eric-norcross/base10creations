@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Martinfurniture::Application.load_tasks
+Base10cms::Application.load_tasks

@@ -1,7 +1,5 @@
 class ImagesController < ApplicationController
   before_filter :load_imageable
-  skip_before_filter :load_imageable, :only => [:set_active, :set_nil_active_to_true]
-  load_and_authorize_resource
 
   def set_active
     Image.find(params[:id]).update_attributes(params[:image])

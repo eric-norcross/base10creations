@@ -1,93 +1,11 @@
-Martinfurniture::Application.routes.draw do  
+Base10cms::Application.routes.draw do  
   mount Ckeditor::Engine => "/ckeditor"
 
   root to: 'pages#home'
 
   # Ajax Routes
-  post '/collections/products/:id'        => 'collections#products'
-  post '/collections/finishes/:id'        => 'collections#finishes'
-  post '/collections/skus_by_finish/:id'  => 'collections#skus_by_finish'
-  post '/images/set_active/:id'           => 'images#set_active'
 
   # Admin Routes
-  if Rails.env.production?
-    devise_for :admins, :skip => [:registrations]
-  else
-    devise_for :admins
-  end
-
-  as :admin do
-    # For production because of skip registrations
-    get 'admins/edit'          => 'devise/registrations#edit',        as: :edit_admin_registration
-    put 'admins'               => 'devise/registrations#update',      as: :admin_registration
-
-    get 'admin'                => 'admins#dashboard'
-    get 'admin/home'           => 'admins#dashboard'
-    get 'admin/dashboard'      => 'admins#dashboard',                 as: :admin_dashboard
-
-    get 'admin/admins'         => 'admins#index',                     as: :manage_admins
-    delete 'admin/admins/:id'  => 'admins#destroy',                   as: :destroy_admin
-
-    # get 'admin/users'          => 'users#index',                    as: :manage_users 
-
-    get 'admin/list'           => 'editors#index',                    as: :manage_editors
-    get 'admin/editors/new'    => 'editors#new',                      as: :new_editor
-    post 'admin/editors'       => 'editors#create',                   as: :editors
-    delete 'admin/editors/:id' => 'editors#destroy',                  as: :destroy_editor
-
-    #For data tools
-    get 'admin/dimensions'     => 'dimensions#manage',                as: :manage_dimensions
-    get 'dimensions/set'       => 'dimensions#set',                   as: :manage_dimensions_set_overall
-    get 'admin/features'       => 'products#manage_product_features', as: :manage_products_features
-    get 'images/set'           => 'images#set_nil_active_to_true',    as: :manage_images_active
-    
-    # Update Search Relations
-    get 'searchs/update'       => 'searches#update',                  as: :update_searches
-  end
-
-
-  # Editor Routes
-  devise_for :editors, :skip => [:registrations],  :controllers => { :registrations => "editors" }
-
-  get "/sign_in"  => redirect("/editors/sign_in")
-  get "/sign-in"  => redirect("/editors/sign_in")
-  get "/login"    => redirect("/editors/sign_in")
-  get "/log_in"   => redirect("/editors/sign_in")
-
-
-  as :editor do
-    # For production because of skip registrations
-    get 'editors/edit'          => 'devise/registrations#edit',      as: :edit_editor_registration
-    put 'editors'               => 'devise/registrations#update',    as: :editor_registration
-
-    get 'editor'                => 'editors#dashboard'
-    get 'editor/home'           => 'editors#dashboard'
-    get 'editor/dashboard'      => 'editors#dashboard',             as: :editor_dashboard
-  end
-
-  as :admin || :editor do
-    get 'brands/manage'         => 'brands#manage',           as: :manage_brands
-    get 'carousels/manage'      => 'carousels#manage',        as: :manage_carousels
-    get 'categories/manage'     => 'categories#manage',       as: :manage_categories
-    get 'collections/manage'    => 'collections#manage',      as: :manage_collections
-    get 'compilations/manage'   => 'compilations#manage',     as: :manage_compilations
-    get 'components/manage'     => 'components#manage',       as: :manage_components
-    get 'finishes/manage'       => 'finishes#manage',         as: :manage_finishes
-    get 'figures/manage'        => 'figures#manage',          as: :manage_figures
-    get 'pages/manage'          => 'pages#manage',            as: :manage_pages
-    get 'products/manage'       => 'products#manage',         as: :manage_products
-    get 'sections/manage'       => 'sections#manage',         as: :manage_sections
-    get 'skins/manage'          => 'skins#manage',            as: :manage_skins
-    get 'styles/manage'         => 'styles#manage',           as: :manage_styles
-    get 'videos/manage'         => 'videos#manage',           as: :manage_videos
-
-    get 'editor/dealers'        => 'locations#manage'
-    get 'editor/retailers'      => 'locations#manage'
-    get 'editor/locations'      => 'locations#manage',        as: :manage_locations
-  end
-
-
-  # devise_for :users
 
   # Error Pages
   %w( 404 422 500 ).each do |code|
@@ -95,59 +13,15 @@ Martinfurniture::Application.routes.draw do
   end
 
   # Backward compatible routes for previous website
-  match '/index.php'                          => 'pages#home'
-
-  match '/collections/entertainment'          => 'categories#show', id: 2
-    match '/collections/entertainment/*page'  => 'categories#show', id: 2
-
-  match '/collections/occasional'             => 'categories#show', id: 3
-    match '/collections/occasional/*page'     => 'categories#show', id: 3
-
-  match '/collections/office'                 => 'categories#show', id: 4
-    match '/collections/office/*page'         => 'categories#show', id: 4
-
-
+  
   # Search Routes
 
 
   # General Routes
-  resources :finishes do
-    resources :images
-  end
-
-  resources :products do
-    resources :skus
-  end
-
-  resources :compilations do
-    resources :products do
-      resources :skus
-    end
-  end
-
-  resources :admins
-  
-  resources :brands
   resources :carousels
-  resources :categories
-  resources :collections
-  resources :collection_styles
-  resources :components
-  resources :compilations
-  resources :dimensions
   resources :figures
   resources :images
-  resources :locations
-  resources :messages
   resources :pages
-  resources :products
-  resources :product_components
-  resources :searches
-  resources :sections
-  resources :skins
-  resources :skus
-  resources :styles
-  resources :videos
 
   
   

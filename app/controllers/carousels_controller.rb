@@ -1,7 +1,4 @@
 class CarouselsController < ApplicationController
-  load_and_authorize_resource :page
-  load_and_authorize_resource :carousel, :through => :page
-
   # Admin 
   def manage
     @carousels = Carousel.all
@@ -11,21 +8,21 @@ class CarouselsController < ApplicationController
     end
   end
   
-  # def index
-  #   @carousels = Carousel.all
+  def index
+    @carousels = Carousel.all
 
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.json { render json: @carousels }
-  #   end
-  # end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @carousels }
+    end
+  end
 
-  # GET /carousels/1
-  # def show
-  #   @carousel = Carousel.find(params[:id])
+  GET /carousels/1
+  def show
+    @carousel = Carousel.find(params[:id])
 
-  #   render "#{@carousel.skin.template}"
-  # end
+    render "#{@carousel.skin.template}"
+  end
 
   def new
     @carousel = Carousel.new

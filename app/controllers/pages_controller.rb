@@ -1,10 +1,7 @@
 class PagesController < ApplicationController
-  load_and_authorize_resource
-  skip_authorize_resource :only => :home
-
   def home
     @page = Page.find_by_name("home");
-    render @page.skin.template
+    render "layouts/templates/home"
   end 
 
   # Admin Routes
@@ -16,20 +13,20 @@ class PagesController < ApplicationController
 
 
   # REST Routes
-  # def index
-  #   # @pages = Page.all
-  #   respond_to do |format|
-  #     format.html  
-  #   end
-  # end
+  def index
+    @pages = Page.all
+    respond_to do |format|
+      format.html  
+    end
+  end
 
   def show
-    # @page = Page.find(params[:id])
+    @page = Page.find(params[:id])
     render @page.skin.template
   end
 
   def new
-    # @page = Page.new
+    @page = Page.new
 
     # 1.times { 
     #   carousel = @page.carousels.build 
@@ -50,11 +47,11 @@ class PagesController < ApplicationController
   end
 
   def edit
-    # @page = Page.find(params[:id])
+    @page = Page.find(params[:id])
   end
 
   def create
-    # @page = Page.new(params[:page])
+    @page = Page.new(params[:page])
 
     respond_to do |format|
       if @page.save
@@ -66,7 +63,7 @@ class PagesController < ApplicationController
   end
 
   def update
-    # @page = Page.find(params[:id])
+    @page = Page.find(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
@@ -78,7 +75,7 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    # @page = Page.find(params[:id])
+    @page = Page.find(params[:id])
     @page.destroy
 
     respond_to do |format|

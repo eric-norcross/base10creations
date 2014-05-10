@@ -1,0 +1,10 @@
+%nav#breadcrumbs
+  = link_to "Home", root_path
+  >
+  = link_to product.collection.get_patriarch_title, collection_path(product.collection.get_patriarch.id)
+  >  
+  = link_to sku.finish.title, finish_path(sku.finish.id)
+  >  
+  = product.title
+  / - product.skus.each do |sku|
+  /   %span.comma= link_to sku.title, product_sku_path(product, sku)

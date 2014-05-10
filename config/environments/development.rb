@@ -1,4 +1,4 @@
-Martinfurniture::Application.configure do
+Base10cms::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -48,7 +48,7 @@ Martinfurniture::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              "smtp.gmail.com",
     port:                 587,
-    domain:               "martinfurniture.com",
+    domain:               "base10-cms.com",
     authentication:       "plain",
     enable_starttls_auto: true,
     user_name:            "martinhf.info@gmail.com",
