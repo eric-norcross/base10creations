@@ -39,23 +39,4 @@ Base10cms::Application.configure do
   config.logger.level = Logger.const_get(
     ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
   )
-
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = true
-
-  # Change mail delvery to either :smtp, :sendmail, :file, :test
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              "smtp.gmail.com",
-    port:                 587,
-    domain:               "base10-cms.com",
-    authentication:       "plain",
-    enable_starttls_auto: true,
-    user_name:            "martinhf.info@gmail.com",
-    password:             "shipping7757"
-  }
-
-  # specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { host: "localhost:8080" }
-
  end

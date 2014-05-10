@@ -1,9 +1,0 @@
-= render "layouts/partials/side_nav", elements: @side_nav_elements
-
-.page.section{id: "#{@page.skin.name}"}
-  %article
-    %header
-      %h1
-        = @page.title
-    #page-body
-      = raw @page.content

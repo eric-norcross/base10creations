@@ -57,6 +57,7 @@ module Base10cms
     config.active_record.whitelist_attributes = true
 
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
 
     config.sass.debug_info = true
 

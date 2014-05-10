@@ -13,13 +13,11 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'cloudinary'
 gem 'font-awesome-rails'
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 gem 'seed_dump', '~> 0.6.0'
 gem 'active_attr'
 gem 'rails_12factor'
-gem 'lograge'
-
-# gem 'friendly_id'
+# gem 'lograge'
 
 #separate out later
 

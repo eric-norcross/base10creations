@@ -94,10 +94,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.9.2)
-    lograge (0.3.0)
-      actionpack (>= 3)
-      activesupport (>= 3)
-      railties (>= 3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -132,7 +128,6 @@ GEM
     minitest-test (1.1.0)
       minitest (~> 4.0)
     multi_json (1.9.3)
-    newrelic_rpm (3.8.0.218)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
@@ -231,14 +226,12 @@ DEPENDENCIES
   font-awesome-rails
   haml-rails
   jquery-rails
-  lograge
   meta_request
   mini_magick
   minitest-colorize
   minitest-focus
   minitest-rails
   minitest-rails-capybara
-  newrelic_rpm
   pg
   rails (= 3.2.17)
   rails_12factor

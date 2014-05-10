@@ -2,8 +2,8 @@
 %html
   %head
     %meta{:charset => "UTF-8"}
-    %meta{name: "Description", content: "Martin Home Furnishings is the leading manufacturer of office furniture, entertainment centers, and occasional tables. Located in San Diego CA, they manufacture and wholesale to furniture retailers all over the United States. Martin Home Furnishings is known best for their kathy ireland Home by Martin furniture collections."}
-    %title= "Martin Home Furnishings | Manufacture Entertainment Centers and Office Furniture in San Diego, CA. "
+    %meta{name: "Description", content: "base10 CMS"}
+    %title= "base10 CMS"
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = cloudinary_js_config
@@ -17,12 +17,3 @@
       #content
         = yield
       = yield :scripts
-      
-      :javascript
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-45889302-1', 'martinfurniture.com');
-        ga('send', 'pageview');

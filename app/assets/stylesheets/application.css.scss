@@ -10,14 +10,12 @@
  *
  *= require baseline
  *= require bootstrap
- *= require base10creations/gallery_required
- *= require base10creations/LiteBox-required
  *= require font-awesome
  *= require_self
 
 */
 
-@import 'common.css.scss';
+@import 'mixins.css.scss';
 @import 'admin.css.scss';
 @import 'layout.css.scss';
 @import 'pages.css.scss';
