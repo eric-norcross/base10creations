@@ -2,16 +2,16 @@
   %article
     #main-carousel.carousel.slide
       / Carousel Markers
-      %ol.carousel-indicators
-        - @page.carousels[0].figures.each_with_index do |figure, index|
-          %li{class: ("active" if index == 0), "data-slide-to" => index, "data-target" => "#main-carousel"}
+      / %ol.carousel-indicators
+      /   - @page.carousels[0].figures.each_with_index do |figure, index|
+      /     %li{class: ("active" if index == 0), "data-slide-to" => index, "data-target" => "#main-carousel"}
 
       / Carousel Items
-      .carousel-inner
-        - @page.carousels[0].figures.each_with_index do |figure, index|
-          .item{class: ("active" if index == 0)}
-            = link_to figure.link do
-              = cl_image_tag(figure.images.first.asset.filename.to_s, alt: figure.images.first.asset.filename.to_s)
+      / .carousel-inner
+      /   - @page.carousels[0].figures.each_with_index do |figure, index|
+      /     .item{class: ("active" if index == 0)}
+      /       = link_to figure.link do
+      /         = cl_image_tag(figure.images.first.asset.filename.to_s, alt: figure.images.first.asset.filename.to_s)
 
       / Carousel Nav
       / %a.carousel-control.left{"data-slide" => "prev", :href => "#main-carousel"} ‹

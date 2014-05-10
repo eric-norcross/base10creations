@@ -42,9 +42,6 @@ module Base10cms
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
 
-    # Allows for sub-directories in Models
-    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
-
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
@@ -56,9 +53,6 @@ module Base10cms
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    config.assets.precompile += Ckeditor.assets
-
     config.sass.debug_info = true
 
     config.exceptions_app = self.routes
@@ -69,24 +63,34 @@ module Base10cms
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # Devise
-    config.assets.initialize_on_precompile = false
+
+    # Customized #
+
+    # Allows for sub-directories in Models
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+
+    # CK Editor
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
+
+    # For config/local_env.yml
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
 
     # Testing
-    # config.generators do |g|
-    #   g.test_framework :rspec,
-    #     :fixtures => true,
-    #     :view_specs => false,
-    #     :helper_specs => false,
-    #     :routing_specs => false,
-    #     :controller_specs => true,
-    #     :request_specs => true
-    #   g.fixture_replacement :factory_girl, :dir => "spec/factories"
-    # end
-
     config.generators do |g|
-      g.test_framework      :rspec, fixture: true
-      g.fixture_replacement :fabrication
+      g.test_framework :rspec,
+        :fixtures => true,
+        :view_specs => false,
+        :helper_specs => false,
+        :routing_specs => false,
+        :controller_specs => true,
+        :request_specs => true
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
   end
 end

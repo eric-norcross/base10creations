@@ -3,5 +3,3 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
 Base10cms::Application.initialize!
-
-# Sass::Plugin.options[:debug_info] = true

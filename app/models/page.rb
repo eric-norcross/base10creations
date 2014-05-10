@@ -24,15 +24,13 @@ class Page < ActiveRecord::Base
                                 ## has_many ##
 
                                 ## nested attributes ##
-                                # :images_attributes,
+                                :images_attributes,
                                 :figures_attributes,
                                 :carousels_attributes
 
                         
-  belongs_to                    :skin
-
-  # has_many                      :images, as: :imageable, dependent: :destroy
-  # accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
+  has_many                      :images, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
   has_many                      :carousels, dependent: :destroy
   accepts_nested_attributes_for :carousels, allow_destroy: true #, reject_if: lambda { |a| a[:image].blank?}
@@ -41,7 +39,6 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:link].blank?}, allow_destroy: true
 
   validates_presence_of         :title
-  validates_presence_of         :skin
 
   before_save                   :create_name
 

@@ -4,10 +4,16 @@
     %meta{:charset => "UTF-8"}
     %meta{name: "Description", content: "base10 CMS"}
     %title= "base10 CMS"
+
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
-    = cloudinary_js_config
     = csrf_meta_tags
+
+    / - if admin.present? && admin_signed_in?
+    - if 1 == 1
+      = stylesheet_link_tag "editing", media: "all"
+      = javascript_include_tag "editing"
+      = cloudinary_js_config
 
   %body
     #container

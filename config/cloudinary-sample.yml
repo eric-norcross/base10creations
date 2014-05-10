@@ -1,5 +1,4 @@
 ---
-#Production MF
 development:
   cloud_name: CLOUD_NAME
   api_key: 'API_KEY'

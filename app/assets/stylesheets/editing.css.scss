@@ -8,15 +8,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require baseline
- *= require bootstrap
- *= require font-awesome
  *= require_self
-
 */
 
 @import 'mixins.css.scss';
-@import 'layout.css.scss';
-@import 'pages.css.scss';
-@import 'components.css.scss';
-@import 'svg.css.scss';
+@import 'editing/admin.css.scss';
+@import 'editing/forms.css.scss';
