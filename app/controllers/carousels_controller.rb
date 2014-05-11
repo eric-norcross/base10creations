@@ -1,4 +1,7 @@
 class CarouselsController < ApplicationController
+  authorize_resource :page
+  authorize_resource :carousel, :through => :page
+
   # Admin 
   def manage
     @carousels = Carousel.all

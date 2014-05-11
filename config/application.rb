@@ -64,33 +64,36 @@ module Base10cms
     config.assets.version = '1.0'
 
 
-    # Customized #
+    # base10 Customized #
 
-    # Allows for sub-directories in Models
-    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+        # Devise Recommendation 
+        config.assets.initialize_on_precompile = false
 
-    # CK Editor
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    config.assets.precompile += Ckeditor.assets
+        # Allows for sub-directories in Models
+        config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
-    # For config/local_env.yml
-    config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'local_env.yml')
-      YAML.load(File.open(env_file)).each do |key, value|
-        ENV[key.to_s] = value
-      end if File.exists?(env_file)
-    end
+        # CK Editor
+        config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+        config.assets.precompile += Ckeditor.assets
 
-    # Testing
-    config.generators do |g|
-      g.test_framework :rspec,
-        :fixtures => true,
-        :view_specs => false,
-        :helper_specs => false,
-        :routing_specs => false,
-        :controller_specs => true,
-        :request_specs => true
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
-    end
+        # For config/local_env.yml
+        config.before_configuration do
+          env_file = File.join(Rails.root, 'config', 'local_env.yml')
+          YAML.load(File.open(env_file)).each do |key, value|
+            ENV[key.to_s] = value
+          end if File.exists?(env_file)
+        end
+
+        # Testing
+        config.generators do |g|
+          g.test_framework :rspec,
+            :fixtures => true,
+            :view_specs => false,
+            :helper_specs => false,
+            :routing_specs => false,
+            :controller_specs => true,
+            :request_specs => true
+          g.fixture_replacement :factory_girl, :dir => "spec/factories"
+        end
   end
 end

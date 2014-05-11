@@ -1,0 +1,79 @@
+%article#admin
+  %header
+    %h1 
+      Editing User: 
+      %span.highlight
+        = @user.email
+
+  = form_for(resource, :as => resource_name, :url => admins_user_update_path(resource.id), :html => { :method => :put }) do |f| 
+    = devise_error_messages! 
+
+    - if resource.errors.any?
+      #error-explanation
+        %h1
+          = "#{pluralize(resource.errors.count, "error")} prohibited this page from being saved:"
+        %ol
+          - resource.errors.full_messages.each do |msg|
+            %li
+              = msg
+
+    %fieldset{id: "edit-user-account"}
+      %legend
+        / Approve Gallery Access for 72 Hours from: #{Time.now.inspect}
+        Set User Gallery Access Expiration
+
+      .field
+        %label
+          Allow access for
+        = f.text_field :expiration_amount, {maxlength: 2, class: "number-input", value: 3}
+        = f.select :expiration_format, options_for_select(expiration_format, "days")
+        %span.split-label.required
+          from now *
+
+      .field
+        = f.label :first_name 
+        = f.text_field :first_name, {disabled: true}
+      
+      .field
+        = f.label :last_name 
+        = f.text_field :last_name, {disabled: true}
+      
+      .field
+        = f.label :company 
+        = f.text_field :company, {disabled: true}
+
+      .field
+        = f.label :phone 
+        = f.text_field :phone, {disabled: true}
+
+      .field
+        = f.label :email 
+        = f.email_field :email, {disabled: true}
+
+      / .field.required
+      /   = f.label :password 
+      /   = f.password_field :password
+      /   %span.instructions 
+      /     (leave blank if you don't want to change it)
+      /     - if devise_mapping.confirmable? && resource.pending_reconfirmation? 
+      /       %br
+      /         Currently waiting confirmation for: 
+      /         = resource.unconfirmed_email
+
+      / .field.required
+      /   = f.label :password_confirmation 
+      /   = f.password_field :password_confirmation
+
+      / .field.required
+      /   = f.label :current_password
+      /   = f.password_field :current_password
+      /   %span.instructions 
+      /     (we need your current password to confirm your changes)
+
+      .field
+        = f.submit "Grant Access"
+
+  %footer
+    .links
+      =# link_to 'Show', resource, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+      = link_to 'Back', admins_users_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }

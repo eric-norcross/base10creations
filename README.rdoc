@@ -1,6 +1,19 @@
+== What You'll Need
+- Rails
+- Postgres
+- Cloudinary Account (http://www.cloudinary.com)
+
+== Getting Started
+- Generate a new, unique `secret_token` in `config/initializers/secret_token.rb` by using `$ rake secret`
+- Generate a new, unique `secret_key` in `config/initializers/devise.rb` by using `$ rake secret`
+- Create a `cloudinary.yml` and `database.yml` file in the `config` directory. Configure them with your settings. A `cloudinary-sample.yml` and `database-sample.yml` have been provided as an example. 
+- Set up the DB with `$ rake db:schema:load`
+- Run `$ unicorn -c config/unicorn.rb`
+- Set up an admin user by going to `localhost:8080/admins/sign_up`
+- Enjoy
+
+
 == TODO:
 
-- Setup Devise
-- Setup default admins/users
 - Clean up and add structure to views
 - Clean up mixins

@@ -1,12 +1,28 @@
 Base10cms::Application.routes.draw do  
-  mount Ckeditor::Engine => "/ckeditor"
-
   root to: 'pages#home'
 
   # Ajax Routes
 
-  # Admin Routes
 
+  # Admin Routes
+  if Rails.env.production?
+    devise_for :admins, :skip => [:registrations]
+  else
+    devise_for :admins
+  end
+
+  as :admin do
+    mount Ckeditor::Engine => "/ckeditor"
+
+    get 'admins'               => 'admins#dashboard'
+    get 'admins/home'          => 'admins#dashboard'
+    get 'admins/dashboard'     => 'admins#dashboard'
+
+    get 'admin'                => 'admins#dashboard'
+    get 'admin/home'           => 'admins#dashboard'
+    get 'admin/dashboard'      => 'admins#dashboard',                 as: :admin_dashboard
+  end
+  
   # Error Pages
   %w( 404 422 500 ).each do |code|
     get code, :to => "errors#show", :code => code
@@ -16,15 +32,12 @@ Base10cms::Application.routes.draw do
   
   # Search Routes
 
-
   # General Routes
   resources :carousels
   resources :figures
   resources :images
   resources :pages
 
-  
-  
   # Catch all for anything else
   match '*path' => redirect('/') unless Rails.env.development?
 

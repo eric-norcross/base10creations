@@ -21,8 +21,8 @@ gem 'mini_magick'
 gem 'cloudinary'
 
 # Authorization & Authentication
-# gem 'cancan'
-# gem 'devise'
+gem 'cancan'
+gem 'devise'
 
 # Monitoring & Logging
 # gem 'newrelic_rpm'

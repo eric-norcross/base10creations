@@ -9,8 +9,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-    / - if admin.present? && admin_signed_in?
-    - if 1 == 1
+    - if admin_signed_in?
       = stylesheet_link_tag "editing", media: "all"
       = javascript_include_tag "editing"
       = cloudinary_js_config

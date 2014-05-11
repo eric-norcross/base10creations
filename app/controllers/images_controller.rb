@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  authorize_resource
   before_filter :load_imageable
 
   def set_active

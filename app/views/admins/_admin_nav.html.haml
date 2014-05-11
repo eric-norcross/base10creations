@@ -1,0 +1,16 @@
+- if current_admin
+  %header
+    %h1
+      Manage:
+      = title if defined? title
+    %nav#manage
+      %ul
+        %li
+          / = link_to "Users",           admins_users_path,    :class => ( 'active' if @active == "users")
+
+        / %li
+        =# link_to "Pages",           manage_pages_path,    :class => ( 'active' if @active == "pages")
+        / %li
+        =# link_to "Products",        manage_products_path, :class => ( 'active' if @active == "products")
+        / %li
+        =# link_to "Admins",          manage_admins_path,   :class => ( 'active' if @active == "admins")

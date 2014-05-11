@@ -1,4 +1,5 @@
 class FiguresController < ApplicationController
+  authorize_resource
   before_filter :load_figurable
 
   # Admin Routes

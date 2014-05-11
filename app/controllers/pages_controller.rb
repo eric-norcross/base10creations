@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  authorize_resource
+  skip_authorize_resource :only => [:home, :tab, :show]
+
   def home
     @page = Page.find_by_name("home");
     render "layouts/templates/home"
@@ -10,7 +13,6 @@ class PagesController < ApplicationController
       format.html
     end
   end
-
 
   # REST Routes
   def index

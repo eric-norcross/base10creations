@@ -35,8 +35,13 @@ Base10cms::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.logger = Logger.new(STDOUT)
-  config.logger.level = Logger.const_get(
-    ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
-  )
+  # base10 Customized
+    config.logger = Logger.new(STDOUT)
+    config.logger.level = Logger.const_get(
+      ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
+    )
+
+    #Devise
+    config.action_mailer.default_url_options = { host: 'localhost:8080' }
+
  end
