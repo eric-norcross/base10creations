@@ -1,83 +1,24 @@
-- require 'family'
-
-%header.document
-  #search
-    = render "/layouts/partials/product_search", id: "product_search"
-    = render "/layouts/partials/retailer_search", id: "retailer_search"
-  #logo
-    = link_to root_path do
-      = image_tag "logo.png"
-
-  %nav#user
-    - if admin_signed_in?
-      Logged in as
-      %strong{style: "margin-right: 10px;"}
-        = current_admin.email
-
-      = link_to "Dashboard", admin_dashboard_path
-      |
-      
-      = link_to 'Edit profile', edit_admin_registration_path
-      |
-
-      = link_to "Logout", destroy_admin_session_path, method: :delete
-
-    - else 
-      - if editor_signed_in?
-        Logged in as
+%header
+  - if admin_signed_in?
+    %nav#user
+      - if admin_signed_in?
+        Logged in as: 
         %strong{style: "margin-right: 10px;"}
-          = current_editor.email
+          = current_admin.email
 
-        = link_to "Dashboard", editor_dashboard_path
+        = link_to "Dashboard", admin_dashboard_path
         |
+
+        = link_to "Logout", destroy_admin_session_path, method: :delete
+
+      - else
+        =# link_to "Sign up", new_user_registration_path
+        / |
         
-        = link_to 'Edit profile', edit_editor_registration_path
-        |
-
-        = link_to "Logout", destroy_editor_session_path, method: :delete
-
-    / - else
-    /   = link_to "Sign up", new_admin_registration_path
-    /   |
-    /   = link_to "Login", new_admin_session_path
-
-  %nav#main
-    %ul
-      %li#products
-        = link_to "Products", "#", :class => ( 'active' if @active == "products" )
-        .subnav
-          .column-group
-            - @components = Component.all
-            - Category.all.each_slice(2) do |column|
-              .column
-                - column.each do |category|
-                  %h1 
-                    = category.title
-                  %ul
-                    - @components.select{|component| component.category_id == category.id}.each do |component|
-                      - if (component.parent_id.blank? || component.parent_id == 0 || Family.patriarch(@components, component).category_id != category.id) && component.active
-                        %li
-                          = link_to component.title, component.path 
-
-      %li#collections
-        = link_to "Collections", "#", :class => ( 'active' if @active == "collections" )
-        .subnav
-          .column-group
-            - Collection.where(parent_id: 0).each_slice(10) do |column|
-              .column
-                %ul
-                  - column.each do |collection|
-                    %li
-                      = link_to collection.title, collection.path
-      %li#styles
-        = link_to "Styles", "#", :class => ( 'active' if @active == "styles" )
-        .subnav
-          .column-group
-            - Style.all.each_slice(10) do |column|
-              .column
-                %ul
-                  - column.each do |style|
-                    %li
-                      = link_to style.title, style.path
-      %li#brands
-        = link_to "kathy ireland™ Home", Brand.find(1).path, :class => ( 'active' if @active == "KIHome" )
+        =# link_to "Login", new_user_session_path
+  %nav
+    %ul 
+      - Page.unscoped.all.each do |page|
+        %li
+          = link_to page do
+            = page.title

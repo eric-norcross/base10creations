@@ -1,9 +1,9 @@
 !!!
 %html
   %head
-    %meta{:charset => "UTF-8"}
+    %meta{charset: "UTF-8"}
     %meta{name: "Description", content: "base10 CMS"}
-    %title base10 CMS
+    %title Fresh And Healthy
 
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
@@ -14,11 +14,18 @@
       = javascript_include_tag "editing"
       = cloudinary_js_config
 
+    /[if lt IE 9]
+      %script{ src: "http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js", type: "text/javascript" }
   %body
+    #messages
+      - flash.each do |name, msg|
+        %div{ id: "flash_#{name}" }
+          = msg
+
     #container
-      #messages
-        - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_#{name}"
+      = render :partial => "layouts/partials/header"
+
       #content
         = yield
-      = yield :scripts
+
+      = render :partial => "layouts/partials/footer"
