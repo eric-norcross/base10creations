@@ -3,13 +3,13 @@
   %head
     %meta{charset: "UTF-8"}
     %meta{name: "Description", content: "base10 CMS"}
-    %title Fresh And Healthy
-
+    %title base10 CMS
+    
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-    - if admin_signed_in?
+    / - if admin_signed_in?
       = stylesheet_link_tag "editing", media: "all"
       = javascript_include_tag "editing"
       = cloudinary_js_config
