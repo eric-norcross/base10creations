@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def home
     @page = Page.find_by_name("home");
-    render "layouts/templates/home"
+    render "layouts/skins/home"
   end 
 
   # Admin Routes
@@ -24,9 +24,12 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
-    respond_to do |format|
-      format.html
-    end
+
+    Rails.logger.debug "@page: #{@page.inspect}"
+    Rails.logger.debug "@page.skin: #{@page.skin.inspect}"
+    Rails.logger.debug "@page.skin.template: #{@page.skin.template}"
+
+    render @page.skin.template
   end
 
   def new

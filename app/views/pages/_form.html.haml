@@ -17,6 +17,10 @@
       Page
 
     .field.required
+      = f.label :skin_id, "Skin"
+      = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}
+
+    .field.required
       = f.label :title
       = f.text_field :title
 

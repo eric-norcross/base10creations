@@ -37,6 +37,7 @@ Base10cms::Application.routes.draw do
   resources :figures
   resources :images
   resources :pages
+  resources :skins
 
   # Catch all for anything else
   match '*path' => redirect('/') unless Rails.env.development?

@@ -11,6 +11,7 @@
         %tr
           %th Id
           %th Title
+          %th Template
           %th
           
       %tbody
@@ -18,6 +19,8 @@
           %tr
             %td= page.id
             %td= page.title
+            %td= #page.skin.name
+
             %td.controls
               = link_to 'Show', page
               = link_to 'Edit', edit_page_path(page)

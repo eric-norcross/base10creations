@@ -1,0 +1,40 @@
+%article#admin
+  %header
+    %h1 Manage Skins
+
+  = render "admins/admin_nav"
+
+  %section
+    %header
+      .links
+        = link_to 'New Skin', new_skin_path
+
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Name
+          %th Title
+          %th Template
+          %th
+
+      %tbody
+        - @skins.each do |skin|
+          %tr
+            %td
+              = skin.id
+            %td
+              = skin.name
+            %td
+              = skin.title
+            %td
+              = skin.template
+
+            %td
+              = link_to 'Show', skin
+              = link_to 'Edit', edit_skin_path(skin)
+              = link_to 'Destroy', skin, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    %footer
+      .links
+        = link_to 'New Skin', new_skin_path

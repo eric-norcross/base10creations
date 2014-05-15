@@ -19,7 +19,7 @@ if Object.const_defined?("Ckeditor")
     # config.authorize_with :cancan
 
     # Diet
-    config.assets_languages = ['en']
+    # config.assets_languages = ['en']
     # config.assets_plugins = [
     #   'a11yhelp',
     #   'about',

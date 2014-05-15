@@ -48,9 +48,9 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    ckeditor (4.0.11)
+    ckeditor (4.0.2)
       mime-types
-      orm_adapter (~> 0.5.0)
+      orm_adapter
     cloudinary (1.0.72)
       aws_cf_signer
       rest-client
@@ -79,6 +79,8 @@ GEM
       railties (>= 3.0.0)
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
+    friendly_id (4.0.10.1)
+      activerecord (>= 3.0, < 4.0)
     haml (4.0.5)
       tilt
     haml-rails (0.4)
@@ -179,7 +181,7 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.8.3)
+    unicorn (4.8.2)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
@@ -196,12 +198,13 @@ DEPENDENCIES
   binding_of_caller
   cancan
   carrierwave
-  ckeditor
+  ckeditor (= 4.0.2)
   cloudinary
   coffee-rails (~> 3.2.1)
   devise
   factory_girl_rails (~> 4.0)
   font-awesome-rails
+  friendly_id (~> 4.0.10)
   haml-rails
   jquery-rails
   meta_request
@@ -213,4 +216,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   seed_dump
   uglifier (>= 1.0.3)
-  unicorn
+  unicorn (= 4.8.2)
