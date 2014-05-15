@@ -1,16 +1,15 @@
 - if current_admin
-  %header
-    %h1
-      Manage:
-      = title if defined? title
-    %nav#manage
-      %ul
-        %li
-          / = link_to "Users",           admins_users_path,    :class => ( 'active' if @active == "users")
-
-        / %li
-        =# link_to "Pages",           manage_pages_path,    :class => ( 'active' if @active == "pages")
-        / %li
-        =# link_to "Products",        manage_products_path, :class => ( 'active' if @active == "products")
-        / %li
-        =# link_to "Admins",          manage_admins_path,   :class => ( 'active' if @active == "admins")
+  %nav#manage
+    %ul
+      %li= link_to "FAQ's",         faqs_path
+      %li= link_to "Figures",       figures_path
+      /%li= link_to "Galleries",     galleries_path
+      /%li= link_to "Images",        images_path
+      %li= link_to "Leads",         leads_path
+      %li= link_to "Pages",         pages_path
+      %li= link_to "Partners",      partners_path
+      %li= link_to "Products",      products_path
+      %li= link_to "Skins",         skins_path
+      %li= link_to "Testimonials",  testimonials_path
+      %li= link_to "Venues",        venues_path
+      / %li= link_to "Videos",        videos_path

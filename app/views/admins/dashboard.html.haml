@@ -1,8 +1,9 @@
 %article#admin
-  = render "admin_nav"
+  %header
+    %h1 Admin Dashboard
 
+  = render "admins/admin_nav"
 
   %section
-    %ul
-      %li
-        = link_to "Pages", pages_path
+    %p
+      Welcome to the Admin Dashboard. You can manage the different areas of the site using the navigation to the left. 
