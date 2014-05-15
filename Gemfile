@@ -33,9 +33,12 @@ gem 'devise'
 
 # Hosting, Serving & Deployment
 gem 'unicorn', '4.8.2'
-gem 'rails_12factor' # To silence Heroku deprecation warning
 # gem 'capistrano'
 
+# Fixes for stuff
+gem 'rails_12factor' # To silence Heroku deprecation warning
+gem 'sass', '3.2.14' # To fix "Warning. Error encountered while saving cache /tmp/..." 
+       
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
