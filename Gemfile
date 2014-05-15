@@ -9,13 +9,16 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'font-awesome-rails'
 
+# SEO Tools
+gem "friendly_id", "~> 4.0.10" # v4 For Rails 3x
+
 # DB Tools
 gem 'pg'
 gem 'seed_dump'
 gem 'annotate', '>=2.5.0'
 
 # Image/File Serving & Uploading
-gem 'ckeditor', '4.0.6'
+gem 'ckeditor', '4.0.2'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cloudinary'
@@ -29,7 +32,7 @@ gem 'devise'
 # gem 'lograge'
 
 # Hosting, Serving & Deployment
-gem 'unicorn'
+gem 'unicorn', '4.8.2'
 gem 'rails_12factor' # To silence Heroku deprecation warning
 # gem 'capistrano'
 

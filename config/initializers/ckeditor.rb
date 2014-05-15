@@ -17,17 +17,36 @@ if Object.const_defined?("Ckeditor")
 
     # Setup authorization to be run as a before filter
     # config.authorize_with :cancan
-  end
 
-  # config.toolbar_MyToolbar = [
-  #   { name: 'document', items: [ 'NewPage','Preview' ] },
-  #   { name: 'clipboard', items: [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
-  #   { name: 'editing', items: [ 'Find','Replace','-','SelectAll','-','Scayt' ] },
-  #   { name: 'insert', items: [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
-  #   { name: 'styles', items: [ 'Styles','Format' ] },
-  #   { name: 'basicstyles', items: [ 'Bold','Italic','Strike','-','RemoveFormat' ] },
-  #   { name: 'paragraph', items: [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote' ] },
-  #   { name: 'links', items: [ 'Link','Unlink','Anchor' ] },
-  #   { name: 'tools', items: [ 'Maximize','-','About' ] }
-  # ];
+    # Diet
+    config.assets_languages = ['en']
+    # config.assets_plugins = [
+    #   'a11yhelp',
+    #   'about',
+    #   'clipboard',
+    #   'colordialog',
+    #   'dialog',
+    #   'div',
+    #   'fakeobjects',
+    #   'find',
+    #   'flash',
+    #   'forms',
+    #   'iframe',
+    #   'image',
+    #   'link',
+    #   'liststyle',
+    #   'magicline',
+    #   'pagebreak',
+    #   'pastefromword',
+    #   'preview',
+    #   'scayt',
+    #   'showblocks',
+    #   'smiley',
+    #   'specialchar',
+    #   'table',
+    #   'tabletools',
+    #   'templates',
+    #   'wsc',
+    # ]
+  end
 end
