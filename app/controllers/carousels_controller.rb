@@ -20,7 +20,6 @@ class CarouselsController < ApplicationController
     end
   end
 
-  GET /carousels/1
   def show
     @carousel = Carousel.find(params[:id])
 
