@@ -13,6 +13,8 @@
 class Page < ActiveRecord::Base
   extend FriendlyId
 
+  friendly_id                   :title, use: [:slugged, :history]
+
   default_scope order('pages.title ASC')
                               ## DB Backed ##
   attr_accessible               :name, 
@@ -52,11 +54,6 @@ class Page < ActiveRecord::Base
 
   before_save                   :create_name
 
-  friendly_id                   :name, use: [:slugged, :history]
-
-  # def should_generate_new_friendly_id?
-  #   new_record?
-  # end
 
   private
   
