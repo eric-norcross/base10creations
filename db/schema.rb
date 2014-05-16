@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140515222303) do
+ActiveRecord::Schema.define(:version => 20140516012341) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(:version => 20140515222303) do
   add_index "images", ["imageable_id", "imageable_type"], :name => "index_images_on_imageable_id_and_imageable_type"
 
   create_table "pages", :force => true do |t|
-    t.string   "name"
     t.string   "title"
     t.text     "content"
     t.datetime "created_at", :null => false

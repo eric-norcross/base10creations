@@ -18,3 +18,4 @@
 - Add instructions for creating a "hint" on Cloudinary
 - Clean up and add structure to views
 - Clean up mixins
+- Add tests

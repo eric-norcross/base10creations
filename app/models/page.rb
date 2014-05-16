@@ -17,8 +17,7 @@ class Page < ActiveRecord::Base
 
   default_scope order('pages.title ASC')
                               ## DB Backed ##
-  attr_accessible               :name, 
-                                :title, 
+  attr_accessible               :title, 
                                 :content,
                                 :slug,
 
@@ -52,12 +51,11 @@ class Page < ActiveRecord::Base
   validates                     :skin,
                                 presence: true
 
-  before_save                   :create_name
-
-
+  def name
+    title.parameterize
+  end
+  
   private
   
-  def create_name
-    self.name = title.parameterize
-  end
+  
 end
