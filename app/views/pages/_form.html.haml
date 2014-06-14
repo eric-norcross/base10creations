@@ -1,5 +1,5 @@
 - unique_id ||= randomNum
-- @carousel_options = { header: false, removable: false }
+- @carousel_options = { header: true, removable: true }
 - @figure_options = { header: true, removable: true }
 
 = form_for @page do |f|
@@ -16,11 +16,23 @@
     %legend
       Page
 
+    / .field
+    /   = f.label :shown, "Shown In Navigation"
+    /   = f.check_box :shown, {checked: checked(f.object.shown)}
+
     .field.required
       = f.label :skin_id, "Skin"
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}
 
-    .field.required
+    / .field.required
+    /   = f.label :order
+    /   = f.text_field :order
+
+    / .field.required
+    /   = f.label :name
+    /   = f.text_field :name
+
+    .field
       = f.label :title
       = f.text_field :title
 
@@ -36,7 +48,7 @@
       .addable-group
         = f.fields_for :carousels, false do |carousel|
           = render 'carousels/carousel_fields', f: carousel, options: @carousel_options
-      .addable.admin-button
+      .addable.admin-submit-button
         = link_to_add_fields({ name: "Add Carousel", f: f, association: :carousels, nested: [ { association: :figures, nested: [ { association: :images } ] } ],  container: "carousels",  options: @carousel_options })
 
 
@@ -48,7 +60,7 @@
       .addable-group
         = f.fields_for :figures, false do |figure|
           = render 'figures/figure_fields', f: figure, options: @figure_options
-      .addable.admin-button
+      .addable.admin-submit-button
         = link_to_add_fields({ name: "Add Figure", f: f, association: :figures, nested: [ { association: :images } ], container: "figures", options: @figure_options })
       
   .actions

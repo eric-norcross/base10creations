@@ -1,7 +1,9 @@
-#admin
-  %h1 New page
+%article#admin
+  %header
+    %h1 New Page
 
   = render 'form'
 
-  .links
-    = link_to 'Back', pages_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+  %footer
+    .links
+      = link_to 'Back', manage_pages_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }

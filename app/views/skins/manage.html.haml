@@ -21,14 +21,10 @@
       %tbody
         - @skins.each do |skin|
           %tr
-            %td
-              = skin.id
-            %td
-              = skin.name
-            %td
-              = skin.title
-            %td
-              = skin.template
+            %td= skin.id
+            %td= skin.name
+            %td= skin.title
+            %td= skin.template
 
             %td
               = link_to 'Show', skin

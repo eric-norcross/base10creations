@@ -1,7 +1,7 @@
 class SkinsController < ApplicationController
   authorize_resource
 
-  def index
+  def manage
     @skins = Skin.all
 
     respond_to do |format|

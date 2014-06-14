@@ -16,9 +16,23 @@
         / |
         
         =# link_to "Login", new_user_session_path
+  #logo
+    = link_to root_path do
+      = render "layouts/svg/logo"
   %nav
-    %ul 
-      - Page.unscoped.all.each do |page|
-        %li
-          = link_to page do
-            = page.title
+    %ul
+      %li
+        = link_to "#tools" do
+          tools
+      %li
+        = link_to "#environment" do
+          environment
+      %li
+        = link_to "#latest" do
+          latest
+      %li
+        = link_to "#brand-experience" do
+          brands
+      %li
+        = link_to "#contact" do
+          contact

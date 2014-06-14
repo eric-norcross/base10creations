@@ -6,7 +6,7 @@
  path,
  rect,
  polygon, {
-    fill: $linkColor;
+    fill: $textLink;
   }
 }
 
@@ -18,7 +18,7 @@ a:hover #print {
   path,
   rect,
   polygon, {
-    fill: $rolloverColor;
+    fill: $textLinkRollover;
   }
 }
 
@@ -26,6 +26,6 @@ svg.search {
   path,
   rect,
   polygon, {
-    fill: $rolloverColor;
+    fill: $textLinkRollover;
   }
 }

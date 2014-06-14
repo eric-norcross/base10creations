@@ -1,27 +1,38 @@
-#admin
-  %h1 Available Carousel
+%article#admin
+  %header
+    %h1 Manage Carousels
 
-  .links
-    = link_to 'Add a new Carousel', new_carousel_path
+  = render "admins/admin_nav"
 
-  - if @carousels
+  %section
+    %header
+      .links
+        = link_to 'Add a new Carousel', new_carousel_path
+
     %table
       %thead
         %tr
           %th Id
+          %th Page
           %th Title
-          %th Figure Count
+          %th Figures
           %th 
+
       %tbody
         - @carousels.each do |carousel|
           %tr
             %td= carousel.id
+            %td= carousel.page.name
             %td= carousel.title
-            %td= carousel.figures.length
+            %td
+              - carousel.figures.each do |figure|
+                = cl_image_tag(figure.image, transformation: 'hint', alt: figure.image)
+
             %td.controls
               = link_to 'Show', carousel
               = link_to 'Edit', edit_carousel_path(carousel)
               = link_to 'Destroy', carousel, method: :delete, data: { confirm: 'Are you sure?' }
 
-  .links
-    = link_to 'Add a new Carousel', new_carousel_path
+    %footer
+      .links
+        = link_to 'Add a new Carousel', new_carousel_path

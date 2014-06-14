@@ -1,10 +1,14 @@
-#admin
-  %h1 Available Figure
+%article#admin
+  %header
+    %h1 Manage Figures
 
-  .links
-    = link_to 'Add a new Figure', new_figure_path
+  = render "admins/admin_nav"
 
-  - if @figures
+  %section
+    %header
+      .links
+        = link_to 'New Figure', new_figure_path
+
     %table
       %thead
         %tr
@@ -14,7 +18,7 @@
           %th Type
           %th Type Id
           %th Image
-          / %th
+          %th
       %tbody
         - @figures.each do |figure|
           %tr
@@ -28,10 +32,13 @@
                 = cl_image_tag(figure.images.first.asset.filename.to_s, transformation: "hint", alt: "#{figure.caption} Image", title: figure.caption)
               - else
                 &mdash;
-            / %td.controls
-            /   = link_to 'Show', figure
-            /   = link_to 'Edit', edit_figure_path(figure)
-            /   = link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
 
-  .links
-    = link_to 'Add a new Figure', new_figure_path
+
+            %td.controls
+              = link_to 'Show', figure
+              = link_to 'Edit', edit_figure_path(figure)
+              = link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
+
+    %footer
+      .links
+        = link_to 'New Figure', new_figure_path

@@ -1,6 +1,6 @@
 - unique_id ||= randomNum
 
-.active
+.active-fields
   - if local_assigns.has_key? :options
     - if options[:header]
       %h2
@@ -12,9 +12,9 @@
     = f.label :caption
     = f.text_field :caption
 
-  .field.required
+  .field
     = f.label :link
-    = f.text_field :link, value: default_if_nil("#", f.object.link)
+    = f.text_field :link#, value: default_if_nil("#", f.object.link)
     %span.instructions
       (Prefix "http://" to all external links. Use "/" for all internal. e.g.: "/locations")
 
@@ -23,6 +23,6 @@
       = f.fields_for :images do |image_builder|
         = render 'images/image_fields', f: image_builder
 
-    .addable.admin-button{class: ("hidden" unless f.object.images.blank?)}
+    .addable.admin-submit-button{class: ("hidden" unless f.object.images.blank?)}
       = link_to_add_fields({ name: "Add Image", f: f, association: :images, container: "figure-image-#{unique_id}" })
     

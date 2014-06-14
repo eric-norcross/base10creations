@@ -1,8 +1,13 @@
-#admin
-  %h1 Editing Figure
-
+%article#admin
+  %header
+    %h1 
+      Editing Figure:
+      %span.highlight
+        = @figure.title
+  
   = render 'form'
 
-  .links
-    = link_to 'Show', @figure, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
-    = link_to 'Back', manage_figures_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+  %footer
+    .links
+      = link_to 'Show', @figure, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+      = link_to 'Back', manage_figures_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }

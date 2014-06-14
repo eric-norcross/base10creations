@@ -1,91 +1,210 @@
-#admin {
-  display: inline-block;
-  width: 87.5%;
+#container {
+  header {
+    nav#user {
+      background-color: $adminNavBackground;
+      border-radius: 0 0 0 10px;
+        -moz-border-radius: 0 0 0 10px;
+        -webkit-border-radius: 0 0 0 10px;
 
-  h1 {
-    color: $linkColor;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
+      box-shadow: -3px 3px 8px 0px rgba(0,0,0,0.5);
+        -webkit-box-shadow: -3px 3px 8px 0px rgba(0,0,0,0.5);
+        -moz-box-shadow: -3px 3px 8px 0px rgba(0,0,0,0.5);
+      
+      color: #fff;
+      font-size: $defaultFontSize;
+      padding: 5px;
+      padding-left: 8px;
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      white-space: nowrap;
+      z-index: 999;
 
-  h2 {
-    margin: 10px 0 5px 0;
-    font-size: 12px;
-  }
+      //Reset
+      margin-top: 0px;
 
-  a {
-    color: $linkColor;
-    font-size: 11px;
-    font-weight: bold;
-  }
+      a {
+        color: #fff;
+      }
 
-  #compilation-skus table {
-    border-width: 0px;
-  }
-
-  table {
-    border-color: $headerColor;
-    border-style: solid;
-    border-width: 1px 0;
-    margin: 15px 0;
-
-    thead {
-      tr {
-        th {
-          font-size: 12px;
-          padding: 5px;
-          text-align: left;
-          vertical-align: middle;
-        }
+      a:hover {
+        font-style: italic;
       }
     }
+  }
 
-    tbody {
-      tr {
-        td {
-          font-size: 11px;
-          padding: 5px;
-          max-width: 200px;
-          vertical-align: middle;
+  #content {
+    article#admin {
+      font-family: $sans-serif;
+      min-height: 500px;
+
+      header {
+        margin-top: 15px;
+        height: inherit;
+        width: inherit;
+
+        h1 {
+          //color: $link;
+          font-size: 16px;
+          margin-bottom: 5px;
         }
+      } 
 
-        td span:after {
-          content: ",";
-        }
+      nav {
+        position: absolute;
+        bottom: 15px;
 
-        td span:last-child:after {
-          content: "";
-        } 
+        ul {
+          margin-left: -10px;
 
-        td.controls {
-          a {
-            @include mini-button;
+          li {
+            background-color: $headerColor;
+            font-size: 16px;
+            margin-bottom: 3px;
+            padding-left: 10px;
+            text-transform: uppercase;
+            width: 190px;
+
+            a {
+              display: block;
+              background-color: #fff;
+              padding: 6px 10px 4px 10px;
+              width: 180px;
+            }
+
+            a:hover,
+            a.active {
+              background-color: $headerColor;
+              color: $adminNavLinkRolloverColor;
+            }
           }
         }
+      }  
 
-        td img {
-          border-color: #aaaaaa;
+      nav#manage {  
+        display: inline-block;
+        position: static;
+        bottom: 0px;
+        vertical-align: top;
+
+        ul {
+          margin-top: 15px;
+
+          li {
+            width: 100px;
+
+            a:link, a:active, a:visited, {
+              color: $adminLinkColor;
+              width: 90px;
+            }
+
+            a:hover {
+              color: $adminNavLinkRolloverColor;
+              text-decoration: none;
+            }
+          }
+        }
+      }   
+
+      section {
+        display: inline-block;
+        vertical-align: top;
+
+        header {}
+
+        table {
+          background-color: rgba(255, 255, 255, .75);
+          border-collapse: initial;
+          border-color: $tableBorderColor;
+          border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
           border-style: solid;
-          border-width: 1px;
+          border-width: 2px;
+          padding: 7px 10px;
+          margin: 15px 0;
+          min-width: 830px;
+          width: 100%;
+
+          thead {
+            tr {
+              th {
+                font-size: $defaultFontSize;
+                font-weight: bold;
+                padding: 5px 5px 10px 5px;
+                text-align: left;
+                vertical-align: middle;
+
+                border-width: 0 0 2px 0 ;
+                border-color: $tableBorderColor;
+                border-style: solid;
+              }
+            }
+          }
+
+          tbody {
+            tr:first-child td {
+              padding-top: 10px;
+            }
+
+            tr {
+              td {
+                font-size: 11px;
+                padding: 5px;
+                max-width: 200px;
+                text-align: left;
+                vertical-align: middle;
+              }
+
+              td.center {
+                text-align: center;
+              }
+
+              td span:after {
+                content: ",";
+              }
+
+              td span:last-child:after {
+                content: "";
+              } 
+
+              td.controls,
+              td:last-child {
+                text-align: right;
+                white-space: nowrap;
+
+                a {
+                  @include mini-admin-button;
+                }
+              }
+
+              td img {
+                @include hint
+              }
+            }
+
+            tr.inactive {
+              background-color: #FCC;
+            }
+
+            tr:hover,
+            tr.inactive:hover {
+              background-color: $lightOdd;
+            }
+          }
         }
       }
-
-      tr.inactive {
-        background-color: #FCC;
-      }
-
-      tr:hover,
-      tr.inactive:hover {
-        background-color: $lightOdd;
-      }
     }
-  }
 
-  .links {
-    margin: 20px 0;
-    
-    a {
-      @include mini-button;
+    header,
+    footer {
+      .links {
+        margin: 20px 0;
+        
+        a {
+          @include mini-admin-button;
+        }
+      }
     }
   }
 }

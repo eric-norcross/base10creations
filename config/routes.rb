@@ -21,6 +21,24 @@ Base10cms::Application.routes.draw do
     get 'admin'                => 'admins#dashboard'
     get 'admin/home'           => 'admins#dashboard'
     get 'admin/dashboard'      => 'admins#dashboard',                 as: :admin_dashboard
+
+    get 'admin/admins'         => 'admins#index',                     as: :manage_admins
+    delete 'admin/admins/:id'  => 'admins#destroy',                   as: :destroy_admin
+
+    get 'carousels'             => 'carousels#manage'
+    get 'carousels/manage'      => 'carousels#manage',                as: :manage_carousels
+    
+    get 'figures'               => 'figures#manage'
+    get 'figures/manage'        => 'figures#manage',                  as: :manage_figures
+    
+    get 'pages'                 => 'pages#manage'
+    get 'pages/manage'          => 'pages#manage',                    as: :manage_pages
+    
+    get 'skins'                 => 'skins#manage'
+    get 'skins/manage'          => 'skins#manage',                    as: :manage_skins
+
+    get 'images'                => 'images#manage'
+    get 'images/manage'         => 'images#manage',                   as: :manage_images
   end
   
   # Error Pages

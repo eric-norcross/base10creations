@@ -1,13 +1,13 @@
 %article#admin
   %header
     %h1 
-      Editing Skin: 
+      Editing Skin:
       %span.highlight
         = @skin.title
-
+  
   = render 'form'
 
   %footer
     .links
       = link_to 'Show', @skin, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
-      // = link_to 'Back', manage_skins_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+      = link_to 'Back', manage_skins_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
