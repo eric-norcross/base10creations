@@ -67,7 +67,12 @@ Base10cms::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
 
-  # base10 Customized
+  # --------------------------------- #
+  # ******* base10 Customized ******* #
+  # --------------------------------- #
   # Lograge: Silence useless logs
   # config.lograge.enabled = true
+  
+  config.assets.precompile += ['editing.js', 'editing.css.scss']
+
 end
