@@ -15,7 +15,7 @@ Base10cms::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -72,7 +72,7 @@ Base10cms::Application.configure do
   # --------------------------------- #
   # Lograge: Silence useless logs
   # config.lograge.enabled = true
-  
-  config.assets.precompile += ['editing.js', 'editing.css.scss']
+
+  # config.assets.precompile += ['editing.js', 'editing.css']
 
 end

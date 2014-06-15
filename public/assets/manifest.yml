@@ -117,6 +117,8 @@ editing.js: editing-263fa5d1a50446489ff8cdc885b6948d.js
 editing/index.js: editing-263fa5d1a50446489ff8cdc885b6948d.js
 application.css: application-5f5021c108431c968520fbfe696fdc42.css
 application/index.css: application-5f5021c108431c968520fbfe696fdc42.css
+editing.css: editing-1bfcfa043531653d812d6ea0ae791357.css
+editing/index.css: editing-1bfcfa043531653d812d6ea0ae791357.css
 cloudinary_cors.html: cloudinary_cors-05f2af4874bd3914c79b03b8d9acd6d1.html
 cloudinary_cors/index.html: cloudinary_cors-05f2af4874bd3914c79b03b8d9acd6d1.html
 ckeditor/application.js: ckeditor/application-185915ba82fabb08f9016c17034e57aa.js

@@ -80,8 +80,8 @@ module Base10cms
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     
     # Force Asset Precompile
-    config.assets.precompile += ["editing.js", "editing.css.scss"]
-    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += ["editing.js", "editing.css"]
+    # config.assets.precompile += Ckeditor.assets
 
     # For config/local_env.yml
     config.before_configuration do
