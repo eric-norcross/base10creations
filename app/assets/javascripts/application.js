@@ -12,9 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require ckeditor/init
-//= require cloudinary
-//= require editing/init
-//= require editing/add-remove-nested
+//= require_tree ./application
 //= require_tree ../../../vendor/assets/javascripts/.

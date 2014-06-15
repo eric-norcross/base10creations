@@ -2,12 +2,14 @@ source 'https://rubygems.org'
 
 # Platform
 ruby '2.0.0'
-gem 'rails', '3.2.17'
+gem 'rails', '3.2.18'
 
 # View Tools
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'font-awesome-rails'
+
+# API Tools
 
 # SEO Tools
 gem "friendly_id", "~> 4.0.10" # v4 For Rails 3x
@@ -28,17 +30,19 @@ gem 'cancan'
 gem 'devise'
 
 # Monitoring & Logging
-# gem 'newrelic_rpm'
-# gem 'lograge'
+gem 'newrelic_rpm'
+gem 'lograge'
 
 # Hosting, Serving & Deployment
 gem 'unicorn', '4.8.2'
+gem 'rack-rewrite' # Redirecting naked domains to "www"
 # gem 'capistrano'
 
 # Fixes for stuff
 gem 'rails_12factor' # To silence Heroku deprecation warning
 gem 'sass', '3.2.14' # To fix "Warning. Error encountered while saving cache /tmp/..." 
-       
+gem 'i18n', '0.6.9' # Something was specifying 0.6.10 but that was pulled
+    
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do

@@ -53,8 +53,6 @@ module Base10cms
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
-    config.sass.debug_info = true
-
     config.exceptions_app = self.routes
 
     # Enable the asset pipeline
@@ -64,36 +62,61 @@ module Base10cms
     config.assets.version = '1.0'
 
 
-    # base10 Customized #
 
-        # Devise Recommendation 
-        config.assets.initialize_on_precompile = false
+    # --------------------------------- #
+    # ******* base10 Customized ******* #
+    # --------------------------------- #
 
-        # Allows for sub-directories in Models
-        config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+    # SASS comments
+    config.sass.debug_info = true
 
-        # CK Editor
-        config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-        config.assets.precompile += Ckeditor.assets
+    # Devise Recommendation 
+    config.assets.initialize_on_precompile = false
 
-        # For config/local_env.yml
-        config.before_configuration do
-          env_file = File.join(Rails.root, 'config', 'local_env.yml')
-          YAML.load(File.open(env_file)).each do |key, value|
-            ENV[key.to_s] = value
-          end if File.exists?(env_file)
-        end
+    # Allows for sub-directories in Models
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
-        # Testing
-        config.generators do |g|
-          g.test_framework :rspec,
-            :fixtures => true,
-            :view_specs => false,
-            :helper_specs => false,
-            :routing_specs => false,
-            :controller_specs => true,
-            :request_specs => true
-          g.fixture_replacement :factory_girl, :dir => "spec/factories"
-        end
+    # CK Editor
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    
+    # Force Asset Precompile
+    config.assets.precompile += ["editing.js", "editing.css.scss"]
+    config.assets.precompile += Ckeditor.assets
+
+    # For config/local_env.yml
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
+
+    # Testing
+    config.generators do |g|
+      g.test_framework :rspec,
+        :fixtures => true,
+        :view_specs => false,
+        :helper_specs => false,
+        :routing_specs => false,
+        :controller_specs => true,
+        :request_specs => true
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    end
+
+    ## Rack-Rewrite
+    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+      if Rails.env.production?
+        r301 %r{.*}, 'http://www.base10creations.com$&', :if => Proc.new {|rack_env|
+          rack_env['SERVER_NAME'] != 'www.base10creations.com'
+        }
+      end
+
+      # r301 '/for-gyms-and-rec-centers', '/venues/3'
+      # r301 '/for-gyms-and-rec-centers/', '/venues/3/'
+      # r301 '/for-corporations', '/venues/2'
+      # r301 '/for-corporations/', '/venues/2/'
+      # r301 '/for-schools', '/venues/1'
+      # r301 '/for-schools/', '/venues/1/'
+    end
   end
 end
