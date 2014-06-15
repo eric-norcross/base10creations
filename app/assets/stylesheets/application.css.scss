@@ -10,12 +10,12 @@
  *
  *= require application/baseline
  *= require bootstrap
- *= require fonts
  *= require font-awesome
  *= require_self
 
 */
 
+@import 'application/fonts.css.scss';
 @import 'mixins.css.scss';
 @import 'application/layout.css.scss';
 @import 'application/pages.css.scss';
