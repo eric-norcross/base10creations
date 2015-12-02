@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Base10cms
+module Base10
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -83,13 +83,18 @@ module Base10cms
     config.assets.precompile += ["editing.js", "editing.css"]
     # config.assets.precompile += Ckeditor.assets
 
-    # For config/local_env.yml
+
+    # For config/environment_variables.yml
     config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'local_env.yml')
-      YAML.load(File.open(env_file)).each do |key, value|
-        ENV[key.to_s] = value
-      end if File.exists?(env_file)
+      env_file = Rails.root.join("config", 'environment_variables.yml').to_s
+
+      if File.exists?(env_file)
+        YAML.load_file(env_file)[Rails.env].each do |key, value|
+          ENV[key.to_s] = value
+        end
+      end
     end
+    
 
     # Testing
     config.generators do |g|

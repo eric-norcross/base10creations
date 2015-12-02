@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 # Platform
-ruby '2.0.0'
-gem 'rails', '3.2.18'
+ruby '2.2.3'
+gem 'rails', '3.2.22'
 
 # View Tools
 gem 'jquery-rails'
@@ -34,7 +34,8 @@ gem 'newrelic_rpm'
 gem 'lograge'
 
 # Hosting, Serving & Deployment
-gem 'unicorn', '4.8.2'
+gem 'puma'
+gem 'foreman'
 gem 'rack-rewrite' # Redirecting naked domains to "www"
 # gem 'capistrano'
 

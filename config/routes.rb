@@ -1,4 +1,4 @@
-Base10cms::Application.routes.draw do  
+Base10::Application.routes.draw do  
   root to: 'pages#home'
 
   # Ajax Routes
