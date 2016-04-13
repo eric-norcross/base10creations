@@ -109,8 +109,10 @@ a:link:hover {
     }
   }
 
-  #tools {
-
+  article#tools {
+    section {
+      width: 175px;
+    }
   }
 
   #environment {

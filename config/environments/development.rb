@@ -41,7 +41,7 @@ Base10::Application.configure do
       ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
     )
 
-    #Devise
-    config.action_mailer.default_url_options = { host: 'localhost:8080' }
 
+  # specify what domain to use for mailer URLs
+  config.action_mailer.default_url_options = { host: "localhost:8080" }
  end

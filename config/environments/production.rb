@@ -75,4 +75,7 @@ Base10::Application.configure do
 
   # config.assets.precompile += ['editing.js', 'editing.css']
 
+  # specify what domain to use for mailer URLs
+    config.action_mailer.default_url_options = { host: "base10creations.com" }
+
 end
