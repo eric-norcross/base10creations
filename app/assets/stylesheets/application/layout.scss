@@ -1,0 +1,190 @@
+// MHF SCSS Mixins
+@import '../mixins/style_guide.scss';
+
+html { font-size: 62.5%; }  /* 10px || 1rem */
+
+body, header, footer, main, nav, article, section, div, a,
+form, fieldset, legend, label, button,
+h1, h2, h3, h4, h5, h6,
+ol, ul, li {
+  @extend %flexbox;
+}
+
+
+body {
+  @include flex-direction(column);
+  @include align-items(center);
+
+  color: $bodyColor;
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
+  font-weight: $bodyFontWeight;
+  line-height: $bodyFontSize; // Baseline reset
+
+  header, footer, main, nav, article, section, div, a, span,
+  form, fieldset, legend, input, textarea, button,
+  h1, h2, h3, h4, h5, h6, p,
+  li {
+    border-color: $dark;
+    border-style: solid;
+    border-width: 0;
+  }
+
+  p {
+    line-height: rem(22);
+    margin-bottom: rem(20);
+
+    a {
+      display: inline-block;
+      text-decoration: underline;
+    }
+  }
+
+  a, a:link, a:visited, a:active {
+    color: $bodyColor;
+    // display: inline-block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // a.inline-link {
+  //   text-decoration: underline;
+  // }
+
+  a:before,
+  a:after {
+    font-family: FontAwesome;
+  }
+}
+
+#content {
+  @include flex-direction(column);
+
+  width: $siteMaxWidth;
+  padding: rem(60);
+
+  > header {
+    @include flex(1 0 100%);
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+
+    margin-bottom: rem(60);
+
+    #logo {
+
+    }
+
+    nav {
+      @include align-self(flex-end);
+
+      ul {
+        li {
+          font-family: $BoldCondensed;
+          font-size: rem(16);
+          margin: 0 0 0 rem(20);
+
+          a {
+
+          }
+        }
+
+        li:before {
+          content: "/";
+        }
+      }
+    }
+  }
+
+  > main {
+    @include flex-direction(column);
+
+    blockquote {
+      margin-bottom: rem(60);
+
+      p, footer cite {
+        color: $medium;
+        font-family: $UltraLightCondensedOblique;
+        font-size: rem(32);
+        line-height: rem(46);
+        text-align: center;
+      }
+
+      footer {
+        @include justify-content(center);
+
+        cite:before {
+          content: "~";
+        }
+      }
+    }
+
+    section {
+      @include flex-direction(column);
+      margin-bottom: rem(60);
+
+      > header {
+        border-width: 0 0 rem(1) 0;
+        font-family: $BoldCondensed;
+        padding-bottom: rem(10);
+        
+        h1 {
+          font-size: rem(21);
+        }
+
+        h1:before {
+          content: "/";
+        }
+      }
+
+      .content-block {
+        @include flex-direction(column);
+        margin: rem(20) 0 0 0;
+
+        h2 {
+          font-family: $MediumCondensedOblique;
+          font-size: rem(16);
+        }
+
+        p {
+          margin: rem(10) 0 0 rem(20);
+        }
+      }
+    }
+
+    .section-group {
+      @include flex-direction(row);
+      @include justify-content(space-between);
+
+      section {
+        width: calc(50% - 20px);
+      }
+    }
+
+    section#contact {
+      .content-block {
+        p {
+          @include flex-direction(column);
+
+          a {
+            @extend %flexbox;
+          }
+
+          span {
+            @extend %flexbox;
+          }
+
+          span:after {
+            margin-left: rem(3);
+            content: "~ "attr(data-type);
+          }
+        }
+
+        p:first-of-type {
+          margin-top: rem(0);
+        }
+      }
+    }
+  }
+}

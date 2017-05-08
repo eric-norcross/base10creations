@@ -1,0 +1,144 @@
+// base10 SCSS Extensions
+@import '../base10_scss_extensions/flexbox.scss';
+@import '../base10_scss_extensions/methods.scss';
+
+//---------------------------------------------------------------------------
+// base10 Colors
+//---------------------------------------------------------------------------
+$black:                                   #000000;
+$dark:                                    #333333;
+$semiDark:                                #5a5a5a;
+$medium:                                  #828282;
+$mediumLight:                             #b4b4b4;
+$semiLight:                               #c8c8c8;
+$light:                                   #eeeeee;
+$extraLight:                              #f8f8f8;
+$neutral:                                 #ffffff;
+
+$error:                                   #ff0000;
+
+
+//---------------------------------------------------------------------------
+// base10 Fonts
+//---------------------------------------------------------------------------
+$bodyFontFamily:                          'Open Sans', sans-serif;
+$bodyFontWeightLight:                     300;
+$bodyFontWeightRegular:                   400;
+$bodyFontWeightSemiBold:                  600;
+$bodyFontWeightBold:                      700;
+$bodyFontWeightExtraBold:                 800;
+
+                                       /* weight                        | size/line-height  | family */
+$bodyFontLight:                           $bodyFontWeightLight            rem(14)             $bodyFontFamily;
+$bodyFontRegular:                         $bodyFontWeightRegular          rem(14)             $bodyFontFamily;
+$bodyFontSemiBold:                        $bodyFontWeightSemiBold         rem(14)             $bodyFontFamily;
+$bodyFontBold:                            $bodyFontWeightBold             rem(14)             $bodyFontFamily;
+$bodyFontExtraBold:                       $bodyFontWeightExtraBold        rem(14)             $bodyFontFamily;
+
+
+$headerFontFamily:                        'Oswald', sans-serif;
+$headerFontWeightLight:                   300;
+$headerFontWeightRegular:                 400;
+$headerFontWeightBold:                    700;
+
+                                       /* weight                        | size/line-height  | family */
+$headerFontLight:                         $headerFontWeightLight          rem(16)             $headerFontFamily;
+$headerFontRegular:                       $headerFontWeightRegular        rem(16)             $headerFontFamily;
+$headerFontBold:                          $headerFontWeightBold           rem(16)             $headerFontFamily;
+
+
+// TEMPORARY
+$bodyFont:                                $bodyFontFamily;
+$headerFont:                              $headerFontFamily;
+
+//---------------------------------------------------------------------------
+// base10 General
+//---------------------------------------------------------------------------
+$separatorColor:                          $dark;
+$siteMaxWidth:                            rem(964);
+
+//---------------------------------------------------------------------------
+// base10 Admin
+//---------------------------------------------------------------------------
+$collectionBorderColor:                   rgba(179, 180, 177, 1); // rgba(103, 105, 100, 1);
+$collectionHeaderColor:                   $light;
+$statSeparatorColor:                      $dark;
+$statIconColor:                           $light;
+
+// Inputs
+$labelColor:                              $medium;
+$inputPlaceholderColor:                   $semiLight;
+$inputColor:                              $semiDark;
+$inputBorderColor:                        $semiDark;
+$separatorColor:                          $dark;
+$warningColor:                            #ed1c24;
+$warningIconColor:                        #ffd307;
+
+$lightEven:                               rgba(242, 242, 242, 1);  //#f2f2f2 
+$lightOdd:                                rgba(217, 217, 217, 1);   //#d9d9d9 
+
+$rowOdd:                                  #aeaeae;
+$rowEven:                                 #d1d1d1;
+
+$staticOdd:                               #aeaeae;
+$staticEven:                              #d1d1d1;
+
+$staticOffsetOdd:                         rgba(250, 250, 250, 1);  // #fafafa
+$staticOffsetEven:                        rgba(243, 243, 243, 1);  // #f3f3f3
+
+$editableOdd:                             #98b2cf; // #b8cce2;
+$editableEven:                            #c3d4e6; // #dce6f0;
+
+$errorOdd:                                #de7a7a;
+$errorEven:                               #e59999; 
+
+$warningOdd:                              #ffc200;
+$warningEven:                             #fff0bf;
+
+$expandableOdd:                           rgba(176, 208, 179, 1); //#b0d0b3; //#fff4d2;
+$expandableEven:                          rgba(192, 230, 196, 1); //#c0e6c4; //#ffeaa5;   
+
+$formOdd:                                 #b8cfd4;
+$formEven:                                #dbe7ea;
+
+$testOdd:                                 #ffbf99; //#f8c3e4; //#d07fff; //#b0d0b3; //#dce6f0; //#fff4d2;
+$testEven:                                #ffd7bf; //#fad7ed; //#e8bfff; //#c0e6c4; //#b8cce2; //#ffeaa5;   
+
+$highlightOdd:                            rgba(176, 208, 179, 1); //#b0d0b3; //#fff4d2;
+$highlightEven:                           rgba(192, 230, 196, 1); //#c0e6c4; //#ffeaa5;   
+
+$overriddenOdd:                           rgba(255, 234, 165, 1); //#ffeaa5;
+$overriddenEven:                          rgba(255, 244, 10, 1); //#fff4d2;
+$overriddenBand:                          rgba(170, 170, 170, 1); //#aaaaaa;
+
+$overriddenLightOdd:                      rgba(255, 234, 165, .65); //#ffeaa5;
+$overriddenLightEven:                     rgba(255, 244, 10, .65); //#fff4d2;
+$overriddenLightBand:                     rgba(170, 170, 170, .65); //#aaaaaa;
+
+$userGeneratedOdd:                        $lightEven; // rgba(208, 127, 255, 1); //#ffeaa5;
+$userGeneratedEven:                       $lightOdd;  // rgba(232, 191, 255, 1); //#fff4d2;
+$userGeneratedBandOdd:                    $lightOdd;  // rgba(170, 170, 170, .5); //#aaaaaa;
+$userGeneratedBandEven:                   $lightEven; // rgba(170, 170, 170, .5); //#aaaaaa;
+
+$customizedOdd:                           rgba(255, 234, 165, .5); //#ffeaa5;
+$customizedEven:                          rgba(255, 244, 10, .5); //#fff4d2;
+$customizedBand:                          rgba(170, 170, 170, .5); //#aaaaaa;
+
+$addFormBtnBackground:                    rgba(192, 230, 196, 1);
+$addFormBtnBackgroundRollover:            rgba(111, 186, 118, 1);
+
+$removeFormBtnBackground:                 #edb7b7;
+$removeFormBtnBackgroundRollover:         #de7a7a; 
+
+$deactivateFormBtnBackground:             #f9e3a1;
+$deactivateFormBtnBackgroundRollover:     #f3b700;  
+
+$activateFormBtnBackground:               $addFormBtnBackground;
+$activateFormBtnBackgroundRollover:       $addFormBtnBackgroundRollover;
+
+$valueHover:                              #fad7ed;
+$valueSelected:                           #f8c3e4;
+
+$valueSelectedOdd:                        #dfcd06; // #fad7ed;
+$valueSelectedEven:                       #fffc61; // #f8c3e4;
+

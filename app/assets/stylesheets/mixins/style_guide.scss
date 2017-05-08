@@ -1,0 +1,41 @@
+// base10 SCSS Extensions
+@import '../base10/base10_scss_extensions/flexbox.scss';
+@import '../base10/base10_scss_extensions/methods.scss';
+@import 'fonts.scss';
+
+
+// Palette
+$dark:                                    #000000;
+$semiDark:                                #5a5a5a;
+$medium:                                  #828282;
+$semiLight:                               #c8c8c8;
+$light:                                   #eeeeee;
+$extraLight:                              #f6f6f6;
+$neutral:                                 #ffffff;
+$error:                                   #ff0000;
+
+// Fonts
+
+$UltraLightCondensed:                     'UltraLightCondensed';
+$UltraLightCondensedOblique:              'UltraLightCondensedOblique';
+
+$LightCondensed:                          'LightCondensed';
+$LightCondensedOblique:                   'LightCondensedOblique';
+
+$MediumCondensed:                         'MediumCondensed';
+$MediumCondensedOblique:                  'MediumCondensedOblique';
+
+$BoldCondensed:                           'BoldCondensed';
+$BoldCondensedOblique:                    'BoldCondensedOblique';
+
+
+// Site Dimensions
+$siteMaxWidth:                            rem(928);
+$siteMobileWidth:                         rem(340);
+
+// Baseline
+$bodyBackground:                          #ffffff;
+$bodyColor:                               $dark;
+$bodyFontFamily:                          $LightCondensed;
+$bodyFontWeight:                          normal;
+$bodyFontSize:                            rem(14);

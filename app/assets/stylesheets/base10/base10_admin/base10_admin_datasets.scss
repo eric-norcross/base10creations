@@ -1,0 +1,273 @@
+// base10 SCSS Mixins
+@import '../base10_scss_mixins/base10_mixins';
+
+
+
+html {
+  body#base10-admin {
+    .field-group {
+      // @include flex-direction(row);
+      @include justify-content(space-between);
+      @include align-items(flex-start);
+      @include flex(1 1 auto);
+
+      .field {
+       @include flex(1 1 auto);
+       margin: rem(7) !important;
+      }
+
+      .field:first-of-type {
+        margin-left: 0 !important;
+      }
+
+      .field:last-of-type {
+        margin-right: 0 !important;
+      }
+    }
+
+    .field, .stat {
+      border-radius: rem(5);
+      margin: rem(7);
+      min-height: rem(26);
+      min-width: min-content;
+      padding: rem(5);
+
+      .field-content, .stat-content {
+        @include justify-content(space-between);
+        @include align-items(center);
+        @include flex(1 1 auto);
+
+        min-width: min-content;
+
+        .title, .title label {
+          color: $dark;
+          font: $bodyFontSemiBold;
+          line-height: rem(14);
+          text-transform: capitalize;
+        }
+
+        .title {
+          @include align-items(center);
+
+          border-color: transparent;
+          border-width: rem(8) 0;
+          margin: 0 rem(8) 0 rem(3);
+          
+          .tooltip {
+            margin-left: rem(3);
+          }
+        }
+
+        .values {
+          @include flex-wrap(wrap);
+          @include justify-content(flex-start);
+
+          border-radius: rem(5);
+        }
+
+        .value {
+          @include justify-content(flex-end);
+          @include align-items(center);
+
+          border-radius: rem(5);
+          font-size: rem(15);
+          font-weight: bold;
+          min-height: rem(30);
+          min-width: rem(20);
+          padding: rem(6) rem(6) rem(5) rem(6);
+        }
+
+        span.operator {
+          color: $statIconColor;
+          font-size: rem(18);
+          padding: rem(4) rem(6) rem(3) rem(6);
+        }
+
+        span.operator:after {
+          vertical-align: rem(-2);
+        }
+
+        span.operator.add:after {
+          content: "+";
+        }
+
+        span.operator.subtract:after {
+          content: "-";
+        }
+
+        span.operator.multiply:after {
+          content: "x";
+        }
+
+        span.operator.divide:after {
+          content: "/";
+        }
+
+        span.operator.equals:after {
+          content: "=";
+        }
+
+        span.operator.percent:after {
+          content: "%";
+        }
+
+        span.operator.dollars:after {
+          content: "$";
+        }
+
+        span.operator.euros:after {
+          content: "€";
+        }
+
+        span.operator.currency:after{
+          content: attr(data-currency);
+          font-weight: normal;
+        }
+      }
+    }
+
+    .field:nth-of-type(odd),
+    .stat:nth-of-type(odd) {
+      background: $staticOdd;
+
+      .field-content, .stat-content {
+        .value {
+          background: $staticEven;
+        }
+      }
+    }
+
+    .field:nth-of-type(even), 
+    .stat:nth-of-type(even) {
+      background: $staticEven;
+
+      .field-content, .stat-content {
+        .value {
+          background: $staticOdd;
+        }
+      }
+    }
+
+    .field.overridden,
+    .stat.overridden {
+      background: repeating-linear-gradient(
+        -45deg,
+        $overriddenOdd,
+        $overriddenOdd rem(10),
+        $overriddenBand rem(10),
+        $overriddenBand rem(20)
+      );
+
+      .stat-content {
+        background-color: $overriddenOdd !important;
+
+        .title {
+          margin-left: rem(2);
+        }
+
+        .value {
+          background-color: $overriddenOdd !important;
+        }
+      }
+    }
+
+    .field.editable,
+    .stat.editable {      
+      .field-content, .stat-content {
+        .value {
+          background-color: transparent;
+          padding: rem(0);
+
+
+          
+        }
+
+        // .value:after {
+        //   display: inline-block;
+        //   font-weight: bold;
+        //   font-size: rem(22);
+        //   margin: 0 rem(6) 0 rem(5);
+        // }
+
+        .value.textarea {
+          width: 100%;
+
+          textarea {
+            width: calc(100% - rem(20));
+            min-height: rem(150);
+          }
+
+          margin-bottom: rem(3);
+        }
+      }
+    }
+
+    .field.editable,
+    .stat.editable {
+      .value select, 
+      .value textarea,
+      .value input,
+      .value .file-input {
+        border-radius: rem(5);
+        color: $dark;
+        font: $bodyFontSemiBold;
+        height: rem(28);
+        min-height: rem(28);
+        min-width: rem(300);
+        text-align: right;
+      }
+    }
+
+    .field.editable:nth-of-type(odd),
+    .stat.editable:nth-of-type(odd){
+      background: $editableOdd;
+
+      .value select, 
+      .value label.checkbox,
+      .value textarea,
+      .value input,
+      .value .file-input {
+        background-color: $neutral;
+        border-color: $editableEven;
+      }
+
+      .value label.checkbox:after {
+        //border-color: $editableEven;
+      }
+
+      .value input[type=file] {
+        background: $editableOdd;
+      }
+
+      .value:after {
+        color: $editableEven;
+      }
+    }
+
+    .field.editable:nth-of-type(even),
+    .stat.editable:nth-of-type(even){
+      background: $editableEven;
+
+      .value select, 
+      .value label.checkbox,
+      .value textarea,
+      .value input,
+      .value .file-input {
+        background-color: $neutral;
+        border-color: $editableOdd;
+      }
+
+      .value input[type=file] {
+        background: $editableEven;
+      }
+
+      .value label.checkbox:after {
+        //border-color: $editableOdd;
+      }
+
+      .value:after {
+        color: $editableOdd;
+      }
+    }
+  }
+}

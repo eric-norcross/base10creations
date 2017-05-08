@@ -1,0 +1,33 @@
+# Be sure to restart your server when you modify this file.
+
+# Your secret key is used for verifying the integrity of signed cookies.
+# If you change this key, all old signed cookies will become invalid!
+
+# Make sure the secret is at least 30 characters and all random,
+# no regular words or you'll be exposed to dictionary attacks.
+# You can use `rake secret` to generate a secure secret key.
+
+# Make sure the secrets in this file are kept private
+# if you're sharing your code publicly.
+
+
+# Values for `development` and `test` are pulled from `environment_variables.yml`
+development:
+  SECRET_KEY_BASE:    'EXAMPLE_SECRET_KEY' # Use `$ rake secret` to generate new key
+  
+  EMAIL_DOMAIN:       'somedomain.com'
+  EMAIL_USERNAME:     'no-reply@somedomain.com'
+  EMAIL_PASSWORD:     'EXAMPLE_PASSWORD'
+
+  DATABASE_NAME:      'EXAMPLE_DB_NAME'
+  DATABASE_USERNAME:  'EXAMPLE_DB_USERNAME'
+  DATABASE_PASSWORD:  'EXAMPLE_DB_PASSWORD'
+
+test:
+  SECRET_KEY_BASE:    'EXAMPLE_SECRET_KEY' # Use `$ rake secret` to generate new key
+
+staging:
+  SECRET_KEY_BASE:    'EXAMPLE_SECRET_KEY' # Use `$ rake secret` to generate new key
+
+production:
+  SECRET_KEY_BASE:    'EXAMPLE_SECRET_KEY' # Use `$ rake secret` to generate new key

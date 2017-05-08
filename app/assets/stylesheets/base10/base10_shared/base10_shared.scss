@@ -1,0 +1,90 @@
+// base10 SCSS Mixins
+@import '../base10_scss_mixins/base10_mixins';
+
+
+a, a:link, a:visited, a:active {
+  color: $dark;
+}
+
+a:before,
+a:after {
+  font-family: FontAwesome;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.overflow {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#messages {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: rem(12);
+  position: relative;
+  
+
+  #flash_notice, #flash_error, #flash_alert {
+    @include flex(1);
+    
+    font-size: rem(12);
+    padding: rem(5) rem(8);
+  }
+
+  #flash_notice {
+    background-color: #CFC;
+    border-color: #6C6;
+    border-style: solid;
+    border-width: 0 0 rem(1) 0;
+    color: #6C6;
+  }
+
+  #flash_error, #flash_alert {    
+    background-color: #FCC;
+    border-color: #C33;
+    border-style: solid;
+    border-width: 0 0 rem(1) 0;
+    color: #C33;
+  }
+}
+
+#error-explanation {
+  h2 {
+    color: $error;
+    font: $bodyFontSemiBold;
+    font-size: rem(16);
+    line-height: rem(16);
+    padding-bottom: rem(15);
+    text-transform: none;
+  }
+
+  ul {
+    @include justify-content(flex-start);
+    
+    li {
+      @include flex-direction(row);
+      @include flex(0 1 auto);
+      margin-right: rem(3);
+    }
+
+    li:before {
+      color: $error;
+      content: "*";
+      font-size: rem(10);
+      margin-right: rem(1);
+    }
+
+    li:after {
+      content: ",";
+      // display: inline-block;
+      margin-left: rem(1);
+    }
+
+    li:last-of-type:after {
+      content: none;
+    }
+  }
+}

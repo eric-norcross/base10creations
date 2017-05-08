@@ -1,0 +1,320 @@
+// base10 SCSS Mixins
+@import '../base10_scss_mixins/base10_mixins';
+
+
+
+html {
+  body#base10-admin {
+    article {
+      > header {
+        @include flex-direction(column);
+
+        .db-table-info, .db-table-controls {
+          @include flex-direction(column);
+          // width: 100%;
+          margin: rem(5) 0;
+        }
+
+        .db-table-info {
+          .field-group, .stat-group {
+            // @include flex-direction(row);
+            // @include justify-content(flex-start);
+            // @include align-items(stretch);
+            @include flex(1 1 auto);
+
+            .field, .stat {
+             @include flex(1 1 auto);
+            }
+          }
+        }
+
+        .db-table-controls {
+          .buttons, .controls {
+            // @include flex(1 1 100%);
+          }
+        }
+      }
+
+      .table-group {
+        @include flex(1);
+        
+        overflow-x: auto;
+        overflow-y: hidden
+      }
+
+      .table {
+        display: table;
+        border-collapse: collapse;
+        width: 100%;
+
+        .tr {
+          display: table-row;
+
+          border-color: $separatorColor;
+          border-width: rem(1) 0 rem(0) 0;
+
+          .td, .th {
+            display: table-cell;
+
+            padding: rem(10);
+            white-space: nowrap;
+            text-align: center;
+          }
+
+          .th {
+
+          }
+
+          .td {
+
+          }
+
+          .td {
+            text-align: center;
+          }
+
+          .th .buttons, .td .buttons,
+          .th .controls, .td .controls {
+            @include justify-content(center);
+            @include flex-wrap(nowrap);
+
+            margin: 0;
+
+            .button, .mini-button {
+              margin-left: rem(5);
+            }
+
+            .button:first-of-type, .mini-button:first-of-type {
+              margin-left: 0;
+            }
+
+            .button:hover, .mini-button:hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        .tr:last-of-type {
+          border-width: rem(1) 0 rem(1) 0;
+        }
+
+        .tr.expandable {
+          cursor: pointer;
+        }
+
+        .tr.customized {
+          background: repeating-linear-gradient(
+            -45deg,
+            $customizedOdd,
+            $customizedOdd 1em,
+            $customizedBand 1em,
+            $customizedBand 2em
+          );
+        }
+
+
+        .tr:nth-of-type(odd) {background: $lightOdd}
+        .tr:nth-of-type(even) {background: $lightEven}
+
+        .tr:nth-of-type(odd).active {
+          background: $valueSelectedEven !important;
+        }
+        .tr:nth-of-type(even).active {
+          background: $valueSelectedOdd !important;
+        }
+        
+        .tr.editable:nth-of-type(odd) {
+          background: $editableOdd;
+
+          input, textarea, select, label.checkbox {
+            border-color: $editableEven;
+            margin: 0 rem(2);
+          }
+
+          .td.static {
+            background-color: $lightOdd;
+          }
+        }
+        .tr.editable:nth-of-type(even) {
+          background: $editableEven;
+
+          input, textarea, select, label.checkbox {
+            border-color: $editableOdd;
+            margin: 0 rem(2);
+          }
+
+          .td.static {
+            background-color: $lightEven;
+          }
+        }
+
+        
+        .tr:nth-of-type(odd).user-generated {
+          background: 
+            radial-gradient(circle, transparent 20%, $userGeneratedBandOdd 20%, $userGeneratedBandOdd 80%, transparent 80%, transparent),
+            radial-gradient(circle, transparent 20%, $userGeneratedBandOdd 20%, $userGeneratedBandOdd 80%, transparent 80%, transparent) rem(12) rem(12),
+            linear-gradient($userGeneratedOdd rem(2), transparent rem(2)) 0 rem(-1),
+            linear-gradient(90deg, $userGeneratedOdd rem(2), transparent rem(2)) rem(-1) 0;
+            background-color: $userGeneratedBandOdd;
+            background-size: rem(24) rem(24), rem(24) rem(24), rem(12) rem(12), rem(12) rem(12);
+        }
+        .tr:nth-of-type(even).user-generated {
+          background: 
+            radial-gradient(circle, transparent 20%, $userGeneratedBandEven 20%, $userGeneratedBandEven 80%, transparent 80%, transparent),
+            radial-gradient(circle, transparent 20%, $userGeneratedBandEven 20%, $userGeneratedBandEven 80%, transparent 80%, transparent) rem(12) rem(12),
+            linear-gradient($userGeneratedEven rem(2), transparent rem(2)) 0 rem(-1),
+            linear-gradient(90deg, $userGeneratedEven rem(2), transparent rem(2)) rem(-1) 0;
+            background-color: $userGeneratedBandEven;
+            background-size: rem(24) rem(24), rem(24) rem(24), rem(12) rem(12), rem(12) rem(12);
+        }
+
+        .tr.inactive {
+          background-image: repeating-linear-gradient(
+            -45deg, 
+            $overriddenLightOdd, 
+            $overriddenLightOdd rem(25), 
+            $overriddenLightBand rem(25), 
+            $overriddenLightBand rem(50)
+          );
+        }
+
+      // -----------------------------------------------------
+      // Header
+      // -----------------------------------------------------
+        .thead {
+          display: table-header-group;
+
+          .tr {
+            background-color: #fff;
+            border-width: 0 0 rem(1) 0;
+
+            .td, .th {
+              font-size: rem(15);
+              font-weight: bold;
+            }
+          }
+        }
+
+      // -----------------------------------------------------
+      // Body
+      // -----------------------------------------------------
+        .tbody {
+          display: table-row-group;
+
+          .tr {
+            .td {
+              font-size: rem(13);
+              vertical-align: middle;
+
+              a, span {
+                width: min-content;
+                padding: 3px 4px;
+              }
+
+              span {
+                font: $bodyFont;
+                font-size: rem(13);
+              }
+
+              a {
+                background-color: $neutral;
+                border-radius: rem(2);
+                border-width: rem(1);
+                font: $bodyFontSemiBold;
+                font-size: rem(10);
+
+                &:hover {
+                  background-color: $dark;
+                  color: $neutral;
+                  cursor: pointer;
+                  text-decoration: none;
+                }
+              }
+
+              ul {
+                @include justify-content(center);
+                @include flex-wrap(wrap);
+
+                list-style-type: none;
+                margin-bottom: rem(-5);
+
+                li {
+                  @include flex-direction(row);
+                  @include flex(0 1 auto);
+
+                  margin: 0 rem(3) rem(5) rem(2);
+                  padding-bottom: 0;
+                }
+
+                li.warning {
+
+                  span.fa-stack {
+                    width: rem(20);
+                  }
+
+                  .fa-exclamation-triangle {
+                    color: $warningIconColor;
+                  }
+                }
+
+                // li:after {
+                //   // content: ", ";
+                //   // margin-left: rem(-3);
+                // }
+
+                // li:last-of-type:after {
+                //   content: "";
+                //   display: none;
+                // }
+              }
+
+              ul.figures-list {
+                li {
+                  img {
+                    border-color: $semiDark;
+                    border-width: rem(1);
+                  }
+                }
+
+                li:after {
+                  content: "";
+                }
+              }
+
+              img {
+                max-height: rem(30);
+                max-width: rem(30);
+              }
+
+              .buttons {
+                .button {
+                  font-size: rem(11);
+                }
+              }
+            }
+          }
+
+          .tr:nth-of-type(odd):hover {
+            background: $highlightEven !important;
+          }
+          .tr:nth-of-type(even):hover {
+            background: $highlightOdd !important;
+          }
+        }
+
+      // -----------------------------------------------------
+      // Footer
+      // -----------------------------------------------------
+        .tfoot {
+          display: table-footer-group;
+
+          .tr {
+            .td {
+
+            }
+          }
+        }
+      }
+    }
+  }
+}

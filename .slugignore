@@ -1,4 +1,0 @@
-config/database-sample.yml
-config/cloudinary-sample.yml
-config/newrelic-sample.yml
-app/models/product_sample_validations.rb

@@ -1,32 +1,15 @@
 !!!
 %html
   %head
-    %meta{charset: "UTF-8"}
-    %meta{name: "Description", content: "base10 Creations"}
-    / %meta{name: "google-site-verification", content: "STh-bB-kxR0lNuek6SWnKGn_6-3tMYTJ9Xd89nBR89I"}
-    %meta{name: "google-site-verification", content: "IgazYi2f_vyCGuiJTbcc9iAelCxqOtr2RKZMc3BISA8"}
-    %title base10 Creations ~ Personal Portfolio of Eric Norcross
-    
-    = stylesheet_link_tag "application", media: "all"
-    = javascript_include_tag "application"
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Ericnorcross
     = csrf_meta_tags
-
-    - if admin_signed_in?
-      = stylesheet_link_tag "editing", media: "all"
-      = javascript_include_tag "editing"
-      = cloudinary_js_config
-
-    /[if lt IE 9]
-      %script{ src: "http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js", type: "text/javascript" }
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  
   %body
-    #messages
-      - flash.each do |name, msg|
-        %div{ id: "flash_#{name}" }
-          = msg
-
-    #container
-      = render :partial => "layouts/partials/header"
-
+    #content
+      = render "/layouts/header"
       = yield
-
-      = render :partial => "layouts/partials/footer"
+        
+        

@@ -1,0 +1,200 @@
+// base10 SCSS Mixins
+@import '../base10_scss_mixins/base10_mixins';
+
+
+html {
+  body#base10-admin {
+    font: $bodyFontRegular;
+
+    > header {
+      @include justify-content(space-between);
+
+      border-style: dotted;
+      border-width: 0 0 rem(1) 0;
+      margin-bottom: rem(20);
+      max-height: rem(95);
+      padding: 0 rem(10) rem(15) rem(10);
+
+      > .content-container {
+        @include flex-direction(row-reverse);
+        @include justify-content(space-between);
+        @include flex(1);
+        
+        // margin: 0;
+        // max-width: inherit;
+        // width: 100%;
+      }
+
+      #header-links {
+        @include justify-content(flex-end);
+        @include align-items(flex-start);
+
+        padding-top: rem(7);
+
+        ul {
+          // @include justify-content(flex-end);
+          // margin-bottom: rem(15);
+
+          li {
+            // @include flex(0);
+
+            font-size: rem(10);
+            text-transform: uppercase;
+
+            a {
+              margin: rem(0) rem(12);
+            }
+          }
+
+          li:after {
+            content: "|";
+          }
+
+          li:last-of-type {
+            a {
+              margin-right: rem(0);
+            }
+          }
+
+          li:last-of-type:after {
+            content: "";
+          }
+        }
+      }
+
+      #logo {
+        @include justify-content(space-around);
+
+        margin-top: rem(10);
+
+        a {
+          @include justify-content(space-around);
+
+          img {
+            max-width: rem(227);
+            max-height: rem(61);
+          }
+        }
+      }
+    }
+
+    main {
+      aside {
+        @include flex-direction(column);
+        @include order(-1);
+
+        border-style: dashed;
+        border-width: 0 rem(1) 0 0;
+        padding: 0 rem(10);
+
+        nav {
+          @include flex-direction(column);
+
+          border-style: dashed;
+          border-width: rem(1) 0 0 0;
+          padding: rem(20) rem(20) 0 0;
+          margin-bottom: rem(10);
+
+          .nav-title {
+            font: $headerFontRegular;
+            margin-bottom: rem(10);
+            text-transform: uppercase;
+          }
+
+          ul {
+            @include flex-direction(column);
+
+            li {
+              padding: rem(7) 0;
+
+              a {
+                font: $bodyFontRegular;
+              }
+            }
+          }
+        }
+
+        nav:first-of-type {
+          border-width: 0;
+          padding-top: 0;
+        }
+      }
+
+      article.index,
+      article.form {
+        @include flex(1 1 auto);
+        @include flex-direction(column);
+
+        @include order(1);
+
+        padding: rem(10);
+        width: 0;
+
+        .row {
+          @include flex(1 0 100%);
+          @include justify-content(space-around);
+        }
+
+        .columns {
+          @include justify-content(space-around);
+        }
+
+        .buttons, .controls {
+          @include justify-content(space-around);
+          @include flex(1 1 100%);
+        }
+
+        .td .buttons {
+          @include justify-content(flex-end);
+        }
+      
+        h1 {
+          font: $headerFontBold;
+          font-size: rem(23);
+          line-height: inherit;
+          text-transform: uppercase;
+
+          span, span a {
+            color: $medium;
+            font-weight: $headerFontWeightLight;
+            font-size: rem(23);
+            margin-left: rem(5);
+          }
+        }
+
+        header, footer {
+          @include flex(0 1 auto);
+          @include flex-direction(column);
+  
+          border-style: dashed;
+          border-width: 0 0 rem(1) 0;
+          margin-bottom: rem(20);
+          padding-bottom: rem(20);
+        }
+
+        section {
+          margin-bottom: rem(30);
+
+          .section-body {
+            width: 100%;
+          }
+        }
+
+        // form {
+        //   @include justify-content(space-around);
+
+        //   fieldset {
+        //     @include flex(1 0 100%);
+        //   }
+
+        //   footer {
+        //     border-style: dotted;
+        //     border-width: rem(1) 0 0 0;
+        //     margin-top: rem(20);
+        //     padding-top: rem(20);
+        //   }
+        // }
+      }
+    }
+  }
+}

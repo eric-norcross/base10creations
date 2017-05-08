@@ -1,0 +1,188 @@
+// base10 SCSS Mixins
+@import '../base10_scss_mixins/base10_mixins';
+
+
+
+html {
+  body#base10-admin {
+    .buttons, .controls {
+      @include flex(1 0 100%);
+
+      button {
+        background-color: transparent !important;
+      }
+
+      .button,
+      button .button-content {
+        @include justify-content(space-between);
+        @include align-items(center);
+
+        background-color: $neutral;
+        border-color: $dark;
+        border-radius: rem(2);
+        border-style: solid;
+        border-width: rem(1);
+        cursor: pointer;
+        font: $bodyFontSemiBold;
+        font-size: rem(11);
+        line-height: rem(8);
+        letter-spacing: rem(0.1);
+        padding: rem(6);
+        text-transform: uppercase;
+
+        &:hover {
+          text-decoration: none;
+          background-color: $dark;
+          color: $light;
+        }
+
+        &:after {
+          content: "\f105";
+          font-family: FontAwesome;
+          margin-left: rem(15);
+          padding-top: rem(1);
+        }
+      }
+
+      .button, .button:link, .button:visited, .button:active,
+      button .button-content {
+        padding: rem(5) rem(8);
+      }
+
+      .button:hover,
+      button:hover .button-content {
+
+      }
+
+      .button:after,
+      button .button-content:after {
+        font-family: FontAwesome;
+        margin-left: rem(7);
+        padding-top: rem(1);
+      }
+
+      .button.base10-admin-add:after,
+      .button.base10-admin-new:after {
+        content: "\f067";
+      }
+
+      .button.base10-admin-show:after {
+        content: "\f06e";
+        padding-top: 0;
+      }
+
+      .button.base10-admin-back:after {
+        content: "\f060";
+        padding-top: 0;
+      }
+
+      .button.base10-admin-edit:after {
+        content: "\f044";
+        padding-top: rem(2);
+      }
+
+      .button.base10-admin-destroy:after {
+        content: "\f014";
+      }
+
+      .button.base10-admin-reload:after {
+        content: "\f0e2";
+      }
+
+      .button.base10-admin-organize:after {
+        content: "\f0ad";
+      }
+
+      .button.base10-admin-deactivate:after {
+        // content: "\f0ad";
+        content: "FIX ME";
+      }
+
+      .base10-admin-deactivate:after {
+        content: "\f070"; // fa-eye-slash
+      }
+
+      .base10-admin-activate:after {
+        content: "\f06e"; // fa-eye
+      }
+
+      .base10-admin-remove-arrangeable:after {
+        content: "\f068"; // fa-eye
+        font-size: rem(30);
+      }
+
+      button[type="submit"] .button-content:after {
+        content: "\f0c7";
+      }
+      
+      // Form / Add Association Buttons
+      .form-button {
+        @include justify-content(space-around);
+        @include align-items(center);
+        @include flex(1 0 auto);
+
+        // background-color: $expandableEven;
+        border-radius: 0 rem(2) rem(2) 0;
+        color: #5a5a5a;
+        font: $bodyFontBold;
+        font-size: rem(69.5);
+        padding: rem(5);
+        // text-align: center;
+        /* text-rendering: optimizeLegibility; */
+        &:hover {
+          // background-color: $expandableOdd;
+          color: $neutral;
+          text-decoration: none;
+
+          -webkit-box-shadow: inset rem(0) rem(0) rem(10) rem(-5) rgba(0, 0, 0, 0.75);
+             -moz-box-shadow: inset rem(0) rem(0) rem(10) rem(-5) rgba(0, 0, 0, 0.75);
+                  box-shadow: inset rem(0) rem(0) rem(10) rem(-5) rgba(0, 0, 0, 0.75);
+        }
+      }
+
+      .base10-admin-add-association,
+      .base10-admin-add-arrangeable {
+        background-color: $addFormBtnBackground;
+
+        &:hover {
+          background-color: $addFormBtnBackgroundRollover;
+        }
+      }
+
+      .base10-admin-remove-association {
+        margin-top: rem(-13);
+      }
+
+      .base10-admin-remove-association,
+      .base10-admin-remove-arrangeable {
+        background-color: $removeFormBtnBackground;
+
+        &:hover {
+          background-color: $removeFormBtnBackgroundRollover;
+        }
+      }
+
+      .base10-admin-deactivate {
+        background-color: $deactivateFormBtnBackground;
+        
+        font-size: rem(30);
+        // margin-top: rem(-13);
+
+        &:hover {
+          background-color: $deactivateFormBtnBackgroundRollover;
+        }
+      }
+
+      .base10-admin-activate {
+        background-color: $activateFormBtnBackground;
+        
+        font-size: rem(30);
+        // margin-top: rem(-13);
+
+        &:hover {
+          background-color: $activateFormBtnBackgroundRollover;
+        }
+      }
+    }
+  }
+}
