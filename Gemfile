@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 # Platform
-ruby '2.2.3'
-gem 'rails', '3.2.22'
+ruby '2.3.3'
+gem 'rails', '3.2.22.5'
 
 # View Tools
 gem 'jquery-rails'
