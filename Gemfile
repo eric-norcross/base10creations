@@ -33,7 +33,7 @@ source 'https://rubygems.org'
   # gem 'devise'
 
 # Monitoring & Logging
-  # gem 'newrelic_rpm'
+  gem 'newrelic_rpm'
   # gem 'lograge'
 
 # Image Serving & Uploading
