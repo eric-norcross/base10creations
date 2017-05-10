@@ -10,7 +10,6 @@ ol, ul, li {
   @extend %flexbox;
 }
 
-
 body {
   @include flex-direction(column);
   @include align-items(center);
@@ -57,6 +56,15 @@ body {
   a:after {
     font-family: FontAwesome;
   }
+}
+
+.separator {
+  border-color: $medium;
+  border-style: dashed;
+  border-width: 0 0 1px 0;
+  height: 1px;
+
+  margin-bottom: rem(60);
 }
 
 #content {
@@ -128,6 +136,7 @@ body {
         border-width: 0 0 rem(1) 0;
         font-family: $BoldCondensed;
         padding-bottom: rem(10);
+        margin-bottom: rem(20);
         
         h1 {
           font-size: rem(21);
@@ -138,17 +147,108 @@ body {
         }
       }
 
+      .content-block, .project-block {
+        
+      }
+
+      section .content-block:first-of-type, 
+      section .project-block:first-of-type {
+
+      }
+
       .content-block {
         @include flex-direction(column);
-        margin: rem(20) 0 0 0;
+
+        margin-bottom: rem(20);
 
         h2 {
           font-family: $MediumCondensedOblique;
           font-size: rem(16);
+          margin-bottom: rem(10);
         }
 
         p {
-          margin: rem(10) 0 0 rem(20);
+          margin: 0 0 0 rem(20);
+        }
+      }
+
+      .project-block {
+        margin-bottom: rem(60);
+
+        .project-image {
+          @include flex(1 0 300px);
+
+          border-width: rem(1);
+          border-color: $semiLight;
+
+          // box-sizing: content-box;
+
+          width: rem(300);
+          height: rem(300);
+
+          margin: 0 rem(20) 0 0;
+
+        }
+
+        .project-info {
+          @include flex-direction(column);
+
+          .project-title, .project-tech, .project-features {
+            margin-bottom: rem(15);
+          }
+
+          .project-title {
+            font-family: $MediumCondensed;
+            font-size: rem(18);
+          }
+
+          > h3 {
+            display: none;
+          }
+
+          h3 {
+            font-family: $MediumCondensed;
+            font-size: rem(14);
+
+            margin-bottom: rem(5);
+          }
+
+          p {
+            margin-bottom: rem(15);
+          }
+
+          .project-tech, .project-features {
+            @include flex-direction(column);
+            // @include align-self(flex-end);
+
+            ul {
+              margin-left: rem(5);
+
+              li {
+                margin-right: rem(3);
+              }
+
+              li:after {
+                content: ",";
+              }
+
+              li:last-of-type:after {
+                content: none;
+              }
+            }
+          }
+        }
+      }
+
+      .project-block:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .project-block:nth-of-type(even) {
+        @include flex-direction(row-reverse);
+
+        .project-image {
+          margin: 0 0 0 rem(20);
         }
       }
     }
@@ -166,6 +266,8 @@ body {
       .content-block {
         p {
           @include flex-direction(column);
+
+          margin-bottom: rem(10);
 
           a {
             @extend %flexbox;
