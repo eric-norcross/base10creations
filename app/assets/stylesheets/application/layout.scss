@@ -8,9 +8,6 @@ form, fieldset, legend, label, button,
 h1, h2, h3, h4, h5, h6,
 ol, ul, li {
   @extend %flexbox;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 body {
@@ -264,7 +261,6 @@ body {
 
           .project-tech, .project-features {
             @include flex-direction(column);
-            // @include align-self(flex-end);
 
             ul {
               @include flex-wrap(wrap);
@@ -273,10 +269,11 @@ body {
               width: 80%;
 
               li {
+                @include flex-wrap(nowrap);
+
                 font-size: rem(14);
                 line-height: rem(18);
                 margin-right: rem(3);
-                white-space: nowrap;
               }
 
               li:after {
