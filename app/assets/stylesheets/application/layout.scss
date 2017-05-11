@@ -266,11 +266,12 @@ body {
             ul {
               @include flex-wrap(wrap);
 
-              line-height: rem(18);
               margin-left: rem(5);
               width: 80%;
 
               li {
+                font-size: rem(14);
+                line-height: rem(18);
                 margin-right: rem(3);
                 white-space: nowrap;
               }
