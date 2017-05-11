@@ -1,11 +1,17 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{content: "text/html; charset=UTF-8", :"http-equiv" => "Content-Type"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+
+    %meta{name: "Description", content: "full-stack developer with over ten years of professional experience. detail orientated, end-user focused, and a passion for solving complex problems. experienced in system architecture, UX design, ad trafficking, as well as a background in both healthcare and consumer advertising"}
 
     = render "/layouts/partials/open_graph_meta_tags"
 
-    %title Eric Norcross ~ Full-Stack Developer
+    %title 
+      eric norcross ~ full-stack developer
+
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
