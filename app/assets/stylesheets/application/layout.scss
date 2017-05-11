@@ -20,6 +20,10 @@ body {
   font-weight: $bodyFontWeight;
   line-height: $bodyFontSize; // Baseline reset
 
+  /* Helps with the way fonts are displayed */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   header, footer, main, nav, article, section, div, a, span,
   form, fieldset, legend, input, textarea, button,
   h1, h2, h3, h4, h5, h6, p,
@@ -27,6 +31,16 @@ body {
     border-color: $dark;
     border-style: solid;
     border-width: 0;
+
+    font-weight: normal;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+    /* Helps with the way fonts are displayed */
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   p {
@@ -46,6 +60,10 @@ body {
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  a.null-link, a.null-link:link, a.null-link:visited, a.null-link:active {
+    cursor: default;
   }
 
   // a.inline-link {
@@ -75,15 +93,16 @@ body {
   padding: rem(60);
 
   > header {
-    @include flex(1 0 100%);
+    @include flex(1 0 auto);
     @include align-items(flex-start);
     @include justify-content(space-between);
+    // min-height: rem(50);
 
     margin-bottom: rem(60);
 
     #logo {
       width: rem(193);
-      height: rem(50);
+      height: rem(51);
 
       background-image: asset-url('logo.svg');
       background-repeat: no-repeat;
@@ -121,6 +140,7 @@ body {
         color: $medium;
         font-family: $UltraLightCondensedOblique;
         font-size: rem(32);
+        font-style: normal;
         line-height: rem(46);
         text-align: center;
       }
@@ -193,6 +213,10 @@ body {
 
           // box-sizing: content-box;
 
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+
           width: rem(300);
           height: rem(300);
 
@@ -210,6 +234,7 @@ body {
           .project-title {
             font-family: $MediumCondensed;
             font-size: rem(18);
+            line-height: rem(21);
           }
 
           > h3 {
@@ -232,6 +257,9 @@ body {
             // @include align-self(flex-end);
 
             ul {
+              @include flex-wrap(wrap);
+
+              line-height: rem(18);
               margin-left: rem(5);
               width: 80%;
 

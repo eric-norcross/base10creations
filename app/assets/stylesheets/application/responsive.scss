@@ -4,7 +4,7 @@
 @media (min-width: 320px) and (max-width: 639px) {
 
   #content {
-    // max-width: $siteMobileWidth;
+    min-width: $siteMobileWidth;
     padding: rem(30);
 
     > header {
@@ -15,7 +15,8 @@
 
       #logo {
         background-image: asset-url('logo_centered.svg');
-
+        width: rem(289);
+        height: rem(76);
         margin-bottom: rem(20);
       }
 
