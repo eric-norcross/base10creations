@@ -1,4 +1,4 @@
-// MHF SCSS Mixins
+// Style Guide Mixins
 @import '../mixins/style_guide.scss';
 
 html { font-size: 62.5%; }  /* 10px || 1rem */
@@ -70,7 +70,8 @@ body {
 #content {
   @include flex-direction(column);
 
-  width: $siteMaxWidth;
+  width: 100%;
+  max-width: $siteMaxWidth;
   padding: rem(60);
 
   > header {
@@ -81,7 +82,11 @@ body {
     margin-bottom: rem(60);
 
     #logo {
+      width: rem(193);
+      height: rem(50);
 
+      background-image: asset-url('logo.svg');
+      background-repeat: no-repeat;
     }
 
     nav {
@@ -105,10 +110,11 @@ body {
     }
   }
 
-  > main {
+  main {
     @include flex-direction(column);
 
     blockquote {
+      padding: 0 4%;
       margin-bottom: rem(60);
 
       p, footer cite {
@@ -172,6 +178,10 @@ body {
         }
       }
 
+      .content-block:last-of-type {
+        margin-bottom: 0;
+      }
+
       .project-block {
         margin-bottom: rem(60);
 
@@ -223,9 +233,11 @@ body {
 
             ul {
               margin-left: rem(5);
+              width: 80%;
 
               li {
                 margin-right: rem(3);
+                white-space: nowrap;
               }
 
               li:after {
