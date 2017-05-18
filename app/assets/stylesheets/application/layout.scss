@@ -49,26 +49,22 @@ body {
 
     a {
       display: inline-block;
-      text-decoration: underline;
     }
   }
 
   a, a:link, a:visited, a:active {
     color: $bodyColor;
-    // display: inline-block;
+    text-decoration: underline;
 
     &:hover {
-      text-decoration: underline;
+      // font-family: $LightCondensedOblique;
+      font-style: italic;
     }
   }
 
   a.null-link, a.null-link:link, a.null-link:visited, a.null-link:active {
     cursor: default;
   }
-
-  // a.inline-link {
-  //   text-decoration: underline;
-  // }
 
   a:before,
   a:after {
@@ -121,7 +117,12 @@ body {
           margin: 0 rem(10);
 
           a {
+            text-decoration: none;
 
+            &:hover {
+              font-style: inherit;
+              text-decoration: underline;
+            }
           }
         }
 
@@ -178,6 +179,10 @@ body {
         h1:before {
           content: "/";
         }
+      }
+
+      span.note {
+        font-family: $MediumCondensedOblique;
       }
 
       .content-block, .project-block {
@@ -242,6 +247,15 @@ body {
             font-family: $MediumCondensed;
             font-size: rem(18);
             line-height: rem(21);
+
+            a {
+              // text-decoration: none;
+
+              &:hover {
+                // font-family: inherit;
+                // text-decoration: underline;
+              }
+            }
           }
 
           > h3 {

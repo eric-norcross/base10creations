@@ -1,9 +1,9 @@
 %main
   %blockquote
     %p
-      &lquo;Design must reflect the practical and aesthetic in business, but above all,
+      &ldquo;Design must reflect the practical and aesthetic in business, but above all,
 
-      good design must primarily serve people.&rquo;
+      good design must primarily serve people.&rdquo;
     
     %footer
       %cite
@@ -18,19 +18,28 @@
         %h2
           background
         %p
-          Developer with over ten years of professional experience. Detail orientated, end-user focused, and a passion for solving complex problems. Experienced in font & back-end development, system architecture, UX design, ad trafficking, and a background in both healthcare and consumer advertising
+          Developer with over ten years of professional experience. Detail orientated, end-user focused, and a passion for solving complex problems. Experienced in font & back-end development, system architecture, UX design, ad trafficking &mdash; oh, and a background in graphic design
 
       .content-block
         %h2
           development philosophy
         %p
-          Strive to create systems which are well-designed, intuitive, and responsive
+          Strive to create systems which are well-designed, intuitive, and user-first
 
       .content-block
         %h2
           certifications
         %p
-          DoubleClick QA, Google Web Designer, Apple Certified Technician
+          = link_to "https://www.richmediagallery.com/tools/certified-users#certifiedUser:10031~" do
+            DoubleClick Studio
+          ,
+          = link_to "https://www.richmediagallery.com/tools/certified-users#certifiedUser:10031~" do
+            DoubleClick QA
+          ,
+          = link_to "https://www.richmediagallery.com/tools/certified-users#certifiedUser:10031~" do
+            DoubleClick HTML5
+          ,
+          Apple Certified Technician
 
     %section#tools
       %header
@@ -40,13 +49,13 @@
         %h2
           current crushes
         %p
-          ruby / rails, javascript / angular, sql, css, html, puma
+          ruby / rails, javascript / angular, sql, css, html
 
       .content-block
         %h2
           old flames
         %p
-          php, actionscript / flash, apache, photoshop, illustrator
+          php, actionscript / flash, photoshop, illustrator
 
       .content-block
         %h2
@@ -105,7 +114,7 @@
               CSS3 / Flexbox
             
     .project-block#skope
-      = link_to "#", class: "null-link" do
+      = link_to "#skope", class: "null-link" do
         .project-image
 
       .project-info
@@ -114,14 +123,10 @@
         %h3
           summary
         %p
-          Spectrum Kitchens needed to upgrade their aging Excel-based estimation application and 
-          wanted a more feature rich and user friendly web-based application. This project was an 
-          enormous undertaking which required learning the intricacies of their estimation procedure, 
-          conceptualizing a database, designing all new layouts, and working closely with users to ensure 
-          that no functionality was overlooked. The result was an application which was an order of 
-          magnitude more efficient than their previous solution, allowing estimates to be generated in 
-          a fraction of the time. By hosting the application in the cloud, multiple users are now able 
-          to work on an estimate at the same time and access the system from anywhere. 
+          Spectrum Kitchens, a large-scale cabinet designer and manufacturer, needed to replace their aging Excel-based estimation software to a more feature rich, user friendly, web-based application. This project was an enormous undertaking which required learning the intricacies of their estimation procedure and current software, conceptualizing a database, designing a UX, and working closely with users to ensure that no functionality was overlooked. The result was an application which was an order of magnitude more efficient than their previous solution, allowing estimates to be generated in a fraction of the time. By hosting the application in the cloud, multiple users are now able to work on an estimate at the same time and access the system from anywhere. 
+          %span.note
+            This is a private application, please  
+            = mail_to "eric@base10creations.com", "request a demo", subject: "S.K.O.P.E. Demo Request"
 
         .project-features
           %h3
@@ -265,7 +270,7 @@
               jquery 1.11
 
     .project-block#physicianfinder
-      = link_to "#", class: "null-link" do
+      = link_to "#physicianfinder", class: "null-link" do
         .project-image
 
       .project-info
@@ -279,6 +284,9 @@
           and patient information layered in.  This led to errors and inconsistencies.
           The Physician Finder was developed so that the account team was able to quickly 
           and accurately identify physicians and patients in various DMA regions. 
+          %span.note
+            This is a private application, please 
+            = mail_to "eric@base10creations.com", "request a demo", subject: "Physician Finder Demo Request"
 
         .project-features
           %h3
@@ -302,7 +310,11 @@
               jquery 1.11
 
 
+
+    / --------------------------------------------------------
     / Ads
+    / --------------------------------------------------------
+
     %span.separator
 
     .project-block#franklin_templeton
@@ -310,7 +322,8 @@
         .project-image
       .project-info
         .project-title
-          Franklin Templeton Investment &mdash; Push-Down Ad
+          = link_to "http://base10proofs.info/portfolio/banners/franklin_templeton/970x415/", target: "_blank" do
+            Franklin Templeton Investment &mdash; Push-Down Ad
         %h3
           summary
         %p
@@ -333,7 +346,8 @@
         .project-image
       .project-info
         .project-title
-          Dubai Tourism &mdash; Expandable Ad
+          = link_to "http://base10proofs.info/portfolio/banners/dubai/1045x600/", target: "_blank" do
+            Dubai Tourism &mdash; Expandable Ad
         %h3
           summary
         %p
@@ -359,7 +373,8 @@
         .project-image
       .project-info
         .project-title
-          Hewlett Packard &mdash; Expandable Ad
+          = link_to "http://base10proofs.info/portfolio/banners/hp/300x600/", target: "_blank" do
+            Hewlett Packard &mdash; Expandable Ad
         %h3
           summary
         %p
@@ -384,7 +399,8 @@
         .project-image
       .project-info
         .project-title
-          Visa &mdash; Super Bowl 50 Ad
+          = link_to "http://base10proofs.info/portfolio/banners/visa/300x250/", target: "_blank" do
+            Visa &mdash; Super Bowl 50 Ad
         %h3
           summary
         %p
@@ -410,7 +426,8 @@
         .project-image
       .project-info
         .project-title
-          Xyrem &mdash; Branded Ad
+          = link_to "http://base10proofs.info/portfolio/banners/xyrem/300x600/", target: "_blank" do
+            Xyrem &mdash; Branded Ad
         %h3
           summary
         %p
