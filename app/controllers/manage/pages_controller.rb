@@ -7,10 +7,6 @@ class Manage::PagesController < ApplicationController
     @pages = Page.all
   end
 
-  # GET /pages/1
-  def show
-  end
-
   # GET /pages/new
   def new
     @page = Page.new
@@ -82,23 +78,25 @@ private
             { :link_attributes => [
               :_destroy,
               :id,
+              :target,
+              :title,
               :uri,
 
               # polymorphic
-                :linkable_type,
+                :linkable_id,
+                :linkable_type
             ]},
 
           # has_many (Nested Attributes)
             { :figures_attributes => [
               :_destroy,
               :id,
-              :caption,
-              :link,
-              :title,
               :alt,
               :image,
-
+              :title,
+              
               # polymorphic
+                :figureable_id,
                 :figureable_type
             ]},
 
@@ -114,27 +112,30 @@ private
               # belongs_to
                 :page_id,
 
-              # has_many (Polymorphic)
+              # has_many (Nested Attributes)
                 { :figures_attributes => [
                   :_destroy,
                   :id,
-                  :caption,
-                  :link,
-                  :title,
                   :alt,
                   :image,
-
+                  :title,
+                  
                   # polymorphic
+                    :figureable_id,
                     :figureable_type
                 ]},
 
+              # has_one (Polymorphic)
                 { :link_attributes => [
                   :_destroy,
                   :id,
+                  :target,
+                  :title,
                   :uri,
 
                   # polymorphic
-                    :linkable_type,
+                    :linkable_id,
+                    :linkable_type
                 ]}
             ]}
 

@@ -1,34 +1,14 @@
 class Manage::FiguresController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_figure, only: [:show, :edit, :update, :destroy]
+  before_action :set_figure, only: [:edit, :update, :destroy]
 
   # GET /figures
   def index
     @figures = Figure.all
   end
 
-  # GET /figures/1
-  def show
-  end
-
-  # GET /figures/new
-  def new
-    @figure = Figure.new
-  end
-
   # GET /figures/1/edit
   def edit
-  end
-
-  # POST /figures
-  def create
-    @figure = Figure.new(figure_params)
-
-    if @figure.save
-      redirect_to @figure, notice: 'Figure was successfully created.'
-    else
-      render :new
-    end
   end
 
   # PATCH/PUT /figures/1

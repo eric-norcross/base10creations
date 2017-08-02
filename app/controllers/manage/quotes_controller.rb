@@ -7,10 +7,6 @@ class Manage::QuotesController < ApplicationController
     @quotes = Quote.all
   end
 
-  # GET /quotes/1
-  def show
-  end
-
   # GET /quotes/new
   def new
     @quote = Quote.new
@@ -25,7 +21,7 @@ class Manage::QuotesController < ApplicationController
     @quote = Quote.new(quote_params)
 
     if @quote.save
-      redirect_to @quote, notice: 'Quote was successfully created.'
+      redirect_to edit_manage_quote_path(@quote), notice: 'Quote was successfully created.'
     else
       render :new
     end
@@ -34,7 +30,7 @@ class Manage::QuotesController < ApplicationController
   # PATCH/PUT /quotes/1
   def update
     if @quote.update(quote_params)
-      redirect_to @quote, notice: 'Quote was successfully updated.'
+      redirect_to edit_manage_quote_path(@quote), notice: 'Quote was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +39,7 @@ class Manage::QuotesController < ApplicationController
   # DELETE /quotes/1
   def destroy
     @quote.destroy
-    redirect_to quotes_url, notice: 'Quote was successfully destroyed.'
+    redirect_to manage_quotes_url, notice: 'Quote was successfully destroyed.'
   end
 
   private
@@ -54,6 +50,10 @@ class Manage::QuotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def quote_params
-      params.fetch(:quote, {})
+      params.require(:quote)
+        .permit(
+          :author,
+          :content
+        )
     end
 end

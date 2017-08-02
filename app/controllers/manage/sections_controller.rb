@@ -7,28 +7,8 @@ class Manage::SectionsController < ApplicationController
     @sections = Section.all
   end
 
-  # GET /sections/1
-  def show
-  end
-
-  # GET /sections/new
-  def new
-    @section = Section.new
-  end
-
   # GET /sections/1/edit
   def edit
-  end
-
-  # POST /sections
-  def create
-    @section = Section.new(section_params)
-
-    if @section.save
-      redirect_to @section, notice: 'Section was successfully created.'
-    else
-      render :new
-    end
   end
 
   # PATCH/PUT /sections/1
@@ -54,6 +34,63 @@ class Manage::SectionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def section_params
-      params.fetch(:section, {})
+      params.require(:section)
+        .permit(
+          :name,
+          :slug,
+
+          # belongs_to
+            :page_id,
+
+          # has_one (Polymorphic)
+            { :link_attributes => [
+              :_destroy,
+              :id,
+              :target,
+              :title,
+              :uri,
+
+              # polymorphic
+                :linkable_id,
+                :linkable_type
+            ]},
+
+          # has_many (Nested Attributes)
+            { :figures_attributes => [
+              :_destroy,
+              :id,
+              :alt,
+              :image,
+              :title,
+              
+              # polymorphic
+                :figureable_id,
+                :figureable_type
+            ]},
+
+            { :items_attributes => [
+              :_destroy,
+              :id,
+              :name
+
+              # belongs_to
+                :section_id,
+
+              # has_one (Polymorphic)
+                { :link_attributes => [
+                  :_destroy,
+                  :id,
+                  :target,
+                  :title,
+                  :uri,
+
+                  # polymorphic
+                    :linkable_id,
+                    :linkable_type
+                ]}
+            ]}
+
+        )
     end
 end
+
