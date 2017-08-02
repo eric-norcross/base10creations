@@ -1,0 +1,38 @@
+%article.index
+  %header
+    .db-table-info
+      .stat-group
+        .stat
+          .stat-content
+            .title
+              Total Quotes
+            .value
+              = @quotes.length
+
+    .db-table-controls
+      .buttons
+        = link_to new_manage_quote_path, class: "button base10-admin-new" do
+          New Quote
+
+  %section
+    .section-body
+      .table-group
+        .table
+          .thead
+            .tr
+              .th Id
+              .th Author
+              .th Quote
+              .th
+
+          .tbody
+            - @quotes.each do|quote|
+              .tr
+                .td= quote.id
+                .td= quote.author
+                .td= quote.content
+
+                .td
+                  .buttons
+                    = link_to 'Edit', edit_manage_quote_path(quote), class: "button base10-admin-edit"
+                    = link_to 'Destroy', manage_quote_path(quote), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"

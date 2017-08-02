@@ -96,15 +96,6 @@ body {
 
     margin-bottom: rem(60);
 
-    #logo {
-      width: rem(200);
-      height: rem(51);
-
-      background-image: asset-url('logo.svg');
-      background-repeat: no-repeat;
-      background-size: contain;
-    }
-
     nav {
       @include align-self(flex-end);
 
@@ -139,6 +130,10 @@ body {
 
   main {
     @include flex-direction(column);
+    
+    .sections {
+      @include flex-direction(column);
+    }
 
     blockquote {
       padding: 0 4%;

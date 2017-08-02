@@ -1,0 +1,12 @@
+%article.form
+  %header
+    %h1
+      Editing:
+      %span
+        #{@figure.id}
+
+  = render 'form'
+
+  %footer
+    .buttons
+      = link_to 'Destroy', manage_figure_path(@figure), method: :delete, data: { confirm: 'Are you sure?' }, class: "button base10-admin-destroy"

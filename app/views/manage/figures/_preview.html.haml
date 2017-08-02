@@ -1,0 +1,10 @@
+- if f.object.cl_asset.present?
+  - value   = "url('#{cloudinary_url(f.object.cl_asset, transformation: :padded_thumb)}')"
+  - classes = nil
+- else
+  - value   = "none"
+  - classes = "untouched"
+
+.association-group.figure-preview
+  = link_to cloudinary_url(f.object.cl_asset) do
+    = cl_image_tag(f.object.cl_asset, width: 750, crop: "limit")

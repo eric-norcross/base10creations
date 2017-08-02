@@ -1,0 +1,31 @@
+%article.index
+  %header
+    .db-table-info
+      .stat-group
+        .stat
+          .stat-content
+            .title
+              Total Sections
+            .value
+              = @sections.length
+
+  %section
+    .section-body
+      .table-group
+        .table
+          .thead
+            .tr
+              .th Id
+              .th Name
+              .th
+
+          .tbody
+            - @sections.each do|section|
+              .tr
+                .td= section.id
+                .td= section.name
+
+                .td
+                  .buttons
+                    = link_to 'Edit', edit_manage_section_path(section), class: "button base10-admin-edit"
+                    = link_to 'Destroy', manage_section_path(section), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"

@@ -1,0 +1,112 @@
+// Style Guide Mixins
+@import '../mixins/style_guide.scss';
+
+
+.buttons {
+  @extend %flexbox;
+}
+
+button {
+  // reset here
+}
+
+// ************************************************************************************************
+// Front-end Buttons
+// ------------------------------------------------------------------------------------------------
+  .button,
+  button .button-content {
+    // @extend %flexbox;
+    @include justify-content(space-between);
+    @include align-items(center);
+
+    background-color: $neutral;
+    border-color: $dark;
+    border-radius: rem(2);
+    border-style: solid;
+    border-width: rem(1);
+    cursor: pointer;
+    font-size: rem(11);
+    line-height: rem(8);
+    letter-spacing: rem(0.1);
+    padding: rem(6);
+    text-transform: uppercase;
+
+    &:hover {
+      text-decoration: none;
+      background-color: $dark;
+      color: $light;
+    }
+
+    &:after {
+      content: "\f105";
+      font-family: FontAwesome;
+      margin-left: rem(15);
+      padding-top: rem(1);
+    }
+  }
+
+  .button.large,
+  button .button-content.large {
+    font-size: rem(14);
+    padding: rem(10);
+  }
+
+  .button.alt-button,
+  button .alt-button {
+    // baseline-shift: rem(-5.5);
+    background-color: $semiDark;
+    color: $light;
+
+    &:hover {
+      background-color: $light;
+      color: $semiDark;
+    }
+  }
+
+  .button.flat-button,
+  button .button-content.flat-button {
+    background-color: transparent;
+    border-width: 0;
+    color: $dark;
+    font-size: rem(13);
+    padding: 0;
+    text-decoration: underline;
+    text-transform: capitalize;
+
+    &:after {
+      content: none !important;
+    }
+  }
+// ************************************************************************************************
+
+
+// ************************************************************************************************
+// Named Buttons
+// ------------------------------------------------------------------------------------------------
+  // Search - Magnifying glass
+  .button.search,
+  button .button-content.search {
+    &:after {
+      content: "\f002";
+      margin-left: rem(7);
+    }
+  }
+
+  // Search - Arrows in a circle 
+  .button.reset,
+  button[type="reset"] .button-content,
+  button .button-content.reset {
+    &:after {
+      content: "\f021";
+    }
+  }
+
+  // Submit - Paper airplane?
+  .button.submit,
+  button[type="submit"] .button-content,
+  button .button-content.submit {
+    &:after {
+      content: "\f002";
+    }
+  }
+// ************************************************************************************************

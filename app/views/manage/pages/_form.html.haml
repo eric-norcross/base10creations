@@ -1,0 +1,70 @@
+= form_for [:manage, @page] do|f|
+  - if @page.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
+      %ul
+        - @page.errors.full_messages.each do|msg|
+          %li= msg
+
+  .association-group
+    .legend
+      Page Attributes
+
+    .container
+      .fieldset
+        - if f.object && f.object.id
+          .field
+            .field-content
+              .title
+                Id
+              .value
+                = f.object.id
+
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :name
+            .value
+              = f.text_field :name, required: true, placeholder: "e.g.: Home"
+
+
+  / Figures
+  / .association-group
+  /   .legend
+  /     Page Image
+
+  /   .page-figures.container.figures-container
+  /     = f.fields_for :figures do|figure|
+  /       = render "manage/figures/nested_fields", f: figure
+
+  /   .controls
+  /     = link_to_add_association "+", f, :figures, partial: "manage/figures/nested_fields", class: "form-button base10-admin-add-association", title: "Add Image"
+
+  .association-groups
+    .legend
+      Page Link
+
+    .page-link.container
+      = f.fields_for :links do|link|
+        = render 'manage/links/nested_fields', f: link
+
+    .controls
+      = link_to_add_association '+', f, :links, partial: 'manage/links/nested_fields', class: "form-button base10-admin-add-association", title: 'Add Link'
+
+  / Sections
+  .association-groups
+    .legend
+      Sections
+
+    .page-sections.container
+      = f.fields_for :sections do|section|
+        = render "manage/sections/nested_fields", f: section
+
+    .controls
+      = link_to_add_association "+", f, :sections, partial: "manage/sections/nested_fields", class: "form-button base10-admin-add-association", title: "Add Section"
+
+  %footer
+    .buttons
+      %button{type: "submit"}
+        .button-content
+          Save

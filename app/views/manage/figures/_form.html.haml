@@ -1,0 +1,97 @@
+= form_for [:manage, @figure] do|f|
+  - if @figure.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@figure.errors.count, "error")} prohibited this figure from being saved:"
+      %ul
+        - @figure.errors.full_messages.each do|msg|
+          %li= msg
+
+  .association-group
+    .legend
+      Figure Attributes
+
+    .container
+      .fieldset
+        .field
+          .field-content
+            .title
+              Id
+            .value
+              = f.object.id
+
+        .field
+          .field-content
+            .title
+              = f.object.figureable_type
+            .value
+              = f.object.figureable_id
+        
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :figureable_type
+            .value
+              = f.select :figureable_type, figureable_types, { required: true, prompt: "Select a Class Association" }
+
+        .field.editable
+          .field-content.required
+            .title
+              = f.label :figureable_id
+            .value
+              = f.number_field :figureable_id
+
+
+
+        .field.editable
+          .field-content
+            .title
+              = f.label :alt
+            .value
+              = f.text_field :alt, placeholder: "e.g.: Two Drawer Lateral File"
+
+        / .field.editable
+        /   .field-content
+        /     .title
+        /       = f.label :caption
+        /     .value
+        /       = f.text_field :caption, placeholder: "e.g.: Exclusive Two Drawer Lateral File"
+
+        .field.editable
+          .field-content
+            .title
+              = f.label :title
+            .value
+              = f.text_field :title, placeholder: "e.g.: New Two Drawer Lateral File"
+
+        / .field.editable
+        /   .field-content
+        /     .title
+        /       = f.label :link
+        /     .value
+        /       = f.url_field :link, placeholder: "e.g.: http://www.martinfurniture.com"
+
+        .field.editable.hidden
+          .field-content
+            .title
+              = f.label :figure, "Figure"
+            .value
+              = f.cl_image_upload :figure, :html => { :id => cl_input_id(f.object_name, :figure) }
+              = f.label :figure, "Upload an Figure", class: "file-input"
+
+              .file-thumb
+                - if f.object.cl_asset
+                  = cl_image_tag f.object.cl_asset, transformation: :hint
+
+
+  .association-groups
+    .legend
+      Preview
+
+    .product-figures.container.figures-container
+      = render "manage/figures/preview", f: f
+
+  %footer
+    .buttons
+      %button{type: "submit"}
+        .button-content
+          Save

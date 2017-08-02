@@ -29,6 +29,19 @@ $BoldCondensed:                           'BoldCondensed';
 $BoldCondensedOblique:                    'BoldCondensedOblique';
 
 
+$bodyFont:                                $LightCondensed;
+$bodyFontLight:                           300;
+$bodyFontRegular:                         400;
+$bodyFontSemiBold:                        600;
+$bodyFontBold:                            700;
+$bodyFontExtraBold:                       800;
+
+$headerFont:                              'Oswald',       sans-serif;
+$headerFontLight:                         300;
+$headerFontRegular:                       400;
+$headerFontBold:                          700;
+
+
 // Site Dimensions
 $siteMaxWidth:                            rem(928);
 $siteMobileWidth:                         rem(360);
@@ -39,3 +52,13 @@ $bodyColor:                               $dark;
 $bodyFontFamily:                          $LightCondensed;
 $bodyFontWeight:                          normal;
 $bodyFontSize:                            rem(14);
+
+
+// Common Elements 
+$labelColor:                              $medium;
+$inputPlaceholderColor:                   $semiLight;
+$inputColor:                              $semiDark;
+$inputBorderColor:                        $semiDark;
+$separatorColor:                          $dark;
+$warningColor:                            #ed1c24;
+$warningIconColor:                        #ffd307;

@@ -1,0 +1,41 @@
+= form_for [:manage, @quote] do|f|
+  - if @quote.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@quote.errors.count, "error")} prohibited this quote from being saved:"
+      %ul
+        - @quote.errors.full_messages.each do|msg|
+          %li= msg
+
+  .association-group
+    .legend
+      Quote Attributes
+
+    .container
+      .fieldset
+        - if f.object && f.object.id
+          .field
+            .field-content
+              .title
+                Id
+              .value
+                = f.object.id
+
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :author
+            .value
+              = f.text_field :author, required: true, placeholder: "e.g.: Thomas J. Watson"
+
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :content, "Quote"
+            .value
+              = f.text_area :content, required: true
+
+  %footer
+    .buttons
+      %button{type: "submit"}
+        .button-content
+          Save

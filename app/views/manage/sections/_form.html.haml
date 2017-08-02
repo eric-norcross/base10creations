@@ -1,0 +1,41 @@
+= form_for [:manage, @section] do|f|
+  - if @section.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@section.errors.count, "error")} prohibited this section from being saved:"
+      %ul
+        - @section.errors.full_messages.each do|msg|
+          %li= msg
+
+  .association-group
+    .legend
+      Section Attributes
+
+    .container
+      .fieldset
+        - if f.object && f.object.id
+          .field
+            .field-content
+              .title
+                Id
+              .value
+                = f.object.id
+
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :kind
+            .value
+              = f.text_field :kind, required: true, placeholder: "e.g.: admin"
+
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :title
+            .value
+              = f.text_field :title, required: true, placeholder: "e.g.: Administrator"
+
+  %footer
+    .buttons
+      %button{type: "submit"}
+        .button-content
+          Save

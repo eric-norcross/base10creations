@@ -1,0 +1,34 @@
+- if f.object.id
+  - legend  = link_to f.object.id, edit_manage_figure_path(f.object)
+  - css_id  = "figure-id-#{f.object.id}"
+- else
+  - legend  = "New Image"
+  - css_id  = "new-figure-id-#{DateTime.now.strftime('%Q')}"
+
+- if f.object.cl_asset.present?
+  - value   = "url('#{cloudinary_url(f.object.cl_asset, transformation: :padded_thumb)}')"
+  - classes = nil
+- else
+  - value   = "none"
+  - classes = "untouched"
+
+.association-group.figure-group.nested-fields{ data: { :"interface-type" => "form" }} 
+  .legend
+    = legend
+
+  .container
+    .fieldset
+      .field.editable.file-field{id: "#{css_id}", style: "background-image: #{value};"}
+        .field-content
+          .title{class: "#{classes}"}
+            = f.label :image, class: "file-input" do
+              #{zero_width_space}
+
+          .value
+            = f.cl_image_upload :image, :html => { :id => cl_input_id(f.object_name, :image) }
+              
+            .hidden
+              = f.hidden_field :figureable_type
+
+  .controls
+    = link_to_remove_association "–", f, class: "form-button base10-admin-remove-association"

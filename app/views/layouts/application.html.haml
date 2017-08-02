@@ -19,7 +19,8 @@
   %body
     #content
       = render "/layouts/partials/header"
-      = yield
+      %main
+        = yield
       = render "/layouts/partials/google_analytics"
         
         

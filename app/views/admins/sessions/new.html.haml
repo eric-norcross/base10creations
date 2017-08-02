@@ -1,0 +1,37 @@
+.sections
+  %section#sign-in
+    %header
+      %h1
+        sign in to your account
+
+    .content-block
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do|f|
+
+        .fieldset
+          .field.required
+            .title
+              = f.label :email
+            .value
+              = f.email_field :email, autofocus: true
+
+          .field.required
+            .title
+              = f.label :password
+            .value
+              = f.password_field :password, autocomplete: "off"
+
+          / - if devise_mapping.rememberable?
+          /   .field
+          /     .title
+          /       = f.label :remember_me
+          /     .value
+          /       = f.check_box :remember_me
+
+        %footer
+          .buttons
+            %button{type: "submit"}
+              .button-content
+                Sign In
+
+        .separator
+        = render "admins/shared/links"

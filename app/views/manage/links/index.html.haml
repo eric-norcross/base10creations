@@ -1,0 +1,35 @@
+%article.index
+  %header
+    .db-table-info
+      .stat-group
+        .stat
+          .stat-content
+            .title
+              Total Links
+            .value
+              = @links.length
+
+  %section
+    .section-body
+      .table-group
+        .table
+          .thead
+            .tr
+              .th Id
+              .th URI
+              .th Association Id
+              .th Association Type
+              .th
+
+          .tbody
+            - @links.each do|link|
+              .tr
+                .td= link.id
+                .td= link.uri
+                .td= link.linkable_id
+                .td= link.linkable_type
+
+                .td
+                  .buttons
+                    = link_to 'Edit', edit_manage_link_path(link), class: "button base10-admin-edit"
+                    = link_to 'Destroy', manage_link_path(link), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"

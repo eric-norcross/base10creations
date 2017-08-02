@@ -52,39 +52,61 @@ a:after {
 }
 
 #error-explanation {
+  @include flex-direction(column);
+
+  background-color: #FCC;
+  border-color: $error;
+  border-style: solid;
+  border-width: rem(2);
+  border-radius: rem(5);
+  margin-bottom: rem(20);
+
   h2 {
-    color: $error;
+    background-color: $error;
+    border-color: $error;
+    border-style: solid;
+    border-width: 0 0 rem(2) 0;
+    border-radius: rem(3) rem(3) 0 0;
+    color: $neutral;
     font: $bodyFontSemiBold;
     font-size: rem(16);
     line-height: rem(16);
-    padding-bottom: rem(15);
+    padding: rem(15);
     text-transform: none;
   }
 
   ul {
-    @include justify-content(flex-start);
+    @include flex-direction(column);
+
+    list-style-type: disc;
+    margin: rem(20) rem(20) rem(20) rem(40);
     
     li {
-      @include flex-direction(row);
-      @include flex(0 1 auto);
-      margin-right: rem(3);
+      display: list-item;
+      // @include flex-direction(row);
+      // @include flex(0 1 auto);
+
+      color: $dark;
+      font-size: rem(14);
+      font-weight: bold;
+      margin: rem(3);
     }
 
-    li:before {
-      color: $error;
-      content: "*";
-      font-size: rem(10);
-      margin-right: rem(1);
-    }
+    // li:before {
+    //   color: $neutral;
+    //   content: "*";
+    //   font-size: rem(10);
+    //   margin-right: rem(1);
+    // }
 
-    li:after {
-      content: ",";
-      // display: inline-block;
-      margin-left: rem(1);
-    }
+    // li:after {
+    //   content: ",";
+    //   // display: inline-block;
+    //   margin-left: rem(1);
+    // }
 
-    li:last-of-type:after {
-      content: none;
-    }
+    // li:last-of-type:after {
+    //   content: none;
+    // }
   }
 }

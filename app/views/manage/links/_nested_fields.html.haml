@@ -1,0 +1,15 @@
+.association-group.nested-fields
+  .legend
+    - if f.object.present? && f.object.id.present?
+      Link
+    - else
+      New Link
+
+  .container
+    .fieldset
+      .field.editable.cke-collection
+        .field-content
+          .title
+            = f.label :uri, "URI"
+          .value
+            = f.text_field :uri, required: true, placeholder: "e.g.: http://www.apple.com"

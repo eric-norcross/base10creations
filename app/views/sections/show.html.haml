@@ -1,0 +1,7 @@
+%section{id: "#{section.name}"}
+  %header
+    %h1
+      = section.name
+
+  - section.sections.each do|sub_section|
+    = render "/sections/content_block", locals: { block: sub_section }

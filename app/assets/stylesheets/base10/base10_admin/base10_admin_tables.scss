@@ -75,7 +75,7 @@ html {
 
           .th .buttons, .td .buttons,
           .th .controls, .td .controls {
-            @include justify-content(center);
+            @include justify-content(flex-end);
             @include flex-wrap(nowrap);
 
             margin: 0;

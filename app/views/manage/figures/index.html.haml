@@ -1,0 +1,35 @@
+%article.index
+  %header
+    .db-table-info
+      .stat-group
+        .stat
+          .stat-content
+            .title
+              Total Figures
+            .value
+              = @figures.length
+
+  %section
+    .section-body
+      .table-group
+        .table
+          .thead
+            .tr
+              .th Id
+              .th Association Id
+              .th Association Type
+              .th Figure
+              .th
+
+          .tbody
+            - @figures.each do|figure|
+              .tr
+                .td= figure.id
+                .td= figure.figureable_id
+                .td= figure.figureable_type
+                .td= render "manage/figures/list", figures: [figure]
+
+                .td
+                  .buttons
+                    = link_to 'Edit', edit_manage_figure_path(figure), class: "button base10-admin-edit"
+                    = link_to 'Destroy', manage_figure_path(figure), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"

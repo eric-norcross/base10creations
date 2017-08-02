@@ -1,0 +1,11 @@
+// Style Guide Mixins
+@import '../mixins/style_guide.scss';
+
+#logo {
+  width: rem(200);
+  height: rem(51);
+
+  background-image: asset-url('logo.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}

@@ -1,0 +1,156 @@
+// Style Guide Mixins
+@import '../mixins/style_guide.scss';
+
+
+ul.expandable {
+  @include flex-direction(column);
+  @include justify-content(flex-start);
+
+  li {
+    // @extend %flexbox;
+    // @include justify-content(space-between);
+    // @include align-items(center);
+    // @include flex-wrap(wrap);
+
+    border-color: $dark;
+    // border-style: solid;
+    border-width: 0 0 rem(1) 0;
+    cursor: pointer;
+    padding: 0;
+
+    .expandable-header {
+      // @extend %flexbox;
+      @include justify-content(space-between);
+
+      width: 100%;
+    }
+
+    .expandable-header:after {
+      display: block;
+      content: "\f067";
+      font-family: FontAwesome;
+      font-size: 70%;
+    }
+
+    ul {
+      @include justify-content(flex-start);
+      @include align-items(flex-start);
+
+      display: none;
+      margin-left: rem(10);
+      padding-bottom: rem(20);
+
+      li {
+        border-width: 0;
+        color: $medium;
+        margin-bottom: rem(14);
+        padding: 0;
+      }
+
+      li:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
+  li:first-of-type {
+    @include align-items(flex-start);
+
+    .expandable-header {
+      margin-top: 0;
+    }
+  }
+
+  li.active {
+    .expandable-header:after {
+      content: "\f068"; //  "\2014" / &mdash; / –
+      // font-family: FontAwesome;
+      // font-size: 120%;
+    }
+
+    ul {
+      @extend %flexbox;
+    }
+  }
+}
+
+ul.comma-separated {
+  // @extend %flexbox;
+  @include align-items(flex-start);
+  @include flex-wrap(wrap);
+
+  li {
+    // @extend %flexbox;
+    @include align-items(flex-start);
+    @include justify-content(flex-start);
+    @include flex-direction(row);
+  }
+
+  li:after {
+    content: ","
+  }
+
+  li:last-of-type:after {
+    content: none;
+  }
+}
+
+.product-name,
+.product-name,
+#product-details article footer .block.product-related-items .related-items-container .product-name,
+#filter-results-with-nav article .sections section ul#filter-items .product-name,
+#store #home article .sections section .product-name {
+  font-weight: $bodyFontBold;
+}
+
+.product-sku-numbers,
+.item-sku-numbers ul,
+.product-sku-numbers ul,
+#product-details article footer .block.product-related-items .related-items-container .product-sku-numbers ul,
+#filter-results-with-nav article .sections section ul#filter-items .product-sku-numbers ul,
+#store #home article .sections section .product-sku-numbers ul {
+  // @extend %flexbox;
+  @include align-items(flex-start);
+  @include justify-content(center);
+  @include flex-wrap(wrap);
+  // @include flex(1);
+
+  margin-top: rem(3);
+
+  li {
+    // @extend %flexbox;
+    // @include align-items(stretch);
+    @include justify-content(center);
+    @include flex-direction(row);
+    @include flex(0 1 auto);
+    
+    border: none;
+    color: $dark;
+    font-family: $bodyFont;
+    font-size: rem(12);
+    margin: 0;
+    padding: rem(3) rem(1);
+    white-space: nowrap;
+
+    a {
+      color: $dark;
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
+    }
+  }
+
+  li:first-of-type:before {
+    content: "SKU:";
+    padding-right: rem(3);
+  }
+
+  li:nth-of-type(1n):after {
+    content: ",";
+  }
+
+  li:last-of-type:after {
+    content: none;
+  }
+}

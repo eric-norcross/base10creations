@@ -21,29 +21,35 @@ source 'https://rubygems.org'
   gem 'puma', '~> 3.7'
   gem 'foreman'
   gem 'rack-rewrite' # Redirecting naked domains to "www"
-  gem 'friendly_id', '~> 4.0.10' # SEO
   gem 'turbolinks', '~> 5'
   gem 'rails_12factor' # To silence Heroku deprecation warning
   
 # View
-  gem 'haml'
+  gem "haml-rails"
+  gem 'font-awesome-rails'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
+
+# Routing Tools
+  gem 'friendly_id' # SEO
+  gem 'route_downcaser'
 
 # Authorization & Authentication
   # gem 'cancan'
-  # gem 'devise'
+  gem 'devise'
 
 # Monitoring & Logging
   gem 'newrelic_rpm'
   # gem 'lograge'
 
 # Image Serving & Uploading
-  # gem 'carrierwave'
-  # gem 'cloudinary'
+  gem 'carrierwave'
+  gem 'cloudinary'
 
 # Forms
-  # gem 'cocoon'
-  # gem 'ckeditor', '4.2.0'
-  # gem 'mini_magick'
+  gem 'cocoon'
+  gem 'ckeditor'
+  gem 'mini_magick'
   # gem 'mail_form'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -57,6 +63,9 @@ source 'https://rubygems.org'
 
 # Use Capistrano for deployment
   # gem 'capistrano-rails', group: :development
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -83,9 +92,20 @@ group :development do
   gem 'annotate'
 
   # Gems used only for assets and not required in production environments by default.
-  gem 'sass-rails', '~> 5.0'
-  gem 'uglifier', '>= 1.3.0'
+  gem 'sass-rails'
+  gem 'uglifier'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end
+
+
+
+
+
+
+
+

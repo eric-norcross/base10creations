@@ -1,0 +1,41 @@
+= form_for [:manage, @link] do|f|
+  - if @link.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@link.errors.count, "error")} prohibited this link from being saved:"
+      %ul
+        - @link.errors.full_messages.each do|msg|
+          %li= msg
+
+  .association-group
+    .legend
+      Link Attributes
+
+    .container
+      .fieldset
+        - if f.object && f.object.id
+          .field
+            .field-content
+              .title
+                Id
+              .value
+                = f.object.id
+
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :uri
+            .value
+              = f.text_field :uri, required: true, placeholder: "e.g.: admin"
+
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :title
+            .value
+              = f.text_field :title, required: true, placeholder: "e.g.: Administrator"
+
+  %footer
+    .buttons
+      %button{type: "submit"}
+        .button-content
+          Save

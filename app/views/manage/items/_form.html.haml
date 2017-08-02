@@ -1,0 +1,45 @@
+= form_for [:manage, @item] do|f|
+  - if @item.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+      %ul
+        - @item.errors.full_messages.each do|msg|
+          %li= msg
+
+  .association-group
+    .legend
+      Item Attributes
+
+    .container
+      .fieldset
+        - if f.object && f.object.id
+          .field
+            .field-content
+              .title
+                Id
+              .value
+                = f.object.id
+
+        .field.editable.required
+          .field-content
+            .title
+              = f.label :name
+            .value
+              = f.text_field :name, required: true, placeholder: "e.g.: Ruby on Rails"
+
+  .association-groups
+    .legend
+      Link
+
+    .item-link.container
+      = f.fields_for :links do|link|
+        = render 'manage/links/nested_fields', f: link
+
+    .controls
+      = link_to_add_association '+', f, :links, partial: 'manage/links/nested_fields', class: "form-button base10-admin-add-association", title: 'Add Link'
+
+  %footer
+    .buttons
+      %button{type: "submit"}
+        .button-content
+          Save

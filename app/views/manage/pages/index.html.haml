@@ -1,0 +1,37 @@
+%article.index
+  %header
+    .db-table-info
+      .stat-group
+        .stat
+          .stat-content
+            .title
+              Total Pages
+            .value
+              = @pages.length
+
+    .db-table-controls
+      .buttons
+        = link_to new_manage_page_path, class: "button base10-admin-new" do
+          New Page
+
+  %section
+    .section-body
+      .table-group
+        .table
+          .thead
+            .tr
+              .th Id
+              .th Name
+              .th
+
+          .tbody
+            - @pages.each do|page|
+              .tr
+                .td= page.id
+                .td= page.name
+
+                .td
+                  .buttons
+                    = link_to 'Show', page, class: "button base10-admin-show"
+                    = link_to 'Edit', edit_manage_page_path(page), class: "button base10-admin-edit"
+                    = link_to 'Destroy', manage_page_path(page), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"

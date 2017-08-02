@@ -16,7 +16,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Ericnorcross
+module Base10Creations
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
@@ -27,5 +27,24 @@ module Ericnorcross
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Customized
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Change mail delvery to either :smtp, :sendmail, :file, :test
+      config.action_mailer.delivery_method  = :smtp
+      config.action_mailer.smtp_settings    = {
+        address:              ENV["EMAIL_SMTP_ADDRESS"],
+        port:                 ENV["EMAIL_SMTP_PORT"],
+        domain:               ENV["EMAIL_DOMAIN"],
+        authentication:       ENV["EMAIL_SMTP_AUTH_TYPE"],
+        enable_starttls_auto: ENV["EMAIL_SMTP_ENABLE_TTLS"],
+        user_name:            ENV["EMAIL_USERNAME"],
+        password:             ENV["EMAIL_PASSWORD"]
+      }
+
+      # specify what domain to use for mailer URLs
+      config.action_mailer.default_url_options = { host: "localhost:8080" }
   end
 end

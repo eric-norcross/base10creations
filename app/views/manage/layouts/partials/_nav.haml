@@ -1,0 +1,13 @@
+%aside
+  %nav#admin-nav
+    .nav-title
+      Admin Nav
+
+    %ul
+      - manage_table_list.each do|table|
+        - table_name = "manage_" + table.to_s
+
+        - if Rails.application.routes.named_routes.any?{|key, array| key.to_s === table_name}
+          %li
+            = link_to polymorphic_path(table_name) do
+              = table.to_s.humanize.titleize
