@@ -53,6 +53,6 @@ class Manage::TrackersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tracker_params
-      params.require(:tracker).permit(:domain)
+      params.require(:tracker).permit(:remote_ip)
     end
 end

@@ -21,7 +21,7 @@
           .thead
             .tr
               .th Id
-              .th Domain
+              .th Request IP
               .th Created At
               .th
 
@@ -29,7 +29,7 @@
             - @trackers.each do|tracker|
               .tr
                 .td= tracker.id
-                .td= tracker.domain
+                .td= tracker.remote_ip
                 .td= tracker.created_at
 
                 .td
