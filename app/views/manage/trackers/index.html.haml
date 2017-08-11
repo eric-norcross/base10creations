@@ -1,21 +1,39 @@
-%h1 Listing trackers
+%article.index
+  %header
+    .db-table-info
+      .stat-group
+        .stat
+          .stat-content
+            .title
+              Total Trackers
+            .value
+              = @trackers.length
 
-%table
-  %thead
-    %tr
-      %th Domain
-      %th
-      %th
-      %th
+    .db-table-controls
+      .buttons
+        = link_to new_manage_tracker_path, class: "button base10-admin-new" do
+          New Tracker
 
-  %tbody
-    - @trackers.each do |tracker|
-      %tr
-        %td= tracker.domain
-        %td= link_to 'Show', tracker
-        %td= link_to 'Edit', edit_tracker_path(tracker)
-        %td= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }
+  %section
+    .section-body
+      .table-group
+        .table
+          .thead
+            .tr
+              .th Id
+              .th Domain
+              .th Created At
+              .th
 
-%br
+          .tbody
+            - @trackers.each do|tracker|
+              .tr
+                .td= tracker.id
+                .td= tracker.domain
+                .td= tracker.created_at
 
-= link_to 'New Tracker', new_tracker_path
+                .td
+                  .buttons
+                    = link_to 'Show', tracker, class: "button base10-admin-show"
+                    = link_to 'Edit', edit_manage_tracker_path(tracker), class: "button base10-admin-edit"
+                    = link_to 'Destroy', manage_tracker_path(tracker), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"
