@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   resources :pages,           only: [:show]
   resources :trackers,        only: [:show]
 
-  get "/resume" => redirect("http://res.cloudinary.com/hkowwlpd3/image/upload/v1500399019/eric_norcross_resume_uf9l1d.pdf")
+  get "/resume"     => redirect("http://res.cloudinary.com/hkowwlpd3/image/upload/v1500399019/eric_norcross_resume_uf9l1d.pdf")
+  get "/pixel.gif"  => redirect("http://base10creations.com/trackers/1")
   
   if Rails.env.production?
     # Production only routes
