@@ -16,10 +16,12 @@ Rails.application.routes.draw do
       resources :pages,       except: [:show]
       resources :quotes,      except: [:show]
       resources :sections,    except: [:new, :show]
+      resources :trackers,    except: [:show]
     end
   end
 
   resources :pages,           only: [:show]
+  resources :trackers,        only: [:show]
 
   get "/resume" => redirect("http://res.cloudinary.com/hkowwlpd3/image/upload/v1500399019/eric_norcross_resume_uf9l1d.pdf")
   
