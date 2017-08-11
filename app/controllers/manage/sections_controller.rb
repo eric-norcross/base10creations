@@ -71,7 +71,7 @@ class Manage::SectionsController < ApplicationController
             { :items_attributes => [
               :_destroy,
               :id,
-              :name
+              :name,
 
               # belongs_to
                 :section_id,
