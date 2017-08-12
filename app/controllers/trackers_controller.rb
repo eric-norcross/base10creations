@@ -1,7 +1,7 @@
 class TrackersController < ApplicationController
   # GET /trackers/1
   def show
-    Tracker.create(remote_ip: request.request.remote_ip)
+    Tracker.create(remote_ip: request.remote_ip)
     send_data open(view_context.image_url("tracker.gif")), filename: 'tracker.gif', type: 'image/gif'
   end
 
