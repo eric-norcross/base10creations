@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # get '/assets/*', to: redirect('/trackers/:name.gif')
+  # get '/assets', to: redirect('/trackers/1'), constraints: { name: /.+/, ext: /(jpg|png|gif)/ }
+
   # Admins
   scope nil, module: :admins do
     devise_for :admins, 
@@ -24,8 +27,13 @@ Rails.application.routes.draw do
   resources :trackers,        only: [:show]
 
   get "/resume"     => redirect("http://res.cloudinary.com/hkowwlpd3/image/upload/v1500399019/eric_norcross_resume_uf9l1d.pdf")
-  get "/pixel.gif"  => redirect("http://base10creations.com/trackers/1")
+  # get "/assets/tracker-b1442e85b03bdcaf66dc58c7abb98745dd2687d86350be9a298a1d9382ac849b.gif" => redirect("http://base10creations.com/trackers/1")
+
+
   
+
+
+  # http://base10creations.com/assets/tracker-b1442e85b03bdcaf66dc58c7abb98745dd2687d86350be9a298a1d9382ac849b.gif
   if Rails.env.production?
     # Production only routes
     match '*a',
