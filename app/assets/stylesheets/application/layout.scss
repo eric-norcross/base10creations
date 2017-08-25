@@ -53,7 +53,7 @@ body {
   }
 
   a, a:link, a:visited, a:active {
-    @include flex(1 1 100%);
+    @include flex(1 0 auto);
 
     color: $bodyColor;
     text-decoration: underline;
