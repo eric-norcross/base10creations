@@ -39,10 +39,11 @@ class Page < ApplicationRecord
                                       dependent:      :destroy
 
     accepts_nested_attributes_for   :link,
-                                      allow_destroy:  true
-
-
-                                      
+                                      allow_destroy:  true,
+                                      reject_if:      -> (attributes) {
+                                                        attributes['uri'].blank?
+                                                      }
+                   
   # Sections
   # ==========================================================================================================
     has_many                        :sections,

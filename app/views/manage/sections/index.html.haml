@@ -9,6 +9,11 @@
             .value
               = @sections.length
 
+    .db-table-controls
+      .buttons
+        = link_to new_manage_section_path, class: "button base10-admin-new" do
+          New Section
+
   %section
     .section-body
       .table-group
@@ -17,6 +22,9 @@
             .tr
               .th Id
               .th Name
+              .th Slug
+              .th Parent
+              .th Associated Page
               .th
 
           .tbody
@@ -24,6 +32,9 @@
               .tr
                 .td= section.id
                 .td= section.name
+                .td= section.slug
+                .td= val(section.parent).try(:name)
+                .td= associated_page(section).name
 
                 .td
                   .buttons

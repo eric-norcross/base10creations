@@ -1,6 +1,14 @@
 module ApplicationHelper
   require "net/http"
 
+  def linked(item)
+    if item.link.present?
+      link_to item.name, item.link.uri, target: item.link.target
+    else 
+      item.name
+    end
+  end
+
   def val(obj)
     obj || '&mdash;'.html_safe
   end

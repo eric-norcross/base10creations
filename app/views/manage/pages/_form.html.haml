@@ -1,3 +1,5 @@
+- build_page_relationships(@page)
+
 = form_for [:manage, @page] do|f|
   - if @page.errors.any?
     #error-explanation
@@ -45,11 +47,11 @@
       Page Link
 
     .page-link.container
-      = f.fields_for :links do|link|
-        = render 'manage/links/nested_fields', f: link
+      = f.fields_for :link do|link_fields|
+        = render 'manage/links/nested_fields', f: link_fields
 
-    .controls
-      = link_to_add_association '+', f, :links, partial: 'manage/links/nested_fields', class: "form-button base10-admin-add-association", title: 'Add Link'
+    / .controls
+    /   = link_to_add_association '+', f, :links, partial: 'manage/links/nested_fields', class: "form-button base10-admin-add-association", title: 'Add Link'
 
   / Sections
   .association-groups
@@ -57,11 +59,11 @@
       Sections
 
     .page-sections.container
-      = f.fields_for :sections do|section|
-        = render "manage/sections/nested_fields", f: section
+      = f.fields_for :sections do|section_fields|
+        = render "manage/sections/nested_fields", f: section_fields, allow_children: true
 
     .controls
-      = link_to_add_association "+", f, :sections, partial: "manage/sections/nested_fields", class: "form-button base10-admin-add-association", title: "Add Section"
+      = link_to_add_association "+", f, :sections, render_options: { locals: { allow_children: true }}, partial: "manage/sections/nested_fields", class: "form-button base10-admin-add-association", title: "Add Section"
 
   %footer
     .buttons

@@ -17,6 +17,9 @@
             .tr
               .th Id
               .th Name
+              .th Item Type
+              .th Itemable Type
+              .th Itemable Id
               .th
 
           .tbody
@@ -24,6 +27,10 @@
               .tr
                 .td= item.id
                 .td= item.name
+                .td= item.item_type.name
+                .td= item.itemable_type
+                .td= item.itemable_id
+
 
                 .td
                   .buttons

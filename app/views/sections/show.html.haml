@@ -1,7 +1,22 @@
-%section{id: "#{section.name}"}
+%section{id: "#{section.slug}"}
   %header
     %h1
       = section.name
 
-  - section.sections.each do|sub_section|
-    = render "/sections/content_block", locals: { block: sub_section }
+  - if section.children.present?
+    - section.children.group_by(&:section_type_id).each do|section_type, sub_sections|
+      - if section_type === SectionType::CONTENT
+        - sub_sections.each do |sub_section|
+          = render partial: "/sections/content_block", locals: { block: sub_section }
+
+      - elsif section_type === SectionType::WEBSITE
+        - sub_sections.each do |sub_section|
+          = render partial: "/sections/project_block", locals: { block: sub_section }
+
+      - elsif section_type === SectionType::AD
+        %span.separator
+        - sub_sections.each do |sub_section|
+          = render partial: "/sections/project_block", locals: { block: sub_section }
+
+  - else
+    = render partial: "/sections/content_block", locals: { block: section }

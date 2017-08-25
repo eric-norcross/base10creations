@@ -1,0 +1,15 @@
+.project-block{id: "#{block.slug}"}
+  - if block.link.present?
+    = link_to block.link.uri, target: block.link.target do
+      .project-image
+  - else
+    .project-image
+
+  .project-info
+    .project-title
+      = linked(block)
+
+    = raw block.content
+
+    - block.children.each do|sub_section|
+      = render partial: "/sections/content_block", locals: { block: sub_section }

@@ -1,13 +1,13 @@
 .content-block
-  %h2
-    = block.name
+  - unless block.section_type_id === SectionType::CONTACT
+    %h2
+      = block.name
 
   - if block.content.present?
-    %p
-      = block.content
+    = raw block.content
 
   - if block.items.present?
     %ul
       - block.items.each do|item|
         %li
-          = item.name
+          = linked(item)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812000359) do
+ActiveRecord::Schema.define(version: 20170825221848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170812000359) do
     t.string "name", limit: 255, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "section_id", null: false
+    t.bigint "section_id", default: 1, null: false
     t.index ["section_id"], name: "index_items_on_section_id"
   end
 
@@ -92,14 +92,25 @@ ActiveRecord::Schema.define(version: 20170812000359) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "section_types", force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sections", force: :cascade do |t|
     t.string "name", limit: 255, null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "page_id", null: false
+    t.integer "page_id"
     t.string "slug", null: false
+    t.bigint "parent_id"
+    t.bigint "section_type_id", default: 1, null: false
+    t.boolean "shown", default: true, null: false
     t.index ["page_id"], name: "index_sections_on_page_id"
+    t.index ["parent_id"], name: "index_sections_on_parent_id"
+    t.index ["section_type_id"], name: "index_sections_on_section_type_id"
     t.index ["slug"], name: "index_sections_on_slug", unique: true
   end
 
@@ -111,4 +122,6 @@ ActiveRecord::Schema.define(version: 20170812000359) do
 
   add_foreign_key "items", "sections"
   add_foreign_key "sections", "pages"
+  add_foreign_key "sections", "section_types"
+  add_foreign_key "sections", "sections", column: "parent_id"
 end

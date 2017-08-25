@@ -56,15 +56,20 @@ class Manage::PagesController < ApplicationController
 private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
-      slug = params[:id]
-
       @page = Page.includes(
-              :figures,
-              sections: [
+                :link,
                 :figures,
-                :items
-              ],
-            ).friendly.find(slug)
+                sections: [
+                  :link,
+                  :figures, 
+                  :items,
+                  children: [
+                    :link,
+                    :figures, 
+                    :items
+                  ]
+                ],
+              ).friendly.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -103,27 +108,15 @@ private
             { :sections_attributes => [
               :_destroy,
               :id,
-              :header,
+              :name,
               :content,
-              :link,
-              :link_text,
-              :sub_header,
+              :slug,
+              :shown,
 
               # belongs_to
                 :page_id,
-
-              # has_many (Nested Attributes)
-                { :figures_attributes => [
-                  :_destroy,
-                  :id,
-                  :alt,
-                  :image,
-                  :title,
-                  
-                  # polymorphic
-                    :figureable_id,
-                    :figureable_type
-                ]},
+                :parent_id,
+                :section_type_id,
 
               # has_one (Polymorphic)
                 { :link_attributes => [
@@ -136,6 +129,103 @@ private
                   # polymorphic
                     :linkable_id,
                     :linkable_type
+                ]},
+
+              # has_many
+                { :figures_attributes => [
+                  :_destroy,
+                  :id,
+                  :alt,
+                  :image,
+                  :title,
+                  
+                  # polymorphic
+                    :figureable_id,
+                    :figureable_type
+                ]},
+
+                { :items_attributes => [
+                  :_destroy,
+                  :id,
+                  :name,
+
+                  # belongs_to
+                    :section_id,
+
+                  # has_one (Polymorphic)
+                    { :link_attributes => [
+                      :_destroy,
+                      :id,
+                      :target,
+                      :title,
+                      :uri,
+
+                      # polymorphic
+                        :linkable_id,
+                        :linkable_type
+                    ]}
+                ]},
+
+                { :children_attributes => [
+                  :_destroy,
+                  :id,
+                  :name,
+                  :content,
+                  :slug,
+                  :shown,
+
+                  # belongs_to
+                    :parent_id,
+                    :section_type_id,
+
+                  # has_many (Polymorphic)
+                    { :figures_attributes => [
+                      :_destroy,
+                      :id,
+                      :alt,
+                      :image,
+                      :title,
+                      
+                      # polymorphic
+                        :figureable_id,
+                        :figureable_type
+                    ]},
+
+                  # has_one (Polymorphic)
+                    { :link_attributes => [
+                      :_destroy,
+                      :id,
+                      :target,
+                      :title,
+                      :uri,
+
+                      # polymorphic
+                        :linkable_id,
+                        :linkable_type
+                    ]},
+
+                  # has_many
+                    { :items_attributes => [
+                      :_destroy,
+                      :id,
+                      :name,
+
+                      # belongs_to
+                        :section_id,
+
+                      # has_one (Polymorphic)
+                        { :link_attributes => [
+                          :_destroy,
+                          :id,
+                          :target,
+                          :title,
+                          :uri,
+
+                          # polymorphic
+                            :linkable_id,
+                            :linkable_type
+                        ]}
+                    ]}
                 ]}
             ]}
 

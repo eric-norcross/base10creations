@@ -1,0 +1,36 @@
+%article.index
+  %header
+    .db-table-info
+      .stat-group
+        .stat
+          .stat-content
+            .title
+              Total SectionTypes
+            .value
+              = @section_types.length
+
+    .db-table-controls
+      .buttons
+        = link_to new_manage_section_type_path, class: "button base10-admin-new" do
+          New SectionType
+
+  %section
+    .section-body
+      .table-group
+        .table
+          .thead
+            .tr
+              .th Id
+              .th Kind
+              .th
+
+          .tbody
+            - @section_types.each do|section_type|
+              .tr
+                .td= section_type.id
+                .td= section_type.name
+
+                .td
+                  .buttons
+                    = link_to 'Edit', edit_manage_section_type_path(section_type), class: "button base10-admin-edit"
+                    = link_to 'Destroy', manage_section_type_path(section_type), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"

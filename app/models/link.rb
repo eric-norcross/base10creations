@@ -21,7 +21,9 @@ class Link < ApplicationRecord
   # Linkable (Polymorphic)
   # ==========================================================================================================
     belongs_to                      :linkable,
-                                      polymorphic:    true
+                                      polymorphic:    true, 
+                                      optional:       true
+
 
   # Validations
   # ==========================================================================================================

@@ -1,43 +1,36 @@
 # == Schema Information
 #
-# Table name: items
+# Table name: section_types
 #
 #  created_at :datetime         not null
 #  id         :integer          not null, primary key
 #  name       :string(255)      not null
-#  section_id :integer          default(1), not null
 #  updated_at :datetime         not null
 #
 
-class Item < ApplicationRecord
+class SectionType < ApplicationRecord
+  # Constants
+  # ==========================================================================================================
+    CONTENT                         = 1
+    WEBSITE                         = 2
+    AD                              = 3
+    CONTACT                         = 4
+
   # Scopes
   # ==========================================================================================================
     default_scope                   { order(id: :ASC) }
 
-
-  # ItemType
+  # Sections
   # ==========================================================================================================
-    belongs_to                      :section,
-                                      inverse_of:     :items
-
-
-  # Link (Polymorphic)
-  # ==========================================================================================================
-    has_one                         :link,
-                                      as:             :linkable,
+    has_many                        :sections,
+                                      inverse_of:     :section_type,
                                       dependent:      :destroy
-
-    accepts_nested_attributes_for   :link,
-                                      allow_destroy:  true,
-                                      reject_if:      -> (attributes) {
-                                                        attributes['uri'].blank?
-                                                      }
-
 
   # Validations
   # ==========================================================================================================
-    validates                       :section,
-                                      presence:       true
+    validates                       :name,
+                                      presence:       true,
+                                      format:         { with: /[0-9a-zA-Z\s\/_:\-.|]*/ }
 
   # Callbacks
   # ==========================================================================================================

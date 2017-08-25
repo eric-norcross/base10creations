@@ -53,6 +53,8 @@ body {
   }
 
   a, a:link, a:visited, a:active {
+    @include flex(1 1 100%);
+
     color: $bodyColor;
     text-decoration: underline;
 
@@ -109,6 +111,7 @@ body {
 
           a {
             text-decoration: none;
+            text-transform: lowercase;
 
             &:hover {
               font-style: inherit;
@@ -148,6 +151,16 @@ body {
         text-align: center;
       }
 
+      p:before {
+        content: "\201C";
+        margin-right: rem(-8);
+      }
+
+      p:after {
+        content: "\201D";
+        margin-left: rem(-8);
+      }
+
       footer {
         @include justify-content(center);
 
@@ -169,6 +182,7 @@ body {
         
         h1 {
           font-size: rem(21);
+          text-transform: lowercase;
         }
 
         h1:before {
@@ -198,10 +212,32 @@ body {
           font-family: $MediumCondensedOblique;
           font-size: rem(16);
           margin-bottom: rem(10);
+          text-transform: lowercase;
         }
 
-        p {
+        p, ul {
           margin: 0 0 0 rem(20);
+        }
+
+        ul {
+          @include flex-wrap(wrap);
+          margin-top: rem(4);
+
+          li {
+            margin-right: rem(3);
+            white-space: nowrap;
+          
+            &:after {
+              content: ",";
+            }
+          }
+
+          li:last-of-type {
+            margin-right: 0;
+            &:after {
+              content: none;
+            }
+          }
         }
       }
 
@@ -234,7 +270,7 @@ body {
         .project-info {
           @include flex-direction(column);
 
-          .project-title, .project-tech, .project-features {
+          .project-title, .content-block {
             margin-bottom: rem(15);
           }
 
@@ -253,11 +289,11 @@ body {
             }
           }
 
-          > h3 {
-            display: none;
-          }
+          // > h3 {
+          //   display: none;
+          // }
 
-          h3 {
+          h2 {
             font-family: $MediumCondensed;
             font-size: rem(14);
 
@@ -268,7 +304,7 @@ body {
             margin-bottom: rem(15);
           }
 
-          .project-tech, .project-features {
+          .content-block {
             @include flex-direction(column);
 
             ul {

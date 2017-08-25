@@ -1,10 +1,17 @@
 class PagesController < ApplicationController
   def show
     page            = Page::Page.includes(
+                        :link,
                         :figures,
                         sections: [
+                          :link,
                           :figures, 
-                          :items
+                          :items,
+                          children: [
+                            :link,
+                            :figures, 
+                            :items
+                          ]
                         ],
                       ).friendly.find(params[:id])
 

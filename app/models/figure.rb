@@ -24,7 +24,8 @@ class Figure < ApplicationRecord
   # Figureable (Polymorphic)
   # ==========================================================================================================
     belongs_to                      :figureable,
-                                      polymorphic:    true
+                                      polymorphic:    true, 
+                                      optional:       true
 
   # Validations
   # ==========================================================================================================

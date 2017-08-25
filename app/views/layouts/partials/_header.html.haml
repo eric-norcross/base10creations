@@ -2,7 +2,10 @@
   #logo
   %nav
     %ul
-      %li= link_to "about", "#about"
-      %li= link_to "work", "#work"
-      %li= link_to "contact", "#contact"
-      %li= link_to "resume", "/resume", target: "_blank"
+      - main_navigation.each do|section|
+        - unless section.slug === "tools"
+          %li
+            - if section.link.present?
+              = link_to section.name, section.link.uri, target: section.link.target
+            - else
+              = link_to section.name, "##{section.slug}"

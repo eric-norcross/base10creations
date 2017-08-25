@@ -1,6 +1,8 @@
 class PagePresenter < BasePresenter
   attr_reader :page
 
+  GROUPED_SECTIONS  = ["about", "tools"]
+
   def initialize(instance)
     super(instance)
     @page = instance
@@ -17,10 +19,11 @@ class PagePresenter < BasePresenter
     Quote.first
   end
 
-  def page_sections
-    self.sections.map{ |section| SectionPresenter.new(section) }
+  def grouped_sections
+    self.sections.where(slug: GROUPED_SECTIONS, shown: true)
   end
 
-  
-
+  def work_sections
+    self.sections.where.not(slug: GROUPED_SECTIONS, shown: false)
+  end
 end

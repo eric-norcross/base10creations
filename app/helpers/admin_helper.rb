@@ -3,7 +3,8 @@ module AdminHelper
                       "ckeditor_assets", 
                       "schema_migrations",
                       "friendly_id_slugs",
-                      "admins"
+                      "admins",
+                      "trackers"
                     ]
 
   def manage_table_list

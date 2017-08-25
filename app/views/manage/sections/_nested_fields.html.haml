@@ -1,3 +1,5 @@
+- build_section_relationships(f.object)
+
 .association-group.nested-fields
   .legend
     - if f.object.id.present?
@@ -15,6 +17,37 @@
             .value
               = f.object.id
 
+      .field.editable
+        .field-content
+          .title
+            = f.label :shown
+          .value
+            = f.check_box :shown
+            = f.label :shown, class: "checkbox"
+
+      - if defined?(allow_associations) && allow_associations.present?
+        .field.editable
+          .field-content
+            .title
+              = f.label :page
+            .value
+              = f.select :page_id, Page.all.pluck(:name, :id), {prompt: "Select a Page"}
+
+        .field.editable
+          .field-content
+            .title
+              = f.label :parent
+            .value
+              = f.select :parent_id, Section.all.pluck(:name, :id), {prompt: "Select a Parent"}
+
+
+      .field.editable
+        .field-content
+          .title
+            = f.label :section_type
+          .value
+            = f.select :section_type_id, SectionType.all.pluck(:name, :id), {prompt: "Select a SectionType"}
+
                 
       .field.editable.required
         .field-content
@@ -23,6 +56,12 @@
           .value
             = f.text_field :name, required: true, placeholder: "e.g.: Home"
 
+      .field.editable.required
+        .field-content
+          .title
+            = f.label :slug
+          .value
+            = f.text_field :slug, placeholder: "e.g.: home"
 
       .field.editable.cke-collection
         .field-content
@@ -31,35 +70,46 @@
           .value
             = f.cktext_area :content
 
+
+      = f.fields_for :link do|link_builder|
+        = render 'manage/links/embedded_fields', f: link_builder
+
+
     .association-groups
       .legend
         Section Image
 
       .section-figures.container.figures-container
-        = f.fields_for :figures do|figure|
-          = render 'manage/figures/nested_fields', f: figure
+        = f.fields_for :figures do|figure_builder|
+          = render 'manage/figures/nested_fields', f: figure_builder
 
-      .controls
-        = link_to_add_association '+', f, :figures, partial: 'manage/figures/nested_fields', class: "form-button base10-admin-add-association", title: 'Add Figure'
-
-    .association-groups
-      .legend
-        Section Link
-
-      .section-link.container
-        = f.fields_for :links do|link|
-          = render 'manage/links/nested_fields', f: link
-
-      .controls
-        = link_to_add_association '+', f, :links, partial: 'manage/links/nested_fields', class: "form-button base10-admin-add-association", title: 'Add Link'
+      / .controls
+      /   = link_to_add_association '+', f, :figures, partial: 'manage/figures/nested_fields', class: "form-button base10-admin-add-association", title: 'Add Figure'
 
     .association-groups
       .legend
         Items
 
       .section-items.container
-        = f.fields_for :items do|item|
-          = render 'manage/items/nested_fields', f: item
+        = f.fields_for :items do|item_builder|
+          = render 'manage/items/nested_fields', f: item_builder
 
       .controls
         = link_to_add_association '+', f, :items, partial: 'manage/items/nested_fields', class: "form-button base10-admin-add-association", title: 'Add Item'
+
+
+    - if (defined?(allow_children) && allow_children.present?) || f.object.children.present?
+      / Children / Sub-Sections
+      .association-groups
+        .legend
+          Sub-Sections
+
+        .section-sub-sections.container
+          = f.fields_for :children do|child_builder|
+            = render "manage/sections/nested_fields", f: child_builder
+
+        .controls
+          = link_to_add_association "+", f, :children, partial: "manage/sections/nested_fields", class: "form-button base10-admin-add-association", title: "Add Sub-Section"
+
+  .controls
+    = link_to_remove_association "–", f, class: "form-button base10-admin-remove-association"

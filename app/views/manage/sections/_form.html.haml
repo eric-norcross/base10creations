@@ -6,33 +6,7 @@
         - @section.errors.full_messages.each do|msg|
           %li= msg
 
-  .association-group
-    .legend
-      Section Attributes
-
-    .container
-      .fieldset
-        - if f.object && f.object.id
-          .field
-            .field-content
-              .title
-                Id
-              .value
-                = f.object.id
-
-        .field.editable.required
-          .field-content
-            .title
-              = f.label :kind
-            .value
-              = f.text_field :kind, required: true, placeholder: "e.g.: admin"
-
-        .field.editable.required
-          .field-content
-            .title
-              = f.label :title
-            .value
-              = f.text_field :title, required: true, placeholder: "e.g.: Administrator"
+  = render 'nested_fields', f: f, allow_associations: true, allow_children: true
 
   %footer
     .buttons
