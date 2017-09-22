@@ -9,6 +9,14 @@ module ApplicationHelper
     end
   end
 
+  def link_to_if_linked(section_link, &block)
+    if section_link.link.present?
+      link_to(section_link.link.uri, {target: section_link.link.target}, &block)
+    else
+      puts block.call
+    end
+  end
+
   def val(obj)
     obj || '&mdash;'.html_safe
   end

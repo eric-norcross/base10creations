@@ -17,26 +17,27 @@
   %section
     .section-body
       .table-group
-        .table
-          .thead
-            .tr
-              .th Id
-              .th Name
-              .th Slug
-              .th Parent
-              .th Associated Page
-              .th
-
-          .tbody
-            - @sections.each do|section|
+        - @sections.group_by(&:section_type).each do|group, sections|
+          .table
+            .thead
               .tr
-                .td= section.id
-                .td= section.name
-                .td= section.slug
-                .td= val(section.parent).try(:name)
-                .td= associated_page(section).name
+                .th Id
+                .th Name
+                .th Slug
+                .th Parent
+                .th Associated Page
+                .th
 
-                .td
-                  .buttons
-                    = link_to 'Edit', edit_manage_section_path(section), class: "button base10-admin-edit"
-                    = link_to 'Destroy', manage_section_path(section), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"
+            .tbody
+              - sections.each do|section|
+                .tr
+                  .td= section.id
+                  .td= section.name
+                  .td= section.slug
+                  .td= val(section.parent).try(:name)
+                  .td= associated_page(section).name
+
+                  .td
+                    .buttons
+                      = link_to 'Edit', edit_manage_section_path(section), class: "button base10-admin-edit"
+                      = link_to 'Destroy', manage_section_path(section), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button base10-admin-destroy"

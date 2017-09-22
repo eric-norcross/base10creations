@@ -1,13 +1,12 @@
 .project-block{id: "#{block.slug}"}
-  - if block.link.present?
-    = link_to block.link.uri, target: block.link.target do
-      .project-image
-  - else
-    .project-image
+  - if block.figures.present?
+    = link_to_if_linked(block) do
+      .project-image{style: "background-image: url('#{cloudinary_url(block.figures.last.cl_asset, dpr: :auto, responsive_placeholder: "blank")}');"}
 
   .project-info
     .project-title
-      = linked(block)
+      = link_to_if_linked(block) do
+        = block.name
 
     = raw block.content
 

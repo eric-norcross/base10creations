@@ -1,6 +1,8 @@
 - if admin_signed_in?
   %header
-    #logo
+    = link_to root_path do
+      #logo
+      
     #header-links
       %ul
         %li= link_to "Dashboard", dashboard_path

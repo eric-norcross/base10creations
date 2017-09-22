@@ -4,7 +4,19 @@ class Manage::SectionsController < ApplicationController
 
   # GET /sections
   def index
-    @sections = Section.all
+    @sections = Section.includes(
+                  :link,
+                  :page,
+                  :section_type,
+                  :parent,
+                  :figures, 
+                  :items,
+                  children: [
+                    :link,
+                    :figures, 
+                    :items
+                  ]
+                ).all
   end
 
   # GET /sections/new

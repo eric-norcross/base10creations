@@ -3,50 +3,50 @@
   background-size: 298px 298px;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 1),(min-resolution: 96dpi) {
-  #martinfurniture .project-image { background-image: asset-url("martinfurniture_@1x.jpg"); }
-  #skope .project-image { background-image: asset-url("skope_@1x.jpg"); }
-  #interiahospitality .project-image { background-image: asset-url("interiahospitality_@1x.jpg"); }
-  #colinparent .project-image { background-image: asset-url("colinparent_@1x.jpg"); }
-  #freshandhealthy .project-image { background-image: asset-url("freshandhealthy_@1x.jpg"); }
-  #physicianfinder .project-image { background-image: asset-url("physicianfinder_@1x.png"); }
+// @media only screen and (-webkit-min-device-pixel-ratio: 1),(min-resolution: 96dpi) {
+//   #martinfurniture .project-image { background-image: asset-url("martinfurniture_@1x.jpg"); }
+//   #skope .project-image { background-image: asset-url("skope_@1x.jpg"); }
+//   #interiahospitality .project-image { background-image: asset-url("interiahospitality_@1x.jpg"); }
+//   #colinparent .project-image { background-image: asset-url("colinparent_@1x.jpg"); }
+//   #freshandhealthy .project-image { background-image: asset-url("freshandhealthy_@1x.jpg"); }
+//   #physicianfinder .project-image { background-image: asset-url("physicianfinder_@1x.png"); }
 
-  // Banners
-  #franklin-templeton .project-image { background-image: asset-url("franklin_templeton_ad_@1x.png"); }
-  #dubai .project-image { background-image: asset-url("dubai_ad_@1x.png"); }
-  #hp .project-image { background-image: asset-url("hp_ad_@1x.png"); }
-  #visa .project-image { background-image: asset-url("visa_ad_@1x.png"); }
-  #xyrem .project-image { background-image: asset-url("xyrem_ad_@1x.png"); }
-}
+//   // Banners
+//   #franklin-templeton .project-image { background-image: asset-url("franklin_templeton_ad_@1x.png"); }
+//   #dubai .project-image { background-image: asset-url("dubai_ad_@1x.png"); }
+//   #hp .project-image { background-image: asset-url("hp_ad_@1x.png"); }
+//   #visa .project-image { background-image: asset-url("visa_ad_@1x.png"); }
+//   #xyrem .project-image { background-image: asset-url("xyrem_ad_@1x.png"); }
+// }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
-  #martinfurniture .project-image { background-image: asset-url("martinfurniture_@2x.jpg"); }
-  #skope .project-image { background-image: asset-url("skope_@2x.jpg"); }
-  #interiahospitality .project-image { background-image: asset-url("interiahospitality_@2x.jpg"); }
-  #colinparent .project-image { background-image: asset-url("colinparent_@2x.jpg"); }
-  #freshandhealthy .project-image { background-image: asset-url("freshandhealthy_@2x.jpg"); }
-  #physicianfinder .project-image { background-image: asset-url("physicianfinder_@2x.png"); }
+// @media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
+//   #martinfurniture .project-image { background-image: asset-url("martinfurniture_@2x.jpg"); }
+//   #skope .project-image { background-image: asset-url("skope_@2x.jpg"); }
+//   #interiahospitality .project-image { background-image: asset-url("interiahospitality_@2x.jpg"); }
+//   #colinparent .project-image { background-image: asset-url("colinparent_@2x.jpg"); }
+//   #freshandhealthy .project-image { background-image: asset-url("freshandhealthy_@2x.jpg"); }
+//   #physicianfinder .project-image { background-image: asset-url("physicianfinder_@2x.png"); }
 
-  // Banners
-  #franklin-templeton .project-image { background-image: asset-url("franklin_templeton_ad_@2x.png"); }
-  #dubai .project-image { background-image: asset-url("dubai_ad_@1x.png"); }
-  #hp .project-image { background-image: asset-url("hp_ad_@2x.png"); }
-  #visa .project-image { background-image: asset-url("visa_ad_@2x.png"); }
-  #xyrem .project-image { background-image: asset-url("xyrem_ad_@2x.png"); }
-}
+//   // Banners
+//   #franklin-templeton .project-image { background-image: asset-url("franklin_templeton_ad_@2x.png"); }
+//   #dubai .project-image { background-image: asset-url("dubai_ad_@1x.png"); }
+//   #hp .project-image { background-image: asset-url("hp_ad_@2x.png"); }
+//   #visa .project-image { background-image: asset-url("visa_ad_@2x.png"); }
+//   #xyrem .project-image { background-image: asset-url("xyrem_ad_@2x.png"); }
+// }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 3),(min-resolution: 288dpi) {
-  #martinfurniture .project-image { background-image: asset-url("martinfurniture_@3x.jpg"); }
-  #skope .project-image { background-image: asset-url("skope_@3x.jpg"); }
-  #interiahospitality .project-image { background-image: asset-url("interiahospitality_@3x.jpg"); }
-  #colinparent .project-image { background-image: asset-url("colinparent_@3x.jpg"); }
-  #freshandhealthy .project-image { background-image: asset-url("freshandhealthy_@3x.jpg"); }
-  #physicianfinder .project-image { background-image: asset-url("physicianfinder_@3x.png"); }
+// @media only screen and (-webkit-min-device-pixel-ratio: 3),(min-resolution: 288dpi) {
+//   #martinfurniture .project-image { background-image: asset-url("martinfurniture_@3x.jpg"); }
+//   #skope .project-image { background-image: asset-url("skope_@3x.jpg"); }
+//   #interiahospitality .project-image { background-image: asset-url("interiahospitality_@3x.jpg"); }
+//   #colinparent .project-image { background-image: asset-url("colinparent_@3x.jpg"); }
+//   #freshandhealthy .project-image { background-image: asset-url("freshandhealthy_@3x.jpg"); }
+//   #physicianfinder .project-image { background-image: asset-url("physicianfinder_@3x.png"); }
 
-  // Banners
-  #franklin-templeton .project-image { background-image: asset-url("franklin_templeton_ad_@3x.png"); }
-  #dubai .project-image { background-image: asset-url("dubai_ad_@3x.png"); }
-  #hp .project-image { background-image: asset-url("hp_ad_@3x.png"); }
-  #visa .project-image { background-image: asset-url("visa_ad_@3x.png"); }
-  #xyrem .project-image { background-image: asset-url("xyrem_ad_@3x.png"); }
-}
+//   // Banners
+//   #franklin-templeton .project-image { background-image: asset-url("franklin_templeton_ad_@3x.png"); }
+//   #dubai .project-image { background-image: asset-url("dubai_ad_@3x.png"); }
+//   #hp .project-image { background-image: asset-url("hp_ad_@3x.png"); }
+//   #visa .project-image { background-image: asset-url("visa_ad_@3x.png"); }
+//   #xyrem .project-image { background-image: asset-url("xyrem_ad_@3x.png"); }
+// }
