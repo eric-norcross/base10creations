@@ -38,7 +38,7 @@
             .title
               = f.label :parent
             .value
-              = f.select :parent_id, Section.all.pluck(:name, :id), {prompt: "Select a Parent"}
+              = f.select :parent_id, Section.all.sort_by(&:name).pluck(:name, :id), {prompt: "Select a Parent"}
 
 
       .field.editable

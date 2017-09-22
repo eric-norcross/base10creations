@@ -3,8 +3,8 @@
     %h1
       = section.name
 
-  - if section.children.present?
-    - section.children.group_by(&:section_type_id).each do|section_type, sub_sections|
+  - if section.shown_children.present?
+    - section.shown_children.group_by(&:section_type_id).each do|section_type, sub_sections|
       - if section_type === SectionType::CONTENT
         - sub_sections.each do |sub_section|
           = render partial: "/sections/content_block", locals: { block: sub_section }

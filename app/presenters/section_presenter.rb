@@ -15,4 +15,8 @@ class SectionPresenter < BasePresenter
   def section_items
     self.items.map{ |item| ItemPresenter.new(item) }
   end
+
+  def shown_children
+    self.children.where(shown: true)
+  end
 end

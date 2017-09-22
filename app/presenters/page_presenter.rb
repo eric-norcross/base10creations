@@ -20,10 +20,10 @@ class PagePresenter < BasePresenter
   end
 
   def grouped_sections
-    self.sections.where(slug: GROUPED_SECTIONS, shown: true)
+    self.sections.where(slug: GROUPED_SECTIONS, shown: true).map{ |section| SectionPresenter.new(section) }
   end
 
   def work_sections
-    self.sections.where.not(slug: GROUPED_SECTIONS, shown: false)
+    self.sections.where.not(slug: GROUPED_SECTIONS, shown: false).map{ |section| SectionPresenter.new(section) }
   end
 end

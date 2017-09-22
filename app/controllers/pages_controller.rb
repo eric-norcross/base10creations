@@ -12,7 +12,7 @@ class PagesController < ApplicationController
                             :figures, 
                             :items
                           ]
-                        ],
+                        ]
                       ).friendly.find(params[:id])
 
     page_presenter  = PagePresenter.new(page)

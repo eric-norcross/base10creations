@@ -2,6 +2,7 @@
 #
 # Table name: sections
 #
+#  active          :boolean          default(TRUE), not null
 #  content         :text
 #  created_at      :datetime         not null
 #  id              :integer          not null, primary key
