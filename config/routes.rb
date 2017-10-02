@@ -33,6 +33,5 @@ Rails.application.routes.draw do
       via:  :get
   end
   
-
   root to: 'pages#show', id: "home"
 end
