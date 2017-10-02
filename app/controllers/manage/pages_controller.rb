@@ -18,7 +18,7 @@ class Manage::PagesController < ApplicationController
 
   # POST /pages
   def create
-    expire_action(controller: :pages, action: :show)
+    expire_action(controller: '/pages', action: :show)
 
     @page = Page.new(page_params)
 
@@ -31,7 +31,7 @@ class Manage::PagesController < ApplicationController
 
   # PATCH/PUT /pages/1
   def update
-    expire_action(controller: :pages, action: :show)
+    expire_action(controller: '/pages', action: :show)
     
     if @page.update(page_params)
       redirect_to edit_manage_page_path(@page), notice: 'Page was successfully updated.'
