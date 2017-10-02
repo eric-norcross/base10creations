@@ -10,6 +10,10 @@
 #
 
 class Page < ApplicationRecord
+  # Base Presenters
+  include ImagePresenter
+  include PagePresenter
+
   extend FriendlyId
   friendly_id                       :name,
                                       use: :slugged

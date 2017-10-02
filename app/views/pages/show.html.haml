@@ -1,9 +1,9 @@
 .sections
-  = render template: "/quotes/show", locals: { quote: page_presenter.random_quote } if page_presenter.random_quote.present?
+  = render template: "/quotes/show", locals: { quote: @page.random_quote } if @page.random_quote.present?
   
   .section-group
-    - page_presenter.grouped_sections.each do|section_presenter|
-      = render template: "/sections/show", locals: { section: section_presenter }
+    - @page.grouped_sections.each do|section|
+      = render template: "/sections/show", locals: { section: section }
 
-  - page_presenter.work_sections.each do|section_presenter|
-    = render template: "/sections/show", locals: { section: section_presenter }
+  - @page.work_sections.each do|section|
+    = render template: "/sections/show", locals: { section: section }

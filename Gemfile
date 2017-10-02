@@ -12,6 +12,9 @@ source 'https://rubygems.org'
   ruby "2.4.0" # Required for Heroku deployment
   gem 'rails', '~> 5.1.0'
 
+# Caching
+  gem 'actionpack-action_caching'
+
 # Database
   gem 'pg', '~> 0.18'
   gem 'nilify_blanks'

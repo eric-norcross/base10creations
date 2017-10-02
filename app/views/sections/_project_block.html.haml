@@ -1,4 +1,4 @@
-.project-block{id: "#{block.slug}"}
+.project-block{id: "#{block.slug}", class: "section-type-#{block.section_type.name.downcase}"}
   - if block.figures.present?
     = link_to_if_linked(block) do
       .project-image{style: "background-image: url('#{cloudinary_url(block.figures.last.cl_asset, dpr: :auto, responsive_placeholder: "blank")}');"}

@@ -245,6 +245,12 @@ body {
         margin-bottom: 0;
       }
 
+      .project-block.section-type-ad {
+        .project-image {
+          padding: rem(20);
+        }
+      }
+
       .project-block {
         margin-bottom: rem(60);
 

@@ -16,6 +16,11 @@
 #
 
 class Section < ApplicationRecord
+  # Base Presenters
+  include ImagePresenter
+  include SectionPresenter
+
+
   extend FriendlyId
   friendly_id                       :name,
                                       use: :slugged
