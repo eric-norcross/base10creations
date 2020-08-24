@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
 # git_source(:github) do |repo_name|
-#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-#   "https://github.com/#{repo_name}.git"
+#   repo_name = '#{repo_name}/#{repo_name}' unless repo_name.include?('/')
+#   'https://github.com/#{repo_name}.git'
 # end
 
 # Config
   gem 'figaro'
 
 # Platform
-  ruby "2.4.0" # Required for Heroku deployment
+  ruby '2.6.3' # Required for Heroku deployment
   gem 'rails', '~> 5.1.0'
 
 # Caching
@@ -23,12 +23,12 @@ source 'https://rubygems.org'
 # Hosting, Server & Deployment
   gem 'puma', '~> 3.7'
   gem 'foreman'
-  gem 'rack-rewrite' # Redirecting naked domains to "www"
+  gem 'rack-rewrite' # Redirecting naked domains to 'www'
   gem 'turbolinks', '~> 5'
   gem 'rails_12factor' # To silence Heroku deprecation warning
-  
+
 # View
-  gem "haml-rails"
+  gem 'haml-rails'
   gem 'font-awesome-rails'
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
@@ -95,7 +95,7 @@ group :development do
   gem 'annotate'
 
   # Gems used only for assets and not required in production environments by default.
-  gem 'sass-rails', '~> 5.0'
+  gem 'sassc-rails'
   gem 'uglifier', '>= 1.3.0'
 end
 
@@ -104,11 +104,3 @@ group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
-
-
-
-
-
-
-
-
