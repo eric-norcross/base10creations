@@ -1,19 +1,17 @@
+# frozen_string_literal: true
+
 # Use this hook to configure ckeditor
 Ckeditor.setup do |config|
-  # Rails::logger.debug "********************************"
-  # Rails::logger.debug "Ckeditor.setup - config.inspect: #{config.inspect}"
-  # Rails::logger.debug "********************************"
-
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default), :mongo_mapper and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require "ckeditor/orm/active_record"
+  require 'ckeditor/orm/active_record'
 
   # Allowed image file types for upload.
   # Set to nil or [] (empty array) for all file types
   # By default: %w(jpg jpeg png gif tiff)
-  # config.image_file_types = %w(jpg jpeg png gif tiff svg)
+  # config.image_file_types = %w(jpg jpeg png gif tiff)
 
   # Allowed flash file types for upload.
   # Set to nil or [] (empty array) for all file types
@@ -27,7 +25,7 @@ Ckeditor.setup do |config|
 
   # Setup authorization to be run as a before filter
   # By default: there is no authorization.
-  # config.authorize_with :cancan
+  # config.authorize_with :cancancan
 
   # Override parent controller CKEditor inherits from
   # By default: 'ApplicationController'
@@ -43,20 +41,15 @@ Ckeditor.setup do |config|
 
   # Customize ckeditor assets path
   # By default: nil
-  # config.asset_path = "http://www.example.com/assets/ckeditor/"
-
-  # To reduce the asset precompilation time, you can limit plugins and/or languages to those you need:
-  # By default: nil (no limit)
-  config.assets_languages = ['en']
-  # config.assets_plugins = ['image', 'smiley']
+  # config.asset_path = 'http://www.example.com/assets/ckeditor/'
 
   # CKEditor CDN
   # More info here http://cdn.ckeditor.com/
   # By default: nil (CDN disabled)
-  # config.cdn_url = "//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"
+  # config.cdn_url = '//cdn.ckeditor.com/4.11.3/standard/ckeditor.js'
 
   # JS config url
   # Used when CKEditor CDN enabled
-  # By default: "/assets/ckeditor/config.js"
-  # config.js_config_url = "/assets/ckeditor/config.js"
+  # By default: "ckeditor/config.js"
+  # config.js_config_url = 'ckeditor/config.js'
 end

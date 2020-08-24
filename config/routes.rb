@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   # Admins
   scope nil, module: :admins do
     devise_for :admins, 

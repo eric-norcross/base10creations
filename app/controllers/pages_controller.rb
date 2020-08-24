@@ -2,16 +2,16 @@ class PagesController < ApplicationController
   caches_action :show
 
   def show
-    @page = Page::Page.includes(
+    @page = Page.includes(
               :link,
               :figures,
               sections: [
                 :link,
-                :figures, 
+                :figures,
                 :items,
                 children: [
                   :link,
-                  :figures, 
+                  :figures,
                   :items
                 ]
               ]

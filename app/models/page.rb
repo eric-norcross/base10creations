@@ -47,7 +47,7 @@ class Page < ApplicationRecord
                                       reject_if:      -> (attributes) {
                                                         attributes['uri'].blank?
                                                       }
-                   
+
   # Sections
   # ==========================================================================================================
     has_many                        :sections,
