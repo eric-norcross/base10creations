@@ -95,8 +95,8 @@ group :development do
   gem 'annotate'
 
   # Gems used only for assets and not required in production environments by default.
-  gem 'sass-rails'
-  gem 'uglifier'
+  gem 'sass-rails', '~> 5.0'
+  gem 'uglifier', '>= 1.3.0'
 end
 
 group :test do
