@@ -21,7 +21,7 @@ source 'https://rubygems.org'
   # gem 'redis', '~> 3.0' # Use Redis adapter to run Action Cable in production
 
 # Hosting, Server & Deployment
-  gem 'puma', '~> 3.7'
+  gem 'puma', '~> 4.3'
   gem 'foreman'
   gem 'rack-rewrite' # Redirecting naked domains to 'www'
   gem 'turbolinks', '~> 5'
